@@ -16,7 +16,7 @@ navbar:
       
   right:
     - text: "R Resouces"
-      href: R.html      
+      href: R_resources.html      
     - text: "Home"
       href: index.html
     
