@@ -22,8 +22,8 @@
       "description": " ",
       "author": [],
       "date": "`r Sys.Date()`",
-      "contents": "\r\nWeek\r\nTopic\r\nRemarks\r\n1.\r\nIntroduction to Geospatial Analytics\r\n\r\n2.\r\nGeospatial Data Handling and Wrangling\r\n\r\n3.\r\nThematic and Analytical Mapping\r\n\r\n4.\r\nSpatial Point Patterns Analysis\r\nTake-home Ex1 due\r\n5.\r\nAdvanced Spatial Point Patterns Analysis\r\n\r\n6.\r\nSpatial Weights and Applications\r\n\r\n7.\r\nLocal Measures of Spatial Autocorrelation\r\nTake-home Ex2 due\r\n8.\r\nWorkshop on R Shiny\r\n\r\n9.\r\nGeographic Segmentation\r\n\r\n10.\r\nGeographically Weighted Regression\r\n\r\n11.\r\nSpatial Interaction Model\r\nTake-home Ex3 due\r\n12.\r\nAdvanced Spatial Interaction Models\r\n\r\n13.\r\nEpilogue\r\n\r\n14.\r\nTownhall Presentation\r\nVA Project due\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-18T23:12:49+08:00"
+      "contents": "\r\nWeek\r\nTopic\r\nRemarks\r\n1.\r\nIntroduction to Geospatial Analytics\r\n\r\n2.\r\nGeospatial Data Handling and Wrangling\r\n\r\n3.\r\nThematic and Analytical Mapping\r\n\r\n4.\r\nSpatial Point Patterns Analysis\r\nTake-home Ex1 due\r\n5.\r\nAdvanced Spatial Point Patterns Analysis\r\n\r\n6.\r\nSpatial Weights and Applications\r\n\r\n7.\r\nLocal Measures of Spatial Autocorrelation\r\nTake-home Ex2 due\r\n8.\r\nWorkshop on R Shiny\r\n\r\n9.\r\nGeographic Segmentation\r\n\r\n10.\r\nGeographically Weighted Regression\r\n\r\n11.\r\nModelling Geographic of Accessibility\r\nTake-home Ex3 due\r\n12.\r\nSpatial Interaction Models\r\n\r\n13.\r\nEpilogue\r\n\r\n14.\r\nTownhall Presentation\r\nVA Project due\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-18T23:14:33+08:00"
     },
     {
       "path": "syllabus.html",

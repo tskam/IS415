@@ -35,9 +35,9 @@ Week Topic                                                                      
 
 10.  [Geographically Weighted Regression](outline/Lesson09_outline.html)        
 
-11.  [Spatial Interaction Model](outline/Lesson10_outline.html)                 Take-home Ex3 due
+11.  [Modelling Geographic of Accessibility](outline/Lesson10_outline.html)                 Take-home Ex3 due
 
-12.  [Advanced Spatial Interaction Models](outline/Lesson11_outline.html)
+12.  [Spatial Interaction Models](outline/Lesson11_outline.html)
 
 13.  Epilogue
 
