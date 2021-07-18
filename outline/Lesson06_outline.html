@@ -86,9 +86,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Lesson 6: Spatial Weights and Applications</title>
+  <title>Lesson 6: Spatial Weights and Global Spatial Autocorrelation</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format." />
+  <meta property="description" itemprop="description" content="Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics." />
 
 
   <!--  https://schema.org/Article -->
@@ -96,21 +96,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="article:created" itemprop="dateCreated" content="2021-07-18" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Lesson 6: Spatial Weights and Applications" />
+  <meta property="og:title" content="Lesson 6: Spatial Weights and Global Spatial Autocorrelation" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="A new article created using the Distill format." />
+  <meta property="og:description" content="Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics." />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Lesson 6: Spatial Weights and Applications" />
-  <meta property="twitter:description" content="A new article created using the Distill format." />
+  <meta property="twitter:title" content="Lesson 6: Spatial Weights and Global Spatial Autocorrelation" />
+  <meta property="twitter:description" content="Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics." />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 6: Spatial Weights and Applications"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"character","attributes":{},"value":["2021-07-18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 6: Spatial Weights and Global Spatial Autocorrelation"]},{"type":"character","attributes":{},"value":["Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics.\n"]},{"type":"character","attributes":{},"value":["2021-07-18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lesson 6: Spatial Weights and Applications","description":"A new article created using the Distill format.","authors":[],"publishedDate":"2021-07-18T00:00:00.000+08:00"}
+{"title":"Lesson 6: Spatial Weights and Global Spatial Autocorrelation","description":"Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics.","authors":[],"publishedDate":"2021-07-18T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1464,10 +1464,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Lesson 6: Spatial Weights and Applications</h1>
+<h1>Lesson 6: Spatial Weights and Global Spatial Autocorrelation</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations. It is an important concept in spatial statistics.</p></p>
 </div>
 
 
@@ -1490,14 +1490,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li>Tobler’s First law of Geography</li>
 <li>Principles of Spatial Autocorrelation</li>
-<li>Concepts of Spatial Proximity and Spatial Weights</li>
-<li>Contiguity-Based Spatial Weights
+<li>Concepts of Spatial Proximity and Spatial Weights
 <ul>
-<li>Rook’s</li>
-<li>Queen’s</li>
+<li>Contiguity-Based Spatial Weights: Rook’s &amp; Queen’s</li>
+<li>Distance-Band Spatial Weights: fixed and adaptive</li>
 </ul></li>
-<li>Distance-Band Spatial Weights</li>
-<li>Applications of Spatial Weights</li>
+<li>Applications of Spatial Weights
+<ul>
+<li>Global measures of spatial autocorrelation</li>
+<li>Correlogram</li>
+</ul></li>
 </ul>
 <h2 id="lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</h2>
 <ul>
@@ -1509,7 +1511,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li>Chapter 2. <a href="https://www.insee.fr/en/statistiques/fichier/3635545/imet131-f-chapitre-2.pdf">Codifying the neighbourhood structure</a> of <a href="https://www.insee.fr/en/information/3635545">Handbook of Spatial Analysis: Theory and Application with R</a>.</li>
 <li>Chapter 3. Spatial autocorrelation indices of Handbook of Spatial Analysis. Until 3.2.2.</li>
+<li>Moran, P. A. P. (1950). <a href="https://www-jstor-org.libproxy.smu.edu.sg/stable/2332142?seq=1#metadata_info_tab_contents">“Notes on Continuous Stochastic Phenomena”</a>. Biometrika. 37 (1): 17–23.</li>
+<li>Geary, R.C. (1954) <a href="https://www-jstor-org.libproxy.smu.edu.sg/stable/2986645?sid=primo&amp;origin=crossref&amp;seq=1#metadata_info_tab_contents">“The Contiguity Ratio and Statistical Mapping”</a>. <em>The Incorporated Statistician</em>, Vol. 5, No. 3, pp. 115-127.</li>
+<li>Getis, A., &amp; Ord, K. (1992). <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1992.tb00261.x">“The Analysis of Spatial Association by Use of Distance Statistics”</a>. <em>Geographical Analysis</em>, 24, 189–206.</li>
 </ul>
+<p>These three papers are classics of Global Spatial Autocorrelation. The first two links bring you directly into smu digital library. You should login the library using smu account. Be warned: All classic papers assume that the readers are academic researchers.</p>
 <p>Alternatively</p>
 <ul>
 <li>Chapter 9: Modelling Areal Data of Applied Spatial Data Analysis with R (2nd Edition). This book is available in smu digital library. Until section 9.3.1.</li>
