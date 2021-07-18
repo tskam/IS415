@@ -1,0 +1,23 @@
+name: "IS415"
+title: "IS415 Geospatial Analytics and Applications"
+description: |
+  IS415 Geospatial Analytics and Applications
+output_dir: "_site"
+navbar:
+  left:
+    - text: "Syllabus"
+      href: syllabus.html
+    - text: "Lesson Plan"
+      href: lesson.html
+    - text: "Assignment"
+      href: assignment.html
+    - text: "Geospatial Analytics Project"
+      href: GAproject.html
+      
+  right:
+    - text: "R Resouces"
+      href: R.html      
+    - text: "Home"
+      href: index.html
+    
+output: distill::distill_article

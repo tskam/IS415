@@ -1,0 +1,21 @@
+---
+title: "IS415 Geospatial Analytics and Applications"
+description: |
+  Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site.
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+```
+
+Instructor: [Dr. Kam Tin Seong](https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong)  
+Day: Monday 
+Time: 8:15am to 11:30am
+Venue: SCIS Seminar Rm B1-1  
+Syllabus: [click here](syllabus.html)  
+Upcoming lectures and assignments: [click here](schedule.html)
