@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = FALSE)
 - Tobler’s First law of Geography
 - Principles of Spatial Autocorrelation
 - Concepts of Spatial Proximity and Spatial Weights
-- Contiguity-Based Spatial Weights
-    - Rook's
-    - Queen's
-- Distance-Band Spatial Weights
+    - Contiguity-Based Spatial Weights: Rook's & Queen's
+    - Distance-Band Spatial Weights: fixed and adaptive
 - Applications of Spatial Weights
+    - Global measures of spatial autocorrelation
+    - Correlogram
 
 ## Lesson Slides and Hands-on Notes 
 
