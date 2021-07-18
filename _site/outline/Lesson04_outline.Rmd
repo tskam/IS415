@@ -46,7 +46,8 @@ Prof. Luc Anselin on point pattern analysis (YouTube):
 - [Point Pattern Analysis: Clustered, Regular and Dispersed Patterns](https://www.youtube.com/watch?v=FdcTgcOdAUg) 
 - [Point Pattern Analysis: Nearest Neighbor Statistics](•	Point Pattern Analysis: Nearest Neighbor Statistics)
 - [Point Pattern Analysis: Quadrat Counts](https://www.youtube.com/watch?v=Ww95WKxUoZk)
-- [Point Pattern Analysis: F and J Functions](https://www.youtube.com/watch?v=uNpbf7Y6WM8) - [Point Pattern Analysis: K, L and Kd Functions](https://www.youtube.com/watch?v=oT_jMTkkld8) 
+- [Point Pattern Analysis: F and J Functions](https://www.youtube.com/watch?v=uNpbf7Y6WM8) 
+- [Point Pattern Analysis: K, L and Kd Functions](https://www.youtube.com/watch?v=oT_jMTkkld8) 
 
 ## References
 
