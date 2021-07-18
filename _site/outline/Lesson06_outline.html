@@ -86,7 +86,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Lesson 6:</title>
+  <title>Lesson 6: Spatial Weights and Applications</title>
 
   <meta property="description" itemprop="description" content="A new article created using the Distill format." />
 
@@ -94,24 +94,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2021-07-18" />
   <meta property="article:created" itemprop="dateCreated" content="2021-07-18" />
-  <meta name="article:author" content="Nora Jones" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Lesson 6:" />
+  <meta property="og:title" content="Lesson 6: Spatial Weights and Applications" />
   <meta property="og:type" content="article" />
   <meta property="og:description" content="A new article created using the Distill format." />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Lesson 6:" />
+  <meta property="twitter:title" content="Lesson 6: Spatial Weights and Applications" />
   <meta property="twitter:description" content="A new article created using the Distill format." />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 6:"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2021-07-18"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 6: Spatial Weights and Applications"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"character","attributes":{},"value":["2021-07-18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1455,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lesson 6:","description":"A new article created using the Distill format.","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2021-07-18T00:00:00.000+08:00","citationText":"Jones, 2021"}
+{"title":"Lesson 6: Spatial Weights and Applications","description":"A new article created using the Distill format.","authors":[],"publishedDate":"2021-07-18T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1465,19 +1464,28 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Lesson 6:</h1>
+<h1>Lesson 6: Spatial Weights and Applications</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>A new article created using the Distill format.</p></p>
 </div>
 
-<div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
-  
-<br />2021-07-18
-</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#content">Content</a></li>
+<li><a href="#lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</a>
+<ul>
+<li><a href="#self-reading-before-meet-up">Self-reading Before Meet-up</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+<li><a href="#all-about-r">All About R</a></li>
+</ul>
+</nav>
+</div>
 <h2 id="content">Content</h2>
 <ul>
 <li>Tobler’s First law of Geography</li>
