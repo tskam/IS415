@@ -9,8 +9,8 @@ navbar:
       href: syllabus.html
     - text: "Lesson Plan"
       href: lesson.html
-    - text: "Assignment"
-      href: assignment.html
+    - text: "Take-home Exercise"
+      href: th_ex.html
     - text: "Geospatial Analytics Project"
       href: GAproject.html
       
