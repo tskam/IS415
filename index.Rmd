@@ -18,4 +18,4 @@ Day: Monday
 Time: 8:15am to 11:30am
 Venue: SCIS Seminar Rm B1-1  
 Syllabus: [click here](syllabus.html)  
-Upcoming lectures and assignments: [click here](schedule.html)
+Upcoming lectures: [click here](lesson.html)
