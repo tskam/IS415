@@ -126,9 +126,8 @@ knitr::opts_chunk$set(echo = FALSE)
 * [Blog Post Workflow](https://rstudio.github.io/distill/blog_workflow.html)
 * [Publishing Websites](https://rstudio.github.io/distill/publish_website.html)
 
- 
-### Blogdown
 
+### Blogdown
 #### Book
 
 * [blogdown: Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/). Highly recommended to beginners.
