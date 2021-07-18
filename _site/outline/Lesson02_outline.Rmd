@@ -15,8 +15,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Content
 
-[**Lesson Slide**](lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html)
-
 - An overview of Geospatial Data Models
     - Vector and Raster data models
 - Map Projection and Georeferencing
@@ -24,20 +22,23 @@ knitr::opts_chunk$set(echo = FALSE)
 - Classes of Spatial Data in R
     - Spatial classes
     - Simple features class
-•	R packages for Handling Spatial Data
+-	R packages for Handling Spatial Data
     - sf 
     - star
+- Hand-on Exercise: 
+    - Importing geospatial data 
+    - Converting aspatial data into geospatial data
+    - Geocoding data
+    - Transforming projection
+    - Performing geoprocessing operation
+    - Performing georelational operation
 
-### Hand-on Exercise: Geospatial Data Handling, Wrangling and Processing with sf package
+## Lesson Slides and Hands-on Notes 
 
-[**Handout of Hands-on Exercise**](Hands-on_Ex\Hands-on_Ex02\Hands-on_Ex02.html)
+Lesson slide in [html](lesson/lesson02/lesson02.html) and [pdf](lesson/lesson02/lesson02.pdf) formats
 
-- Importing geospatial data 
-- Converting aspatial data into geospatial data
-- Geocoding data
-- Transforming projection
-- Performing geoprocessing operation
-- Performing georelational operation
+In-class Exercise in [html]() format.
+
 
 ### All About R:
 - [sf](https://r-spatial.github.io/sf/) package

@@ -15,8 +15,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Content
 
-[**Lesson Slide**](lesson/Lesson01/Lesson01-Introduction_to_Geospatial_Analytics.html)
-
 - Introduction to Geospatial Analytics
     - Demystifying Geospatial Analytics
     - Geospatial Analytics vs Mapping
@@ -25,6 +23,18 @@ knitr::opts_chunk$set(echo = FALSE)
 - Motivation of Geospatial Analytics
 - A Tour Through the Geospatial Analytics Zoo
 - Geospatial Analytics and Social Consciousness
+- In-class Exercise:
+    - Installing R, RStudio, distill for R Markdown
+    - Installing Rtools and devtools
+    - Installing git
+    - Creating a github account 
+    - Building a distill web blog
+
+## Lesson Slides and Hands-on Notes 
+
+Lesson slide in [html](lesson/lesson03/lesson03.html) and [pdf](lesson/lesson03/lesson03.pdf) formats
+
+In-class Exercise in [html]() format.
 
 ## References
 
