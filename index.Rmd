@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Instructor: [Dr. Kam Tin Seong](https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong)  
 Day: Monday 
-Time: 8:15am to 11:30am
-Venue: SCIS Seminar Rm B1-1  
+Time: 0815am to 1130am
+Venue: SCIS Seminar Rm 2.4  
 Syllabus: [click here](syllabus.html)  
 Upcoming lectures: [click here](lesson.html)
