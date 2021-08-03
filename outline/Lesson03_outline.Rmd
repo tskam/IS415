@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-Lesson slide in [html](lesson/lesson03/lesson03.html) and [pdf](lesson/lesson03/lesson03.pdf) formats
+Lesson slide in [html](../lesson/lesson03/lesson03.html) and [pdf](../lesson/lesson03/lesson03.pdf) formats
 
 In-class Exercise in [html]() format.
 
