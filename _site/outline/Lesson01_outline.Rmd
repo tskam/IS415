@@ -32,7 +32,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-Lesson slide in [html](lesson/lesson03/lesson03.html) and [pdf](lesson/lesson03/lesson03.pdf) formats
+Lesson slide in [html](../lesson/lesson01/Lesson01-Introduction_to_GAA.html) and [pdf](../lesson/lesson01/Lesson01-Introduction_to_GAA.pdf) formats
 
 In-class Exercise in [html]() format.
 
