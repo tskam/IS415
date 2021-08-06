@@ -30,8 +30,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-* Slides in [html](lesson/lesson04/lesson04-SPPA.html) and [pdf](lesson/lesson04/lesson04-SPPA.pdf) formats
-* [**Handout of Hands-on Exercise**](Hands-on_Ex\Hands-on_Ex04\Hands-on_Ex04_SPPA_spatstat.html)
+* Slides in [html](../lesson/Lesson04/Lesson04-SPPA.html) and [pdf](../lesson/Lesson04/Lesson04-SPPA.pdf) formats
+* [**Handout of Hands-on Exercise**]()
 
 ### Self-reading Before Meet-up
 
