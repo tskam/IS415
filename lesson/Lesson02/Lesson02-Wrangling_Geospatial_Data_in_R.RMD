@@ -36,11 +36,6 @@ style_duo_accent(
 
 - Handling Geospatial Data in R: An Overview
 
-- SpatialData approach
-    - **sp** package
-    - **rgdal** package
-    - **rgeo** package
-
 - Simple features approach  
     -  **sf** package
 ] 
@@ -145,6 +140,18 @@ style_duo_accent(
 ]
 
 ---
+### Coordinates Reference Systems in R
+
+.large[
+- The EPSG list among other sources is used in the workhorse PROJ.4 library, which as implemented by Frank Warmerdam handles transformation of spatial positions between different CRS.
+- This library is interfaced with R in the **rgdal** package, and the CRS class is defined partly in sp, partly in rgdal.
+- A **CRS** object is defined as a character NA string or a valid PROJ.4 CRS definition.
+- In R, the notation used to describe the CRS is **proj4string** from the **PROJ.4** library.  It looks like this:
+
+> +init=epsg:4121 +proj=longlat+ellps=GRS80 +datum=GGRS87 +no_defs+towgs84=-199.87,74.79,246.62
+]
+
+---
 ## Standard for Geospatial Data Handling and Analysis
 
 .large[
@@ -156,7 +163,6 @@ The OGC OpenGIS Implementation Standard for Geographic Information / ISO 19125 d
 - **Methods that support spatial analysis** distance, which returns a distance, and buffer, convex hull, intersection, union, difference, and symmetric difference, which returns new geometric objects.]
 
 Source: www.opengeospatial.org/standards/sfa
-
 
 ---
 ## Geospatial Data Object Framework 
@@ -182,81 +188,6 @@ In general, three R packages will be used to handle vector-based geospatial data
 ]
 
 ---
-## Spatial classes in **sp** package
-
-.large[
-- The foundational structure for any spatial object in sp is the Spatial class. It has two “slots” (new-style S4 class objects in R have pre-defined components called **slots**):
-
-    - a bounding box
-    - a CRS class object to define the Coordinate Reference System
-
-- This basic structure is then extended, depending on the characteristics of the spatial object (point, line, polygon).]
-
----
-## Spatial*DataFrames
-
-.pull-left[
-.large[
-- Spatial*DataFrames are constructed as Janus-like objects, 
-
-    - looking to mapping and GIS people as "their" kind of object, as a collection of geometric features, with data associated with each feature. 
-    - But to data analysts, the object "is" a data frame, because it behaves like one.
-]]
-
-.pull-right[
-![](img/image6-3.jpg)]
-
----
-### Spatial Points
-
-.pull-left[
-- The most basic spatial data object is a point, which may have 2 or 3 dimensions.
-- A single coordinate, or a set of such coordinates, may be used to define a **SpatialPoints** object; coordinates should be of mode double and will be promoted if not.
-- The points in a **SpatialPoints** object may be associated with a row of attributes to create a **SpatialPointsDataFrame** object.
-- The coordinates and attributes may, but do not have to be keyed to each other using ID values.]
-
-.pull-right[
-![](img/image6-4.jpg)]
-
----
-### Spatial Lines and Polygons objects
-.pull-left[
-- A **Line** object is just a spaghetti collection of 2D coordinates; a Polygon object is a Line object with same first and last coordinates.
-- A **Lines** object is a list of line objects, such as all the contours at a single elevation and a **Polygons** object is a list of polygon objects, such as islands belonging to the same planning zone. A comment is added to each **Polygons** object to indicate which interior ring belongs to which exterior ring (SFS).
-- **SpatialLines** and **SpatialPolygons** objects are made using lists of Lines or Polygons objects respectively.
-- **SpatialLinesDataFrame** and **SpatialPolygonsDataFrame** objects are defined using **SpatialLines** and **SpatialPolygons** objects and standard data frames, and the ID fields are here required to match the data frame row names.]
-
-.pull-right[
-![](img/image6-5.jpg)]
-
-
----
-###  Spatial Grids and Pixels
-
-.pull-left[
-- **The GridTopology** class is the key constituent of raster representations. 
-- There are two representations for data on regular rectangular grids (oriented N-S, E-W): **SpatialPixels** and **SpatialGrid**.
-- **SpatialPixels** are like SpatialPoints objects, but the coordinates have to be regularly spaced; the coordinates are stored, as are grid indices.
-- **SpatialPixelsDataFrame** objects only store attribute data where it is present, but need to store the coordinates and grid indices of those grid cells.
-- **SpatialGridDataFrame** objects do not need to store coordinates, because they fill the entire defined grid, but they need to store NA values where attribute values are missing.
-]
-
-.pull-right[
-![](img/image6-6.jpg)]
-
----
-## Coordinates Reference Systems in R
-
-.large[
-- The EPSG list among other sources is used in the workhorse PROJ.4 library, which as implemented by Frank Warmerdam handles transformation of spatial positions between different CRS.
-- This library is interfaced with R in the **rgdal** package, and the CRS class is defined partly in sp, partly in rgdal.
-- A **CRS** object is defined as a character NA string or a valid PROJ.4 CRS definition.
-- In R, the notation used to describe the CRS is **proj4string** from the **PROJ.4** library.  It looks like this:
-
-> +init=epsg:4121 +proj=longlat+ellps=GRS80 +datum=GGRS87 +no_defs+towgs84=-199.87,74.79,246.62
-]
-
----
 ## An introduction to simple features
 
 .large[
@@ -269,7 +200,7 @@ In general, three R packages will be used to handle vector-based geospatial data
 
 - [*Simple features specification*](https://en.wikipedia.org/wiki/Simple_Features) is an open standard developed and endorsed by the Open Geospatial Consortium (OGC) to represent a wide range of geographic information. 
 .center[ 
-![:scale 70%](img/image6-12.jpg)]
+![:scale 70%](img/image2-8.jpg)]
 
 ---
 ### Commonly used simple features
@@ -277,7 +208,7 @@ In general, three R packages will be used to handle vector-based geospatial data
 - Only 7 out of 17 possible types of simple feature are currently used in the vast majority of GIS operations.
 
 .center[
-![](img/image6-9.jpg)]
+![:scale 55%](img/image2-9.jpg)]
 
 ---
 ### Simple Features: How they look like?
@@ -290,10 +221,21 @@ In general, three R packages will be used to handle vector-based geospatial data
 ![:scale 85%](img/image6-15.jpg)]
 
 ---
-## Introducing [**sf**](https://cran.r-project.org/web/packages/sf/index.html) Package
+## Introducing sf Package
+
+- [**sf**](https://cran.r-project.org/web/packages/sf/index.html) package provides a syntax and data-structures which are coherent with the [tidyverse](https://www.tidyverse.org/). 
+- A quick introduction can be found [here](https://journal.r-project.org/archive/2018/RJ-2018-009/index.html).
+- For more detail, visit this [link](https://r-spatial.github.io/sf/).
+
+.center[
+![:scale 50%](img/image2-10.jpg)
+]
+
+---
+## What is so special about sf?
 
 .large[
-- represents natively in R all 17 simple feature types for all dimensions (XY, XYZ, XYM, XYZM),
+- It builds upon the [simple features standard](https://en.wikipedia.org/wiki/Simple_Features) (not R specific!), represents natively in R all 17 simple feature types for all dimensions (XY, XYZ, XYM, XYZM),
 - uses S3 classes: simple features are data.frame objects (or tibbles) that have a geometry list-column,
 - interfaces to GEOS to support the DE9-IM,
 - interfaces to GDAL with driver dependent dataset or layer creation options, Date and DateTime (POSIXct) columns, and coordinate reference system, 
@@ -366,6 +308,34 @@ The model is that of GEOS, which copies from the Java Topology Suite (JTS), and 
 ]
 
 ---
+### Popular Geospatial Data File Format: ESRI shapefile
+
+.pull-left[
+.large[
+- A shapefile is a simple, nontopological format for storing the geometric location and attribute information of geographic features. 
+- Geographic features in a shapefile can be represented by points, lines, or polygons (areas). 
+- For more information, refer to [ESRI Shapefile Technical Description](http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf).
+]]
+
+.pull-right[
+![:scale 80%](img/image2-7.jpg)
+]
+
+---
+### Other Vector GIS File Formats
+
+.large[
+- MapInfo [TAB](https://en.wikipedia.org/wiki/MapInfo_TAB_format) format - MapInfo's vector data format using TAB, DAT, ID and MAP files.
+- [Personal Geodatabase](https://desktop.arcgis.com/en/arcmap/latest/manage-data/administer-file-gdbs/personal-geodatabases.htm) - Esri's closed, integrated vector data storage strategy using Microsoft's Access MDB format
+- [Keyhole Markup Language (KML)](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) - XML based open standard (by OpenGIS) for GIS data exchange.
+- [Geography Markup Language (GML)](http://en.wikipedia.org/wiki/Geography_Markup_Language) - XML based open standard (by OpenGIS) for GIS data exchange.
+- [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) - a lightweight format based on JSON, used by many open source GIS packages.
+- [TopoJSON](https://github.com/topojson/topojson), an extension of GeoJSON that encodes topology.
+]
+
+
+
+---
 ### Geometric confirmation
 
 .large[
@@ -431,13 +401,11 @@ Note: These functions return a logical matrix indicating whether each geometry p
 - st_is: check whether geometry is of a particular type]
 
 ---
-## Introducing sf package
 ### sf and other geospatial packages
 .center[
 ![:scale 70%](img/image6-11.jpg)]
 
 ---
-## Introducing sf package
 ### sf & tidyverse
 .large[
 - sf spatial objects are data.frames (or tibbles)

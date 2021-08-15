@@ -10,10 +10,16 @@ navbar:
     - text: "Lesson Plan"
       href: lesson.html
     - text: "Take-home Exercise"
-      href: th_ex.html
+      menu:
+      - text: "Take-home Exercise 1"
+        href: th_ex1.html
+      - text: "Take-home Exercise 2"
+        href: th_ex2.html
+      - text: "Take-home Exercise 3"
+        href: th_ex3.html
     - text: "Geospatial Analytics Project"
       href: GAproject.html
-      
+  
   right:
     - text: "R Resouces"
       href: R_resources.html      

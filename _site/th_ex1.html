@@ -86,29 +86,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>IS415: IS415 Geospatial Analytics and Applications</title>
+  <title>IS415: Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia</title>
 
-  <meta property="description" itemprop="description" content="Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site."/>
+  <meta property="description" itemprop="description" content="This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise."/>
 
 
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-08-15"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-15"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="IS415: IS415 Geospatial Analytics and Applications"/>
+  <meta property="og:title" content="IS415: Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site."/>
+  <meta property="og:description" content="This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="IS415"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="IS415: IS415 Geospatial Analytics and Applications"/>
-  <meta property="twitter:description" content="Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site."/>
+  <meta property="twitter:title" content="IS415: Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"/>
+  <meta property="twitter:description" content="This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["IS415 Geospatial Analytics and Applications"]},{"type":"character","attributes":{},"value":["Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site.\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"]},{"type":"character","attributes":{},"value":["This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. \n"]},{"type":"character","attributes":{},"value":["2021-08-15"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2053,7 +2056,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"IS415 Geospatial Analytics and Applications","description":"Welcome to the home page for **IS415 Geospatial Analytics and Applications**. All course materials will be posted on this site.","authors":[]}
+{"title":"Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia","description":"This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise.","authors":[],"publishedDate":"2021-08-15T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2090,18 +2093,73 @@ Take-home Exercise
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>IS415 Geospatial Analytics and Applications</h1>
+<h1>Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Welcome to the home page for <strong>IS415 Geospatial Analytics and Applications</strong>. All course materials will be posted on this site.</p></p>
+<p><p>This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1. Students must review and understand them before getting started with the take-home exercise.</p></p>
 </div>
 
 
 <div class="d-article">
-<p>Instructor: <a href="https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong">Dr. Kam Tin Seong</a><br />
-Day: Monday Time: 0815am to 1130am Venue: SCIS Seminar Rm 2.4<br />
-Syllabus: <a href="syllabus.html">click here</a><br />
-Upcoming lectures: <a href="lesson.html">click here</a></p>
+<h2 id="setting-the-scene">Setting the Scene</h2>
+<p>Since late December 2019, an outbreak of a novel coronavirus disease (COVID-19; previously known as 2019-nCoV) was reported in Wuhan, China, which had subsequently affected 210 countries worldwide. In general, COVID-19 is an acute resolved disease but it can also be deadly, with a 2% case fatality rate.</p>
+<p>The COVID-19 pandemic in Indonesia is part of the ongoing worldwide pandemic of coronavirus disease 2019 (COVID-19) caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The virus was confirmed to have reached Indonesia on March 2, 2020. It started with two cases in March. As of July 31 2021, there had been 3,409,658 cumulative confirmed cases of COVID-19 in Indonesia and 94,119 reported cumulative deaths. All cases were spread in 34 provinces in Indonesia. Among all the provinces, DKI Jakarta (Indonesian: Daerah Khusus Ibukota Jakarta and in English: Special Capital Region of Jakarta) contributed close to 24% of the cumulative confirmed cases.</p>
+<p>Despite its compactness, the cumulative confirmed cases were not evenly distributed within DKI Jakarta as Figure below reveals at the district and sub-district levels. The question was where were the sub-districts with relatively higher number of confirmed cases and how they changed over time.</p>
+<h2 id="objectives">Objectives</h2>
+<p>The take-home exercise aims to embark you the skill of perform geospatial analysis to “Think Globally, Act Locally”. You will also acquire the skills of documenting the analysis procedures conform to reproducible best practice using RMarkdown. Last but not least, you will also learn the skill of communicating your work via web post.</p>
+<p>The specific objective of the exercise is to reveal the spatio-temporal patterns of monthly cumulative confirmed COVID-19 rate and death rate at <em>sub-district</em> or <a href="https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia"><em>kelurahan</em></a>.</p>
+<h2 id="the-task">The Task</h2>
+<p>In this take-home exercise, you are tasked to reveal the spatia-temporal patterns of COVID-19 case at DKI Jakarta. The temporal interval must be at <em>epidemiology week</em> (epi week) and the geographic should be at <em>sub-district</em> or <a href="https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia"><em>kelurahan</em></a> in Indonesia language. The specific tasks are as follow:</p>
+<h3 id="data-extraction-wrangling-and-integration">Data Extraction, Wrangling and Integration</h3>
+<ul>
+<li>Download the daily COVID-19 data of DKI Jakarta,</li>
+<li>Extract ID_KEL, Nama_provinsi, nama_kota, nama_kecamatan nama_kelurahan, POSITF and meninggal from <code>data</code> worksheet of the daily COVID-19 data,</li>
+<li>Integrate the daily data into a data frame by month,</li>
+<li>Download the DKI Jarkata shapefile,</li>
+<li>Import the shapefile into R and save it in simple feature data frame format,</li>
+<li>Exclude all the outer islands from the DKI Jakarta sf data frame.</li>
+<li>Include the first nine fields in the DKI Jakarta sf data frame.</li>
+<li>Combine the geospatial and aspatial data frame into simple feature data frame.<br />
+</li>
+<li>Calculate the cumulative confirmed cases rate (i.e. cases per 10000 population) and the cumulative death rate by month.</li>
+</ul>
+<h3 id="thematic-mapping">Thematic Mapping</h3>
+<ul>
+<li>Plot maps to show the spatio-temporal distribution of cumulative confirmed cases rate and death rate at sub-direct level by using appropriate thematic mapping technique provided by tmap package.</li>
+</ul>
+<h3 id="analytical-mapping">Analytical Mapping</h3>
+<ul>
+<li>Plot analytical maps to show the spatio-temporal distribution of cumulative confirmed cases rate and death rate at sub-direct level by using appropriate thematic mapping technique provided by tmap package.</li>
+</ul>
+<h2 id="the-data">The Data</h2>
+<p>For the purpose of this assignment, the following data should be used:</p>
+<ul>
+<li><p><a href="https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/">Open Data Covid-19 Provinsi DKI Jakarta</a>. This portal provides daily update of COVID-19 measures at both sub-district and district level. For the purpose of this exercise, data at the sub-district level will be used. This data is available in <code>data</code> worksheet.</p></li>
+<li><p><a href="https://www.indonesia-geospasial.com/">Indonesia Geospatial</a>. This portal provides a comprehensive collection of geospatial data mainly in ESRI shapefile format at different geographical levels. For the purpose of this study, the <strong>Shapefile (SHP) Batas Desa Provinsi DKI Jakarta</strong> provided at <a href="https://www.indonesia-geospasial.com/2020/04/download-shapefile-shp-batas-desa.html">PODES 2019</a> geospatial layer should be used.</p></li>
+</ul>
+<h2 id="grading-criteria">Grading Criteria</h2>
+<p>This exercise will be graded by using the following criteria:</p>
+<ul>
+<li><p><strong>Geospatial Data Wrangling (20 marks):</strong> This is an important aspect of geospatial analytics. You will be assessed on your ability to employ appropriate R functions from various R packages specifically designed for modern data science such as readxl, tidyverse (tidyr, dplyr, ggplot2), sf just to mention a few of them, to perform the entire geospatial data wrangling processes, including. This is not limited to data import, data extraction, data cleaning and data transformation. Besides assessing your ability to use the R functions, this criterion also includes your ability to clean and derive appropriate variables to meet the analysis need. (Warning: All data are like vast grassland full of land mines. Your job is to clear those mines and not to step on them).</p></li>
+<li><p><strong>Geospatial Analysis (30 marks):</strong> In this exercise, you are expected to use the appropriate thematic and analytics mapping techniques and R functions introduced in class to analysis the geospatial data prepared. You will be assessed on your ability to derive analytical maps by using appropriate rate mapping techniques.</p></li>
+<li><p><strong>Geovisualisation (20 marks):</strong> In this section, you will be assessed on your ability to communicate the complex spatial statistics results in business friendly visual representations. This course is geospatial centric, hence, it is important for you to demonstrate your competency in using appropriate geovisualisation techniques to reveal and communicate the findings of your analysis.</p></li>
+<li><p><strong>Reproducibility (20 marks):</strong> This is an important learning outcome of this exercise. You will be assessed on your ability to provide a comprehensive documentation of the analysis procedures in the form of code chunks of RMarkdown. It is important to note that it is not enough by merely providing the code chunk without any explanation on the purpose and R function(s) used.</p></li>
+<li><p><strong>Bonus (10 marks):</strong> Demonstrate your ability to employ methods beyond what you had learned in class to gain insights from the data. The methods used must be geospatial in nature.</p></li>
+</ul>
+<h2 id="submission-instructions">Submission Instructions</h2>
+<ul>
+<li>The write-up of the take-home exercise must be in <a href="https://rstudio.github.io/distill/"><strong>distill</strong></a> or <a href="https://github.com/rstudio/blogdown"><strong>blogdown</strong></a> format. You are required to publish the write-up on <a href="https://www.netlify.com/"><strong>Netlify</strong></a>.</li>
+<li>The R project of the take-home exercise must be pushed onto your <a href="https://github.com/">Github</a> repository.</li>
+<li>You are required to provide the links to Netlify service of the take-home exercise write-up and github repository on eLearn.</li>
+</ul>
+<h2 id="due-date">Due Date</h2>
+<p>10th September 2021 (Friday), 11.59pm (midnight).</p>
+<h2 id="reference">Reference</h2>
+<p>Health Ministry of Indonesia. Published 2020. Accessed March 30, 2020. <a href="https://covid19.go.id/" class="uri">https://covid19.go.id/</a></p>
+<p><a href="https://corona.jakarta.go.id/en">JAKARTA’s COVID-19 RESPONSE TEAM</a>. Accessed August 12, 2021.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
