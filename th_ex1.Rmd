@@ -3,7 +3,10 @@ title: "Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns
 description: |
   This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. 
 date: "`r Sys.Date()`"
-output: distill::distill_article
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
 ---
 
 ```{r setup, include=FALSE}
