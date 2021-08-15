@@ -55,7 +55,7 @@ As a first step, you should create a project summary at the course wiki that inc
 
 - The title of your project,
 - A short description of not more than 350 word summarising the motivation, objectives, main features of the application your team are going to build, and
-- The project proposal.  This should in a webblog page (remember to provide a link at the wiki).
+- The project proposal.  This should in a webblog page (remember to provide a link at eLearn).
 
 ### Poster
 The project poster should provide an overview of your project.  It should include, but not limited to the following information: 
