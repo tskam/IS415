@@ -29,17 +29,25 @@ The specific objective of the exercise is to reveal the spatio-temporal patterns
 
 ## The Task
 
-In this take-home exercise, you are tasked to reveal the spatia-temporal patterns of COVID-19 case at DKI Jakarta.  The temporal interval must be at *epidemiology week* (epi week) and the geographic should be at *sub-district* or [*kelurahan*](https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia) in Indonesia language. The specific tasks are as follow:
+In this take-home exercise, you are tasked to reveal the spatia-temporal patterns of COVID-19 case at DKI Jakarta.  The temporal interval must be at *month* (last day of the month) and the geographic should be at *sub-district* or [*kelurahan*](https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia) in Indonesia language. The specific tasks are as follow:
 
 ### Data Extraction, Wrangling and Integration
 
+#### Apstial data
+
 - Download the daily COVID-19 data of DKI Jakarta, 
-- Extract ID_KEL,	Nama_provinsi, nama_kota,	nama_kecamatan	nama_kelurahan, POSITF and meninggal from ```data``` worksheet of the daily COVID-19 data,
-- Integrate the daily data into a data frame by month,
-- Download the DKI Jarkata shapefile,
-- Import the shapefile into R and save it in simple feature data frame format,
-- Exclude all the outer islands from the DKI Jakarta sf data frame.
-- Include the first nine fields in the DKI Jakarta sf data frame.
+- Extract ID_KEL,	Nama_provinsi, nama_kota,	nama_kecamatan	nama_kelurahan, POSITIF (cumulative confirmed cases) and meninggal (cumulative death cases) from ```data``` worksheet of the daily COVID-19 data, and
+- Integrate the daily data into a data frame by month.
+
+#### Geospatial data
+
+- Download ```DKI Jarkata``` shapefile,
+- Import the shapefile into R and save it in a simple feature data frame format, (Note: The national Projected Coordinates Systems of Indonesia is DGN95 / Indonesia TM-3 zone 54.1)
+- Exclude all the outer islands from the DKI Jakarta sf data frame, and
+- Retain the first nine fields in the DKI Jakarta sf data frame.  The ninth field *JUMLAH_PEN = Total Population*. 
+
+#### Geospatial data integration
+
 - Combine the geospatial and aspatial data frame into simple feature data frame.  
 - Calculate the cumulative confirmed cases rate (i.e. cases per 10000 population) and the cumulative death rate by month.
 
@@ -89,6 +97,15 @@ Health Ministry of Indonesia. Published 2020. Accessed March
 30, 2020. https://covid19.go.id/
 
 [JAKARTA's COVID-19 RESPONSE TEAM](https://corona.jakarta.go.id/en). Accessed August 12, 2021.
+
+## Learning from senior
+
+You are advised to review these sample submissions prepared by your seniors.
+
+- [Take-home Exercise 1: Geographic Analysis of the Supply and Demand of Childcare Services in Singapore](https://rpubs.com/xiaorongw/IS415_Take-home_Ex01) by Xiao Rong Wong
+
+- [Take-home Exercise 1: Understanding and Analysing Changes in the Supply of Childcare Services](https://rpubs.com/rax/Take_Home_Ex01) by Rajiv Abraham Xavier
+
 
 
 ```{r echo=FALSE, eval=FALSE}

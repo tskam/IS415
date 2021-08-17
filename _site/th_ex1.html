@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-16"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-16"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-08-17"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-17"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="IS415: Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"/>
@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"]},{"type":"character","attributes":{},"value":["This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. \n"]},{"type":"character","attributes":{},"value":["2021-08-16"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"]},{"type":"character","attributes":{},"value":["This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. \n"]},{"type":"character","attributes":{},"value":["2021-08-17"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2056,7 +2056,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia","description":"This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise.","authors":[],"publishedDate":"2021-08-16T00:00:00.000+08:00"}
+{"title":"Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia","description":"This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise.","authors":[],"publishedDate":"2021-08-17T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2118,6 +2118,7 @@ Take-home Exercise
 <li><a href="#submission-instructions">Submission Instructions</a></li>
 <li><a href="#due-date">Due Date</a></li>
 <li><a href="#reference">Reference</a></li>
+<li><a href="#learning-from-senior">Learning from senior</a></li>
 </ul>
 </nav>
 </div>
@@ -2129,16 +2130,23 @@ Take-home Exercise
 <p>The take-home exercise aims to embark you the skill of perform geospatial analysis to “Think Globally, Act Locally”. You will also acquire the skills of documenting the analysis procedures conform to reproducible best practice using RMarkdown. Last but not least, you will also learn the skill of communicating your work via web post.</p>
 <p>The specific objective of the exercise is to reveal the spatio-temporal patterns of monthly cumulative confirmed COVID-19 rate and death rate at <em>sub-district</em> or <a href="https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia"><em>kelurahan</em></a>.</p>
 <h2 id="the-task">The Task</h2>
-<p>In this take-home exercise, you are tasked to reveal the spatia-temporal patterns of COVID-19 case at DKI Jakarta. The temporal interval must be at <em>epidemiology week</em> (epi week) and the geographic should be at <em>sub-district</em> or <a href="https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia"><em>kelurahan</em></a> in Indonesia language. The specific tasks are as follow:</p>
+<p>In this take-home exercise, you are tasked to reveal the spatia-temporal patterns of COVID-19 case at DKI Jakarta. The temporal interval must be at <em>month</em> (last day of the month) and the geographic should be at <em>sub-district</em> or <a href="https://en.wikipedia.org/wiki/Subdivisions_of_Indonesia"><em>kelurahan</em></a> in Indonesia language. The specific tasks are as follow:</p>
 <h3 id="data-extraction-wrangling-and-integration">Data Extraction, Wrangling and Integration</h3>
+<h4 id="apstial-data">Apstial data</h4>
 <ul>
 <li>Download the daily COVID-19 data of DKI Jakarta,</li>
-<li>Extract ID_KEL, Nama_provinsi, nama_kota, nama_kecamatan nama_kelurahan, POSITF and meninggal from <code>data</code> worksheet of the daily COVID-19 data,</li>
-<li>Integrate the daily data into a data frame by month,</li>
-<li>Download the DKI Jarkata shapefile,</li>
-<li>Import the shapefile into R and save it in simple feature data frame format,</li>
-<li>Exclude all the outer islands from the DKI Jakarta sf data frame.</li>
-<li>Include the first nine fields in the DKI Jakarta sf data frame.</li>
+<li>Extract ID_KEL, Nama_provinsi, nama_kota, nama_kecamatan nama_kelurahan, POSITIF (cumulative confirmed cases) and meninggal (cumulative death cases) from <code>data</code> worksheet of the daily COVID-19 data, and</li>
+<li>Integrate the daily data into a data frame by month.</li>
+</ul>
+<h4 id="geospatial-data">Geospatial data</h4>
+<ul>
+<li>Download <code>DKI Jarkata</code> shapefile,</li>
+<li>Import the shapefile into R and save it in a simple feature data frame format, (Note: The national Projected Coordinates Systems of Indonesia is DGN95 / Indonesia TM-3 zone 54.1)</li>
+<li>Exclude all the outer islands from the DKI Jakarta sf data frame, and</li>
+<li>Retain the first nine fields in the DKI Jakarta sf data frame. The ninth field <em>JUMLAH_PEN = Total Population</em>.</li>
+</ul>
+<h4 id="geospatial-data-integration">Geospatial data integration</h4>
+<ul>
 <li>Combine the geospatial and aspatial data frame into simple feature data frame.<br />
 </li>
 <li>Calculate the cumulative confirmed cases rate (i.e. cases per 10000 population) and the cumulative death rate by month.</li>
@@ -2177,6 +2185,12 @@ Take-home Exercise
 <h2 id="reference">Reference</h2>
 <p>Health Ministry of Indonesia. Published 2020. Accessed March 30, 2020. <a href="https://covid19.go.id/" class="uri">https://covid19.go.id/</a></p>
 <p><a href="https://corona.jakarta.go.id/en">JAKARTA’s COVID-19 RESPONSE TEAM</a>. Accessed August 12, 2021.</p>
+<h2 id="learning-from-senior">Learning from senior</h2>
+<p>You are advised to review these sample submissions prepared by your seniors.</p>
+<ul>
+<li><p><a href="https://rpubs.com/xiaorongw/IS415_Take-home_Ex01">Take-home Exercise 1: Geographic Analysis of the Supply and Demand of Childcare Services in Singapore</a> by Xiao Rong Wong</p></li>
+<li><p><a href="https://rpubs.com/rax/Take_Home_Ex01">Take-home Exercise 1: Understanding and Analysing Changes in the Supply of Childcare Services</a> by Rajiv Abraham Xavier</p></li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
