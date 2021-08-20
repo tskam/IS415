@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Content
 
-Lesson slide in [html](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html)
+Lesson slides in [html](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html)
 
 - An overview of Geospatial Data Models
     - Vector and Raster data models
