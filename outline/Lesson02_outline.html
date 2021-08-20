@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-03" />
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-03" />
+  <meta property="article:published" itemprop="datePublished" content="2021-08-20" />
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-20" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Lesson 2: Geospatial Data Handling and Wrangling" />
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 2: Geospatial Data Handling and Wrangling"]},{"type":"character","attributes":{},"value":["In this topic, R objects used to store geospatial data will be discussed.  The discussion will focus on **simple features** and **sf** package.  Other R packages for storing (i.e. sp), transforming (i.e. rgdal) and processing (i.e. rgeos) geospatial data will be discussed briefly too. \n"]},{"type":"character","attributes":{},"value":["2021-08-03"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 2: Geospatial Data Handling and Wrangling"]},{"type":"character","attributes":{},"value":["In this topic, R objects used to store geospatial data will be discussed.  The discussion will focus on **simple features** and **sf** package.  Other R packages for storing (i.e. sp), transforming (i.e. rgdal) and processing (i.e. rgeos) geospatial data will be discussed briefly too. \n"]},{"type":"character","attributes":{},"value":["2021-08-20"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lesson 2: Geospatial Data Handling and Wrangling","description":"In this topic, R objects used to store geospatial data will be discussed.  The discussion will focus on **simple features** and **sf** package.  Other R packages for storing (i.e. sp), transforming (i.e. rgdal) and processing (i.e. rgeos) geospatial data will be discussed briefly too.","authors":[],"publishedDate":"2021-08-03T00:00:00.000+08:00"}
+{"title":"Lesson 2: Geospatial Data Handling and Wrangling","description":"In this topic, R objects used to store geospatial data will be discussed.  The discussion will focus on **simple features** and **sf** package.  Other R packages for storing (i.e. sp), transforming (i.e. rgdal) and processing (i.e. rgeos) geospatial data will be discussed briefly too.","authors":[],"publishedDate":"2021-08-20T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1477,15 +1477,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#content">Content</a></li>
-<li><a href="#lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</a>
-<ul>
-<li><a href="#all-about-r">All About R:</a></li>
+<li><a href="#hands-on-exercise">Hands-on Exercise</a></li>
 <li><a href="#reference">Reference</a></li>
-</ul></li>
+<li><a href="#all-about-r">All About R:</a></li>
 </ul>
 </nav>
 </div>
 <h2 id="content">Content</h2>
+<p>Lesson slide in <a href="../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html">html</a></p>
 <ul>
 <li>An overview of Geospatial Data Models
 <ul>
@@ -1503,20 +1502,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>sf</li>
 <li>star</li>
 </ul></li>
-<li>Hand-on Exercise:
-<ul>
-<li>Importing geospatial data</li>
-<li>Converting aspatial data into geospatial data</li>
-<li>Geocoding data</li>
-<li>Transforming projection</li>
-<li>Performing geoprocessing operation</li>
-<li>Performing georelational operation</li>
-</ul></li>
 </ul>
-<h2 id="lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</h2>
-<p>Lesson slide in <a href="../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html">html</a> and <a href="../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.pdf">pdf</a> formats</p>
-<p>In-class Exercise in <a href>html</a> format.</p>
-<h3 id="all-about-r">All About R:</h3>
+<h2 id="hands-on-exercise">Hands-on Exercise</h2>
+<p>Hands-on Exercise handout in <a href>html</a> format.</p>
+<h2 id="reference">Reference</h2>
+<p><strong>Must read</strong></p>
+<ul>
+<li><a href="https://mgimond.github.io/Spatial/feature-representation.html">Chapter 2 Feature Representation</a> of Intro to GIS and Spatial Analysis.</li>
+<li><a href="https://mgimond.github.io/Spatial/coordinate-systems.html">Chapter 9 Coordinate Systems</a> of Intro to GIS and Spatial Analysis.</li>
+<li><a href="https://en.wikipedia.org/wiki/Geocoding">Geocoding</a>.</li>
+<li>Pebesma, Edzer. (2018) <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf">“Simple Features for R: Standardized Support for Spatial Vector Data.”</a> <em>The R Journal</em>, Vol. 10/1, 439:446.</li>
+</ul>
+<p><strong>Additional readings</strong></p>
+<ul>
+<li>Maling, D. H. 1992. Coordinate Systems and Map Projections. 2nd ed. Oxford ; New York: Pergamon Press.</li>
+<li>Pebesma, Edzer, Thomas Mailund, and James Hiebert. 2016. <a href="https://cran.r-project.org/web/packages/units/vignettes/measurement_units_in_R.html">“Measurement Units in R.”</a> <em>The R Journal</em> 8 (2): 486–94.</li>
+<li>Andreas Hackeloeer, Klaas Klasing, Jukka M. Krisp &amp; Liqiu Meng (2014) “<a href="https://www.tandfonline.com/doi/pdf/10.1080/19475683.2013.868826?needAccess=true">Georeferencing: a review of methods and applications</a>”, Annals of GIS, 20:1, 61-69, <a href="DOI:10.1080/19475683.2013.86882" class="uri">DOI:10.1080/19475683.2013.86882</a>.</li>
+<li>Ela Dramowicz (2004) “<a href="https://web.archive.org/web/20070601210655/http:/www.directionsmag.com/article.php?article_id=670&amp;trv=1">Three Standard Geocoding Methods</a>”, <em>Directions Magazine</em>.</li>
+</ul>
+<h2 id="all-about-r">All About R:</h2>
 <ul>
 <li><a href="https://r-spatial.github.io/sf/">sf</a> package
 <ul>
@@ -1550,21 +1554,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>Pebesma, Edzer, and Roger Bivand. 2018. <a href="https://CRAN.R-project.org/package=sp">sp</a>: Classes and Methods for Spatial Data.</li>
 <li>Bivand, Roger, Tim Keitt, and Barry Rowlingson. 2018. <a href="https://CRAN.R-project.org/package=rgdal">Rgdal</a>: Bindings for the ’Geospatial’ Data Abstraction Library.</li>
 <li>Bivand, Roger, and Colin Rundel. 2018. <a href="https://CRAN.R-project.org/package=rgeos">Rgeos</a>: Interface to Geometry Engine - Open Source (’Geos’).</li>
-</ul>
-<h3 id="reference">Reference</h3>
-<p><strong>Must read</strong></p>
-<ul>
-<li><a href="https://mgimond.github.io/Spatial/feature-representation.html">Chapter 2 Feature Representation</a> of Intro to GIS and Spatial Analysis.</li>
-<li><a href="https://mgimond.github.io/Spatial/coordinate-systems.html">Chapter 9 Coordinate Systems</a> of Intro to GIS and Spatial Analysis.</li>
-<li><a href="https://en.wikipedia.org/wiki/Geocoding">Geocoding</a>.</li>
-<li>Pebesma, Edzer. (2018) <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf">“Simple Features for R: Standardized Support for Spatial Vector Data.”</a> <em>The R Journal</em>, Vol. 10/1, 439:446.</li>
-</ul>
-<p><strong>Additional readings</strong></p>
-<ul>
-<li>Maling, D. H. 1992. Coordinate Systems and Map Projections. 2nd ed. Oxford ; New York: Pergamon Press.</li>
-<li>Pebesma, Edzer, Thomas Mailund, and James Hiebert. 2016. <a href="https://cran.r-project.org/web/packages/units/vignettes/measurement_units_in_R.html">“Measurement Units in R.”</a> <em>The R Journal</em> 8 (2): 486–94.</li>
-<li>Andreas Hackeloeer, Klaas Klasing, Jukka M. Krisp &amp; Liqiu Meng (2014) “<a href="https://www.tandfonline.com/doi/pdf/10.1080/19475683.2013.868826?needAccess=true">Georeferencing: a review of methods and applications</a>”, Annals of GIS, 20:1, 61-69, <a href="DOI:10.1080/19475683.2013.86882" class="uri">DOI:10.1080/19475683.2013.86882</a>.</li>
-<li>Ela Dramowicz (2004) “<a href="https://web.archive.org/web/20070601210655/http:/www.directionsmag.com/article.php?article_id=670&amp;trv=1">Three Standard Geocoding Methods</a>”, <em>Directions Magazine</em>.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

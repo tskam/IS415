@@ -15,6 +15,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Content
 
+Lesson slide in [html](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html)
+
 - An overview of Geospatial Data Models
     - Vector and Raster data models
 - Map Projection and Georeferencing
@@ -25,22 +27,28 @@ knitr::opts_chunk$set(echo = FALSE)
 -	R packages for Handling Spatial Data
     - sf 
     - star
-- Hand-on Exercise: 
-    - Importing geospatial data 
-    - Converting aspatial data into geospatial data
-    - Geocoding data
-    - Transforming projection
-    - Performing geoprocessing operation
-    - Performing georelational operation
-
-## Lesson Slides and Hands-on Notes 
-
-Lesson slide in [html](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.html) and [pdf](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in_R.pdf) formats
-
-In-class Exercise in [html]() format.
+    
+## Hands-on Exercise
+Hands-on Exercise handout in [html]() format.
 
 
-### All About R:
+## Reference
+**Must read**
+
+- [Chapter 2 Feature Representation](https://mgimond.github.io/Spatial/feature-representation.html) of Intro to GIS and Spatial Analysis. 
+- [Chapter 9 Coordinate Systems](https://mgimond.github.io/Spatial/coordinate-systems.html) of Intro to GIS and Spatial Analysis.
+- [Geocoding](https://en.wikipedia.org/wiki/Geocoding).
+- Pebesma, Edzer. (2018) [“Simple Features for R: Standardized Support for Spatial Vector Data.”](https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf) *The R Journal*, Vol. 10/1, 439:446.
+
+**Additional readings**
+ 
+- Maling, D. H. 1992. Coordinate Systems and Map Projections. 2nd ed. Oxford ; New York: Pergamon Press.
+- Pebesma, Edzer, Thomas Mailund, and James Hiebert. 2016. [“Measurement Units in R.”](https://cran.r-project.org/web/packages/units/vignettes/measurement_units_in_R.html) *The R Journal* 8 (2): 486–94.
+- Andreas Hackeloeer, Klaas Klasing, Jukka M. Krisp & Liqiu Meng (2014) “[Georeferencing: a review of methods and applications](https://www.tandfonline.com/doi/pdf/10.1080/19475683.2013.868826?needAccess=true)”, Annals of GIS, 20:1, 61-69, DOI:10.1080/19475683.2013.86882.
+- Ela Dramowicz (2004) “[Three Standard Geocoding Methods](https://web.archive.org/web/20070601210655/http:/www.directionsmag.com/article.php?article_id=670&trv=1)”, *Directions Magazine*.
+
+## All About R:
+
 - [sf](https://r-spatial.github.io/sf/) package
     - 1. [Simple Features for R](https://r-spatial.github.io/sf/articles/sf1.html)
     - 2. [Reading, Writing and Converting Simple Features](https://r-spatial.github.io/sf/articles/sf2.html)
@@ -56,24 +64,6 @@ In-class Exercise in [html]() format.
 - Pebesma, Edzer, and Roger Bivand. 2018. [sp](https://CRAN.R-project.org/package=sp): Classes and Methods for Spatial Data. 
 - Bivand, Roger, Tim Keitt, and Barry Rowlingson. 2018. [Rgdal](https://CRAN.R-project.org/package=rgdal): Bindings for the ’Geospatial’ Data Abstraction Library. 
 - Bivand, Roger, and Colin Rundel. 2018. [Rgeos](https://CRAN.R-project.org/package=rgeos): Interface to Geometry Engine - Open Source (’Geos’).
-
-
-### Reference
-
-**Must read**
-
-- [Chapter 2 Feature Representation](https://mgimond.github.io/Spatial/feature-representation.html) of Intro to GIS and Spatial Analysis. 
-- [Chapter 9 Coordinate Systems](https://mgimond.github.io/Spatial/coordinate-systems.html) of Intro to GIS and Spatial Analysis.
-- [Geocoding](https://en.wikipedia.org/wiki/Geocoding).
-- Pebesma, Edzer. (2018) [“Simple Features for R: Standardized Support for Spatial Vector Data.”](https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf) *The R Journal*, Vol. 10/1, 439:446.
-
-**Additional readings**
- 
-- Maling, D. H. 1992. Coordinate Systems and Map Projections. 2nd ed. Oxford ; New York: Pergamon Press.
-- Pebesma, Edzer, Thomas Mailund, and James Hiebert. 2016. [“Measurement Units in R.”](https://cran.r-project.org/web/packages/units/vignettes/measurement_units_in_R.html) *The R Journal* 8 (2): 486–94.
-- Andreas Hackeloeer, Klaas Klasing, Jukka M. Krisp & Liqiu Meng (2014) “[Georeferencing: a review of methods and applications](https://www.tandfonline.com/doi/pdf/10.1080/19475683.2013.868826?needAccess=true)”, Annals of GIS, 20:1, 61-69, DOI:10.1080/19475683.2013.86882.
-- Ela Dramowicz (2004) “[Three Standard Geocoding Methods](https://web.archive.org/web/20070601210655/http:/www.directionsmag.com/article.php?article_id=670&trv=1)”, *Directions Magazine*.
-
 
 
 
