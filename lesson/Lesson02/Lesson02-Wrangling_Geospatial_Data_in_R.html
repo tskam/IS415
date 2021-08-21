@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## sf approach and methods
 ### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems(Practice)
 ### School of Computing and Information Systems,<br/>Singapore Management University
-### 2020/4/26 (updated: 2021-08-15)
+### 2020/4/26 (updated: 2021-08-21)
 
 ---
 
@@ -36,6 +36,16 @@ class: center, middle, inverse, title-slide
 - Simple features approach  
     -  **sf** package
 ] 
+
+???
+
+This lesson consists of two parts.  First, I will talk about Geospatial Data Models.  For students who have taken SMT201 GIS for Urban Planning, this is not new at all.  However, for students who did not read SMT201, this will be new.  Anyway, the focus of this section will be on R.  Hence, even for students who have taken SMT201 before, this will be a good revision.
+
+In part two of this lesson, I will introduce sp package.  It is a relatively new R package specially developed to handle geospatial data R using tidyverse principle.
+
+
+
+
 
 ---
 ## Geospatial Data Models
@@ -398,13 +408,11 @@ Note: These functions return a logical matrix indicating whether each geometry p
 - st_is: check whether geometry is of a particular type]
 
 ---
-## Introducing sf package
 ### sf and other geospatial packages
 .center[
 ![:scale 70%](img/image6-11.jpg)]
 
 ---
-## Introducing sf package
 ### sf &amp; tidyverse
 .large[
 - sf spatial objects are data.frames (or tibbles)
