@@ -30,8 +30,8 @@
       "description": " ",
       "author": [],
       "date": "`r Sys.Date()`",
-      "contents": "\r\nWeek\r\nDate\r\nTopic\r\nRemarks\r\n1.\r\n16/08\r\nIntroduction to Geospatial Analytics\r\n\r\n2.\r\n23/08\r\nGeospatial Data Handling and Wrangling\r\n\r\n3.\r\n30/08\r\nThematic and Analytical Mapping\r\n\r\n4.\r\n06/09\r\nSpatial Point Patterns Analysis\r\nTake-home Ex1 due\r\n5.\r\n13/09\r\nAdvanced Spatial Point Patterns Analysis\r\n\r\n6.\r\n20/09\r\nSpatial Weights and Applications\r\n\r\n7.\r\n27/09\r\nLocal Measures of Spatial Autocorrelation\r\nTake-home Ex2 due\r\n8.\r\n04/10\r\nWorkshop on R Shiny\r\n\r\n9.\r\n11/10\r\nGeographic Segmentation\r\n\r\n10.\r\n18/10\r\nGeographically Weighted Regression\r\n\r\n11.\r\n25/10\r\nModelling Geographic of Accessibility\r\nTake-home Ex3 due\r\n12.\r\n01/11\r\nSpatial Interaction Models\r\n\r\n13.\r\n08/11\r\nEpilogue\r\n\r\n14.\r\n15/11\r\nTownhall Presentation\r\nShiny4GA Project due\r\n15\r\n22/11\r\nExam week\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-08-21T08:37:09+08:00"
+      "contents": "\r\nWeek\r\nDate\r\nTopic\r\nRemarks\r\n1.\r\n16/08\r\nIntroduction to Geospatial Analytics\r\n\r\n2.\r\n23/08\r\nGeospatial Data Handling and Wrangling\r\n\r\n3.\r\n30/08\r\nThematic and Analytical Mapping\r\n\r\n4.\r\n06/09\r\nSpatial Point Patterns Analysis\r\nTake-home Ex1 due\r\n5.\r\n13/09\r\nAdvanced Spatial Point Patterns Analysis\r\n\r\n6.\r\n20/09\r\nSpatial Weights and Applications\r\n\r\n7.\r\n27/09\r\nLocal Measures of Spatial Autocorrelation\r\nTake-home Ex2 due\r\n8.\r\n04/10\r\nWorkshop on R Shiny\r\nDate: 6-7 October, 2021\r\n9.\r\n11/10\r\nGeographic Segmentation\r\n\r\n10.\r\n18/10\r\nGeographically Weighted Regression\r\n\r\n11.\r\n25/10\r\nModelling Geographic of Accessibility\r\nTake-home Ex3 due\r\n12.\r\n01/11\r\nSpatial Interaction Models\r\n\r\n13.\r\n08/11\r\nEpilogue\r\n\r\n14.\r\n15/11\r\nTownhall Presentation\r\nShiny4GA Project due\r\n15\r\n22/11\r\nExam week\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-08-21T08:42:43+08:00"
     },
     {
       "path": "R_resources.html",
