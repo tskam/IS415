@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-21"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-21"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-08-22"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-22"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="IS415: Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"/>
@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"]},{"type":"character","attributes":{},"value":["This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. \n"]},{"type":"character","attributes":{},"value":["2021-08-21"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia"]},{"type":"character","attributes":{},"value":["This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise. \n"]},{"type":"character","attributes":{},"value":["2021-08-22"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2056,7 +2056,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia","description":"This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise.","authors":[],"publishedDate":"2021-08-21T00:00:00.000+08:00"}
+{"title":"Take-home Exercise 1: Analysing and Visualising Spatio-temporal Patterns of COVID-19 in DKI Jakarta, Indonesia","description":"This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 1.  Students must review and understand them before getting started with the take-home exercise.","authors":[],"publishedDate":"2021-08-22T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2119,6 +2119,13 @@ Take-home Exercise
 <li><a href="#due-date">Due Date</a></li>
 <li><a href="#reference">Reference</a></li>
 <li><a href="#learning-from-senior">Learning from senior</a></li>
+<li><a href="#q-a">Q &amp; A</a>
+<ul>
+<li><a href="#q1">Q1:</a></li>
+<li><a href="#q2">Q2:</a></li>
+<li><a href="#q3">Q3:</a></li>
+<li><a href="#q4">Q4:</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -2191,6 +2198,32 @@ Take-home Exercise
 <li><p><a href="https://rpubs.com/xiaorongw/IS415_Take-home_Ex01">Take-home Exercise 1: Geographic Analysis of the Supply and Demand of Childcare Services in Singapore</a> by Xiao Rong Wong</p></li>
 <li><p><a href="https://rpubs.com/rax/Take_Home_Ex01">Take-home Exercise 1: Understanding and Analysing Changes in the Supply of Childcare Services</a> by Rajiv Abraham Xavier</p></li>
 </ul>
+<h2 id="q-a">Q &amp; A</h2>
+<h3 id="q1">Q1:</h3>
+<p>I noted that the data link you provided will lead us to a webpage of daily updates (<a href="https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/" class="uri">https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/</a>).</p>
+<p>When you mention to “Download the daily COVID-19 data of DKI Jakarta” Do you mean to do this manually or are we to use a google drive connector since all of these links are linked to a google drive sheet.</p>
+<blockquote>
+<p>Prof. Kam: You are expected to download the file one by one. The data are cumulative. Hence, to download the data by month, you only need to download every last day of the month. In this case, there are only 19 files to download (assuming that 31 January 2020 - 31 July 2021). I have downloaded the data manual to try out myself and it won’t take more than 15minutes to download all of them. In fact, for your information, I have downloaded all the daily data until yesterday. This is the job of a data analyst 😞</p>
+</blockquote>
+<h3 id="q2">Q2:</h3>
+<p>In addition, when you mention “Integrate the daily data into a data frame by month” Do you mean we have to download multiple sheets and combine the data? If so does this mean we need to download for the last 30 days? or multiple months?</p>
+<blockquote>
+<p>Prof Kam: Refer to earlier reply above.</p>
+</blockquote>
+<p>(I am unsure if this is the case or whether you refer to a specific feature. Unfortunately i do not understand the data at all given that most of the features are in a foreign language)</p>
+<blockquote>
+<p>Prof. Kam: Yes, you have to download multiple workbooks and extract the worksheet and columns you need and then combine them into an integrated data file. This is what we called data wrangling in Data Science. You will learn how to do it using readxl, tydyr and dplyr package. With regard the foreign language, less worry because translation will be provided. In will be included in the revised version of the Take-home Exercise 1 handout latest by tomorrow morning 9.00am.</p>
+</blockquote>
+<h3 id="q3">Q3:</h3>
+<p>Lastly, when you mention “Download the DKI Jarkata shapefile” Is this manual downloading or do we need to dynamically download by code and extract and import from there?</p>
+<blockquote>
+<p>Prof. Kam: Personally, I think download manually is easier because I just need to click on the link provided. After downloading, you are required to use sf package of r to parse the data into R and save it as a simple feature data frame. You will learn more on how to work with R package in next week lesson.</p>
+</blockquote>
+<h3 id="q4">Q4:</h3>
+<p>In this case, there are only 19 files to download (assuming that 31 January 2020 - 31 July 2021). On the webpage of daily updates (<a href="https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/" class="uri">https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/</a>), I am only able to see the data file starting from 25 March 2020 onwards. In addition, the link to access the data file for 31 January 2021 is broken.</p>
+<blockquote>
+<p>Prof Kam: Since the data only starts on 25 March 2020, then there is nothing wrong the first month data is on 31st March 2020. Likewise if 31st January 2021 is not available, there is nothing wrong 30th January 2021 data set is used. More important, you are required to document these two issues on your report.</p>
+</blockquote>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>

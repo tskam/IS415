@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## sf approach and methods
 ### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems(Practice)
 ### School of Computing and Information Systems,<br/>Singapore Management University
-### 2020/4/26 (updated: 2021-08-21)
+### 2020/4/26 (updated: 2021-08-22)
 
 ---
 
@@ -38,14 +38,9 @@ class: center, middle, inverse, title-slide
 ] 
 
 ???
-
 This lesson consists of two parts.  First, I will talk about Geospatial Data Models.  For students who have taken SMT201 GIS for Urban Planning, this is not new at all.  However, for students who did not read SMT201, this will be new.  Anyway, the focus of this section will be on R.  Hence, even for students who have taken SMT201 before, this will be a good revision.
 
 In part two of this lesson, I will introduce sp package.  It is a relatively new R package specially developed to handle geospatial data R using tidyverse principle.
-
-
-
-
 
 ---
 ## Geospatial Data Models
@@ -53,6 +48,9 @@ In part two of this lesson, I will introduce sp package.  It is a relatively new
 
 .center[
 ![](img/image2-1.jpg)]
+
+???
+It is important for us to note that waht ever data capsture in a database is a model of the real world.  When we say model, this means that it is a simplify version of the real world and not the real world themsellves. 
 
 ---
 ## Basic Spatial Data Models
@@ -65,23 +63,32 @@ In part two of this lesson, I will introduce sp package.  It is a relatively new
 - Raster – implementation of field conceptual model
     - Array of cells used to represent objects.
     - Useful as background maps and for spatial analysis.]
-    
+
+???
+In general, there are two types of geospatial data models, namely vector and raster data models.
+
+Vector data model tends to be used to store geospatial data that are discrete in nature.  For example bus stop, building footprint, planning area.
+
+Raster data model, one the other hands, are used to store continuous fenomena such as air polution, elevation and precipitation.
+
 ---
 ### Vector Data Models
 
-.pull-left[
 .large[
-- There are three basic geometric primitives, namely: **points**, **lines (or polylines)** and **polygons**.
+- There are three basic geometric primitives, namely: **points**, **lines (or polylines)** and **polygons**.]
+
+![:scale 75%](img/image2-2.jpg)
+
+???
+For vector data model, there are three most commonly used geometric primitives, namely: points, lines and polygons.
+
+In this figure, building footprints are represented by polygon features, road reserves represented by polyline features, and convenient stores are represented by point features.
+
+It it important to note that the geospatial information content of these three features are not the same.  
+
 - A point is composed of one coordinate pair representing a specific location in a coordinate system.
-- A polyline is composed of a sequence of two or more coordinate pairs called vertices.
-- A polygon is composed of three or more line segments whose starting and ending coordinate pairs are the same.
-]]
-
-.pull-right[
-.large[
-- Building footprints are represented by polygon features, road reserves represented by polyline features, and convenient stores are represented by point features.]
-
-![](img/image2-2.jpg)]
+- A line or polyline is composed of a sequence of two or more coordinate pairs called vertices.  For line beside the location information we also know the length.
+- A polygon is composed of three or more line segments whose starting and ending coordinate pairs are the same.  For polygon, we know location, length (i.e. parameter) and area.
 
 ---
 ### Raster Data Models
@@ -95,10 +102,20 @@ In part two of this lesson, I will introduce sp package.  It is a relatively new
 .center[
 ![:scale 80%](img/image2-3.jpg)]
 
+???
+Different from vector data model, a single feature type is used to represent the real world.  The most commonly used geometric is grid.   Also note that in raster data model, the observed values (i.e. precipitation) are encoded explicitly on the cells.  In general a value between 0-255 (binary data strcuture) is used.  If the value is greater than 255, streching will be applied.
 
 ---
 ## Coordinate Systems and Map Projections
 ### What is a coordinate system?
+
+.center[
+![:scale 55%](img/image2-4a.jpg)
+]
+
+
+???
+A coordinate system is an important property of an geospatial data.  It provides a location reference to the geospatial data.  
 
 - A coordinate system is a reference system used to represent the locations of geographic features, imagery, and observations such as GPS locations within a common geographic framework.
 
@@ -113,29 +130,35 @@ In part two of this lesson, I will introduce sp package.  It is a relatively new
 ---
 ### Geographical Coordinate Systems
 
-.pull-left[
-.large[
-- Define locations on the earth using a three-dimensional spherical surface
-    - For example, WGS84
-- Unit of measurement will be in either decimal degree or degree-minute-second format.]]
-
-.pull-right[
+.center[
 ![](img/image2-4.jpg)]
 
 .small[Reference: http://en.wikipedia.org/wiki/Map_projection]
 
+???
+GCS define locations on the earth using a three-dimensional spherical surface. For example, WGS84
+
+They provides accuracy position information. Unit of measurement will be in either decimal degree or degree-minute-second format.
+
+GCS, however, are not appropriate for distance and area measurements.  In this figure, it is clear that 1 degree distance at the north pole is relatively shorter than 1 degree at the equator.
+
+
 ---
 ### Projected Coordinate Systems
 
-.pull-left[
 .large[
-- A **projected coordinate system** based on a map projection such as transverse Mercator, Albers equal area, or Robinson, all of which (along with numerous other map projection models) provide various mechanisms to project maps of the earth's spherical surface onto a two-dimensional Cartesian coordinate plane. 
-- Projected coordinate systems are sometimes referred to as **map projections**.
-    - For example, SVY21]
+- Based on a map projection such as transverse Mercator, Albers equal area, or Robinson.
 ]
 
-.pull-right[
-![](img/image2-5.jpg)]
+.center[
+![:scale 85%](img/image2-5.jpg)]
+
+???
+A **projected coordinate system** based on a map projection such as transverse Mercator, Albers equal area, or Robinson, all of which (along with numerous other map projection models) provide various mechanisms to project maps of the earth's spherical surface onto a two-dimensional Cartesian coordinate plane. 
+
+Projected coordinate systems are sometimes referred to as **map projections**. For example, SVY21, the national projected coordinate system of Singapore.
+
+PCS provides consistent length and area measurement across space.  Hence, it is important to transform a geospatial data from GCS to PCS before performing geospatial analysis.
 
 ---
 ### Singapore Projected Coordinate System
@@ -143,33 +166,96 @@ In part two of this lesson, I will introduce sp package.  It is a relatively new
 .center[
 ![:scale 60%](img/image2-6.jpg)]
 
-.small[Reference: http://www.asprs.org/resources/grids/01-2006-singapore.pdf
+.large[
+- [epsg.io](https://epsg.io/) provides a comprehensive list of country coordinate systems such as [svy21](https://epsg.io/3414).
 ]
+
+???
+Each country will have her own projected coordinate system.  Some country have more than one type of Project Coordinate Systems.
+
+There are at least three coordinate systems commonly used in Singapore.  They are svy21, Kertau Cassini 1968, and Rectified Skewed Orthomorphic (RSO).  RSO is used in military and topographical mapping and svy21 is used for land and engineering surveying, cadastre, landuse and infrastructure mapping.
 
 ---
 ### Coordinates Reference Systems in R
 
 .large[
-- The EPSG list among other sources is used in the workhorse PROJ.4 library, which as implemented by Frank Warmerdam handles transformation of spatial positions between different CRS.
-- This library is interfaced with R in the **rgdal** package, and the CRS class is defined partly in sp, partly in rgdal.
-- A **CRS** object is defined as a character NA string or a valid PROJ.4 CRS definition.
 - In R, the notation used to describe the CRS is **proj4string** from the **PROJ.4** library.  It looks like this:
 
-&gt; +init=epsg:4121 +proj=longlat+ellps=GRS80 +datum=GGRS87 +no_defs+towgs84=-199.87,74.79,246.62
+&gt; +proj=tmerc +lat_0=1.366666666666667 +lon_0=103.8333333333333 +k=1 +x_0=28001.642 +y_0=38744.572 +ellps=WGS84 +units=m +no_defs
+
+- This library is interfaced with R in the **rgdal** package, and the CRS class is defined partly in **sp**, partly in **rgdal**.
+- A **CRS** object is defined as a character NA string or a valid PROJ.4 CRS definition.
 ]
+
+???
+You can break down the proj4 string into its individual components (again, separated by + signs) as follows:
+
+- +proj=tmerc: the projection is Transverse Mercator
+- +lat_0: Latitude of origin
+- +lon_0: Central meridian
+- +k: Scaling factor
+- +x_0: False easting
+- +y_0: False northing
+- +units=m: the units for the coordinates are in METERS
+- +ellps=WGS84: the ellipsoid (how the earth’s roundness is calculated) for the data is WGS84
+
+???
+- The EPSG list among other sources is used in the workhorse PROJ.4 library, which as implemented by Frank Warmerdam handles transformation of spatial positions between different CRS.
+
 
 ---
 ## Standard for Geospatial Data Handling and Analysis
 
-.large[
+![:scale 80%](img/image2-20.jpg)
+
+For more information, visit this [link](https://www.ogc.org/standards/sfa#overview).
+
+???
 The OGC OpenGIS Implementation Standard for Geographic Information / ISO 19125 defines:
 
 - **Geometric objects** which can be of type point, line, polygon, multi-point, etc, and are associated to a given Coordinate Reference System;
 - **Methods on geometric objects** return properties like dimension, boundary, area, centroid, etc;
 - **Methods for testing spatial relations between geometric objects** equals, disjoint, intersects, touches, crosses, within, contains, overlaps and relate, which returns TRUE or FALSE;
-- **Methods that support spatial analysis** distance, which returns a distance, and buffer, convex hull, intersection, union, difference, and symmetric difference, which returns new geometric objects.]
+- **Methods that support spatial analysis** distance, which returns a distance, and buffer, convex hull, intersection, union, difference, and symmetric difference, which returns new geometric objects.
 
 Source: www.opengeospatial.org/standards/sfa
+
+---
+## An introduction to simple features
+
+.large[
+- **feature**: abstraction of real world phenomena (type or instance); has a geometry and other attributes (properties)
+- **simple feature**: feature with all geometric attributes described piecewise by straight line or planar interpolation between sets of points (no curves)
+- It is a hierarchical data model that simplifies geographic data by condensing a complex range of geographic forms into a single geometry class.]
+
+---
+### Simple features specification
+
+- [*Simple features specification*](https://en.wikipedia.org/wiki/Simple_Features) is an open standard developed and endorsed by the Open Geospatial Consortium (OGC) to represent a wide range of geographic information. 
+.center[ 
+![:scale 70%](img/image2-8.jpg)]
+
+???
+There are a total of 17 geometric types in OGC Simple Features specification. They are: 
+
+---
+### Commonly used simple features
+
+.center[
+![:scale 55%](img/image2-9.jpg)]
+
+???
+Only 7 out of 17 possible types of simple feature are currently used in the vast majority of GIS operations.  They are:
+
+---
+### Simple Features: How they look like?
+.center[
+![:scale 80%](img/image2-11.jpg)]
+
+---
+### Simple Features: How they look like?
+.center[
+![:scale 85%](img/image2-12.jpg)]
 
 ---
 ## Geospatial Data Object Framework 
@@ -195,39 +281,6 @@ In general, three R packages will be used to handle vector-based geospatial data
 ]
 
 ---
-## An introduction to simple features
-
-.large[
-- **feature**: abstraction of real world phenomena (type or instance); has a geometry and other attributes (properties)
-- **simple feature**: feature with all geometric attributes described piecewise by straight line or planar interpolation between sets of points (no curves)
-- It is a hierarchical data model that simplifies geographic data by condensing a complex range of geographic forms into a single geometry class.]
-
----
-### Simple features specification
-
-- [*Simple features specification*](https://en.wikipedia.org/wiki/Simple_Features) is an open standard developed and endorsed by the Open Geospatial Consortium (OGC) to represent a wide range of geographic information. 
-.center[ 
-![:scale 70%](img/image2-8.jpg)]
-
----
-### Commonly used simple features
-
-- Only 7 out of 17 possible types of simple feature are currently used in the vast majority of GIS operations.
-
-.center[
-![:scale 55%](img/image2-9.jpg)]
-
----
-### Simple Features: How they look like?
-.center[
-![:scale 80%](img/image6-14.jpg)]
-
----
-### Simple Features: How they look like?
-.center[
-![:scale 85%](img/image6-15.jpg)]
-
----
 ## Introducing sf Package
 
 - [**sf**](https://cran.r-project.org/web/packages/sf/index.html) package provides a syntax and data-structures which are coherent with the [tidyverse](https://www.tidyverse.org/). 
@@ -237,6 +290,31 @@ In general, three R packages will be used to handle vector-based geospatial data
 .center[
 ![:scale 50%](img/image2-10.jpg)
 ]
+
+---
+### sf package dependencies 
+.center[
+![:scale 70%](img/image2-22.jpg)
+
+.small[
+Source: [Tidy spatial data analysis](https://github.com/edzer/rstudio_conf)
+]]
+
+???
+The sf package depends on several external software components (installed along with the R package27), most importantly GDAL, GEOS and PROJ (Figure 7.3). These well-tested and popular open-source components are common to numerous open-source and commercial software for spatial analysis, such as QGIS and PostGIS.
+
+---
+### sf &amp; tidyverse
+.large[
+- sf spatial objects are data.frames (or tibbles)
+- you can always un-sf, and work with tbl_df or data.frame having an sfc list-column
+- sf methods for filter, arrange, distinct, group_by, ungroup, mutate, select have sticky geometry
+- *st_join()* joins tables based on a spatial predicate
+- summarise unions geometry by group (or altogether)]
+
+???
+Another important feature of sf package is that it is designed base on tidyverse philosophy.
+
 
 ---
 ## What is so special about sf?
@@ -254,33 +332,26 @@ In general, three R packages will be used to handle vector-based geospatial data
 ### sfg : geometry for one feature
 
 .center[
-![:scale 75%](img/image6-10.jpg)]
+![:scale 75%](img/image2-13.jpg)]
 
 ---
 ### sf: objects with simple features
 
-.pull-left[
-.large[
+.center[
+![](img/image2-14.jpg)]
+
+???
 - In green a **simple feature**: a single record, or data.frame row, consisting of attributes and geometry.
 - In blue a single **simple feature geometry** (an object of class **sfg**).
-- In red a **simple feature list-column** (an object of class **sfc**, which is a column in the data.frame).]
-]
+- In red a **simple feature list-column** (an object of class **sfc**, which is a column in the data.frame).
 
-.pull-right[
-![](img/image6-13.jpg)]
-
-
----
-### Precision
-
-.large[
 One of the attributes of a geometry list-column (sfc) is the precision: a double number that, when non-zero, causes some rounding during conversion to WKB, which might help certain geometrical operations succeed that would otherwise fail due to floating point representation. 
 
 The model is that of GEOS, which copies from the Java Topology Suite (JTS), and works like this:
 
 - if precision is zero (default, unspecified), nothing is modified.
 - negative values convert to float (4-byte real) precision.
-- positive values convert to round(x*precision)/precision.]
+- positive values convert to round(x*precision)/precision.
 
 ---
 ## sf functions
@@ -300,36 +371,50 @@ The model is that of GEOS, which copies from the Java Topology Suite (JTS), and 
 
 ]
 
-
 ---
 ### Geospatial data handling functions
 
 .large[
-- st_read &amp; read_sf: read simple features from file or database, or retrieve layer names and their geometry type(s)
-- st_write &amp; write_sf: write simple features object to file or database
-- st_as_sf: convert a sf object from a non-geospatial tabular data frame
-- st_as_text: convert to WKT
-- st_as_binary: convert to WKB
-- st_as_sfc: convert geometries to sfc (e.g., from WKT, WKB) as(x, "Spatial"): convert to Spatial*
-- st_transform(x, crs, ...) Convert coordinates of x to a different coordinate reference system
+- [*st_read*](https://r-spatial.github.io/sf/reference/st_read.html) &amp; *read_sf*: read simple features from file or database, or retrieve layer names and their geometry type(s)
+- [*st_write*](https://r-spatial.github.io/sf/reference/st_write.html) &amp; *write_sf*: write simple features object to file or database
+- [*st_as_sf*](https://r-spatial.github.io/sf/reference/st_as_sf.html): convert a sf object from a non-geospatial tabular data frame
+- [*st_as_text*](https://r-spatial.github.io/sf/reference/st_as_text.html): convert to Well Known Text(WKT)
+- [*st_as_binary*](https://r-spatial.github.io/sf/reference/st_as_binary.html): convert to Well Known Binary(WKB)
+- *st_as_sfc*: convert geometries to sfc (e.g., from WKT, WKB) as(x, "Spatial"): convert to Spatial*
+- [*st_transform*](https://r-spatial.github.io/sf/reference/st_transform.html)(x, crs, ...): convert coordinates of x to a different coordinate reference system
 ]
 
 ---
-### Popular Geospatial Data File Format: ESRI shapefile
+### Popular geospatial data format supported by *read_st()*: ESRI shapefile
 
 .pull-left[
 .large[
-- A shapefile is a simple, nontopological format for storing the geometric location and attribute information of geographic features. 
+- A [shapefile](http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf) is a simple, non-topological format for storing the geometric location and attribute information of geographic features. 
 - Geographic features in a shapefile can be represented by points, lines, or polygons (areas). 
-- For more information, refer to [ESRI Shapefile Technical Description](http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf).
-]]
+]
+
+Sample code chunk:
+
+
+```r
+sf_mpsz = st_read(dsn = "data/geospatial", 
+                  layer = "MP14_SUBZONE")
+```
+
+and 
+
+
+```r
+st_write(st_poly, "data/my_poly.shp")
+```
+]
 
 .pull-right[
 ![:scale 80%](img/image2-7.jpg)
 ]
 
 ---
-### Other Vector GIS File Formats
+### Other vector GIS formats
 
 .large[
 - MapInfo [TAB](https://en.wikipedia.org/wiki/MapInfo_TAB_format) format - MapInfo's vector data format using TAB, DAT, ID and MAP files.
@@ -340,92 +425,134 @@ The model is that of GEOS, which copies from the Java Topology Suite (JTS), and 
 - [TopoJSON](https://github.com/topojson/topojson), an extension of GeoJSON that encodes topology.
 ]
 
+Sample code chunk to import kml file:
 
 
+```r
+sf_preschool = st_read("data/geospatial/pre-schools-location-kml.kml")
+```
 ---
 ### Geometric confirmation
 
+.pull-left[
 .large[
-- st_intersects: touch or overlap
-- st_disjoint: !intersects
-- st_touches: touch
-- st_crosses: cross (don't touch)
-- st_within: within
-- st_contains: contains
-- st_overlaps: overlaps
-- st_covers: cover
-- st_covered_by: covered by
-- st_equals: equals
-- st_equals_exact: equals, with some fuzz returns a sparse (default) or dense logical matrix]
+- *st_intersects*: touch or overlap
+- *st_disjoint*: !intersects
+- *st_touches*: touch
+- *st_crosses*: cross (don't touch)
+- *st_within*: within
+- *st_contains*: contains
+- *st_overlaps*: overlaps
+- *st_covers*: cover
+- *st_covered_by*: covered by
+- *st_equals*: equals
+- *st_equals_exact*: equals, with some fuzz returns a sparse (default) or dense logical matrix]
 
 Note: These functions return a logical matrix indicating whether each geometry pair meeting the logical operation. 
+]
+
+--
+.pull-right[
+![](img/image2-15.jpg)
+]
 
 ---
 ## sf Methods
 ### Geometry generating logical operators
 
+.pull-left[
 .large[
 - st_union: union of several geometries
 - st_intersection: intersection of pairs of geometries
 - st_difference: difference between pairs of geometries
 - st_sym_difference: symmetric difference (xor)]
+]
+
+
+.pull-right[
+![](img/image2-18.jpg)
+
+]
 
 ---
 ## sf Methods
 ### Higher-level operations: summarise, interpolate, aggregate, st_join
 
+.pull-left[
 .large[
-- aggregate and summarise use st_union (by default) to group feature geometries
-- st_interpolate_aw: area-weighted interpolation, uses st_intersection to interpolate or redistribute attribute values, based on area of overlap:
-- st_join uses one of the logical binary geometry predicates (default: st_intersects) to join records in table pairs]
+- aggregate and summarise use *st_union* (by default) to group feature geometries
+- *st_interpolate_aw*: area-weighted interpolation, uses st_intersection to interpolate or redistribute attribute values, based on area of overlap:
+- *st_join* uses one of the logical binary geometry predicates (default: st_intersects) to join records in table pairs]
+]
+
+.pull-right[
+
+```r
+rd_joined = st_join(random_points, world) 
+```
+
+![:scale 50%](img/image2-21.jpg)
+]
+
 
 ---
-
-## sf Methods
 ### Manipulating geometries
 
-.large[
-- st_line_merge: merges lines
-- st_segmentize: adds points to straight lines
-- st_voronoi: creates voronoi tesselation
-- st_centroid: gives centroid of geometry
-- st_convex_hull: creates convex hull of set of points
-- st_triangulate: triangulates set of points (not constrained)
-- st_polygonize: creates polygon from lines that form a closed ring
-- st_simplify: simplifies lines by removing vertices
-- st_split: split a polygon given line geometry
-- st_buffer: compute a buffer around this geometry/each geometry
-- st_make_valid: tries to make an invalid geometry valid (requires lwgeom)
-- st_boundary: return the boundary of a geometry]
+.pull-left[
+- *st_line_merge*: merges lines
+- *st_segmentize*: adds points to straight lines
+- *st_voronoi*: creates voronoi tesselation
+- *st_centroid*: gives centroid of geometry
+- *st_convex_hull*: creates convex hull of set of points
+- *st_triangulate*: triangulates set of points (not constrained)
+- *st_polygonize*: creates polygon from lines that form a closed ring
+- *st_simplify*: simplifies lines by removing vertices
+- *st_split*: split a polygon given line geometry
+- *st_buffer*: compute a buffer around this geometry/each geometry
+- *st_make_valid*: tries to make an invalid geometry valid (requires lwgeom)
+- *st_boundary*: return the boundary of a geometry
+]
+
+.pull-right[
+
+
+```r
+centroid_poly &lt;- st_centroid(poly)
+```
+
+![:scale 40%](img/image2-16.jpg)
+
+
+
+```r
+buf_poly &lt;- st_buffer(poly, 5)
+```
+
+![:scale 40%](img/image2-17.jpg)
+]
 
 ---
-## sf Methods
 ### Convenience functions
-.large[
-- st_zm: sets or removes z and/or m geometry
-- st_coordinates: retrieve coordinates in a matrix or data.frame
-- st_geometry: set, or retrieve sfc from an sf object
-- st_is: check whether geometry is of a particular type]
 
----
-### sf and other geospatial packages
-.center[
-![:scale 70%](img/image6-11.jpg)]
-
----
-### sf &amp; tidyverse
+.pull-left[
 .large[
-- sf spatial objects are data.frames (or tibbles)
-- you can always un-sf, and work with tbl_df or data.frame having an sfc list-column
-- sf methods for filter, arrange, distinct, group_by, ungroup, mutate, select have sticky geometry
-- *st_join()* joins tables based on a spatial predicate
-- summarise unions geometry by group (or altogether)]
+- *st_zm*: sets or removes z and/or m geometry
+- *st_coordinates*: retrieve coordinates in a matrix or data.frame
+- *st_geometry*: set, or retrieve sfc from an sf object
+- *st_is*: check whether geometry is of a particular type
+]]
+
+.pull-right[
+![](img/image2-19.jpg)
+]
 
 ---
 ## References
 ### All About **sf** package
 
 * [Reference manual](https://r-spatial.github.io/sf/reference/index.html)
+* [Tidy spatial data analysis](https://github.com/edzer/rstudio_conf)
+
 
 **Vignettes:**
 
