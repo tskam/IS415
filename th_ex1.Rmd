@@ -139,8 +139,11 @@ In this case, there are only 19 files to download (assuming that 31 January 2020
 
 >Prof Kam: Since the data only starts on 25 March 2020, then there is nothing wrong the first month data is on 31st March 2020.  Likewise if 31st January 2021 is not available, there is nothing wrong 30th January 2021 data set is used.  More important, you are required to document these two issues on your report.
 
+### Q5:
 
+Some of the excel files had duplicate columns with the same name. For the `Meninggal` column, can I confirm that we look at the column without N/A values?    
 
+>Prof Kam: We are interested in analysing the geographical distribution of **Cumulative Death**.  In this case, the `Meninggal` without NA values should be used.
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
