@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Hands-on Exercise 2: Geospatial Data Wrangling with R</title>
+
+  <meta property="description" itemprop="description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-08-25"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-25"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Hands-on Exercise 2: Geospatial Data Wrangling with R"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Hands-on Exercise 2: Geospatial Data Wrangling with R"/>
+  <meta property="twitter:description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Hands-on Exercise 2: Geospatial Data Wrangling with R"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.  \n"]},{"type":"character","attributes":{},"value":["2021-08-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["data/aspatial/listings.csv","data/geospatial/CyclingPath.dbf","data/geospatial/CyclingPath.lyr","data/geospatial/CyclingPath.prj","data/geospatial/CyclingPath.sbn","data/geospatial/CyclingPath.sbx","data/geospatial/CyclingPath.shp","data/geospatial/CyclingPath.shp.xml","data/geospatial/CyclingPath.shx","data/geospatial/MP14_SUBZONE_WEB_PL.dbf","data/geospatial/MP14_SUBZONE_WEB_PL.prj","data/geospatial/MP14_SUBZONE_WEB_PL.sbn","data/geospatial/MP14_SUBZONE_WEB_PL.sbx","data/geospatial/MP14_SUBZONE_WEB_PL.shp","data/geospatial/MP14_SUBZONE_WEB_PL.shp.xml","data/geospatial/MP14_SUBZONE_WEB_PL.shx","data/geospatial/pre-schools-location-kml.kml","Hands-on_Ex02_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-29-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-30-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-31-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-8-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-9-1.png","img/image1.jpg"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="Hands-on_Ex02_files/header-attrs-2.10/header-attrs.js"></script>
+  <script src="Hands-on_Ex02_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Hands-on_Ex02_files/popper-2.6.0/popper.min.js"></script>
+  <link href="Hands-on_Ex02_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="Hands-on_Ex02_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="Hands-on_Ex02_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="Hands-on_Ex02_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="Hands-on_Ex02_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Hands-on_Ex02_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Hands-on_Ex02_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Hands-on Exercise 2: Geospatial Data Wrangling with R","description":"In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.","authors":[],"publishedDate":"2021-08-25T00:00:00.000+08:00"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Hands-on Exercise 2: Geospatial Data Wrangling with R</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>In this hands-on exercise, you will learn how to handle geospatial data in R by using <strong>sf</strong> package.</p></p>
+</div>
+
+
+<div class="d-article">
+<h2 id="learning-outcome">Learning Outcome</h2>
+<p>By the end of this hands-on exercise, you should acquire the following competencies:</p>
+<ul>
+<li>importing geospatial data by using appropriate functions of <strong>sf</strong> package,</li>
+<li>importing aspatial data by using appropriate function of <strong>readr</strong> package,</li>
+<li>exploring the content of simple feature data frame by using appropriate <strong>Base R</strong> and <strong>sf</strong> functions,</li>
+<li>assigning or transforming coordinate systems by using using appropriate <em>sf</em> functions,</li>
+<li>converting an aspatial data into a sf data frame by using appropriate function of <strong>sf</strong> package,</li>
+<li>performing geoprocessing tasks by using appropriate functions of <strong>sf</strong> package,</li>
+<li>performing data wrangling tasks by using appropriate functions of <strong>dplyr</strong> package and</li>
+<li>performing Exploratory Data Analysis (EDA) by using appropriate functions from <strong>ggplot2</strong> package.</li>
+</ul>
+<blockquote>
+<p>Note: Students are encouraged to read the reference guide of each function, especially the input data requirements, syntaxt and argument option before using them.</p>
+</blockquote>
+<h2 id="data-acquisition">Data Acquisition</h2>
+<p>Data are key to data analytics including geospatial analytics. Hence, before analysing, we need to assemble the necessary data. In this hands-on exercise, you are required to extract the necessary data sets from the following sources:</p>
+<ul>
+<li>Master Plan 2014 Subzone Boundary (Web) from <a href="https://data.gov.sg/">data.gov.sg</a></li>
+<li>Pre-Schools Location from <a href="https://data.gov.sg/">data.gov.sg</a></li>
+<li>Cycling Path from <a href="https://www.mytransport.sg/content/mytransport/home/dataMall.html">LTADataMall</a></li>
+<li>Singapore Airbnb listing data, 19 July 2021 from <a href="http://insideairbnb.com/get-the-data.html">Inside Airbnb</a></li>
+</ul>
+<blockquote>
+<p>Note: The purpose of this section is not merely extracting the necessary data sets. It also aims to introduce you to public available data sets. Students are encouraged to explore the rest of the available data sets in these three data sources.</p>
+</blockquote>
+<h3 id="extracting-the-geospatial-data-sets">Extracting the geospatial data sets</h3>
+<p>Next, at the <code>Hands-on_Ex02</code> folder, create a sub-folder called <code>data</code>. Then, inside the <code>data</code> sub-folder, create two sub-folders and name them <code>geospatial</code> and <code>aspatial</code> respectively.</p>
+<p>Place <code>Master Plan 2014 Subzone Boundary (Web)</code>, <code>Pre-Schools Location</code> and <code>Cycling Path</code> zipped files into <code>geospatial</code> sub-folder and unzipped them. Copy the unzipped files from their respective sub-folders and place them inside <code>geospatial</code> sub-folder. The file listing in <code>geospatial</code> sub-folder <code>should</code> look similar to the screenshot below.</p>
+<p><img src="img/image1.jpg" /></p>
+<h3 id="extracting-the-aspatial-data-set">Extracting the aspatial data set</h3>
+<p>Now, you will extract the downloaded <code>listing</code> data file. At <code>Downloads</code> folder, cut and paste <code>listing.csv</code> into <code>aspatial</code> sub-folder.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>In this hands-on exercise, two R packages will be used. They are:</p>
+<ul>
+<li><strong>sf</strong> for importing, managing, and processing geospatial data, and</li>
+<li><strong>tidyverse</strong> for performing data science tasks such as importing, wrangling and visualising data.</li>
+</ul>
+<p>Tidyverse consists of a family of R packages. In this hands-on exercise, the following packages will be used:</p>
+<ul>
+<li><strong>readr</strong> for importing csv data,</li>
+<li><strong>readxl</strong> for importing Excel worksheet,</li>
+<li><strong>tidyr</strong> for manipulating data,</li>
+<li><strong>dplyr</strong> for transforming data, and</li>
+<li><strong>ggplot2</strong> for visualising data</li>
+</ul>
+<p>Type the following code chunk.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'sf'</span>, <span class='st'>'tidyverse'</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>p</span> <span class='kw'>in</span> <span class='va'>packages</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>p</span>, character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>p</span>,character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>What we can learn from the code chunk above:</p>
+<ul>
+<li>A packaging list call <code>packages</code> will be created. It consists of all the R packages required to accomplish this hands-on exercise.</li>
+<li>Next, the code chunk will check if the R packages on <code>package</code> have been installed in R. If they have yet been installed, they will be installed.</li>
+<li>After all the R packages have been installed, they will be launched in RStudio environment.</li>
+</ul>
+<h2 id="importing-geospatial-data">Importing Geospatial Data</h2>
+<p>In this section, you will learn how to import the following geospatial data into R by using <a href="https://r-spatial.github.io/sf/reference/st_read.html"><em>st_read()</em></a> of <strong>sf</strong> package:</p>
+<ul>
+<li><code>MP14_SUBZONE_WEB_PL</code>, a polygon feature layer in ESRI shapefile format,</li>
+<li><code>CyclingPath</code>, a line feature layer in ESRI shapefile format, and</li>
+<li><code>PreSchool</code>, a point feature layer in kml file format.</li>
+</ul>
+<h3 id="importing-polygon-feature-data-in-shapefile-format">Importing polygon feature data in shapefile format</h3>
+<p>The code chunk below uses <em>st_read()</em> function of <strong>sf</strong> package to import <code>MP14_SUBZONE_WEB_PL</code> shapefile into R as a polygon feature data frame. Note that when the input geospatial data is in shapefile format, two arguments will be used, namely: <code>dsn</code> to define the data path and <code>layer</code> to provide the shapefile name. Also note that no extension such as .shp, .dbf, .prj and .shx are needed.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz</span> <span class='op'>=</span> <span class='fu'>st_read</span><span class='op'>(</span>dsn <span class='op'>=</span> <span class='st'>"data/geospatial"</span>, 
+                  layer <span class='op'>=</span> <span class='st'>"MP14_SUBZONE_WEB_PL"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reading layer `MP14_SUBZONE_WEB_PL&#39; from data source 
+  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 323 features and 15 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33
+Projected CRS: SVY21</code></pre>
+</div>
+<p>The message above reveals that the geospatial objects are multipolygon features. There are a total of 323 multipolygon features and 15 fields in <code>mpsz</code> simple feature data frame. <code>mpsz</code> is in <strong>svy21</strong> projected coordinates systems. The bounding box provides the x extend and y extend of the data.</p>
+<h3 id="importing-polyline-feature-data-in-shapefile-form">Importing polyline feature data in shapefile form</h3>
+<p>The code chunk below uses <em>st_read()</em> function of <strong>sf</strong> package to import <code>CyclingPath</code> shapefile into R as line feature data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cyclingpath</span> <span class='op'>=</span> <span class='fu'>st_read</span><span class='op'>(</span>dsn <span class='op'>=</span> <span class='st'>"data/geospatial"</span>, 
+                         layer <span class='op'>=</span> <span class='st'>"CyclingPath"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reading layer `CyclingPath&#39; from data source 
+  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 1625 features and 2 fields
+Geometry type: LINESTRING
+Dimension:     XY
+Bounding box:  xmin: 12711.19 ymin: 28711.33 xmax: 42626.09 ymax: 48948.15
+Projected CRS: SVY21</code></pre>
+</div>
+<p>The message above reveals that there are a total of 1625 features and 2 fields in <code>cyclingpath</code> linestring feature data frame and it is in <strong>svy21</strong> projected coordinates system too.</p>
+<h3 id="importing-gis-data-in-kml-format">Importing GIS data in kml format</h3>
+<p>The <code>pre-schools-location-kml</code> is in kml format. The code chunk below will be used to import the kml into R. Notice that in the code chunk below, the complete path and the kml file extension were provided.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>preschool</span> <span class='op'>=</span> <span class='fu'>st_read</span><span class='op'>(</span><span class='st'>"data/geospatial/pre-schools-location-kml.kml"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reading layer `PRESCHOOLS_LOCATION&#39; from data source 
+  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial\pre-schools-location-kml.kml&#39; 
+  using driver `KML&#39;
+Simple feature collection with 1359 features and 2 fields
+Geometry type: POINT
+Dimension:     XYZ
+Bounding box:  xmin: 103.6824 ymin: 1.248403 xmax: 103.9897 ymax: 1.462134
+z_range:       zmin: 0 zmax: 0
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<p>The message above reveals that <code>preschool</code> is a point feature data frame. There are a total of 1359 features and 2 fields. Different from the previous two simple feature data frame, preschool is in <strong>wgs84</strong> coordinates system.</p>
+<h2 id="checking-the-content-of-a-simple-feature-data-frame">Checking the Content of A Simple Feature Data Frame</h2>
+<p>In this sub-section, you will learn different ways to retrieve information related to the content of a simple feature data frame.</p>
+<h3 id="working-with-st_geometry">Working with <em>st_geometry()</em></h3>
+<p>The column in the sf data.frame that contains the geometries is a list, of class <code>sfc</code>. We can retrieve the geometry list-column in this case by mpsz$geom or mpsz[[1]], but the more general way uses <em>st_geometry()</em> as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Geometry set for 323 features 
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33
+Projected CRS: SVY21
+First 5 geometries:</code></pre>
+</div>
+<p>Notice that the print only displays basic information of the feature class such as type of geometry, the geographic extent of the features and the coordinate system of the data.</p>
+<h3 id="working-with-glimpse">Working with glimpse()</h3>
+<p>Beside the basic feature information, we also would like to learn more about the associated attribute information in the data frame. This is the time you will find <em>glimpse()</em> of <strong>dplyr</strong>. very handy as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Rows: 323
+Columns: 16
+$ OBJECTID   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15~
+$ SUBZONE_NO &lt;int&gt; 1, 1, 3, 8, 3, 7, 9, 2, 13, 7, 12, 6, 1, 5, 1, 1,~
+$ SUBZONE_N  &lt;chr&gt; &quot;MARINA SOUTH&quot;, &quot;PEARL&#39;S HILL&quot;, &quot;BOAT QUAY&quot;, &quot;HEN~
+$ SUBZONE_C  &lt;chr&gt; &quot;MSSZ01&quot;, &quot;OTSZ01&quot;, &quot;SRSZ03&quot;, &quot;BMSZ08&quot;, &quot;BMSZ03&quot;,~
+$ CA_IND     &lt;chr&gt; &quot;Y&quot;, &quot;Y&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;Y&quot;, &quot;N&quot;, &quot;N&quot;,~
+$ PLN_AREA_N &lt;chr&gt; &quot;MARINA SOUTH&quot;, &quot;OUTRAM&quot;, &quot;SINGAPORE RIVER&quot;, &quot;BUK~
+$ PLN_AREA_C &lt;chr&gt; &quot;MS&quot;, &quot;OT&quot;, &quot;SR&quot;, &quot;BM&quot;, &quot;BM&quot;, &quot;BM&quot;, &quot;BM&quot;, &quot;SR&quot;, &quot;~
+$ REGION_N   &lt;chr&gt; &quot;CENTRAL REGION&quot;, &quot;CENTRAL REGION&quot;, &quot;CENTRAL REGI~
+$ REGION_C   &lt;chr&gt; &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;CR&quot;, &quot;~
+$ INC_CRC    &lt;chr&gt; &quot;5ED7EB253F99252E&quot;, &quot;8C7149B9EB32EEFC&quot;, &quot;C35FEFF0~
+$ FMEL_UPD_D &lt;date&gt; 2014-12-05, 2014-12-05, 2014-12-05, 2014-12-05, ~
+$ X_ADDR     &lt;dbl&gt; 31595.84, 28679.06, 29654.96, 26782.83, 26201.96,~
+$ Y_ADDR     &lt;dbl&gt; 29220.19, 29782.05, 29974.66, 29933.77, 30005.70,~
+$ SHAPE_Leng &lt;dbl&gt; 5267.381, 3506.107, 1740.926, 3313.625, 2825.594,~
+$ SHAPE_Area &lt;dbl&gt; 1630379.3, 559816.2, 160807.5, 595428.9, 387429.4~
+$ geometry   &lt;MULTIPOLYGON [m]&gt; MULTIPOLYGON (((31495.56 30..., MULT~</code></pre>
+</div>
+<p><em>glimpse()</em> report reveals the data type of each fields. For example <code>FMEL-UPD_D</code> field is in <strong>date</strong> data type and <code>X_ADDR</code>, <code>Y_ADDR</code>, <code>SHAPE_L</code> and <code>SHAPE_AREA</code> fields are all in <strong>double-precision values</strong>.</p>
+<h3 id="working-with-head">Working with <em>head()</em></h3>
+<p>Sometimes we would like to reveal complete information of a feature object, this is the job of <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/head"><em>head()</em></a> of Base R</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mpsz</span>, n<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>  
+</code></pre>
+</div>
+<pre><code>Simple feature collection with 5 features and 15 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 25867.68 ymin: 28369.47 xmax: 32362.39 ymax: 30435.54
+Projected CRS: SVY21
+  OBJECTID SUBZONE_NO      SUBZONE_N SUBZONE_C CA_IND      PLN_AREA_N
+1        1          1   MARINA SOUTH    MSSZ01      Y    MARINA SOUTH
+2        2          1   PEARL&#39;S HILL    OTSZ01      Y          OUTRAM
+3        3          3      BOAT QUAY    SRSZ03      Y SINGAPORE RIVER
+4        4          8 HENDERSON HILL    BMSZ08      N     BUKIT MERAH
+5        5          3        REDHILL    BMSZ03      N     BUKIT MERAH
+  PLN_AREA_C       REGION_N REGION_C          INC_CRC FMEL_UPD_D
+1         MS CENTRAL REGION       CR 5ED7EB253F99252E 2014-12-05
+2         OT CENTRAL REGION       CR 8C7149B9EB32EEFC 2014-12-05
+3         SR CENTRAL REGION       CR C35FEFF02B13E0E5 2014-12-05
+4         BM CENTRAL REGION       CR 3775D82C5DDBEFBD 2014-12-05
+5         BM CENTRAL REGION       CR 85D9ABEF0A40678F 2014-12-05
+    X_ADDR   Y_ADDR SHAPE_Leng SHAPE_Area
+1 31595.84 29220.19   5267.381  1630379.3
+2 28679.06 29782.05   3506.107   559816.2
+3 29654.96 29974.66   1740.926   160807.5
+4 26782.83 29933.77   3313.625   595428.9
+5 26201.96 30005.70   2825.594   387429.4
+                        geometry
+1 MULTIPOLYGON (((31495.56 30...
+2 MULTIPOLYGON (((29092.28 30...
+3 MULTIPOLYGON (((29932.33 29...
+4 MULTIPOLYGON (((27131.28 30...
+5 MULTIPOLYGON (((26451.03 30...</code></pre>
+</div>
+<blockquote>
+<p>Note: One of the useful argument of <em>head()</em> is it allows user to select the numbers of record to display (i.e. the n argument).</p>
+</blockquote>
+<h2 id="plotting-the-geospatial-data">Plotting the Geospatial Data</h2>
+<p>In geospatial data science, by looking at the feature information is not enough. We are also interested to visualise the geospatial features. This is the time you will find <em>plot()</em> of R Graphic comes in very handy as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
+</div>
+<p>The default plot of an sf object is a multi-plot of all attributes, up to a reasonable maximum as shown above. We can, however, choose to plot only the geometry by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='fu'>st_geometry</span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>Alternatively, we can also choose the plot the sf object by using a specific attribute as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>[</span><span class='st'>"PLN_AREA_N"</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<blockquote>
+<p>Note: <em>plot()</em> is mean for plotting the geospatial object for quick look. For high cartographic quality plot, other R package such as tmap should be used.</p>
+</blockquote>
+<h2 id="working-with-projection">Working with Projection</h2>
+<p>Map projection is an important property of a geospatial data. In order to perform geoprocessing using two geospatial data, we need to ensure that both geospatial data are projected using similar coordinate system.</p>
+<p>In this section, you will learn how to project a simple feature data frame from one coordinate system to another coordinate system. The technical term of this process is called <strong>projection transformation</strong>.</p>
+<h3 id="assigning-epsg-code-to-a-simple-feature-data-frame">Assigning EPSG code to a simple feature data frame</h3>
+<p>One of the common issue that can happen during importing geospatial data into R is that the coordinate system of the source data was either missing (such as due to missing .proj for ESRI shapefile) or wrongly assigned during the importing process.</p>
+<p>This is an example the coordinate system of <code>mpsz</code> simple feature data frame by using <em>st_crs()</em> of <em>sf</em> package as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>st_crs</span><span class='op'>(</span><span class='va'>mpsz</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Coordinate Reference System:
+  User input: SVY21 
+  wkt:
+PROJCRS[&quot;SVY21&quot;,
+    BASEGEOGCRS[&quot;SVY21[WGS84]&quot;,
+        DATUM[&quot;World Geodetic System 1984&quot;,
+            ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+                LENGTHUNIT[&quot;metre&quot;,1]],
+            ID[&quot;EPSG&quot;,6326]],
+        PRIMEM[&quot;Greenwich&quot;,0,
+            ANGLEUNIT[&quot;Degree&quot;,0.0174532925199433]]],
+    CONVERSION[&quot;unnamed&quot;,
+        METHOD[&quot;Transverse Mercator&quot;,
+            ID[&quot;EPSG&quot;,9807]],
+        PARAMETER[&quot;Latitude of natural origin&quot;,1.36666666666667,
+            ANGLEUNIT[&quot;Degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8801]],
+        PARAMETER[&quot;Longitude of natural origin&quot;,103.833333333333,
+            ANGLEUNIT[&quot;Degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8802]],
+        PARAMETER[&quot;Scale factor at natural origin&quot;,1,
+            SCALEUNIT[&quot;unity&quot;,1],
+            ID[&quot;EPSG&quot;,8805]],
+        PARAMETER[&quot;False easting&quot;,28001.642,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8806]],
+        PARAMETER[&quot;False northing&quot;,38744.572,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8807]]],
+    CS[Cartesian,2],
+        AXIS[&quot;(E)&quot;,east,
+            ORDER[1],
+            LENGTHUNIT[&quot;metre&quot;,1,
+                ID[&quot;EPSG&quot;,9001]]],
+        AXIS[&quot;(N)&quot;,north,
+            ORDER[2],
+            LENGTHUNIT[&quot;metre&quot;,1,
+                ID[&quot;EPSG&quot;,9001]]]]</code></pre>
+</div>
+<p>Although <code>mpsz</code> data frame is projected in svy21 but when we read until the end of the print, it indicates that the EPSG is 9001. This is a wrong EPSG code because the correct EPSG code for svy21 should be <a href="https://epsg.io/3414">3414</a>.</p>
+<p>In order to assign the correct EPSG code to <code>mpsz</code> data frame, <em>st_set_crs()</em> of <strong>sf</strong> package is used as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz3414</span> <span class='op'>&lt;-</span> <span class='fu'>st_set_crs</span><span class='op'>(</span><span class='va'>mpsz</span>, <span class='fl'>3414</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Now, let us check the CSR again by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>st_crs</span><span class='op'>(</span><span class='va'>mpsz3414</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Coordinate Reference System:
+  User input: EPSG:3414 
+  wkt:
+PROJCRS[&quot;SVY21 / Singapore TM&quot;,
+    BASEGEOGCRS[&quot;SVY21&quot;,
+        DATUM[&quot;SVY21&quot;,
+            ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,
+                LENGTHUNIT[&quot;metre&quot;,1]]],
+        PRIMEM[&quot;Greenwich&quot;,0,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],
+        ID[&quot;EPSG&quot;,4757]],
+    CONVERSION[&quot;Singapore Transverse Mercator&quot;,
+        METHOD[&quot;Transverse Mercator&quot;,
+            ID[&quot;EPSG&quot;,9807]],
+        PARAMETER[&quot;Latitude of natural origin&quot;,1.36666666666667,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8801]],
+        PARAMETER[&quot;Longitude of natural origin&quot;,103.833333333333,
+            ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],
+            ID[&quot;EPSG&quot;,8802]],
+        PARAMETER[&quot;Scale factor at natural origin&quot;,1,
+            SCALEUNIT[&quot;unity&quot;,1],
+            ID[&quot;EPSG&quot;,8805]],
+        PARAMETER[&quot;False easting&quot;,28001.642,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8806]],
+        PARAMETER[&quot;False northing&quot;,38744.572,
+            LENGTHUNIT[&quot;metre&quot;,1],
+            ID[&quot;EPSG&quot;,8807]]],
+    CS[Cartesian,2],
+        AXIS[&quot;northing (N)&quot;,north,
+            ORDER[1],
+            LENGTHUNIT[&quot;metre&quot;,1]],
+        AXIS[&quot;easting (E)&quot;,east,
+            ORDER[2],
+            LENGTHUNIT[&quot;metre&quot;,1]],
+    USAGE[
+        SCOPE[&quot;Cadastre, engineering survey, topographic mapping.&quot;],
+        AREA[&quot;Singapore - onshore and offshore.&quot;],
+        BBOX[1.13,103.59,1.47,104.07]],
+    ID[&quot;EPSG&quot;,3414]]</code></pre>
+</div>
+<p>Notice that the EPSG code is 3414 now.</p>
+<h3 id="transforming-the-projection-of-preschool-from-wgs84-to-svy21.">Transforming the projection of preschool from wgs84 to svy21.</h3>
+<p>In geospatial analytics, it is very common for us to transform the original data from geographic coordinate system to projected coordinate system. This is because geographic coordinate system is not appropriate if the analysis need to use distance or/and area measurements.</p>
+<p>Let us take preschool simple feature data frame as an example. The print below reveals that it is in wgs84 coordinate system.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Geometry set for 1359 features 
+Geometry type: POINT
+Dimension:     XYZ
+Bounding box:  xmin: 103.6824 ymin: 1.248403 xmax: 103.9897 ymax: 1.462134
+z_range:       zmin: 0 zmax: 0
+Geodetic CRS:  WGS 84
+First 5 geometries:</code></pre>
+</div>
+<p>This is a scenario that <em>st_set_crs()</em> is not appropriate and <em>st_transform()</em> of sf package should be used. This is because we need to reproject <code>preschool</code> from one coordinate system to another coordinate system mathemetically.</p>
+<p>Let us perform the projection transformation by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>preschool3414</span> <span class='op'>&lt;-</span> <span class='fu'>st_transform</span><span class='op'>(</span><span class='va'>preschool</span>, 
+                              crs <span class='op'>=</span> <span class='fl'>3414</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<blockquote>
+<p>Note: In practice, we need find out the appropriate project coordinate system to use before performing the projection transformation.</p>
+</blockquote>
+<p>Next, let us display the content of preschool3414 sf data frame as shown below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Geometry set for 1359 features 
+Geometry type: POINT
+Dimension:     XYZ
+Bounding box:  xmin: 11203.01 ymin: 25667.6 xmax: 45404.24 ymax: 49300.88
+z_range:       zmin: 0 zmax: 0
+Projected CRS: SVY21 / Singapore TM
+First 5 geometries:</code></pre>
+</div>
+<p>Notice that it is in svy21 projected coordinate system now. Furthermore, if you refer to <em>Bounding box:</em>, the values are greater than 0-360 range of decimal degree commonly used by most of the geographic coordinate systems.</p>
+<h2 id="importing-and-converting-an-aspatial-data">Importing and Converting An Aspatial Data</h2>
+<p>In practice, it is not unusual that we will come across data such as <code>listing</code> of Inside Airbnb. We call this kind of data aspatial data. This is because it is not a geospatial data but among the data fields, there are two fields that capture the x- and y-coordinates of the data points.</p>
+<p>In this section, you will learn how to import an aspatial data into R environment and save it as a tibble data frame. Next, you will convert it into a simple feature data frame.</p>
+<p>For the purpose of this exercise, the <code>listings.csv</code> data downloaded from AirBnb will be used.</p>
+<h3 id="importing-the-aspatial-data">Importing the aspatial data</h3>
+<p>Since <code>listings</code> data set is in csv file format, we will use <a href="https://readr.tidyverse.org/reference/read_delim.html"><em>read_csv()</em></a> of <strong>readr</strong> package to import <code>listing.csv</code> as shown the code chunk below. The output R object is called <code>listings</code> and it is a <a href="https://r4ds.had.co.nz/tibbles.html">tibble data frame</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>listings</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/aspatial/listings.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>After importing the data file into R, it is important for us to examine if the data file has been imported correctly.</p>
+<p>The code chunk below shows list() is used to do the job.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>listings</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<pre><code>Rows: 4,252
+Columns: 16
+$ id                             &lt;dbl&gt; 50646, 71609, 71896, 71903, 2~
+$ name                           &lt;chr&gt; &quot;Pleasant Room along Bukit Ti~
+$ host_id                        &lt;dbl&gt; 227796, 367042, 367042, 36704~
+$ host_name                      &lt;chr&gt; &quot;Sujatha&quot;, &quot;Belinda&quot;, &quot;Belind~
+$ neighbourhood_group            &lt;chr&gt; &quot;Central Region&quot;, &quot;East Regio~
+$ neighbourhood                  &lt;chr&gt; &quot;Bukit Timah&quot;, &quot;Tampines&quot;, &quot;T~
+$ latitude                       &lt;dbl&gt; 1.33432, 1.34537, 1.34754, 1.~
+$ longitude                      &lt;dbl&gt; 103.7852, 103.9589, 103.9596,~
+$ room_type                      &lt;chr&gt; &quot;Private room&quot;, &quot;Private room~
+$ price                          &lt;dbl&gt; 80, 178, 81, 81, 52, 40, 72, ~
+$ minimum_nights                 &lt;dbl&gt; 90, 90, 90, 90, 14, 14, 90, 8~
+$ number_of_reviews              &lt;dbl&gt; 18, 20, 24, 48, 20, 13, 133, ~
+$ last_review                    &lt;date&gt; 2014-07-08, 2019-12-28, 2014~
+$ reviews_per_month              &lt;dbl&gt; 0.22, 0.28, 0.33, 0.67, 0.20,~
+$ calculated_host_listings_count &lt;dbl&gt; 1, 4, 4, 4, 50, 50, 7, 1, 50,~
+$ availability_365               &lt;dbl&gt; 365, 365, 365, 365, 353, 364,~</code></pre>
+</div>
+<p>The output reveals that <code>listing</code> tibble data frame consists of 4252 rows and 16 columns. Two useful fields we are going to use in the next phase are <code>latitude</code> and <code>longitude</code>. Note that they are in decimal degree format. As a best guess, we will assume that the data is in <strong>wgs84</strong> Geographic Coordinate System.</p>
+<h3 id="creating-a-simple-feature-data-frame-from-an-aspatial-data-frame">Creating a simple feature data frame from an aspatial data frame</h3>
+<p>The code chunk below converts <code>listing</code> data frame into a simple feature data frame by using <a href="https://r-spatial.github.io/sf/reference/st_as_sf.html"><em>st_as_sf()</em></a> of <strong>sf</strong> packages</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>listings_sf</span> <span class='op'>&lt;-</span> <span class='fu'>st_as_sf</span><span class='op'>(</span><span class='va'>listings</span>, 
+                       coords <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"longitude"</span>, <span class='st'>"latitude"</span><span class='op'>)</span>,
+                       crs<span class='op'>=</span><span class='fl'>4326</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>st_transform</span><span class='op'>(</span>crs <span class='op'>=</span> <span class='fl'>3414</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Things to learn from the arguments above:</p>
+<ul>
+<li><em>coords</em> argument requires you to provide the column name of the x-coordinates first then followed by the column name of the y-coordinates.</li>
+<li><em>crs</em> argument requires you to provide the coordinates system in epsg format. <a href="https://epsg.io/4326">EPSG: 4326</a> is wgs84 Geographic Coordinate System and <a href="https://epsg.io/3414">EPSG: 3414</a> is Singapore SVY21 Projected Coordinate System. You can search for other country’s epsg code by referring to <a href="https://epsg.io/">epsg.io</a>.</li>
+<li><em>%&gt;%</em> is used to nest <em>st_transform()</em> to transform the newly created simple feature data frame into svy21 projected coordinates system.</li>
+</ul>
+<p>Let us examine the content of this newly created simple feature data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>listings_sf</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Rows: 4,252
+Columns: 15
+$ id                             &lt;dbl&gt; 50646, 71609, 71896, 71903, 2~
+$ name                           &lt;chr&gt; &quot;Pleasant Room along Bukit Ti~
+$ host_id                        &lt;dbl&gt; 227796, 367042, 367042, 36704~
+$ host_name                      &lt;chr&gt; &quot;Sujatha&quot;, &quot;Belinda&quot;, &quot;Belind~
+$ neighbourhood_group            &lt;chr&gt; &quot;Central Region&quot;, &quot;East Regio~
+$ neighbourhood                  &lt;chr&gt; &quot;Bukit Timah&quot;, &quot;Tampines&quot;, &quot;T~
+$ room_type                      &lt;chr&gt; &quot;Private room&quot;, &quot;Private room~
+$ price                          &lt;dbl&gt; 80, 178, 81, 81, 52, 40, 72, ~
+$ minimum_nights                 &lt;dbl&gt; 90, 90, 90, 90, 14, 14, 90, 8~
+$ number_of_reviews              &lt;dbl&gt; 18, 20, 24, 48, 20, 13, 133, ~
+$ last_review                    &lt;date&gt; 2014-07-08, 2019-12-28, 2014~
+$ reviews_per_month              &lt;dbl&gt; 0.22, 0.28, 0.33, 0.67, 0.20,~
+$ calculated_host_listings_count &lt;dbl&gt; 1, 4, 4, 4, 50, 50, 7, 1, 50,~
+$ availability_365               &lt;dbl&gt; 365, 365, 365, 365, 353, 364,~
+$ geometry                       &lt;POINT [m]&gt; POINT (22646.02 35167.9~</code></pre>
+</div>
+<p>Table above shows the content of <code>listing_sf</code>. Notice that a new column called <code>geometry</code> has been added into the data frame. On the other hand, the <code>longitude</code> and <code>latitude</code> columns have been dropped from the data frame.</p>
+<h2 id="geoprocessing-with-sf-package">Geoprocessing with sf package</h2>
+<p>Besides providing functions to handling (i.e. importing, exporting, assigning projection, transforming projection etc) geospatial data, <strong>sf</strong> package also offers a wide range of geoprocessing (also known as GIS analysis) functions.</p>
+<p>In this section, you will learn how to perform two commonly used geoprocessing functions, namely <a href="https://www.gislounge.com/buffers-in-gis/">buffering</a> and point in polygon count.</p>
+<h3 id="buffering">Buffering</h3>
+<p>The scenario:</p>
+<p>The authority is planning to upgrade the exiting cycling path. To do so, they need to acquire 5 metres of reserved land on the both sides of the current cycling path. You are tasked to determine the extend of the land need to be acquired and their total area.</p>
+<p>The solution:</p>
+<p>Firstly, <a href="https://r-spatial.github.io/sf/reference/geos_unary.html"><em>st_buffer()</em></a> of <strong>sf</strong> package is used to compute the 5-meter buffers around cycling paths</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>buffer_cycling</span> <span class='op'>&lt;-</span> <span class='fu'>st_buffer</span><span class='op'>(</span><span class='va'>cyclingpath</span>, 
+                               dist<span class='op'>=</span><span class='fl'>5</span>, nQuadSegs <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>This is followed by calculating the area of the buffers as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>buffer_cycling</span><span class='op'>$</span><span class='va'>AREA</span> <span class='op'>&lt;-</span> <span class='fu'>st_area</span><span class='op'>(</span><span class='va'>buffer_cycling</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Lastly, sum() of Base R will be used to derive the total land involved</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>buffer_cycling</span><span class='op'>$</span><span class='va'>AREA</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>773143.9 [m^2]</code></pre>
+</div>
+<p><strong>Mission Accomplished!</strong></p>
+<h3 id="point-in-polygon-count">Point-in-polygon count</h3>
+<p>The scenario:</p>
+<p>A pre-school service group want to find out the numbers of pre-schools in each Planning Subzone.</p>
+<p>The solution:</p>
+<p>The code chunk below performs two operations at one go. Firstly, identify pre-schools located inside each Planning Subzone by using <a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html">st_intersects()</a>. Next, <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/length"><em>length()</em></a> of Base R is used to calculate numbers of pre-schools that fall inside each planning subzone.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz3414</span><span class='op'>$</span><span class='va'>`PreSch Count`</span><span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lengths.html'>lengths</a></span><span class='op'>(</span><span class='fu'>st_intersects</span><span class='op'>(</span><span class='va'>mpsz3414</span>, <span class='va'>preschool3414</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<blockquote>
+<p><strong>Warning</strong>: You should not confuse with <a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html">st_intersection()</a>.</p>
+</blockquote>
+<p>You can check the summary statistics of the newly derived <em>PreSch Count</em> field by using <em>summary()</em> as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>mpsz3414</span><span class='op'>$</span><span class='va'>`PreSch Count`</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   0.000   2.000   4.207   6.000  37.000 </code></pre>
+</div>
+<p>To list the planning subzone with the most number of pre-school, the <a href="https://dplyr.tidyverse.org/reference/top_n.html"><em>top_n()</em></a> of <strong>dplyr</strong> package is used as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>top_n</span><span class='op'>(</span><span class='va'>mpsz3414</span>, <span class='fl'>1</span>, <span class='va'>`PreSch Count`</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Simple feature collection with 1 feature and 16 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: 23449.05 ymin: 46001.23 xmax: 25594.22 ymax: 47996.47
+Projected CRS: SVY21 / Singapore TM
+  OBJECTID SUBZONE_NO      SUBZONE_N SUBZONE_C CA_IND PLN_AREA_N
+1      290          3 WOODLANDS EAST    WDSZ03      N  WOODLANDS
+  PLN_AREA_C     REGION_N REGION_C          INC_CRC FMEL_UPD_D
+1         WD NORTH REGION       NR C90769E43EE6B0F2 2014-12-05
+    X_ADDR   Y_ADDR SHAPE_Leng SHAPE_Area
+1 24506.64 46991.63   6603.608    2553464
+                        geometry PreSch Count
+1 MULTIPOLYGON (((24786.75 46...           37</code></pre>
+</div>
+<blockquote>
+<p><strong>DIY: Calculate the density of pre-school by planning subzone.</strong></p>
+</blockquote>
+<p>The solution:</p>
+<p>Firstly, the code chunk below uses <a href="https://r-spatial.github.io/sf/reference/geos_measures.html"><em>st_area()</em></a> of <strong>sf</strong> package to derive the area of each planning subzone.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Next, <a href="https://dplyr.tidyverse.org/reference/mutate.html"><em>mutate()</em></a> of <a href="https://dplyr.tidyverse.org/index.html"><strong>dplyr</strong></a> package is used to compute the density by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz3414</span> <span class='op'>&lt;-</span> <span class='va'>mpsz3414</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>`PreSch Density` <span class='op'>=</span> <span class='va'>`PreSch Count`</span><span class='op'>/</span><span class='va'>Area</span> <span class='op'>*</span> <span class='fl'>1000000</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="explorotary-data-analysis-eda">Explorotary Data Analysis (EDA)</h2>
+<p>In practice, many geospatial analytics start with Exploratory Data Analysis. In this section, you will learn how to use appropriate <a href="https://ggplot2.tidyverse.org/">ggplot2</a> functions to create functional and yet truthful statistical graphs for EDA purposes.</p>
+<p>Firstly, we will plot a histogram to reveal the distribution of <code>PreSch Density</code>. Conventionally, <em>hist()</em> of R Graphics will be used as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>mpsz3414</span><span class='op'>$</span><span class='va'>`PreSch Density`</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-29-1.png" width="624" /></p>
+</div>
+<p>Although the syntax is very easy to use however the output is far from meeting publication quality. Furthermore, the function has limited room for further customisation.</p>
+<p>In the code chunk below, appropriate <strong>ggplot2</strong> functions will be used.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span>data<span class='op'>=</span><span class='va'>mpsz3414</span>, 
+       <span class='fu'>aes</span><span class='op'>(</span>x<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>`PreSch Density`</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>geom_histogram</span><span class='op'>(</span>bins<span class='op'>=</span><span class='fl'>20</span>, 
+                 color<span class='op'>=</span><span class='st'>"black"</span>, 
+                 fill<span class='op'>=</span><span class='st'>"light blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Are pre-school even distributed in Singapore?"</span>,
+       subtitle<span class='op'>=</span> <span class='st'>"There are many planning sub-zones with a single pre-school, on the other hand, \nthere are two planning sub-zones with at least 20 pre-schools"</span>,
+      x <span class='op'>=</span> <span class='st'>"Pre-school density (per km sq)"</span>,
+      y <span class='op'>=</span> <span class='st'>"Frequency"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-30-1.png" width="624" /></p>
+</div>
+<blockquote>
+<p><strong>DIY: Using ggplot2 method, plot a scatterplot showing the relationship between Pre-school Density and Pre-school Count.</strong></p>
+</blockquote>
+<p>The solution:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="Hands-on_Ex02_files/figure-html5/unnamed-chunk-31-1.png" width="480" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
