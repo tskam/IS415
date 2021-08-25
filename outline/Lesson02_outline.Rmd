@@ -29,7 +29,7 @@ Lesson slides in [html](../lesson/Lesson02/Lesson02-Wrangling_Geospatial_Data_in
     - star
     
 ## Hands-on Exercise
-Hands-on Exercise handout in [html]() format.
+Hands-on Exercise handout in [html](../Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html) format.
 
 ## Reference
 **Must read**
