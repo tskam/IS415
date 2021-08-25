@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/aspatial/listings.csv","data/geospatial/CyclingPath.dbf","data/geospatial/CyclingPath.lyr","data/geospatial/CyclingPath.prj","data/geospatial/CyclingPath.sbn","data/geospatial/CyclingPath.sbx","data/geospatial/CyclingPath.shp","data/geospatial/CyclingPath.shp.xml","data/geospatial/CyclingPath.shx","data/geospatial/MP14_SUBZONE_WEB_PL.dbf","data/geospatial/MP14_SUBZONE_WEB_PL.prj","data/geospatial/MP14_SUBZONE_WEB_PL.sbn","data/geospatial/MP14_SUBZONE_WEB_PL.sbx","data/geospatial/MP14_SUBZONE_WEB_PL.shp","data/geospatial/MP14_SUBZONE_WEB_PL.shp.xml","data/geospatial/MP14_SUBZONE_WEB_PL.shx","data/geospatial/pre-schools-location-kml.kml","Hands-on_Ex02_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-29-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-30-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-31-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-8-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-9-1.png","img/image1.jpg"]}
+  {"type":"character","attributes":{},"value":["data/aspatial/listings.csv","data/geospatial/CyclingPath.dbf","data/geospatial/CyclingPath.lyr","data/geospatial/CyclingPath.prj","data/geospatial/CyclingPath.sbn","data/geospatial/CyclingPath.sbx","data/geospatial/CyclingPath.shp","data/geospatial/CyclingPath.shp.xml","data/geospatial/CyclingPath.shx","data/geospatial/MP14_SUBZONE_WEB_PL.dbf","data/geospatial/MP14_SUBZONE_WEB_PL.prj","data/geospatial/MP14_SUBZONE_WEB_PL.sbn","data/geospatial/MP14_SUBZONE_WEB_PL.sbx","data/geospatial/MP14_SUBZONE_WEB_PL.shp","data/geospatial/MP14_SUBZONE_WEB_PL.shp.xml","data/geospatial/MP14_SUBZONE_WEB_PL.shx","data/geospatial/pre-schools-location-kml.kml","Hands-on_Ex02_files/anchor-4.2.2/anchor.min.js","Hands-on_Ex02_files/bowser-1.9.3/bowser.min.js","Hands-on_Ex02_files/distill-2.2.21/template.v2.js","Hands-on_Ex02_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-29-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-30-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-31-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-8-1.png","Hands-on_Ex02_files/figure-html5/unnamed-chunk-9-1.png","Hands-on_Ex02_files/header-attrs-2.10/header-attrs.js","Hands-on_Ex02_files/jquery-1.11.3/jquery.min.js","Hands-on_Ex02_files/popper-2.6.0/popper.min.js","Hands-on_Ex02_files/tippy-6.2.7/tippy-bundle.umd.min.js","Hands-on_Ex02_files/tippy-6.2.7/tippy-light-border.css","Hands-on_Ex02_files/tippy-6.2.7/tippy.css","Hands-on_Ex02_files/tippy-6.2.7/tippy.umd.min.js","Hands-on_Ex02_files/webcomponents-2.0.0/webcomponents.js","img/image1.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1553,7 +1553,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 <pre><code>Reading layer `MP14_SUBZONE_WEB_PL&#39; from data source 
-  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial&#39; 
+  `D:\tskam\IS415\Hands-on_Ex\Hands-On_ex02\data\geospatial&#39; 
   using driver `ESRI Shapefile&#39;
 Simple feature collection with 323 features and 15 fields
 Geometry type: MULTIPOLYGON
@@ -1571,7 +1571,7 @@ Projected CRS: SVY21</code></pre>
 </code></pre>
 </div>
 <pre><code>Reading layer `CyclingPath&#39; from data source 
-  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial&#39; 
+  `D:\tskam\IS415\Hands-on_Ex\Hands-On_ex02\data\geospatial&#39; 
   using driver `ESRI Shapefile&#39;
 Simple feature collection with 1625 features and 2 fields
 Geometry type: LINESTRING
@@ -1588,7 +1588,7 @@ Projected CRS: SVY21</code></pre>
 </code></pre>
 </div>
 <pre><code>Reading layer `PRESCHOOLS_LOCATION&#39; from data source 
-  `D:\tskam\IS415\Hands_on_Ex\Hands-On_ex02\data\geospatial\pre-schools-location-kml.kml&#39; 
+  `D:\tskam\IS415\Hands-on_Ex\Hands-On_ex02\data\geospatial\pre-schools-location-kml.kml&#39; 
   using driver `KML&#39;
 Simple feature collection with 1359 features and 2 fields
 Geometry type: POINT
@@ -2013,7 +2013,11 @@ Projected CRS: SVY21 / Singapore TM
 <p>The solution:</p>
 <p>Firstly, the code chunk below uses <a href="https://r-spatial.github.io/sf/reference/geos_measures.html"><em>st_area()</em></a> of <strong>sf</strong> package to derive the area of each planning subzone.</p>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz3414</span><span class='op'>$</span><span class='va'>Area</span> <span class='op'>&lt;-</span> <span class='va'>mpsz3414</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>st_area</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
 </div>
 <p>Next, <a href="https://dplyr.tidyverse.org/reference/mutate.html"><em>mutate()</em></a> of <a href="https://dplyr.tidyverse.org/index.html"><strong>dplyr</strong></a> package is used to compute the density by using the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">

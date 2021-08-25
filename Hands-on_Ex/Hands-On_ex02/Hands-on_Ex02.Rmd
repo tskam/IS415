@@ -368,7 +368,7 @@ The solution:
 
 Firstly, the code chunk below uses [*st_area()*](https://r-spatial.github.io/sf/reference/geos_measures.html) of **sf** package to derive the area of each planning subzone.
 
-```{r echo=FALSE, eval=TRUE}
+```{r}
 mpsz3414$Area <- mpsz3414 %>%
   st_area()
 ```
