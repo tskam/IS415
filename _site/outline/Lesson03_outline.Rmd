@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Lesson slide in [html](../lesson/lesson03/lesson03.html) and [pdf](../lesson/lesson03/lesson03.pdf) formats
 
-In-class Exercise in [html]() format.
+In-class Exercise in [html](../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03a.html) format.
 
 
 ## References

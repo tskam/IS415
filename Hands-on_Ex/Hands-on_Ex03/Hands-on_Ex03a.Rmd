@@ -7,7 +7,7 @@ date: "`r Sys.Date()`"
 output:
   distill::distill_article:
     code_folding: true
-    toc: false
+    toc: true
     toc_depth: 4
     self_contained: false
 ---
@@ -22,7 +22,7 @@ knitr::opts_chunk$set(echo=TRUE,
 
 ## 1.0 Overview
 
-Choropleth mapping involves the symbolization of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors.  For example, a social scientist may need to use a choropleth map to portray the spatial distribution of aged population of Singapore by Master Plan 2014 Subzone Boundary.
+Choropleth mapping involves the symbolisation of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors.  For example, a social scientist may need to use a choropleth map to portray the spatial distribution of aged population of Singapore by Master Plan 2014 Subzone Boundary.
 
 ### 1.1 Survival Tip
 
@@ -132,7 +132,7 @@ mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)
 
 #### 3.4.2 Joining the attribute data and geospatial data
 
-Before we can perform the georelational join, one extra step is required to convert the values in PA and SZ fields to uppercase. This is because the values of PA and SZ fields are made up of upper- and lowercase on the other hand the SUBZONE_N and PLN_AREA_N are in uppercase.
+Before we can perform the georelational join, one extra step is required to convert the values in PA and SZ fields to uppercase. This is because the values of PA and SZ fields are made up of upper- and lowercase. On the other, hand the SUBZONE_N and PLN_AREA_N are in uppercase.
 
 ```{r}
 popdata2020 <- popdata2020 %>%
@@ -179,7 +179,7 @@ Things to learn from the code chunk above:
 
 ### 4.2 Creating a choropleth map by using *tmap*'s elements
 
-Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of *qtm()* is that it makes aesthetics of individual layers harder to control.  To draw a high quality cartographic choropleth map as shown in the figure below **tmap**'s drawing elements should be used.
+Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of *qtm()* is that it makes aesthetics of individual layers harder to control.  To draw a high quality cartographic choropleth map as shown in the figure below, **tmap**'s drawing elements should be used.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
@@ -201,17 +201,18 @@ tm_shape(mpsz_pop2020)+
              position = c("left", "bottom"))
 ```
 
+In the following sub-section, we will share with you tmap functions that used to plot these elements.
+
 #### 4.2.1 Drawing a base map
 
 The basic building block of **tmap** is *tm_shape()* followed by one or more layer elemments such as *tm_fill()* and *tm_polygons()*.  
 
-In the code chunk below, *tm_shpae()* is used to define the input data (i.e *mpsz_agmale2018*) and *tm_polygons()* is used draw the planning subzone polygons 
+In the code chunk below, *tm_shape()* is used to define the input data (i.e *mpsz_pop2020*) and *tm_polygons()* is used to draw the planning subzone polygons 
 
 ```{r}
 tm_shape(mpsz_pop2020) +
   tm_polygons()
 ```
-
 
 #### 4.2.2 Drawing a choropleth map using *tm_polygons()*
 
@@ -224,15 +225,15 @@ tm_shape(mpsz_pop2020)+
 
 Things to learn from *tm_polygons()*:
 
-- The default interval binning used to draw the choropleth map is called "pretty".  A detail disucssion of the data classification methods supported by tmap will be discussed in sub-section 4.3.
-- The default colour scheme used is "YlOrRd" of ColorBrewer.  You will learn more about the color pallete in sub-section 4.4.
+- The default interval binning used to draw the choropleth map is called "pretty".  A detailed discussion of the data classification methods supported by **tmap** will be provided in sub-section 4.3.
+- The default colour scheme used is `YlOrRd` of ColorBrewer.  You will learn more about the color scheme in sub-section 4.4.
 - By default, Missing value will be shaded in grey.
 
 #### 4.2.3 Drawing a choropleth map using *tm_fill()* and *tm_border()**
 
 Actually, *tm_polygons()* is a wraper of *tm_fill()* and *tm_border()*.  *tm_fill()* shades the polygons by using the default colour scheme and *tm_borders()* adds the borders of the shapefile onto the choropleth map.
 
-THe code chunk below draw a choropleth map by using *tm_fill()* alone.
+The code chunk below draws a choropleth map by using *tm_fill()* alone.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
@@ -262,7 +263,7 @@ Beside *alpha* argument, there are three other arguments for *tm_borders()*, the
 
 ### 4.3  Data classification methods of **tmap**
 
-Most choropleth maps employ some method of data classification. The point of classification is to take a large number of observations and group them into data ranges or classes. 
+Most choropleth maps employ some methods of data classification. The point of classification is to take a large number of observations and group them into data ranges or classes. 
 
 **tmap** provides a total ten data classification methods, namely: *fixed*, *sd*, *equal*, *pretty* (default), *quantile*, *kmeans*, *hclust*, *bclust*, *fisher*, and *jenks*.
 
@@ -270,12 +271,12 @@ To define a data classification method, the *style* argument of *tm_fill()* or *
 
 #### 4.3.1 Plotting choropleth maps with built-in classification methods
 
-The code chunk below shows a quantile data classification with 5 classes are used.
+The code chunk below shows a quantile data classification that used 5 classes.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
   tm_fill("DEPENDENCY",
-          n = 8,
+          n = 5,
           style = "jenks") +
   tm_borders(alpha = 0.5)
 ```
@@ -292,9 +293,15 @@ tm_shape(mpsz_pop2020)+
 
 Notice that the distribution of quantile data classification method are more evenly distributed then equal data classification method.
 
+>**Warning: Maps Lie!**
+
+>DIY: Using what you had learned, prepare choropleth maps by using different classification methods supported by tmap and compare their differences.
+
+>DIY: Preparing choropleth maps by using similar classification method but with different numbers of classes (i.e. 2, 6, 10, 20).  Compare the output maps, what observation can you draw?
+
 #### 4.3.2 Plotting choropleth map with custome break
 
-For all the built-in styles, the category breaks are computed internally.  In order to overide these defaults, the breakpoints can be set  explicitly by means of the *breaks* argument to the *tm_fill()*.  It is important to note that, in **tmap** the breaks include a minimum and maximum.  As a result, in order to end up with n categories, n+1 elements must be specified in the *breaks* option (the values must be in increasing order).  
+For all the built-in styles, the category breaks are computed internally.  In order to override these defaults, the breakpoints can be set  explicitly by means of the *breaks* argument to the *tm_fill()*.  It is important to note that, in **tmap** the breaks include a minimum and maximum.  As a result, in order to end up with n categories, n+1 elements must be specified in the *breaks* option (the values must be in increasing order).  
 
 Before we get started, it is always a good practice to get some descriptive statistics on the variable before setting the break points.  Code chunk below will be used to compute and display the descriptive statistics of **DEPENDENCY** field.
 
@@ -302,7 +309,7 @@ Before we get started, it is always a good practice to get some descriptive stat
 summary(mpsz_pop2020$DEPENDENCY)
 ```
 
-With reference to the results above, we set break point at 0.60, 0.70, 0.80, and 0.90.  In additional, we also need to include a minimum and maximum, which we set at 0 and 100.  Our *breaks* vector is thus c(0, 0.60, 0.70, 0.80, 0.90, 1.00)
+With reference to the results above, we set break point at 0.60, 0.70, 0.80, and 0.90.  In addition, we also need to include a minimum and maximum, which we set at 0 and 100.  Our *breaks* vector is thus c(0, 0.60, 0.70, 0.80, 0.90, 1.00)
 
 Now, we will plot the choropleth map by using the code chunk below.
 
@@ -318,10 +325,9 @@ tm_shape(mpsz_pop2020)+
 
 **tmap** supports colour ramps either defined by the user or a set of predefined colour ramps from the **RColorBrewer** package.
 
-
 #### 4.4.1 Using ColourBrewer palette
 
-To change the colour, we assign the prefered colour to *palette* argument of *tm_fill()* as shown in the code chunk below.
+To change the colour, we assign the preferred colour to *palette* argument of *tm_fill()* as shown in the code chunk below.
 
 ```{r}
 tm_shape(mpsz_pop2020)+
@@ -346,11 +352,9 @@ tm_shape(mpsz_pop2020)+
 
 Notice that the colour scheme has been reversed.
 
-
 ### 4.5 Map Layouts
 
-Map layout refers to the combination of all map elements into a cohensive map.  Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios, while the colour settings and data classification methods covered in the previous section relate to the palette and break-points used to affect how the map looks.
-
+Map layout refers to the combination of all map elements into a cohensive map.  Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios. Colour settings and data classification methods covered in the previous section relate to the palette and break-points are used to affect how the map looks.
 
 #### 4.5.1 Map Legend
 
@@ -419,7 +423,7 @@ tm_shape(mpsz_pop2020)+
              position = c("left", "bottom"))
 ```
 
-To reset the default style, the code chunk use the code chunk below.
+To reset the default style, refer to the code chunk below.
 
 ```{r}
 tmap_style("white")
@@ -427,7 +431,7 @@ tmap_style("white")
 
 ### 4.6 Drawing Small Multiple Choropleth Maps
 
-Small multiple maps, also referred to facet maps, are composed of many maps arrange side-by-side, and sometimes stacked vertically.  Small multiple maps enable the visualisation of how spatial relationships change with respect to another variable, such as time.
+**Small multiple maps**, also referred to as **facet maps**, are composed of many maps arrange side-by-side, and sometimes stacked vertically.  Small multiple maps enable the visualisation of how spatial relationships change with respect to another variable, such as time.
 
 In **tmap**, small multiple maps can be plotted in three ways:
 
@@ -439,7 +443,6 @@ In **tmap**, small multiple maps can be plotted in three ways:
 #### 4.6.1 By assigning multiple values to at least one of the aesthetic arguments
 
 In this example, small multiple choropleth maps are created by defining ***ncols*** in **tm_fill()**
-
 
 ```{r}
 tm_shape(mpsz_pop2020)+

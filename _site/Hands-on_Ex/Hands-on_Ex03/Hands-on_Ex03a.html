@@ -88,34 +88,34 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>IS415 Hands-on Exercise 3:</title>
 
-  <meta property="description" itemprop="description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+  <meta property="description" itemprop="description" content="In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called **tmap** package."/>
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-25"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-25"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-08-27"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-08-27"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="IS415 Hands-on Exercise 3:"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+  <meta property="og:description" content="In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called **tmap** package."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="IS415 Hands-on Exercise 3:"/>
-  <meta property="twitter:description" content="In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package."/>
+  <meta property="twitter:description" content="In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called **tmap** package."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","subtitle","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["IS415 Hands-on Exercise 3:"]},{"type":"character","attributes":{},"value":["Choropleth Mapping with R"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.  \n"]},{"type":"character","attributes":{},"value":["2021-08-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","subtitle","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["IS415 Hands-on Exercise 3:"]},{"type":"character","attributes":{},"value":["Choropleth Mapping with R"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called **tmap** package.  \n"]},{"type":"character","attributes":{},"value":["2021-08-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/aspatial/respopagesextod2011to2020.csv","data/geospatial/MP14_SUBZONE_WEB_PL.dbf","data/geospatial/MP14_SUBZONE_WEB_PL.prj","data/geospatial/MP14_SUBZONE_WEB_PL.shp","data/geospatial/MP14_SUBZONE_WEB_PL.shp.xml","data/geospatial/MP14_SUBZONE_WEB_PL.shx","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-11-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-12-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-13-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-14-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-16-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-17-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-18-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-19-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-20-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-21-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-23-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-24-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-25-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-26-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-27-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-7-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-8-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-9-1.png"]}
+  {"type":"character","attributes":{},"value":["data/aspatial/respopagesextod2011to2020.csv","data/geospatial/MP14_SUBZONE_WEB_PL.dbf","data/geospatial/MP14_SUBZONE_WEB_PL.prj","data/geospatial/MP14_SUBZONE_WEB_PL.shp","data/geospatial/MP14_SUBZONE_WEB_PL.shp.xml","data/geospatial/MP14_SUBZONE_WEB_PL.shx","Hands-on_Ex03a.pdf","Hands-on_Ex03a_files/anchor-4.2.2/anchor.min.js","Hands-on_Ex03a_files/bowser-1.9.3/bowser.min.js","Hands-on_Ex03a_files/distill-2.2.21/template.v2.js","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-11-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-12-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-13-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-14-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-15-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-16-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-17-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-18-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-19-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-20-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-21-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-22-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-23-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-24-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-25-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-26-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-27-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-28-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-7-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-8-1.png","Hands-on_Ex03a_files/figure-html5/unnamed-chunk-9-1.png","Hands-on_Ex03a_files/header-attrs-2.10/header-attrs.js","Hands-on_Ex03a_files/jquery-1.11.3/jquery.min.js","Hands-on_Ex03a_files/popper-2.6.0/popper.min.js","Hands-on_Ex03a_files/tippy-6.2.7/tippy-bundle.umd.min.js","Hands-on_Ex03a_files/tippy-6.2.7/tippy-light-border.css","Hands-on_Ex03a_files/tippy-6.2.7/tippy.css","Hands-on_Ex03a_files/tippy-6.2.7/tippy.umd.min.js","Hands-on_Ex03a_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"IS415 Hands-on Exercise 3:","description":"In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.","authors":[],"publishedDate":"2021-08-25T00:00:00.000+08:00"}
+{"title":"IS415 Hands-on Exercise 3:","description":"In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called **tmap** package.","authors":[],"publishedDate":"2021-08-27T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1467,20 +1467,91 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>IS415 Hands-on Exercise 3:</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>In this hands-on exercise, you will learn how to handle geospatial data in R by using <strong>sf</strong> package.</p></p>
+<p><p>In this hands-on exercise, you will learn how to plot functional and truthful choropleth maps by using an R package called <strong>tmap</strong> package.</p></p>
 </div>
 
 
 <div class="d-article">
-<h1 id="overview">1.0 Overview</h1>
-<p>Choropleth mapping involves the symbolization of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors. For example, a social scientist may need to use a choropleth map to portray the spatial distribution of aged population of Singapore by Master Plan 2014 Subzone Boundary.</p>
-<p>In this hands-on exercise, you will learn how to perform choropleth mapping using <a href="https://cran.r-project.org/web/packages/tmap/"><strong>tmap</strong></a> package in R.</p>
-<h2 id="survival-tip">1.1 Survival Tip</h2>
-<p>It is advisible for you to read the functional description of each function before using them.</p>
-<h1 id="getting-started">2.0 Getting Started</h1>
-<p>Beside <strong>tmap</strong> package, four other R packages will be used, they are: <a href="https://readr.tidyverse.org/"><strong>readr</strong></a>, <a href="https://tidyr.tidyverse.org/"><strong>tidyr</strong></a>, <a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a> and <a href="https://cran.r-project.org/web/packages/sf/index.html"><strong>sf</strong></a>. Among the four packages, <strong>readr</strong>, <strong>tidyr</strong> and <strong>dplyr</strong> are part of <strong>tidyverse</strong> package.</p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#overview">1.0 Overview</a>
+<ul>
+<li><a href="#survival-tip">1.1 Survival Tip</a></li>
+</ul></li>
+<li><a href="#getting-started">2.0 Getting Started</a></li>
+<li><a href="#importing-data-into-r">3.0 Importing Data into R</a>
+<ul>
+<li><a href="#the-data">3.1 The Data</a></li>
+<li><a href="#importing-geospatial-data-into-r">3.2 Importing Geospatial Data into R</a></li>
+<li><a href="#importing-attribute-data-into-r">3.3 Importing Attribute Data into R</a></li>
+<li><a href="#data-preparation">3.4 Data Preparation</a>
+<ul>
+<li><a href="#data-wrangling">3.4.1 Data wrangling</a></li>
+<li><a href="#joining-the-attribute-data-and-geospatial-data">3.4.2 Joining the attribute data and geospatial data</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#choropleth-mapping-geospatial-data-using-tmap">4.0 Choropleth Mapping Geospatial Data Using <em>tmap</em></a>
+<ul>
+<li><a href="#plotting-a-choropleth-map-quickly-by-using-qtm">4.1 Plotting a choropleth map quickly by using <em>qtm()</em></a></li>
+<li><a href="#creating-a-choropleth-map-by-using-tmaps-elements">4.2 Creating a choropleth map by using <em>tmap</em>’s elements</a>
+<ul>
+<li><a href="#drawing-a-base-map">4.2.1 Drawing a base map</a></li>
+<li><a href="#drawing-a-choropleth-map-using-tm_polygons">4.2.2 Drawing a choropleth map using <em>tm_polygons()</em></a></li>
+<li><a href="#drawing-a-choropleth-map-using-tm_fill-and-tm_border">4.2.3 Drawing a choropleth map using <em>tm_fill()</em> and *tm_border()**</a></li>
+</ul></li>
+<li><a href="#data-classification-methods-of-tmap">4.3 Data classification methods of <strong>tmap</strong></a>
+<ul>
+<li><a href="#plotting-choropleth-maps-with-built-in-classification-methods">4.3.1 Plotting choropleth maps with built-in classification methods</a></li>
+<li><a href="#plotting-choropleth-map-with-custome-break">4.3.2 Plotting choropleth map with custome break</a></li>
+</ul></li>
+<li><a href="#colour-scheme">4.4 Colour Scheme</a>
+<ul>
+<li><a href="#using-colourbrewer-palette">4.4.1 Using ColourBrewer palette</a></li>
+</ul></li>
+<li><a href="#map-layouts">4.5 Map Layouts</a>
+<ul>
+<li><a href="#map-legend">4.5.1 Map Legend</a></li>
+<li><a href="#map-style">4.5.2 Map style</a></li>
+<li><a href="#cartographic-furniture">4.5.3 Cartographic Furniture</a></li>
+</ul></li>
+<li><a href="#drawing-small-multiple-choropleth-maps">4.6 Drawing Small Multiple Choropleth Maps</a>
+<ul>
+<li><a href="#by-assigning-multiple-values-to-at-least-one-of-the-aesthetic-arguments">4.6.1 By assigning multiple values to at least one of the aesthetic arguments</a></li>
+<li><a href="#by-defining-a-group-by-variable-in-tm_facets">4.6.2 By defining a group-by variable in <em>tm_facets()</em></a></li>
+<li><a href="#by-creating-multiple-stand-alone-maps-with-tmap_arrange">4.6.3 By creating multiple stand-alone maps with <em>tmap_arrange()</em></a></li>
+</ul></li>
+<li><a href="#mappping-spatial-object-meeting-a-selection-criterion">4.7 Mappping Spatial Object Meeting a Selection Criterion</a></li>
+</ul></li>
+<li><a href="#reference">Reference</a>
+<ul>
+<li><a href="#all-about-tmap-package">All about <strong>tmap</strong> package</a></li>
+<li><a href="#geospatial-data-wrangling">Geospatial data wrangling</a></li>
+<li><a href="#data-wrangling-1">Data wrangling</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h2 id="overview">1.0 Overview</h2>
+<p>Choropleth mapping involves the symbolisation of enumeration units, such as countries, provinces, states, counties or census units, using area patterns or graduated colors. For example, a social scientist may need to use a choropleth map to portray the spatial distribution of aged population of Singapore by Master Plan 2014 Subzone Boundary.</p>
+<h3 id="survival-tip">1.1 Survival Tip</h3>
+<p>It is advisable for you to read the functional description of each function before using them.</p>
+<h2 id="getting-started">2.0 Getting Started</h2>
+<p>In this hands-on exercise, the key R package use is <a href="https://cran.r-project.org/web/packages/tmap/"><strong>tmap</strong></a> package in R. Beside <strong>tmap</strong> package, four other R packages will be used. They are:</p>
+<ul>
+<li><a href="https://readr.tidyverse.org/"><strong>readr</strong></a> for importing delimited text file,</li>
+<li><a href="https://tidyr.tidyverse.org/"><strong>tidyr</strong></a> for tidying data,</li>
+<li><a href="https://dplyr.tidyverse.org/"><strong>dplyr</strong></a> for wrangling data and</li>
+<li><a href="https://cran.r-project.org/web/packages/sf/index.html"><strong>sf</strong></a> for handling geospatial data.</li>
+</ul>
+<p>Among the four packages, <strong>readr</strong>, <strong>tidyr</strong> and <strong>dplyr</strong> are part of <strong>tidyverse</strong> package.</p>
 <p>The code chunk below will be used to install and load these packages in RStudio.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'sf'</span>, <span class='st'>'tmap'</span>, <span class='st'>'tidyverse'</span><span class='op'>)</span>
 <span class='kw'>for</span> <span class='op'>(</span><span class='va'>p</span> <span class='kw'>in</span> <span class='va'>packages</span><span class='op'>)</span><span class='op'>{</span>
@@ -1491,23 +1562,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span class='op'>}</span>
 </code></pre>
 </div>
+</details>
 </div>
 <p>Notice that, we only need to install <strong>tidyverse</strong> instead of <strong>readr</strong>, <strong>tidyr</strong> and <strong>dplyr</strong> individually.</p>
-<h1 id="importing-data-into-r">3.0 Importing Data into R</h1>
-<h2 id="the-data">3.1 The Data</h2>
-<p>Two data set will be used to create the choropleth map, they are:</p>
+<h2 id="importing-data-into-r">3.0 Importing Data into R</h2>
+<h3 id="the-data">3.1 The Data</h3>
+<p>Two data set will be used to create the choropleth map. They are:</p>
 <ul>
-<li><p>URA Master Plan subzone boundary in shapefile format (i.e. MP14_SUBZONE_WEB_PL). This is a geospatial data. It consists of the geographical boundary of Singapore at the planning subzone level. The data is based on URA Master Plan 2014.</p></li>
-<li><p>Singapore Residents by Planning Area/Subzone, Age Group and Sex, June 2000 - 2018 in csv format (i.e. respopagsex2000to2018.csv). This is an aspatial data fie. Although it does not contain any coordinates values, but it’s PA and SZ fields can be used as unique identifiers to georeference to MP14_SUBZONE_WEB_PL shapefile.</p></li>
+<li><p>Master Plan 2014 Subzone Boundary (Web) (i.e. <code>MP14_SUBZONE_WEB_PL</code>) in ESRI shapefile format. It can be downloaded at <a href="https://data.gov.sg/">data.gov.sg</a> This is a geospatial data. It consists of the geographical boundary of Singapore at the planning subzone level. The data is based on URA Master Plan 2014.</p></li>
+<li><p>Singapore Residents by Planning Area / Subzone, Age Group, Sex and Type of Dwelling, June 2011-2020 in csv format (i.e. <code>respopagesextod2011to2020.csv</code>). This is an aspatial data fie. Although it does not contain any coordinates values, but it’s PA and SZ fields can be used as unique identifiers to geocode to MP14_SUBZONE_WEB_PL shapefile.</p></li>
 </ul>
-<h2 id="importing-geospatial-data-into-r">3.2 Importing Geospatial Data into R</h2>
-<p>The code chunk below uses the <em>st_read()</em> function of <em>sf</em> package to import <em>MP14_SUBZONE_WEB_PL</em> shapfile into R as a simple feature data frame called <em>mpsz</em>.</p>
+<h3 id="importing-geospatial-data-into-r">3.2 Importing Geospatial Data into R</h3>
+<p>The code chunk below uses the <em>st_read()</em> function of <strong>sf</strong> package to import <code>MP14_SUBZONE_WEB_PL</code> shapefile into R as a simple feature data frame called <code>mpsz</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz</span> <span class='op'>&lt;-</span> <span class='fu'>st_read</span><span class='op'>(</span>dsn <span class='op'>=</span> <span class='st'>"data/geospatial"</span>, 
                 layer <span class='op'>=</span> <span class='st'>"MP14_SUBZONE_WEB_PL"</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 <pre><code>Reading layer `MP14_SUBZONE_WEB_PL&#39; from data source 
   `D:\tskam\IS415\Hands-on_Ex\Hands-on_Ex03\data\geospatial&#39; 
   using driver `ESRI Shapefile&#39;
@@ -1517,12 +1594,17 @@ Dimension:     XY
 Bounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33
 Projected CRS: SVY21</code></pre>
 </div>
-<p>You can examine the content of <em>mpsz</em> by simply typing the dataframe name in RStudio console.</p>
+<p>You can examine the content of <code>mpsz</code> by using the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz</span>
 </code></pre>
 </div>
+</details>
 <pre><code>Simple feature collection with 323 features and 15 fields
 Geometry type: MULTIPOLYGON
 Dimension:     XY
@@ -1575,127 +1657,223 @@ First 10 features:
 10   631644.3 MULTIPOLYGON (((24472.11 29...</code></pre>
 </div>
 <p>Notice that only the first ten records will be displayed. Do you know why?</p>
-<h2 id="importing-attribute-data-into-r">3.3 Importing Attribute Data into R</h2>
+<h3 id="importing-attribute-data-into-r">3.3 Importing Attribute Data into R</h3>
 <p>Next, we will import <em>respopagsex2000to2018.csv</em> file into RStudio and save the file into an R dataframe called <em>popagsex</em>.</p>
 <p>The task will be performed by using <em>read_csv()</em> function of <strong>readr</strong> package as shown in the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>popagsex</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/aspatial/respopagesextod2011to2020.csv"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>popdata</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/aspatial/respopagesextod2011to2020.csv"</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 </div>
-<h2 id="data-preparation">3.4 Data Preparation</h2>
-<p>Before a thematic map can be prepared, you need to preform the following data preparation.</p>
+<h3 id="data-preparation">3.4 Data Preparation</h3>
+<p>Before a thematic map can be prepared, you are required to prepare a data table with year 2020 values. The data table should include the variables PA, SZ, YOUNG, ECONOMY ACTIVE, AGED, TOTAL, DEPENDENCY.</p>
 <ul>
-<li>Extracting 2018 records only.</li>
-<li>Extracting Males records only.</li>
-<li>Deriving three new variables, namely: Young, Economic Active and Aged.</li>
+<li>YOUNG: age group 0 to 4 until age groyup 20 to 24,</li>
+<li>ECONOMY ACTIVE: age group 25-29 until age group 60-64,</li>
+<li>AGED: age group 65 and above,</li>
+<li>TOTAL: all age group, and</li>
+<li>DEPENDENCY: the ratio between young and aged against economy active group</li>
 </ul>
-<h2 id="data-wrangling">3.4.1 Data wrangling</h2>
+<h4 id="data-wrangling">3.4.1 Data wrangling</h4>
 <p>The following data wrangling and transformation functions will be used:</p>
 <ul>
-<li><em>spread()</em> of <strong>tidyr</strong> package, and</li>
-<li><em>mutate()</em>, <em>filter()</em>, and <em>select()</em> of <strong>dplyr</strong> package</li>
+<li><em>pivot_wider()</em> of <strong>tidyr</strong> package, and</li>
+<li><em>mutate()</em>, <em>filter()</em>, <em>group_by()</em> and <em>select()</em> of <strong>dplyr</strong> package</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>popagsex2018_male</span> <span class='op'>&lt;-</span> <span class='va'>popagsex</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Sex</span> <span class='op'>==</span> <span class='st'>"Males"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>popdata2020</span> <span class='op'>&lt;-</span> <span class='va'>popdata</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Time</span> <span class='op'>==</span> <span class='fl'>2020</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>spread</span><span class='op'>(</span><span class='va'>AG</span>, <span class='va'>Pop</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>YOUNG <span class='op'>=</span> <span class='va'>`0_to_4`</span><span class='op'>+</span><span class='va'>`5_to_9`</span><span class='op'>+</span><span class='va'>`10_to_14`</span><span class='op'>+</span>
-<span class='va'>`15_to_19`</span><span class='op'>+</span><span class='va'>`20_to_24`</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-<span class='fu'>mutate</span><span class='op'>(</span>`ECONOMY ACTIVE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>9</span><span class='op'>:</span><span class='fl'>13</span><span class='op'>]</span><span class='op'>)</span><span class='op'>+</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>15</span><span class='op'>:</span><span class='fl'>17</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
-<span class='fu'>mutate</span><span class='op'>(</span>`AGED`<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>18</span><span class='op'>:</span><span class='fl'>22</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-<span class='fu'>mutate</span><span class='op'>(</span>`TOTAL`<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>5</span><span class='op'>:</span><span class='fl'>22</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PA</span>, <span class='va'>SZ</span>, <span class='va'>AG</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>`POP` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>`Pop`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_wider</span><span class='op'>(</span>names_from<span class='op'>=</span><span class='va'>AG</span>, 
+              values_from<span class='op'>=</span><span class='va'>POP</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>YOUNG <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>]</span><span class='op'>)</span>
+         <span class='op'>+</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>12</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>mutate</span><span class='op'>(</span>`ECONOMY ACTIVE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>7</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>]</span><span class='op'>)</span><span class='op'>+</span>
+<span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>13</span><span class='op'>:</span><span class='fl'>15</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+<span class='fu'>mutate</span><span class='op'>(</span>`AGED`<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>16</span><span class='op'>:</span><span class='fl'>21</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>mutate</span><span class='op'>(</span>`TOTAL`<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>21</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  
 <span class='fu'>mutate</span><span class='op'>(</span>`DEPENDENCY` <span class='op'>=</span> <span class='op'>(</span><span class='va'>`YOUNG`</span> <span class='op'>+</span> <span class='va'>`AGED`</span><span class='op'>)</span>
 <span class='op'>/</span><span class='va'>`ECONOMY ACTIVE`</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-<span class='fu'>mutate_at</span><span class='op'>(</span>.vars <span class='op'>=</span> <span class='fu'>vars</span><span class='op'>(</span><span class='va'>PA</span>, <span class='va'>SZ</span><span class='op'>)</span>, .funs <span class='op'>=</span> <span class='fu'>funs</span><span class='op'>(</span><span class='va'>toupper</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-<span class='fu'>select</span><span class='op'>(</span><span class='va'>`PA`</span>, <span class='va'>`SZ`</span>, <span class='va'>`YOUNG`</span>, <span class='va'>`ECONOMY ACTIVE`</span>, <span class='va'>`AGED`</span>, 
-       <span class='va'>`TOTAL`</span>, <span class='va'>`DEPENDENCY`</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>`PA`</span>, <span class='va'>`SZ`</span>, <span class='va'>`YOUNG`</span>, 
+       <span class='va'>`ECONOMY ACTIVE`</span>, <span class='va'>`AGED`</span>, 
+       <span class='va'>`TOTAL`</span>, <span class='va'>`DEPENDENCY`</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<h4 id="joining-the-attribute-data-and-geospatial-data">3.4.2 Joining the attribute data and geospatial data</h4>
+<p>Before we can perform the georelational join, one extra step is required to convert the values in PA and SZ fields to uppercase. This is because the values of PA and SZ fields are made up of upper- and lowercase. On the other, hand the SUBZONE_N and PLN_AREA_N are in uppercase.</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>popdata2020</span> <span class='op'>&lt;-</span> <span class='va'>popdata2020</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate_at</span><span class='op'>(</span>.vars <span class='op'>=</span> <span class='fu'>vars</span><span class='op'>(</span><span class='va'>PA</span>, <span class='va'>SZ</span><span class='op'>)</span>, 
+          .funs <span class='op'>=</span> <span class='fu'>funs</span><span class='op'>(</span><span class='va'>toupper</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>`ECONOMY ACTIVE`</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 </div>
-<h2 id="joining-the-attribute-data-and-geospatial-data">3.4.2 Joining the attribute data and geospatial data</h2>
 <p>Next, <em>left_join()</em> of <strong>dplyr</strong> is used to join the geographical data and attribute table using planning subzone name e.g. <em>SUBZONE_N</em> and <em>SZ</em> as the common identifier.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz_agemale2018</span> <span class='op'>&lt;-</span> <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>mpsz</span>, <span class='va'>popagsex2018_male</span>, 
-                              by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"SUBZONE_N"</span> <span class='op'>=</span> <span class='st'>"SZ"</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mpsz_pop2020</span> <span class='op'>&lt;-</span> <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>mpsz</span>, <span class='va'>popdata2020</span>,
+                          by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"SUBZONE_N"</span> <span class='op'>=</span> <span class='st'>"SZ"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 </div>
-<h1 id="choropleth-mapping-geospatial-data-using-tmap">4.0 Choropleth Mapping Geospatial Data Using <em>tmap</em></h1>
+<p>Thing to learn from the code chunk above:</p>
+<ul>
+<li><em>left_join()</em> of <strong>dplyr</strong> package is used with <code>mpsz</code> simple feature data frame as the left data table is to ensure that the output will be a simple features data frame.</li>
+</ul>
+<h2 id="choropleth-mapping-geospatial-data-using-tmap">4.0 Choropleth Mapping Geospatial Data Using <em>tmap</em></h2>
 <p>Two approaches can be used to prepare thematic map using <em>tmap</em>, they are:</p>
 <ul>
 <li>Plotting a thematic map quickly by using <em>qtm()</em>.</li>
 <li>Plotting highly customisable thematic map by using tmap elements.</li>
 </ul>
-<h2 id="plotting-a-choropleth-map-quickly-by-using-qtm">4.1 Plotting a choropleth map quickly by using <em>qtm()</em></h2>
+<h3 id="plotting-a-choropleth-map-quickly-by-using-qtm">4.1 Plotting a choropleth map quickly by using <em>qtm()</em></h3>
 <p>The easiest and quickest to draw a choropleth map using <strong>tmap</strong> is using <em>qtm()</em>. It is concise and provides a good default visualisation in many cases.</p>
 <p>The code chunk below will draw a cartographic standard choropleth map as shown below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>qtm</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span>, fill <span class='op'>=</span> <span class='st'>"DEPENDENCY"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tmap_mode</span><span class='op'>(</span><span class='st'>"plot"</span><span class='op'>)</span>
+<span class='fu'>qtm</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span>, 
+    fill <span class='op'>=</span> <span class='st'>"DEPENDENCY"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-7-1.png" width="624" /></p>
-</div>
-<h2 id="creating-a-choropleth-map-by-using-tmaps-elements">4.2 Creating a choropleth map by using <em>tmap</em>’s elements</h2>
-<p>Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of <em>qtm()</em> is that it makes aesthetics of individual layers harder to control. To draw a high quality cartographic choropleth map as shown in the figure below <strong>tmap</strong>’s drawing elements should be used.</p>
-<div class="layout-chunk" data-layout="l-body">
+</details>
 <p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<h3 id="drawing-a-base-map">4.2.1 Drawing a base map</h3>
-<p>The basic building block of <strong>tmap</strong> is <em>tm_shape()</em> followed by one or more layer elemments such as <em>tm_fill()</em> and <em>tm_polygons()</em>.</p>
-<p>In the code chunk below, <em>tm_shpae()</em> is used to define the input data (i.e <em>mpsz_agmale2018</em>) and <em>tm_polygons()</em> is used draw the planning subzone polygons</p>
+<p>Things to learn from the code chunk above:</p>
+<ul>
+<li><em>tmap_mode()</em> with “plot” option is used to produce a static map. For interactive mode, “view” option should be used.</li>
+<li><em>fill</em> argument is used to map the attribute (i.e. DEPENDENCY)</li>
+</ul>
+<h3 id="creating-a-choropleth-map-by-using-tmaps-elements">4.2 Creating a choropleth map by using <em>tmap</em>’s elements</h3>
+<p>Despite its usefulness of drawing a choropleth map quickly and easily, the disadvantge of <em>qtm()</em> is that it makes aesthetics of individual layers harder to control. To draw a high quality cartographic choropleth map as shown in the figure below, <strong>tmap</strong>’s drawing elements should be used.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>, 
+          style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
+          palette <span class='op'>=</span> <span class='st'>"Blues"</span>,
+          title <span class='op'>=</span> <span class='st'>"Dependency ratio"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_layout</span><span class='op'>(</span>main.title <span class='op'>=</span> <span class='st'>"Distribution of Dependency Ratio by planning subzone"</span>,
+            main.title.position <span class='op'>=</span> <span class='st'>"center"</span>,
+            main.title.size <span class='op'>=</span> <span class='fl'>1.2</span>,
+            legend.height <span class='op'>=</span> <span class='fl'>0.45</span>, 
+            legend.width <span class='op'>=</span> <span class='fl'>0.35</span>,
+            frame <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_compass</span><span class='op'>(</span>type<span class='op'>=</span><span class='st'>"8star"</span>, size <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_scale_bar</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_grid</span><span class='op'>(</span>alpha <span class='op'>=</span><span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_credits</span><span class='op'>(</span><span class='st'>"Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and Population data from Department of Statistics DOS"</span>, 
+             position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"left"</span>, <span class='st'>"bottom"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</div>
+<p>In the following sub-section, we will share with you tmap functions that used to plot these elements.</p>
+<h4 id="drawing-a-base-map">4.2.1 Drawing a base map</h4>
+<p>The basic building block of <strong>tmap</strong> is <em>tm_shape()</em> followed by one or more layer elemments such as <em>tm_fill()</em> and <em>tm_polygons()</em>.</p>
+<p>In the code chunk below, <em>tm_shape()</em> is used to define the input data (i.e <em>mpsz_pop2020</em>) and <em>tm_polygons()</em> is used to draw the planning subzone polygons</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-9-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
 </div>
-<h3 id="drawing-a-choropleth-map-using-tm_polygons">4.2.2 Drawing a choropleth map using <em>tm_polygons()</em></h3>
+<h4 id="drawing-a-choropleth-map-using-tm_polygons">4.2.2 Drawing a choropleth map using <em>tm_polygons()</em></h4>
 <p>To draw a choropleth map showing the geographical distribution of a selected variable by planning subzone, we just need to assign the target variable such as <em>Dependency</em> to <em>tm_polygons()</em>.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
 </div>
 <p>Things to learn from <em>tm_polygons()</em>:</p>
 <ul>
-<li>The default interval binning used to draw the choropleth map is called “pretty”. A detail disucssion of the data classification methods supported by tmap will be discussed in sub-section 4.3.</li>
-<li>The default colour scheme used is “YlOrRd” of ColorBrewer. You will learn more about the color pallete in sub-section 4.4.</li>
+<li>The default interval binning used to draw the choropleth map is called “pretty”. A detailed discussion of the data classification methods supported by <strong>tmap</strong> will be provided in sub-section 4.3.</li>
+<li>The default colour scheme used is <code>YlOrRd</code> of ColorBrewer. You will learn more about the color scheme in sub-section 4.4.</li>
 <li>By default, Missing value will be shaded in grey.</li>
 </ul>
-<h3 id="drawing-a-choropleth-map-using-tm_fill-and-tm_border">4.2.3 Drawing a choropleth map using <em>tm_fill()</em> and *tm_border()**</h3>
+<h4 id="drawing-a-choropleth-map-using-tm_fill-and-tm_border">4.2.3 Drawing a choropleth map using <em>tm_fill()</em> and *tm_border()**</h4>
 <p>Actually, <em>tm_polygons()</em> is a wraper of <em>tm_fill()</em> and <em>tm_border()</em>. <em>tm_fill()</em> shades the polygons by using the default colour scheme and <em>tm_borders()</em> adds the borders of the shapefile onto the choropleth map.</p>
-<p>THe code chunk below draw a choropleth map by using <em>tm_fill()</em> alone.</p>
+<p>The code chunk below draws a choropleth map by using <em>tm_fill()</em> alone.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-11-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
 </div>
 <p>Notice that the planning subzones are shared according to the respective dependecy values</p>
 <p>To add the boundary of the planning subzones, tm_borders will be used as shown in the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_borders</span><span class='op'>(</span>lwd <span class='op'>=</span> <span class='fl'>0.1</span>,  alpha <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
 <p>Notice that light-gray border lines have been added on the choropleth map.</p>
 <p>The <em>alpha</em> argument is used to define transparency number between 0 (totally transparent) and 1 (not transparent). By default, the alpha value of the col is used (normally 1).</p>
@@ -1705,66 +1883,99 @@ First 10 features:
 <li><em>lwd</em> = border line width. The default is 1, and</li>
 <li><em>lty</em> = border line type. The default is “solid”.</li>
 </ul>
-<h2 id="data-classification-methods-of-tmap">4.3 Data classification methods of <strong>tmap</strong></h2>
-<p>Most choropleth maps employ some method of data classification. The point of classification is to take a large number of observations and group them into data ranges or classes.</p>
+<h3 id="data-classification-methods-of-tmap">4.3 Data classification methods of <strong>tmap</strong></h3>
+<p>Most choropleth maps employ some methods of data classification. The point of classification is to take a large number of observations and group them into data ranges or classes.</p>
 <p><strong>tmap</strong> provides a total ten data classification methods, namely: <em>fixed</em>, <em>sd</em>, <em>equal</em>, <em>pretty</em> (default), <em>quantile</em>, <em>kmeans</em>, <em>hclust</em>, <em>bclust</em>, <em>fisher</em>, and <em>jenks</em>.</p>
 <p>To define a data classification method, the <em>style</em> argument of <em>tm_fill()</em> or <em>tm_polygons()</em> will be used.</p>
-<h3 id="plotting-choropleth-maps-with-built-in-classification-methods">4.3.1 Plotting choropleth maps with built-in classification methods</h3>
-<p>The code chunk below shows a quantile data classification with 5 classes are used.</p>
+<h4 id="plotting-choropleth-maps-with-built-in-classification-methods">4.3.1 Plotting choropleth maps with built-in classification methods</h4>
+<p>The code chunk below shows a quantile data classification that used 5 classes.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
-          n <span class='op'>=</span> <span class='fl'>8</span>,
+          n <span class='op'>=</span> <span class='fl'>5</span>,
           style <span class='op'>=</span> <span class='st'>"jenks"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
 </div>
 <p>In the code chunk below, <em>equal</em> data classification method is used.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
           n <span class='op'>=</span> <span class='fl'>5</span>,
           style <span class='op'>=</span> <span class='st'>"equal"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
 </div>
 <p>Notice that the distribution of quantile data classification method are more evenly distributed then equal data classification method.</p>
-<h3 id="plotting-choropleth-map-with-custome-break">4.3.2 Plotting choropleth map with custome break</h3>
-<p>For all the built-in styles, the category breaks are computed internally. In order to overide these defaults, the breakpoints can be set explicitly by means of the <em>breaks</em> argument to the <em>tm_fill()</em>. It is important to note that, in <strong>tmap</strong> the breaks include a minimum and maximum. As a result, in order to end up with n categories, n+1 elements must be specified in the <em>breaks</em> option (the values must be in increasing order).</p>
+<blockquote>
+<p><strong>Warning: Maps Lie!</strong></p>
+</blockquote>
+<blockquote>
+<p>DIY: Using what you had learned, prepare choropleth maps by using different classification methods supported by tmap and compare their differences.</p>
+</blockquote>
+<blockquote>
+<p>DIY: Preparing choropleth maps by using similar classification method but with different numbers of classes (i.e. 2, 6, 10, 20). Compare the output maps, what observation can you draw?</p>
+</blockquote>
+<h4 id="plotting-choropleth-map-with-custome-break">4.3.2 Plotting choropleth map with custome break</h4>
+<p>For all the built-in styles, the category breaks are computed internally. In order to override these defaults, the breakpoints can be set explicitly by means of the <em>breaks</em> argument to the <em>tm_fill()</em>. It is important to note that, in <strong>tmap</strong> the breaks include a minimum and maximum. As a result, in order to end up with n categories, n+1 elements must be specified in the <em>breaks</em> option (the values must be in increasing order).</p>
 <p>Before we get started, it is always a good practice to get some descriptive statistics on the variable before setting the break points. Code chunk below will be used to compute and display the descriptive statistics of <strong>DEPENDENCY</strong> field.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>$</span><span class='va'>DEPENDENCY</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>$</span><span class='va'>DEPENDENCY</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
- 0.0000  0.7738  0.8985  1.0794  1.0370 12.0000      94 </code></pre>
+ 0.0000  0.6519  0.7025  0.7742  0.7645 19.0000      92 </code></pre>
 </div>
-<p>With reference to the results above, we set break point at 0.60, 0.70, 0.80, and 0.90. In additional, we also need to include a minimum and maximum, which we set at 0 and 100. Our <em>breaks</em> vector is thus c(0, 0.60, 0.70, 0.80, 0.90, 1.00)</p>
+<p>With reference to the results above, we set break point at 0.60, 0.70, 0.80, and 0.90. In addition, we also need to include a minimum and maximum, which we set at 0 and 100. Our <em>breaks</em> vector is thus c(0, 0.60, 0.70, 0.80, 0.90, 1.00)</p>
 <p>Now, we will plot the choropleth map by using the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
           breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.60</span>, <span class='fl'>0.70</span>, <span class='fl'>0.80</span>, <span class='fl'>0.90</span>, <span class='fl'>1.00</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
 </div>
-<h2 id="colour-scheme">4.4 Colour Scheme</h2>
+<h3 id="colour-scheme">4.4 Colour Scheme</h3>
 <p><strong>tmap</strong> supports colour ramps either defined by the user or a set of predefined colour ramps from the <strong>RColorBrewer</strong> package.</p>
-<h3 id="using-colourbrewer-palette">4.4.1 Using ColourBrewer palette</h3>
-<p>To change the colour, we assign the prefered colour to <em>palette</em> argument of <em>tm_fill()</em> as shown in the code chunk below.</p>
+<h4 id="using-colourbrewer-palette">4.4.1 Using ColourBrewer palette</h4>
+<p>To change the colour, we assign the preferred colour to <em>palette</em> argument of <em>tm_fill()</em> as shown in the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
           n <span class='op'>=</span> <span class='fl'>6</span>,
           style <span class='op'>=</span> <span class='st'>"quantile"</span>,
@@ -1772,29 +1983,39 @@ First 10 features:
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
 </div>
 <p>Notice that the choropleth map is shaded in green.</p>
 <p>To reverse the colour shading, add a “-” prefix.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
           style <span class='op'>=</span> <span class='st'>"quantile"</span>,
           palette <span class='op'>=</span> <span class='st'>"-Greens"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
 </div>
 <p>Notice that the colour scheme has been reversed.</p>
-<h2 id="map-layouts">4.5 Map Layouts</h2>
-<p>Map layout refers to the combination of all map elements into a cohensive map. Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios, while the colour settings and data classification methods covered in the previous section relate to the palette and break-points used to affect how the map looks.</p>
-<h3 id="map-legend">4.5.1 Map Legend</h3>
+<h3 id="map-layouts">4.5 Map Layouts</h3>
+<p>Map layout refers to the combination of all map elements into a cohensive map. Map elements include among others the objects to be mapped, the title, the scale bar, the compass, margins and aspects ratios. Colour settings and data classification methods covered in the previous section relate to the palette and break-points are used to affect how the map looks.</p>
+<h4 id="map-legend">4.5.1 Map Legend</h4>
 <p>In <strong>tmap</strong>, several <em>legend</em> options are provided to change the placement, format and appearance of the legend.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>, 
           style <span class='op'>=</span> <span class='st'>"jenks"</span>, 
           palette <span class='op'>=</span> <span class='st'>"Blues"</span>, 
@@ -1812,14 +2033,19 @@ First 10 features:
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
 </div>
-<h3 id="map-style">4.5.2 Map style</h3>
+<h4 id="map-style">4.5.2 Map style</h4>
 <p><strong>tmap</strong> allows a wide variety of layout settings to be changed. They can be called by using <em>tmap_style()</em>.</p>
 <p>The code chunk below shows the <em>classic</em> style is used.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>, 
           style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
           palette <span class='op'>=</span> <span class='st'>"-Greens"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1827,14 +2053,19 @@ First 10 features:
   <span class='fu'>tmap_style</span><span class='op'>(</span><span class='st'>"classic"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
 </div>
-<h3 id="cartographic-furniture">4.5.3 Cartographic Furniture</h3>
+<h4 id="cartographic-furniture">4.5.3 Cartographic Furniture</h4>
 <p>Beside map style, <strong>tmap</strong> also also provides arguments to draw other map furniture such as compass, scale bar and grid lines.</p>
 <p>In the code chunk below, <em>tm_compass()</em>, <em>tm_scale_bar()</em> and <em>tm_grid()</em> are used to add compass, scale bar and grid lines onto the choropleth map.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>, 
           style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
           palette <span class='op'>=</span> <span class='st'>"Blues"</span>,
@@ -1853,28 +2084,38 @@ First 10 features:
              position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"left"</span>, <span class='st'>"bottom"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-21-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
 </div>
-<p>To reset the default style, the code chunk use the code chunk below.</p>
+<p>To reset the default style, refer to the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tmap_style</span><span class='op'>(</span><span class='st'>"white"</span><span class='op'>)</span>
 </code></pre>
 </div>
+</details>
 </div>
-<h2 id="drawing-small-multiple-choropleth-maps">4.6 Drawing Small Multiple Choropleth Maps</h2>
-<p>Small multiple maps, also referred to facet maps, are composed of many maps arrange side-by-side, and sometimes stacked vertically. Small multiple maps enable the visualisation of how spatial relationships change with respect to another variable, such as time.</p>
+<h3 id="drawing-small-multiple-choropleth-maps">4.6 Drawing Small Multiple Choropleth Maps</h3>
+<p><strong>Small multiple maps</strong>, also referred to as <strong>facet maps</strong>, are composed of many maps arrange side-by-side, and sometimes stacked vertically. Small multiple maps enable the visualisation of how spatial relationships change with respect to another variable, such as time.</p>
 <p>In <strong>tmap</strong>, small multiple maps can be plotted in three ways:</p>
 <ul>
 <li>by assigning multiple values to at least one of the asthetic arguments,</li>
 <li>by defining a group-by variable in <em>tm_facets()</em>, and</li>
 <li>by creating multiple stand-alone maps with <em>tmap_arrange()</em>.</li>
 </ul>
-<h3 id="by-assigning-multiple-values-to-at-least-one-of-the-aesthetic-arguments">4.6.1 By assigning multiple values to at least one of the aesthetic arguments</h3>
+<h4 id="by-assigning-multiple-values-to-at-least-one-of-the-aesthetic-arguments">4.6.1 By assigning multiple values to at least one of the aesthetic arguments</h4>
 <p>In this example, small multiple choropleth maps are created by defining <strong><em>ncols</em></strong> in <strong>tm_fill()</strong></p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"YOUNG"</span>, <span class='st'>"AGED"</span><span class='op'>)</span>,
           style <span class='op'>=</span> <span class='st'>"equal"</span>, 
           palette <span class='op'>=</span> <span class='st'>"Blues"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1883,25 +2124,35 @@ First 10 features:
   <span class='fu'>tmap_style</span><span class='op'>(</span><span class='st'>"white"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-23-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
 </div>
 <p>In this example, small multiple choropleth maps are created by assigning multiple values to at least one of the aesthetic arguments</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span> 
   <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,<span class='st'>"AGED"</span><span class='op'>)</span>,
           style <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"equal"</span>, <span class='st'>"quantile"</span><span class='op'>)</span>, 
           palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"Blues"</span>,<span class='st'>"Greens"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_layout</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"right"</span>, <span class='st'>"bottom"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
 </div>
-<h3 id="by-defining-a-group-by-variable-in-tm_facets">4.6.2 By defining a group-by variable in <em>tm_facets()</em></h3>
+<h4 id="by-defining-a-group-by-variable-in-tm_facets">4.6.2 By defining a group-by variable in <em>tm_facets()</em></h4>
 <p>In this example, multiple small choropleth maps are created by using <strong>tm_facets()</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>,
           style <span class='op'>=</span> <span class='st'>"quantile"</span>,
           palette <span class='op'>=</span> <span class='st'>"Blues"</span>,
@@ -1915,18 +2166,23 @@ First 10 features:
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-25-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
 </div>
-<h3 id="by-creating-multiple-stand-alone-maps-with-tmap_arrange">4.6.3 By creating multiple stand-alone maps with <em>tmap_arrange()</em></h3>
+<h4 id="by-creating-multiple-stand-alone-maps-with-tmap_arrange">4.6.3 By creating multiple stand-alone maps with <em>tmap_arrange()</em></h4>
 <p>In this example, multiple small choropleth maps are created by creating multiple stand-alone maps with <strong>tmap_arrange()</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>youngmap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>youngmap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span> 
   <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='st'>"YOUNG"</span>, 
               style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
               palette <span class='op'>=</span> <span class='st'>"Blues"</span><span class='op'>)</span>
 
-<span class='va'>agedmap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>)</span><span class='op'>+</span> 
+<span class='va'>agedmap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>)</span><span class='op'>+</span> 
   <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='st'>"AGED"</span>, 
               style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
               palette <span class='op'>=</span> <span class='st'>"Blues"</span><span class='op'>)</span>
@@ -1934,13 +2190,18 @@ First 10 features:
 <span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>youngmap</span>, <span class='va'>agedmap</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-26-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
 </div>
-<h2 id="mappping-spatial-object-meeting-a-selection-criterion">4.7 Mappping Spatial Object Meeting a Selection Criterion</h2>
+<h3 id="mappping-spatial-object-meeting-a-selection-criterion">4.7 Mappping Spatial Object Meeting a Selection Criterion</h3>
 <p>Instead of creating small multiple choropleth map, you can also use selection funtion to map spatial objects meeting the selection criterion.</p>
 <div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_agemale2018</span><span class='op'>[</span><span class='va'>mpsz_agemale2018</span><span class='op'>$</span><span class='va'>REGION_N</span><span class='op'>==</span><span class='st'>"CENTRAL REGION"</span>, <span class='op'>]</span><span class='op'>)</span><span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>mpsz_pop2020</span><span class='op'>[</span><span class='va'>mpsz_pop2020</span><span class='op'>$</span><span class='va'>REGION_N</span><span class='op'>==</span><span class='st'>"CENTRAL REGION"</span>, <span class='op'>]</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>tm_fill</span><span class='op'>(</span><span class='st'>"DEPENDENCY"</span>, 
           style <span class='op'>=</span> <span class='st'>"quantile"</span>, 
           palette <span class='op'>=</span> <span class='st'>"Blues"</span>, 
@@ -1955,7 +2216,8 @@ First 10 features:
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-27-1.png" width="624" /></p>
+</details>
+<p><img src="Hands-on_Ex03a_files/figure-html5/unnamed-chunk-28-1.png" width="624" /></p>
 </div>
 <h1 id="reference">Reference</h1>
 <h2 id="all-about-tmap-package">All about <strong>tmap</strong> package</h2>
@@ -1979,6 +2241,18 @@ First 10 features:
 <li><a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">Tidy data</a></li>
 <li><a href="https://cran.r-project.org/web/packages/tidyr/tidyr.pdf">tidyr: Easily Tidy Data with ‘spread()’ and ‘gather()’ Functions</a></li>
 </ul>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+Show code
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/pagedown'>pagedown</a></span><span class='op'>)</span>
+<span class='fu'>pagedown</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pagedown/man/chrome_print.html'>chrome_print</a></span><span class='op'>(</span><span class='st'>"Hands-on_Ex03a.html"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
