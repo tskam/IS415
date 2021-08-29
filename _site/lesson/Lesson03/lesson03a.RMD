@@ -43,6 +43,9 @@ knitr::opts_chunk$set(fig.retina=3,
 
 ] 
 
+???
+This lesson consists of two parts.  First, I will share with you the concepts and design principles of choropleth maps.  Next, I will introduce you to tmap, an R package specially designed for thematic mapping based on Layered Grammar of Graphics
+
 ---
 ## Choropleth Map
 
@@ -61,7 +64,7 @@ A choropleth map is a type of thematic map in which areas are shaded or patterne
 - A classed choropleth map combines areal units into a smaller number of groups.  Interval levels may vary, but typically 4 to 7 are used in a map.  There is different classification techniques used to divide up the intervals.  
 
 .center[
-![:scale 65%](img/image3-7.jpg)]
+![:scale 65%](img/image3-8.jpg)]
 
 ---
 ### Unclassified choropleth map
@@ -69,7 +72,7 @@ A choropleth map is a type of thematic map in which areas are shaded or patterne
 - Unclassed choropleth maps are similar to classed choropleth maps; however, unclassed choropleth maps do not have an averaged statistic towards each particular colour.  
 
 .center[
-![:scale 70%](img/image3-8.jpg)]
+![:scale 70%](img/image3-7.jpg)]
 
 ---
 ### Choosing an appropriate number of classes
@@ -249,10 +252,6 @@ mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)
        `TOTAL`, `DEPENDENCY`)
 ```
 
-```{r echo=FALSE, eval=FALSE}
-write_csv(popdata2020,"data/aspatial/popdata2020.csv")
-```
-
 ```{r echo=FALSE}
 popdata2020 <- popdata2020 %>%
   mutate_at(.vars = vars(PA, SZ), 
@@ -260,6 +259,10 @@ popdata2020 <- popdata2020 %>%
   filter(`ECONOMY ACTIVE` > 0)
 mpszpop2020 <- left_join(mpsz, popdata2020,
                by = c("SUBZONE_N" = "SZ"))
+```
+
+```{r echo=FALSE, eval=FALSE}
+write_rds(mpszpop2020,"data/rds/mpszpop2020.rds")
 ```
 
 ---
@@ -892,5 +895,5 @@ tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ])+
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Lesson03.html")
+pagedown::chrome_print("Lesson03a.html")
 ```
