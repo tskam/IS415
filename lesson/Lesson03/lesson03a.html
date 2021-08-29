@@ -1,28 +1,26 @@
----
-title: 'Lesson 3: Choropleth Mapping and <br/>tmap Methods'
-subtitle: ""
-author: "Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems"
-institute: "School of Computing and Information Systems,<br/>Singapore Management University"
-date: "2019/11/25 (updated: `r Sys.Date()`)"
-output:
-  xaringan::moon_reader:
-    css: [xaringan-themer.css, "css/text.css"]
-    lib_dir: libs
-    nature:
-      ratio: "16:9"
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
-      beforeInit: "js/macros.js"
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lesson 3: Choropleth Mapping and  tmap Methods</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Kam Tin Seong Assoc. Professor of Information Systems" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/text.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Lesson 3: Choropleth Mapping and <br/>tmap Methods
+### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems
+### School of Computing and Information Systems,<br/>Singapore Management University
+### 2019/11/25 (updated: 2021-08-29)
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.retina=3,
-                      echo = TRUE,
-                      eval = TRUE,
-                      message = FALSE,
-                      warning = FALSE)
-```
+
+
 
 ## Content
 
@@ -245,7 +243,8 @@ Write a code chunk to install and launch these packages in R.
 The code chunk should look similar to below:
 ]
 
-```{r echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+
+```r
 packages = c('sf', 'tmap', 'tidyverse')
 for (p in packages){
   if(!require(p, character.only = T)){
@@ -273,9 +272,20 @@ The code chunk
 ]
 
 .small[
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-mpsz <- st_read(dsn = "data/geospatial", 
+
+```r
+mpsz &lt;- st_read(dsn = "data/geospatial", 
                 layer = "MP14_SUBZONE_WEB_PL")
+```
+
+```
+## Reading layer `MP14_SUBZONE_WEB_PL' from data source 
+##   `D:\tskam\IS415\lesson\Lesson03\data\geospatial' using driver `ESRI Shapefile'
+## Simple feature collection with 323 features and 15 fields
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: 2667.538 ymin: 15748.72 xmax: 56396.44 ymax: 50256.33
+## Projected CRS: SVY21
 ```
 ]
 ]
@@ -296,8 +306,9 @@ In this exercise, you are required to:
 .large[
 The code chunk is:
 
-```{r, echo=TRUE, message=FALSE}
-popdata <- read_csv("data/aspatial/respopagesextod2011to2020.csv")
+
+```r
+popdata &lt;- read_csv("data/aspatial/respopagesextod2011to2020.csv")
 ```
 ]]
 
@@ -319,22 +330,23 @@ To fully appreciate the functions used in the code chunk on the right, you are r
 --
 .pull-right[
 The code chunk is:
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE, fig.width=1, fig.height=1}
-popdata2020 <- popdata %>%
-  filter(Time == 2020) %>%
-  group_by(PA, SZ, AG) %>%
-  summarise(`POP` = sum(`Pop`)) %>%
-  ungroup()%>%
+
+```r
+popdata2020 &lt;- popdata %&gt;%
+  filter(Time == 2020) %&gt;%
+  group_by(PA, SZ, AG) %&gt;%
+  summarise(`POP` = sum(`Pop`)) %&gt;%
+  ungroup()%&gt;%
   pivot_wider(names_from=AG, 
-              values_from=POP) %>%
+              values_from=POP) %&gt;%
   mutate(YOUNG = rowSums(.[3:6])
-         +rowSums(.[12])) %>%
+         +rowSums(.[12])) %&gt;%
 mutate(`ECONOMY ACTIVE` = rowSums(.[7:11])+
-rowSums(.[13:15]))%>%
-mutate(`AGED`=rowSums(.[16:21])) %>%
-mutate(`TOTAL`=rowSums(.[3:21])) %>%  
+rowSums(.[13:15]))%&gt;%
+mutate(`AGED`=rowSums(.[16:21])) %&gt;%
+mutate(`TOTAL`=rowSums(.[3:21])) %&gt;%  
 mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)
-/`ECONOMY ACTIVE`) %>%
+/`ECONOMY ACTIVE`) %&gt;%
   select(`PA`, `SZ`, `YOUNG`, 
        `ECONOMY ACTIVE`, `AGED`, 
        `TOTAL`, `DEPENDENCY`)
@@ -342,9 +354,7 @@ mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)
 ]
 
 
-```{r echo=FALSE, eval=FALSE}
-write_csv(popdata2020,"data/aspatial/popdata2020.csv")
-```
+
 
 ---
 ## Georelation Join
@@ -359,12 +369,13 @@ Performing georelation join by using the *SUBZONE_N* field  of *mpsz* simple fea
 .large[
 The code chunk is:
 ]
-```{r echo=TRUE, eval=TRUE, warning=FALSE, message=FALSE}
-popdata2020 <- popdata2020 %>%
+
+```r
+popdata2020 &lt;- popdata2020 %&gt;%
   mutate_at(.vars = vars(PA, SZ), 
-          .funs = funs(toupper)) %>%
-  filter(`ECONOMY ACTIVE` > 0)
-mpszpop2020 <- left_join(mpsz, popdata2020,
+          .funs = funs(toupper)) %&gt;%
+  filter(`ECONOMY ACTIVE` &gt; 0)
+mpszpop2020 &lt;- left_join(mpsz, popdata2020,
                by = c("SUBZONE_N" = "SZ"))
 ```
 
@@ -390,7 +401,8 @@ The easiest and quickest to draw a choropleth map using **tmap** is using *qtm()
 
 The code chunk below will draw a cartographic standard choropleth map as shown below.
 
-```{r, eval=FALSE}
+
+```r
 tmap_mode("plot")
 qtm(mpszpop2020, 
     fill = "DEPENDENCY")
@@ -404,11 +416,7 @@ Things to learn from the code chunk above:
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tmap_mode("plot")
-qtm(mpszpop2020, 
-    fill = "DEPENDENCY")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-8-1.png" width="504" /&gt;
 ]
 
 ---
@@ -465,7 +473,8 @@ The basic building block of **tmap** is *tm_shape()* followed by one or more lay
 
 In the code chunk below, *tm_shpae()* is used to define the input data (i.e *mpsz_agmale2018*) and *tm_polygons()* is used draw the planning subzone polygons 
 
-```{r eval=FALSE}
+
+```r
 tm_shape(mpszpop2020) +
   tm_polygons()
 ```
@@ -476,10 +485,7 @@ Be warned: The "+" sign should be place at the end of a code line and not at the
 ]
 
 .pull-right[
-```{r, echo=FALSE, fig.width=6, fig.height=4}
-tm_shape(mpszpop2020) +
-  tm_polygons()
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-10-1.png" width="432" /&gt;
 
 .center[
 .vlarge[
@@ -494,9 +500,10 @@ But why the figure is not sharp?
 .pull-left[
 To draw a choropleth map showing the geographical distribution of a selected variable by planning subzone, we just need to assign the target variable such as *DEPENDENCY* to *tm_polygons()*.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
-  tm_polygons("DEPENDENCY")#<<
+* tm_polygons("DEPENDENCY")
 ```
 
 Things to learn from *tm_polygons()*:
@@ -508,25 +515,19 @@ Things to learn from *tm_polygons()*:
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_polygons("DEPENDENCY")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-12-1.png" width="504" /&gt;
 ]
 
 ---
 ### Now it looks sharper
 
 .pull-left[
-```{r, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, fig.retina=3}
-tm_shape(mpszpop2020)+
-  tm_polygons("DEPENDENCY")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-13-1.png" width="504" /&gt;
 ]
 --
 .pull-right[
 
->{r, echo=TRUE, eval=FALSE, 
+&gt;{r, echo=TRUE, eval=FALSE, 
 message=FALSE, warning=FALSE, 
 fig.retina=3}
 
@@ -546,19 +547,17 @@ Actually, *tm_polygons()* is a wrapper of *tm_fill()* and *tm_border()*.  *tm_fi
 
 The code chunk below draw a choropleth map by using *tm_fill()* alone.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY")#<<
+* tm_fill("DEPENDENCY")
 ```
 
 Notice that the planning subzones are shared according to the respective dependecy values
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-15-1.png" width="504" /&gt;
 ]
 
 ---
@@ -567,11 +566,12 @@ tm_shape(mpszpop2020)+
 .pull-left[
 To add the boundary of the planning subzones, *tm_border*s will be used as shown in the code chunk below.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY") +
-  tm_borders(lwd = 0.1, #<<  
-             alpha = 1) #<<
+* tm_borders(lwd = 0.1,
+*            alpha = 1)
 ```
 
 Notice that light-gray border lines have been added on the choropleth map.
@@ -583,11 +583,7 @@ Notice that light-gray border lines have been added on the choropleth map.
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY") +
-  tm_borders(lwd = 0.1,  alpha = 1)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-17-1.png" width="504" /&gt;
 ]
 
 ---
@@ -602,23 +598,18 @@ To define a data classification method, the *style* argument of *tm_fill()* or *
 
 The code chunk below shows a quantile data classification with 8 classes are used.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY",
-          n = 8, #<<
-          style = "quantile") + #<<
+*         n = 8,
+*         style = "quantile") +
   tm_borders(alpha = 0.5)
 ```
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY",
-          n = 8,
-          style = "quantile") +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-19-1.png" width="504" /&gt;
 
 ]
 
@@ -630,24 +621,12 @@ Notice that the distribution of quantile data classification method are more eve
 
 .pull-left[
 
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY",
-          n = 6,
-          style = "quantile") +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-20-1.png" width="504" /&gt;
 ]
 
 .pull-right[
 
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY",
-          n = 6,
-          style = "equal") +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-21-1.png" width="504" /&gt;
 
 ]
 
@@ -659,12 +638,13 @@ tm_shape(mpszpop2020)+
 
 To change the colour, we assign the prefered colour to *palette* argument of *tm_fill()* as shown in the code chunk below.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY",
           n = 6,
           style = "quantile",
-          palette = "Blues") + #<<
+*         palette = "Blues") +
   tm_borders(alpha = 0.5)
 ```
 
@@ -672,14 +652,7 @@ Notice that the choropleth map is shaded in blue.
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY",
-          n = 6,
-          style = "quantile",
-          palette = "Blues") +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
 ]
 
 ---
@@ -688,11 +661,12 @@ tm_shape(mpszpop2020)+
 .pull-left[
 To reverse the colour shading, add a "-" prefix.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY",
           style = "quantile",
-          palette = "-Blues") + #<<
+*         palette = "-Blues") +
   tm_borders(alpha = 0.5)
 ```
 
@@ -700,13 +674,7 @@ Notice that the colour scheme has been reversed.
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY",
-          style = "quantile",
-          palette = "-Blues") +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
 ]
 
 ---
@@ -719,7 +687,8 @@ Map layout refers to the combination of all map elements into a cohensive map.  
 
 In **tmap**, several *legend* options are provided to change the placement, format and appearance of the legend.   
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY", 
           style = "jenks", 
@@ -727,14 +696,14 @@ tm_shape(mpszpop2020)+
           legend.hist = TRUE, 
           legend.is.portrait = TRUE,
           legend.hist.z = 0.1) +
-  tm_layout(main.title = "Distribution of Dependency Ratio by planning subzone \n(Jenks classification)", #<<
-            main.title.position = "center", #<<
-            main.title.size = 1, #<<
-            legend.height = 0.45, #<<
-            legend.width = 0.35, #<<
-            legend.outside = FALSE, #<<
-            legend.position = c("right", "bottom"), #<<
-            frame = FALSE) + #<<
+* tm_layout(main.title = "Distribution of Dependency Ratio by planning subzone \n(Jenks classification)",
+*           main.title.position = "center",
+*           main.title.size = 1,
+*           legend.height = 0.45,
+*           legend.width = 0.35,
+*           legend.outside = FALSE,
+*           legend.position = c("right", "bottom"),
+*           frame = FALSE) +
   tm_borders(alpha = 0.5)
 ```
 
@@ -743,24 +712,7 @@ tm_shape(mpszpop2020)+
 
 The output map   
 
-```{r, fig.width=12, fig.height=6, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY", 
-          style = "jenks", 
-          palette = "Blues", 
-          legend.hist = TRUE, 
-          legend.is.portrait = TRUE,
-          legend.hist.z = 0.1) +
-  tm_layout(main.title = "Distribution of Dependency Ratio by planning subzone \n(Jenks classification)",
-            main.title.position = "center",
-            main.title.size = 1,
-            legend.height = 0.45, 
-            legend.width = 0.35,
-            legend.outside = FALSE,
-            legend.position = c("right", "bottom"),
-            frame = FALSE) +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-27-1.png" width="864" /&gt;
 
 ---
 ### Map style
@@ -771,25 +723,19 @@ tm_shape(mpszpop2020)+
 The code chunk below shows the *classic* style
 is used.
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY", 
           style = "quantile", 
           palette = "-Greens") +
   tm_borders(alpha = 0.5) +
-  tmap_style("classic")#<<
+* tmap_style("classic")
 ```
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY", 
-          style = "quantile", 
-          palette = "-Greens") +
-  tm_borders(alpha = 0.5) +
-  tmap_style("classic")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-29-1.png" width="504" /&gt;
 ]
 
 ---
@@ -799,7 +745,8 @@ Beside map style, **tmap** also also provides arguments to draw other map furnit
 
 In the code chunk below, *tm_compass()*, *tm_scale_bar()* and *tm_grid()* are used to add compass, scale bar and grid lines onto the choropleth map. 
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
   tm_fill("DEPENDENCY", 
           style = "quantile", 
@@ -811,17 +758,18 @@ tm_shape(mpszpop2020)+
             legend.height = 0.45, 
             legend.width = 0.35,
             frame = TRUE) +
-  tm_borders(alpha = 0.5) + #<<
-  tm_compass(type="8star", size = 2) + #<<
-  tm_scale_bar(width = 0.15) + #<<
-  tm_grid(lwd = 0.1, alpha = 0.2) + #<<
-  tm_credits("Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and Population data from Department of Statistics DOS", #<<
-             position = c("left", "bottom")) #<<
+* tm_borders(alpha = 0.5) +
+* tm_compass(type="8star", size = 2) +
+* tm_scale_bar(width = 0.15) +
+* tm_grid(lwd = 0.1, alpha = 0.2) +
+* tm_credits("Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and Population data from Department of Statistics DOS",
+*            position = c("left", "bottom"))
 ```
 
 To reset the default style, the code chunk use the code chunk below.
 
-```{r echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+
+```r
 tmap_style("white")
 ```
 
@@ -830,29 +778,12 @@ tmap_style("white")
 
 The output plot
 
-```{r, fig.width=12, fig.height=6, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill("DEPENDENCY", 
-          style = "quantile", 
-          palette = "Blues",
-          title = "No. of persons") +
-  tm_layout(main.title = "Distribution of Dependency Ratio \nby planning subzone",
-            main.title.position = "center",
-            main.title.size = 1.2,
-            legend.height = 0.45, 
-            legend.width = 0.35,
-            frame = TRUE) +
-  tm_borders(alpha = 0.5) +
-  tm_compass(type="8star", size = 2) +
-  tm_scale_bar(width = 0.15) +
-  tm_grid(lwd = 0.1, alpha = 0.2) +
-  tm_credits("Source: Planning Sub-zone boundary from Urban Redevelopment Authorithy (URA)\n and Population data from Department of Statistics DOS", 
-             position = c("left", "bottom"))
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-32-1.png" width="864" /&gt;
 
 To reset the default style, the code chunk use the code chunk below.
 
-```{r echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+
+```r
 tmap_style("white")
 ```
 
@@ -874,9 +805,10 @@ In **tmap**, small multiple maps can be plotted in three ways:
 In this example, small multiple choropleth maps are created by defining ***ncols*** in **tm_fill()**
 
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+
-  tm_fill(c("YOUNG", "AGED"), #<<
+* tm_fill(c("YOUNG", "AGED"),
           style = "equal", 
           palette = "Blues") +
   tm_layout(legend.position = c("right",
@@ -887,15 +819,7 @@ tm_shape(mpszpop2020)+
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+
-  tm_fill(c("YOUNG", "AGED"),
-          style = "equal", 
-          palette = "Blues") +
-  tm_layout(legend.position = c("right", "bottom")) +
-  tm_borders(alpha = 0.5) +
-  tmap_style("white")
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-35-1.png" width="504" /&gt;
 ]
 
 ---
@@ -904,24 +828,19 @@ tm_shape(mpszpop2020)+
 .pull-left[
 In this example, small multiple choropleth maps are created by assigning multiple values to at least one of the aesthetic arguments
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020)+ 
-  tm_polygons(c("DEPENDENCY","AGED"), #<<
-          style = c("equal", "quantile"), #<< 
-          palette = list("Blues","Greens")) + #<<
+* tm_polygons(c("DEPENDENCY","AGED"),
+*         style = c("equal", "quantile"),
+*         palette = list("Blues","Greens")) +
   tm_layout(legend.position = c("right",
                                 "bottom")) 
 ```
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020)+ 
-  tm_polygons(c("DEPENDENCY","AGED"),
-          style = c("equal", "quantile"), 
-          palette = list("Blues","Greens")) +
-  tm_layout(legend.position = c("right", "bottom"))
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-37-1.png" width="504" /&gt;
 ]
 
 ---
@@ -930,15 +849,16 @@ tm_shape(mpszpop2020)+
 .pull-left[
 In this example, multiple small choropleth maps are created by using **tm_facets()**. 
 
-```{r, eval=FALSE}
+
+```r
 tm_shape(mpszpop2020) +
   tm_fill("DEPENDENCY",
           style = "quantile",
           palette = "Blues",
           thres.poly = 0) + 
-  tm_facets(by="REGION_N", #<<
-            free.coords=TRUE, #<<
-            drop.shapes=TRUE) + #<<
+* tm_facets(by="REGION_N",
+*           free.coords=TRUE,
+*           drop.shapes=TRUE) +
   tm_layout(legend.show = FALSE,
             title.position = c("center",
                                "center"), 
@@ -948,21 +868,7 @@ tm_shape(mpszpop2020) +
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-tm_shape(mpszpop2020) +
-  tm_fill("DEPENDENCY",
-          style = "quantile",
-          palette = "Blues",
-          thres.poly = 0) + 
-  tm_facets(by="REGION_N", 
-            free.coords=TRUE, 
-            drop.shapes=TRUE) +
-  tm_layout(legend.show = FALSE,
-            title.position = c("center",
-                               "center"), 
-            title.size = 20) +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-39-1.png" width="504" /&gt;
 ]
 
 ---
@@ -971,35 +877,24 @@ tm_shape(mpszpop2020) +
 .pull-left[
 In this example, multiple small choropleth maps are created by creating multiple stand-alone maps with **tmap_arrange()**. 
 
-```{r, eval=FALSE}
-youngmap <- tm_shape(mpszpop2020)+ 
+
+```r
+youngmap &lt;- tm_shape(mpszpop2020)+ 
   tm_polygons("YOUNG", 
               style = "quantile", 
               palette = "Blues")
 
-agedmap <- tm_shape(mpszpop2020)+ 
+agedmap &lt;- tm_shape(mpszpop2020)+ 
   tm_polygons("AGED", 
               style = "quantile", 
               palette = "Blues")
 
-tmap_arrange(youngmap, agedmap, asp=1, ncol=2) #<<
+*tmap_arrange(youngmap, agedmap, asp=1, ncol=2)
 ```
 ]
 
 .pull-right[
-```{r, echo=FALSE}
-youngmap <- tm_shape(mpszpop2020)+ 
-  tm_polygons("YOUNG", 
-              style = "quantile", 
-              palette = "Blues")
-
-agedmap <- tm_shape(mpszpop2020)+ 
-  tm_polygons("AGED", 
-              style = "quantile", 
-              palette = "Blues")
-
-tmap_arrange(youngmap, agedmap, asp=1, ncol=2)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-41-1.png" width="504" /&gt;
 ]
 
 ---
@@ -1008,8 +903,9 @@ tmap_arrange(youngmap, agedmap, asp=1, ncol=2)
 .large[
 Instead of creating small multiple choropleth map, you can also use selection function to map spatial objects meeting the selection criterion. 
 
-```{r, eval=FALSE}
-tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ]) + #<<
+
+```r
+*tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ]) +
   tm_fill("DEPENDENCY", 
           style = "quantile", 
           palette = "Blues", 
@@ -1030,21 +926,7 @@ tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ]) + #<<
 
 The output choropleth maps.
 
-```{r, echo=FALSE, fig.width=12, fig.height=6}
-tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ])+
-  tm_fill("DEPENDENCY", 
-          style = "quantile", 
-          palette = "Blues", 
-          legend.hist = TRUE, 
-          legend.is.portrait = TRUE,
-          legend.hist.z = 0.1) +
-  tm_layout(legend.outside = TRUE,
-            legend.height = 0.45, 
-            legend.width = 5.0,
-            legend.position = c("right", "bottom"),
-            frame = FALSE) +
-  tm_borders(alpha = 0.5)
-```
+&lt;img src="lesson03a_files/figure-html/unnamed-chunk-43-1.png" width="864" /&gt;
 
 
 ---
@@ -1071,7 +953,129 @@ tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ])+
 
 
 
-```{r echo=FALSE, eval=FALSE}
-library(pagedown)
-pagedown::chrome_print("Lesson03.html")
-```
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
