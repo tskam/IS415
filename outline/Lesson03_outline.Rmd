@@ -26,10 +26,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-Lesson slides on Choropleth Mapping and tmap Methods in [html](../lesson/Lesson03/lesson03a.html) and [pdf](../lesson/Lesson03/Lesson03a.pdf) formats
-
-Hands-on Exercise 3 in [html](../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03a.html) format.
-
+- Lesson slides on **Choropleth Mapping and tmap Methods** in [html](../lesson/Lesson03/lesson03a.html) and [pdf](../lesson/Lesson03/Lesson03a.pdf) formats
+- **Hands-on Exercise 3: Choropleth Mapping and tmap Methods** in [html](../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03a.html) format.
 
 ## References
 ### Principles and Methods of Thematic Mapping
