@@ -249,10 +249,6 @@ mutate(`DEPENDENCY` = (`YOUNG` + `AGED`)
        `TOTAL`, `DEPENDENCY`)
 ```
 
-```{r echo=FALSE, eval=FALSE}
-write_csv(popdata2020,"data/aspatial/popdata2020.csv")
-```
-
 ```{r echo=FALSE}
 popdata2020 <- popdata2020 %>%
   mutate_at(.vars = vars(PA, SZ), 
@@ -260,6 +256,10 @@ popdata2020 <- popdata2020 %>%
   filter(`ECONOMY ACTIVE` > 0)
 mpszpop2020 <- left_join(mpsz, popdata2020,
                by = c("SUBZONE_N" = "SZ"))
+```
+
+```{r echo=FALSE, eval=FALSE}
+write_rds(mpszpop2020,"data/rds/mpszpop2020.rds")
 ```
 
 ---
@@ -892,5 +892,5 @@ tm_shape(mpszpop2020[mpszpop2020$REGION_N=="CENTRAL REGION", ])+
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Lesson03.html")
+pagedown::chrome_print("Lesson03a.html")
 ```
