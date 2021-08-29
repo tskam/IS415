@@ -26,9 +26,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-Lesson slide in [html]() and [pdf]() formats
+Lesson slides on Choropleth Mapping and tmap Methods in [html](../lesson/Lesson03/lesson03a.html) and [pdf](../lesson/Lesson03/Lesson03a.pdf) formats
 
-In-class Exercise in [html](../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03a.html) format.
+Hands-on Exercise 3 in [html](../Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03a.html) format.
 
 
 ## References
