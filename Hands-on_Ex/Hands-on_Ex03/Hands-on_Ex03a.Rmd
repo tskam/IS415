@@ -152,6 +152,10 @@ Thing to learn from the code chunk above:
 
 - *left_join()* of **dplyr** package is used with `mpsz` simple feature data frame as the left data table is to ensure that the output will be a simple features data frame.
 
+```{r}
+mpszpop2020 <- write_rds("data/rds/mpszpop2020.rds")
+```
+
 ## 4.0 Choropleth Mapping Geospatial Data Using *tmap*
 
 Two approaches can be used to prepare thematic map using *tmap*, they are:
