@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-08-25"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-08-25"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-09-01"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-09-01"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Hands-on Exercise 2: Geospatial Data Wrangling with R"/>
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Hands-on Exercise 2: Geospatial Data Wrangling with R"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.  \n"]},{"type":"character","attributes":{},"value":["2021-08-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Hands-on Exercise 2: Geospatial Data Wrangling with R"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.  \n"]},{"type":"character","attributes":{},"value":["2021-09-01"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Hands-on Exercise 2: Geospatial Data Wrangling with R","description":"In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.","authors":[],"publishedDate":"2021-08-25T00:00:00.000+08:00"}
+{"title":"Hands-on Exercise 2: Geospatial Data Wrangling with R","description":"In this hands-on exercise, you will learn how to handle geospatial data in R by using **sf** package.","authors":[],"publishedDate":"2021-09-01T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1472,6 +1472,49 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#learning-outcome">Learning Outcome</a></li>
+<li><a href="#data-acquisition">Data Acquisition</a>
+<ul>
+<li><a href="#extracting-the-geospatial-data-sets">Extracting the geospatial data sets</a></li>
+<li><a href="#extracting-the-aspatial-data-set">Extracting the aspatial data set</a></li>
+</ul></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#importing-geospatial-data">Importing Geospatial Data</a>
+<ul>
+<li><a href="#importing-polygon-feature-data-in-shapefile-format">Importing polygon feature data in shapefile format</a></li>
+<li><a href="#importing-polyline-feature-data-in-shapefile-form">Importing polyline feature data in shapefile form</a></li>
+<li><a href="#importing-gis-data-in-kml-format">Importing GIS data in kml format</a></li>
+</ul></li>
+<li><a href="#checking-the-content-of-a-simple-feature-data-frame">Checking the Content of A Simple Feature Data Frame</a>
+<ul>
+<li><a href="#working-with-st_geometry">Working with <em>st_geometry()</em></a></li>
+<li><a href="#working-with-glimpse">Working with glimpse()</a></li>
+<li><a href="#working-with-head">Working with <em>head()</em></a></li>
+</ul></li>
+<li><a href="#plotting-the-geospatial-data">Plotting the Geospatial Data</a></li>
+<li><a href="#working-with-projection">Working with Projection</a>
+<ul>
+<li><a href="#assigning-epsg-code-to-a-simple-feature-data-frame">Assigning EPSG code to a simple feature data frame</a></li>
+<li><a href="#transforming-the-projection-of-preschool-from-wgs84-to-svy21.">Transforming the projection of preschool from wgs84 to svy21.</a></li>
+</ul></li>
+<li><a href="#importing-and-converting-an-aspatial-data">Importing and Converting An Aspatial Data</a>
+<ul>
+<li><a href="#importing-the-aspatial-data">Importing the aspatial data</a></li>
+<li><a href="#creating-a-simple-feature-data-frame-from-an-aspatial-data-frame">Creating a simple feature data frame from an aspatial data frame</a></li>
+</ul></li>
+<li><a href="#geoprocessing-with-sf-package">Geoprocessing with sf package</a>
+<ul>
+<li><a href="#buffering">Buffering</a></li>
+<li><a href="#point-in-polygon-count">Point-in-polygon count</a></li>
+</ul></li>
+<li><a href="#explorotary-data-analysis-eda">Explorotary Data Analysis (EDA)</a></li>
+</ul>
+</nav>
+</div>
 <h2 id="learning-outcome">Learning Outcome</h2>
 <p>By the end of this hands-on exercise, you should acquire the following competencies:</p>
 <ul>
@@ -1865,30 +1908,31 @@ First 5 geometries:</code></pre>
 </div>
 </div>
 <p>After importing the data file into R, it is important for us to examine if the data file has been imported correctly.</p>
-<p>The code chunk below shows list() is used to do the job.</p>
+<p>The code chunk below shows <em>list()</em> of Base R instead of <em>glimpse()</em> is used to do the job.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>glimpse</span><span class='op'>(</span><span class='va'>listings</span><span class='op'>)</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>listings</span><span class='op'>)</span> 
 </code></pre>
 </div>
-<pre><code>Rows: 4,252
-Columns: 16
-$ id                             &lt;dbl&gt; 50646, 71609, 71896, 71903, 2~
-$ name                           &lt;chr&gt; &quot;Pleasant Room along Bukit Ti~
-$ host_id                        &lt;dbl&gt; 227796, 367042, 367042, 36704~
-$ host_name                      &lt;chr&gt; &quot;Sujatha&quot;, &quot;Belinda&quot;, &quot;Belind~
-$ neighbourhood_group            &lt;chr&gt; &quot;Central Region&quot;, &quot;East Regio~
-$ neighbourhood                  &lt;chr&gt; &quot;Bukit Timah&quot;, &quot;Tampines&quot;, &quot;T~
-$ latitude                       &lt;dbl&gt; 1.33432, 1.34537, 1.34754, 1.~
-$ longitude                      &lt;dbl&gt; 103.7852, 103.9589, 103.9596,~
-$ room_type                      &lt;chr&gt; &quot;Private room&quot;, &quot;Private room~
-$ price                          &lt;dbl&gt; 80, 178, 81, 81, 52, 40, 72, ~
-$ minimum_nights                 &lt;dbl&gt; 90, 90, 90, 90, 14, 14, 90, 8~
-$ number_of_reviews              &lt;dbl&gt; 18, 20, 24, 48, 20, 13, 133, ~
-$ last_review                    &lt;date&gt; 2014-07-08, 2019-12-28, 2014~
-$ reviews_per_month              &lt;dbl&gt; 0.22, 0.28, 0.33, 0.67, 0.20,~
-$ calculated_host_listings_count &lt;dbl&gt; 1, 4, 4, 4, 50, 50, 7, 1, 50,~
-$ availability_365               &lt;dbl&gt; 365, 365, 365, 365, 353, 364,~</code></pre>
+<pre><code>[[1]]
+# A tibble: 4,252 x 16
+       id name        host_id host_name neighbourhood_g~ neighbourhood
+    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;        
+ 1  50646 Pleasant R~  227796 Sujatha   Central Region   Bukit Timah  
+ 2  71609 Ensuite Ro~  367042 Belinda   East Region      Tampines     
+ 3  71896 B&amp;B  Room ~  367042 Belinda   East Region      Tampines     
+ 4  71903 Room 2-nea~  367042 Belinda   East Region      Tampines     
+ 5 275343 Convenient~ 1439258 Joyce     Central Region   Bukit Merah  
+ 6 275344 15 mins to~ 1439258 Joyce     Central Region   Bukit Merah  
+ 7 294281 5 mins wal~ 1521514 Elizabeth Central Region   Newton       
+ 8 301247 Nice room ~ 1552002 Rahul     Central Region   Geylang      
+ 9 324945 20 Mins to~ 1439258 Joyce     Central Region   Bukit Merah  
+10 330089 Accomo@ RE~ 1439258 Joyce     Central Region   Bukit Merah  
+# ... with 4,242 more rows, and 10 more variables: latitude &lt;dbl&gt;,
+#   longitude &lt;dbl&gt;, room_type &lt;chr&gt;, price &lt;dbl&gt;,
+#   minimum_nights &lt;dbl&gt;, number_of_reviews &lt;dbl&gt;,
+#   last_review &lt;date&gt;, reviews_per_month &lt;dbl&gt;,
+#   calculated_host_listings_count &lt;dbl&gt;, availability_365 &lt;dbl&gt;</code></pre>
 </div>
 <p>The output reveals that <code>listing</code> tibble data frame consists of 4252 rows and 16 columns. Two useful fields we are going to use in the next phase are <code>latitude</code> and <code>longitude</code>. Note that they are in decimal degree format. As a best guess, we will assume that the data is in <strong>wgs84</strong> Geographic Coordinate System.</p>
 <h3 id="creating-a-simple-feature-data-frame-from-an-aspatial-data-frame">Creating a simple feature data frame from an aspatial data frame</h3>

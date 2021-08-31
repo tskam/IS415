@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 output:
   distill::distill_article:
     code_folding: false
-    toc: false
+    toc: true
     toc_depth: 4
     self_contained: false
 ---
@@ -265,10 +265,10 @@ listings <- read_csv("data/aspatial/listings.csv")
 
 After importing the data file into R, it is important for us to examine if the data file has been imported correctly.
 
-The code chunk below shows list() is used to do the job.
+The code chunk below shows *list()* of Base R instead of *glimpse()* is used to do the job.
 
 ```{r}
-glimpse(listings) 
+list(listings) 
 ```
 
 The output reveals that `listing` tibble data frame consists of 4252 rows and 16 columns. Two useful fields we are going to use in the next phase are `latitude` and `longitude`.  Note that they are in decimal degree format.  As a best guess, we will assume that the data is in **wgs84** Geographic Coordinate System.   
