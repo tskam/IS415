@@ -61,7 +61,7 @@ In this hands-on exercise, five R packages will be used, they are:
 Use the code chunk below to install and launch the five R packages.
 
 ```{r}
-packages = c('rgdal', 'maptools', 'raster','spatstat', 'tmap')
+packages = c('rgdal', 'maptools', 'sf', 'raster','spatstat', 'tmap')
 for (p in packages){
 if(!require(p, character.only = T)){
 install.packages(p)
@@ -77,41 +77,43 @@ library(p,character.only = T)
 In this section, *readOGR()* of **rgdal** package will be used to import the three geospatial data in R's *spatialpolygonsdataframe*. 
 
 ```{r}
-childcare <- readOGR(dsn = "data", layer="CHILDCARE")
-sg <- readOGR(dsn = "data", layer="CostalOutline")
-mpsz <- readOGR(dsn = "data", layer="MP14_SUBZONE_WEB_PL")
+childcare_sf <- st_read("data/child-care-services-geojson.geojson") %>%
+  st_transform(crs = 3414)
+sg_sf <- st_read(dsn = "data", layer="CostalOutline")
+mpsz_sf <- st_read(dsn = "data", 
+                layer = "MP14_SUBZONE_WEB_PL")
 ```
 
 Before we can use these data for analysis, it is important for us to ensure that they are projected in same projection system.  We can retrieve the information of these geospatial data by using the code chunk below.
 
 ```{r}
-crs(childcare)
-crs(mpsz)
-crs(sg)
+crs(childcare_sf)
+crs(mpsz_sf)
+crs(sg_sf)
 ```
 
 Next, we can examine the imported geospatial data by using *plot()*.
 
 ```{r}
 par(mfrow=c(1,3))
-plot(childcare)
-plot(mpsz)
-plot(sg)
+plot(childcare_sf)
+plot(mpsz_sf)
+plot(sg_sf)
 ```
 
 Alternatively, we can also plotting these three geospatial data in one plot by using code chunk below.
 
 ```{r}
-plot(sg, border="lightgrey")
-plot(sg, add=TRUE)
-plot(childcare, add=TRUE )
+plot(sg_sf, border="lightgrey")
+plot(sg_sf, add=TRUE)
+plot(childcare_sf, add=TRUE )
 ```
 
 We can also prepare an interactive pin map by using the code chunk below. 
 
 ```{r}
 tmap_mode('view')
-tm_shape(childcare)+
+tm_shape(childcare_sf)+
   tm_dots()
 tmap_mode('plot')
 ```
@@ -119,8 +121,24 @@ tmap_mode('plot')
 Lastly, let us examine the childcare SpatialPointsDataFrame.
 
 ```{r}
-childcare
+childcare_sf
 ```
+
+---
+## Converting sf to sp
+
+Although simple feature data.frame is gaining popularity again sp’s Spatial* classes, there are, however, many geospatial analysis packages require the input geospatial data in sp’s Spatial* classes. In this section, you will learn how to convert simple feature data.frame to sp’s Spatial* class.
+2.4.1 Converting point feature data.frame to SpatialPointsDataFrame
+
+The code chunk below uses as_Spatial() of sf package to convert sf_preschool3414 simple feature data.frame to sp’s Spatial* class.
+
+```{r}
+childcare <- as_Spatial(childcare_sf)
+mpsz <- as_Spatial(mpsz_sf)
+sg <- as_Spatial(sg_sf)
+```
+
+
 ## Converting the spatial point data frame into generic sp format
 
 **spatstat** requires the analytical data in ***ppp*** object form. There is no direct way to convert a ***SpatialDataFrame*** into ***ppp*** object. We need to convert the ***SpatialDataFrame*** into ***Spatial*** object first.
@@ -894,9 +912,9 @@ plot(L_tm.csr, . - r ~ r,
 
 
 
-```{r}
+```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Hands-on_Ex04_SPPA_spatstat.html")
+pagedown::chrome_print("Hands-on_Ex04_SPPA.html")
 ```
 
 
