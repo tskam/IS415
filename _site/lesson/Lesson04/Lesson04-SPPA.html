@@ -4,7 +4,7 @@
     <title>Lesson 4: Spatial Point Patterns Analysis</title>
     <meta charset="utf-8" />
     <meta name="author" content="Dr. Kam Tin Seong Assoc. Professor of Information Systems (Practice)" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/text.css" type="text/css" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Lesson 4: Spatial Point Patterns Analysis
 ### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems (Practice)
 ### School of Computing and Information Systems,<br/>Singapore Management University
-### 2020-5-5 (updated: 2021-08-06)
+### 2020-5-5 (updated: 2021-09-02)
 
 ---
 
@@ -40,6 +40,11 @@ class: center, middle, inverse, title-slide
     - K-function
     - L-function
 ]
+
+???
+Welcome to Lesson 4: Spatial Point Pattern Analysis, a family of spatial statistics specially developed to model and to test distribution of spatial point events.
+
+The lesson proceeding is divided into three main section.  First, I will share with you what are real world spatial point events.  This is followed by explaining the concepts and methods of 1st-order and 2nd-order spatial point patterns analysis.
 
 ---
 # What is Spatial Point Patterns
@@ -110,6 +115,10 @@ class: center, middle, inverse, title-slide
 - What is the underlying process?
 ]
 
+???
+It is important note that SPPA is exploratory and confirmatory in nature.  They are specially developed for describing the spatial point pattern and for confirming the observed patterns statistically.  However, they are explanatory nor for prediction.
+
+
 ---
 ## Points on a Plane
 .large[
@@ -161,8 +170,8 @@ Applied to point event data, both properties could be used to explore the spatia
 ## First-order Spatial Point Patterns Analysis Techniques
 .large[
  - Density-based
-    - Quadrat analysis, 
     - Kernel density estimation
+    - Quadrat analysis, 
 
 - Distance-based
     - Nearest Neighbour Index
@@ -173,6 +182,70 @@ Applied to point event data, both properties could be used to explore the spatia
 
 .center[
 ![:scale 80%](img/image4-11.jpg)]
+
+---
+## Kernel density estimation (Silverman 1986)
+.large[
+- A method to compute the intensity of a point distribution.
+
+.pull-left[
+- The general formula:
+
+![:scale 70%](img/image4-19.jpg)]
+
+.pull-right[
+- Graphically
+
+![:scale 90%](img/image4-20.jpg)]
+]
+
+---
+### KDE Step 1: Computing point intensity
+
+.center[
+![](img/image4-21.jpg)]
+
+---
+### KDE Step 2: Spatial interpolation using kernel function
+
+.center[
+![:scale 70%](img/image4-22.jpg)]
+
+---
+### KDE Map of Childcare Services, Singapore
+
+.pull-center[
+![](img/image4-20b.png)
+]
+
+---
+### Adaptive Bandwidth
+
+.pull-left[
+.large[
+Adaptive schemes adjust itself according to the density of data:
+- Shorter bandwidths where data are dense and longer where sparse.
+
+- Finding nearest neighbors are one of the often used approaches.
+]]
+
+.pull-right[
+![](img/image4-24.jpg)]
+
+---
+### Fixed bandwidth
+
+.pull-left[
+.large[
+- Might produce large estimate variances where data are sparse, while mask subtle local variations where data are dense.
+
+- In extreme condition, fixed schemes might not be able to calibrate in local areas where data are too sparse to satisfy the calibration requirements (observations must be more than parameters).
+]]
+
+.pull-right[
+![](img/image4-23.jpg)]
+
+
 
 ---
 ### Quadrat Analysis – Step 1
@@ -520,61 +593,6 @@ The modified L function
 .pull-right[
 ![](img/image4-46.jpg)]
 
-
----
-## Kernel density estimation (Silverman 1986)
-.large[
-- A method to compute the intensity of a point distribution.
-
-.pull-left[
-- The general formula:
-
-![:scale 80%](img/image4-19.jpg)]
-
-.pull-right[
-- Graphically
-
-![:scale 90%](img/image4-20.jpg)]
-]
-
----
-### Kernel density estimation: simple computation
-
-.center[
-![](img/image4-21.jpg)]
-
----
-### The kernel functions
-
-.center[
-![:scale 70%](img/image4-22.jpg)]
-
----
-### Fixed bandwidth
-
-.pull-left[
-.large[
-- Might produce large estimate variances where data are sparse, while mask subtle local variations where data are dense.
-
-- In extreme condition, fixed schemes might not be able to calibrate in local areas where data are too sparse to satisfy the calibration requirements (observations must be more than parameters).
-]]
-
-.pull-right[
-![](img/image4-23.jpg)]
-
----
-### Adaptive Bandwidth
-
-.pull-left[
-.large[
-Adaptive schemes adjust itself according to the density of data:
-- Shorter bandwidths where data are dense and longer where sparse.
-
-- Finding nearest neighbors are one of the often used approaches.
-]]
-
-.pull-right[
-![](img/image4-24.jpg)]
 
 
 
