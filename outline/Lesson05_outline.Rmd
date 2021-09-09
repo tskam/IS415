@@ -1,7 +1,7 @@
 ---
 title: "Lesson 5: Advanced Spatial Point Patterns Analysis"
 description: |
-  A new article created using the Distill format.
+  In this lesson, you will learn the basic concepts of on- and off- network spatial point processes and a family of spatial statistics methods for analysing network constrained spatial point processes.
 date: "`r Sys.Date()`"
 output:
   distill::distill_article:
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Lesson slides in [html](../lesson/Lesson05/Lesson05-NetSPPA.html) and [pdf](../lesson/lesson05/Lesson05-NetSPPA.pdf) formats
 
-- [Handout of Hands-on Exercise]()
+- Handout of Hands-on Exercise 5 in [html](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.html) and [pdf](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.pdf) formats.
 
 ### Self-reading Before Meet-up
 
