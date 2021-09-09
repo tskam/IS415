@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE, eval=TRUE, message=FALSE, warning = FALSE)
 
 # Overview
 
-Network constrained Spatial Point Patterns Analysis (NetSPAA) is a collection of spatial point patterns analysis methods special developed for analysing spatial point event occurs on or alongside network.  The spatial point event can be locations of traffic accident or childcare centre for example.  The network, on the other hand can be a road network or river network.  
+**Network constrained Spatial Point Patterns Analysis (NetSPAA)** is a collection of spatial point patterns analysis methods special developed for analysing spatial point event occurs on or alongside network.  The spatial point event can be locations of traffic accident or childcare centre for example.  The network, on the other hand can be a road network or river network.  
 
 In this hands-on exercise, you are going to gain hands-on experience on using appropriate functions of spNetwork package:
 
