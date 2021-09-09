@@ -23,10 +23,10 @@ knitr::opts_chunk$set(echo = TRUE, eval=TRUE, message=FALSE, warning = FALSE)
 
 **Network constrained Spatial Point Patterns Analysis (NetSPAA)** is a collection of spatial point patterns analysis methods special developed for analysing spatial point event occurs on or alongside network.  The spatial point event can be locations of traffic accident or childcare centre for example.  The network, on the other hand can be a road network or river network.  
 
-In this hands-on exercise, you are going to gain hands-on experience on using appropriate functions of **spNetwork** package:
+In this hands-on exercise, you are going to gain hands-on experience on using appropriate functions of spNetwork package:
 
-- to derive **network constrained kernel density estimation (NetKDE)**, and
-- to perform network G-function and k-function analysis
+- to derive network constrained kernel density estimation (NetKDE), and
+- to perform network k-function analysis
 
 # The Data
 
@@ -59,6 +59,8 @@ library(p,character.only = T)
 ```
 
 # Data Import and Preparation
+
+ 
 
 The code chunk below uses *readOGD()* of **rgdal** package to important Punggol_St and Punggol_CC geospatial data sets into RStudio as SpatialLinesDataFrame and SpatialPointsDataFrame respectively.
 
@@ -259,11 +261,5 @@ The blue line is the empirical network K-function of the childcare centres in Pu
 - [Network Kernel Density Estimate](https://cran.r-project.org/web/packages/spNetwork/vignettes/NKDE.html)
 - [Details about NKDE](https://cran.r-project.org/web/packages/spNetwork/vignettes/NKDEdetailed.html)
 - [Network k Functions](https://cran.r-project.org/web/packages/spNetwork/vignettes/KNetworkFunctions.html)
-
-
-```{r echo=FALSE, eval=FALSE}
-library(pagedown)
-pagedown::chrome_print("Hands-on_Ex05-NetSPPA.html")
-```
 
 
