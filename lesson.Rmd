@@ -27,7 +27,7 @@ Week Date   Topic                                                               
 
 6.   20/09  [Spatial Weights and Applications](outline/Lesson06_outline.html)
         
-7.   27/09  [Local Measures of Spatial Autocorrelation](outline/Lesson07_outline.html) Take-home Ex2 due
+7.   27/09  [Measures of Spatial Autocorrelation](outline/Lesson07_outline.html)       Take-home Ex2 due
 
 8.   04/10  [Workshop on R Shiny](outline/workshop.html)                               Date: 6-7 October, 2021
 
