@@ -294,7 +294,7 @@ With a neighbor structure defined by the non-zero elements of the spatial weight
 Formally, for observation i, the spatial lag of yi, referred to as [Wy]i (the variable Wy observed for location i) is:] 
 
 .center[
-![:scale 40%](img/image6-17.jpg)]
+![:scale 35%](img/image6-17.jpg)]
 
 .large[where the weights wij consist of the elements of the i-th row of the matrix W, matched up with the corresponding elements of the vector y.
 ]
