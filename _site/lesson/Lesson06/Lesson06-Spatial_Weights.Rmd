@@ -330,5 +330,5 @@ The spatial window sum uses and includes the diagonal element.]
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Topic06-Spatial_Weights.html")
+pagedown::chrome_print("Lesson06-Spatial_Weights.html")
 ```

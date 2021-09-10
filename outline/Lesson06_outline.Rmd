@@ -1,7 +1,7 @@
 ---
-title: "Lesson 6: Spatial Weights and Global Spatial Autocorrelation"
+title: "Lesson 6: Spatial Weights and Applications"
 description: |
-  Spatial Autocorrelation is a measure of similarity (correlation) between nearby observations.  It is an important concept in spatial statistics.
+  Computing spatial weight is an essential step toward measuring the strength of the spatial relationships between objects.  In this lesson, the basic concept of spatial weight will be introduced.  This is followed by a discussion of methods to compute spatial weights.
 date: "`r Sys.Date()`"
 output:
   distill::distill_article:
@@ -26,9 +26,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-* Slides in [html](lessom/lesson06/lesson06-Spatial_Weights.html) and [pdf](lesson/lesson06/lesson06-Spatial_Weights.pdf) formats
-
-* [Handout of Hands-on Exercise](Hands-on_Ex\Hands-on_Ex06\Hands-on_Ex06-Spatial_Weights_and_Application.html)
++ Slides in [html](../lesson/Lesson06/Lesson06-Spatial_Weights.html) and [pdf](../lesson/Lesson06/Lesson06-Spatial_Weights.pdf) formats
++ Handout of Hands-on Exercise 6 in [html]()
 
 ### Self-reading Before Meet-up
 
