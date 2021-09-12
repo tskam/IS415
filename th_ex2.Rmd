@@ -1,0 +1,112 @@
+---
+title: "Take-home Exercise 2: Spatial Point Patterns Analysis of Airbnb Listing in Singapore"
+description: |
+  This handout provides the context, the task, the expectation and the grading criteria of Take-home Exercise 2.  Students must review and understand them before getting started with the take-home exercise. 
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Setting the Scene
+
+In recent years, the emergence of numerous peer-based business models has empowered individuals across the globe to become micro-entrepreneurs, earning money from their idle property and spare time.  This phenomenon, entitled ‘the sharing economy’, has seen unprecedented growth in terms of user numbers, enabling new avenues of economic and social interaction (Sundararajan, 2016). 
+
+Since its inception in 2008, Airbnb has expanded into over 34,000 cities across 191 countries. Uncommonly for a sharing economy company, Airbnb transitioned into profitability in 2016, demonstrating proof-of-concept for the validity of sharing economy within the global market (Stone & Zaleski, 2017).
+
+Interestingly, Singapore is one of the global city that has yet to legalise short-term rentals offered by platforms such as Airbnb (Read more at https://www.todayonline.com/singapore/short-term-home-sharing-remains-illegal-singapore-airbnb-disappointed).  However, during my recent visit to Inside Airbnb (http://insideairbnb.com/about.html), an independent, non-commercial set of tools and data that allows anyone to explore how Airbnb is really being used in cities around the world, it came to my attention that there are data sets for Singapore.         
+
+
+## The Task
+
+### Section A: Airbnb Distribution in 2019
+
+In this section, you are tasked to investigate if the distribution of Airbnb listings are affected by location factors such as near to existing hotels, MRT services and tourist attractions.  For the purpose of this analysis, Airbnb listings as at June 2019 should be used. 
+
+**1. Exploratory Spatial Data Analysis**
+
++ Derive kernel density maps of Airbnb listings, hotels, MRT services, and tourist attractions.    
++ Using appropriate tmap functions, display the kernel density maps on openstreetmap of Singapore.  Describe the spatial patterns revealed by the kernel density maps.  Highlight the advantage of kernel density map over point map.
+
+**2. Second-order Spatial Point Patterns Analysis**
+
+With reference to the spatial point patterns observed in (1):
+
++ Formulate the null hypothesis and alternative hypothesis and select the confidence level.  
++ Perform the test by using appropriate Second order spatial point patterns analysis technique.  
++ With reference to the analysis results, draw statistical conclusions. 
+
+### Section B: Impact of COVID-19
+
+In this section, you are required to analyse the impact of COVID-19 on Airbnb business in Singapore by comparing Airbnb listings data on June 2019 and June 2021.
+
+**3. Exploratory Spatial Data Analysis**
+
++ Derive kernel density maps of all Airbnb listings and Airbnb by room type as at June 2019 and June 2021,  
++ Using appropriate tmap functions, display the kernel density maps on openstreetmap of Singapore, 
++ Describe the spatial patterns reveal by the kernel density maps.
+
+**4. Second-order Spatial Point Patterns Analysis**
+
+With reference to the spatial point patterns observed in (3):
+
++ Formulate the null hypothesis and alternative hypothesis and select the confidence level.  
++ Perform the test by using appropriate Second order spatial point patterns analysis technique.  
++ With reference to the analysis results, draw statistical conclusions. 
+
+## The Data
+
+For the purpose of this study, students are expected to extract the necessary data sets the following sources:
+
++ Airbnb listings for June 2019 and June 2021 from [Inside Airbnb](http://insideairbnb.com/get-the-data.html).  
++ Hotels, tourist attractions, MRT services and other appropriate geospatial data sets should be extracted from SLA OneMap Service by using [onemapsgapi](https://cran.r-project.org/web/packages/onemapsgapi/index.html)  
+
+## Grading Criteria 
+
+This exercise will be graded by using the following criteria:
+
+- **Geospatial Data Wrangling (20 marks):**  This is an important aspect of geospatial analytics.  You will be assessed on your ability to employ appropriate R functions from various R packages specifically designed for modern data science such as readr, tidyverse (tidyr, dplyr, ggplot2), sf, sp, and maptools just to mention a few of them, to perform the entire geospatial data wrangling processes. This is not limited to data import, data extraction, data cleaning and data transformation.  Besides assessing your ability to use the R functions, this criterion also includes your ability to clean and derive appropriate variables to meet the analysis need. (**Warning:** All data are like vast grassland full of land mines. Your job is to clear those mines and not to step on them).                                                                         
+
+- **Geospatial Analysis (30 marks):**  In this exercise, you are expected to use the appropriate thematic and analytics mapping techniques and R functions introduced in class to analysis the geospatial data prepared.  You will be assessed on your ability to derive analytical maps by using appropriate rate mapping techniques.                                        
+
+- **Geovisualisation (20 marks):** In this section, you will be assessed on your ability to communicate the complex spatial statistics results in business friendly visual representations.  This course is geospatial centric, hence, it is important for you to demonstrate your competency in using appropriate geovisualisation techniques to reveal and communicate the findings of your analysis.                                                       
+
+- **Reproducibility (20 marks):** This is an important learning outcome of this exercise.  You will be assessed on your ability to provide a comprehensive documentation of the analysis procedures in the form of code chunks of RMarkdown.  It is important to note that it is not enough by merely providing the code chunk without any explanation on the purpose and R function(s) used.  
+
+- **Bonus (10 marks):**  Demonstrate your ability to employ methods beyond what you had learned in class to gain insights from the data.  The methods used must be geospatial in nature.
+  
+## Submission Instructions
+  
+- The write-up of the take-home exercise must be in [**distill**](https://rstudio.github.io/distill/) or [**blogdown**](https://github.com/rstudio/blogdown) format. You are required to publish the write-up on [**Netlify**](https://www.netlify.com/).
+- The R project of the take-home exercise must be pushed onto your [Github](https://github.com/) repository.
+- You are required to provide the links to Netlify service of the take-home exercise write-up and github repository on eLearn.
+
+## Due Date
+
+29th September 2021 (Wednesday), 11.59pm (midnight).
+
+## Reference
+
++ [Sharing economy](https://en.wikipedia.org/wiki/Sharing_economy).
+
++ [Airbnb](https://en.wikipedia.org/wiki/Airbnb). 
+
+
+## Learning from senior
+
+You are advised to review these sample submissions prepared by your seniors.
+
+## Q & A
+
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("_site/th_ex2.html")
+```
+
+
+
