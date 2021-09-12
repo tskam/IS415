@@ -61,7 +61,7 @@ With reference to the spatial point patterns observed in (3):
 
 ## The Data
 
-For the purpose of this study, students are expected to extract the necessary data sets the following sources:
+For the purpose of this study, students are expected to extract the necessary data sets from the following sources:
 
 + Airbnb listings for June 2019 and June 2021 from [Inside Airbnb](http://insideairbnb.com/get-the-data.html).  
 + Hotels, tourist attractions, MRT services and other appropriate geospatial data sets should be extracted from SLA OneMap Service by using [onemapsgapi](https://cran.r-project.org/web/packages/onemapsgapi/index.html)  
