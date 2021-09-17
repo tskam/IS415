@@ -1,0 +1,27 @@
+---
+title: "Hands-on Exercise 6: Spatial Weights and Applications"
+description: In this hands-on exercise, you will learn how to derive spatial weights by using functions provided by spdep package.  You will also learn how to appliy these spatial weights to compute geographically referenced attributes. 
+author:
+  - name: Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice) 
+    url: https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong
+    affiliation: School of Computing and Information Systems, Singapore Management University
+    affiliation_url: https://scis.smu.edu.sg/
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    code_folding: false
+    toc: true
+    toc_depth: 4
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
+
+
+
