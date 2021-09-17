@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Lesson Slides and Hands-on Notes 
 
 + Slides in [html](../lesson/Lesson06/Lesson06-Spatial_Weights.html) and [pdf](../lesson/Lesson06/Lesson06-Spatial_Weights.pdf) formats
-+ Handout of Hands-on Exercise 6 in [html]()
++ Handout of Hands-on Exercise 6 in [html](../Hands-on_Ex/Hands-on_Ex06/Hands-on_Ex06-SWsA.html)
 
 ### Self-reading Before Meet-up
 
