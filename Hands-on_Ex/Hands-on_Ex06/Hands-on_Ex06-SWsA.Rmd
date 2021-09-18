@@ -1,6 +1,6 @@
 ---
 title: "Hands-on Exercise 6: Spatial Weights and Applications"
-description: In this hands-on exercise, you will learn how to derive spatial weights by using functions provided by spdep package.  You will also learn how to appliy these spatial weights to compute geographically referenced attributes. 
+description: In this hands-on exercise, you will learn how to derive spatial weights by using functions provided by spdep package.  You will also learn how to apply these spatial weights to compute spatially lagged values. 
 author:
   - name: Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice) 
     url: https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong
@@ -24,10 +24,10 @@ knitr::opts_chunk$set(echo = TRUE, eval=TRUE, message=FALSE, warning = FALSE, fi
 
 In this hands-on exercise, you will learn how to compute spatial weights using R.  By the end to this hands-on exercise, you will be able to:
 
-- import geospatial data using appropriate function(s) of **rgdal** package,
+- import geospatial data using appropriate function(s) of **sf** package,
 - import csv file using appropriate function of **readr** package,
 - perform relational join using appropriate join function of **dplyr** package,
-- compute spatial weights using appropriate R functions, and
+- compute spatial weights using appropriate functions of **spdep** package, and
 - calculate spatially lag attributes using appropriate functions of **spdep** package.
 
 # The Study Area and Data
@@ -463,7 +463,7 @@ Note: For more effective comparison, it is advicible to use the core tmap mappin
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Hands-on_Ex06-Spatial_Weights_and_Application.html")
+pagedown::chrome_print("Hands-on_Ex06-SWsA.html")
 ```
 
 
