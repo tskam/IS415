@@ -22,9 +22,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-- Lesson slides in [html](lesson/lesson08/lesson08-Geographic_Segmentation.html) and [pdf](lesson/lesson08/lesson08-Geographic_Segmentation.pdf) formats
+- Lesson slides in [html](../lesson/Lesson08/Lesson08-GeoKDD.html) and [pdf](../lesson/Lesson08/Lesson08-GeoKDD.pdf) formats
 
-- [Handout of Hands-on Exercise](Hands-on_Ex\Hands-on_Ex08\Hands-on_Ex08-Geographic_Segmentation.html)
+- [Handout of Hands-on Exercise]()
 
 
 ### Self-reading Before Meet-up

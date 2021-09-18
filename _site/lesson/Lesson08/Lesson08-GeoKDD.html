@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lesson 8: Geographic Segmentation</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Kam Tin Seong Assoc. Professor of Information Systems" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/text.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Lesson 8: Geographic Segmentation
+## Spatially Constrained Clustering Techniques
+### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems
+### School of Information Systems,<br/>Singapore Management University
+### 2020-5-16 (updated: 2021-09-18)
+
+---
+
+
+
+
+
+
+
+# Content
+.large[
+- What is Geographic Segmentation?
+
+- Introducing Cluster Analysis
+
+- Hierarchical Class Analysis
+
+- Cluster Analysis Process
+
+- Spatially Constrained Clustering Techniques
+]
+
+---
+## What is Geographical Segmentation?
+
+.pull-left[
+.large[
+- Geographic segmentation divides a target market by location so marketers can better serve customers in a particular area. 
+
+- This type of market segmentation is based on the geographic units themselves (countries, states, cities, etc.), but also on various geographic factors, such as climate, cultural preferences, populations, and more.]
+
+.small[For business applications of geographic segmentation, refer to https://manychat.com/blog/geographic-segmentation/]
+]
+
+.pull-right[
+![](img/image8-1.jpg)]
+
+---
+## Advantages of Geographic Segmentation
+
+.large[
+- It's an effective approach for companies with large national or international markets because different consumers in different regions have different needs, wants, and cultural characteristics that can be specifically targeted.
+
+- It can also be an effective approach for small businesses with limited budgets. They can focus on their defined area and not expend needless marketing dollars on approaches ill-suited for their target geographic segment.
+
+- It works well in different areas of population density. Consumers in an urban environment often have different needs and wants than people in suburban and rural environments. There are even cultural differences between these three areas. 
+]
+
+---
+## Cluster Analysis
+
+.pull-left[
+- **Cluster analysis** or **Clustering** is the task of grouping a set of an object in such a way object in the same group(called cluster) are more similar( in some sense or another to each other than to those in another group (clusters). 
+
+- In modern machine learning age, it is belong to the family of exploratory data mining.
+
+- It has been used in many fields including Machine Learning, Pattern Recognition, Image Analysis, Information Retrieval, Bioinformatics, Data Compression, and Computer Graphics. 
+]
+
+.pull-right[
+![](img/image8-2.jpg)]
+
+---
+## Typology of Cluster Analysis Techniques
+
+.pull-left[
+- Hierarchical clustering
+    - A set of nested clusters organized as a hierarchical tree.]
+
+.pull-right[
+- Partitioning clustering (also known as k-means)
+    - A division data objects into non-overlapping subsets (clusters) such that each data object is in exactly one subset.]
+
+.center[
+![:scale 80%](img/image8-3.jpg)]
+
+---
+# Hierarchical Clustering
+.large[
+- Produces a set of nested clusters organized as a hierarchical tree.] 
+
+.center[
+![:scale 60%](img/image8-4.jpg)]
+
+---
+## Hierarchical Methods
+
+.pull-left[
+- Agglomerative clustering: It’s also known as **AGNES (Agglomerative Nesting)**. It works in a bottom-up manner. That is, each object is initially considered as a single-element cluster (leaf). At each step of the algorithm, the two clusters that are the most similar are combined into a new bigger cluster (nodes). This procedure is iterated until all points are member of just one single big cluster (root). The result is a tree which can be plotted as a dendrogram.
+- Divisive hierarchical clustering: It’s also known as **DIANA (Divise Analysis)** and it works in a top-down manner. The algorithm is an inverse order of AGNES. It begins with the root, in which all objects are included in a single cluster. At each step of iteration, the most heterogeneous cluster is divided into two. The process is iterated until all objects are in their own cluster.
+]
+
+.pull-right[
+![](img/image8-5.jpg)]
+
+---
+## Basic Agglomerative Hierarchical Clustering Algorithm
+
+![:scale 70%](img/image8-6.jpg)
+
+---
+## What is Proximity Matrix?
+
+.large[
+- Measures of Similarity or Dissimilarity.
+]
+.center[
+![:scale 80%](img/image8-9.jpg)]
+
+---
+## Three commonly used methods to calculate proximity matrix
+
+.center[
+![:scale 50%](img/image8-8.jpg)]
+
+---
+### Proximity matrix: Euclidean distance
+
+![:scale 80%](img/image8-10.jpg)
+
+---
+### Proximity matrix: City-block distance
+
+![:scale 80%](img/image8-11.jpg)
+
+---
+### Proximity matrix: Chebychev distance
+
+![:scale 80%](img/image8-12.jpg)
+
+---
+## Agglomerative Hierarchical Clustering Algorithms
+
+The most common types methods are:
+
+- **Maximum** or **complete linkage** clustering: It computes all pairwise dissimilarities between the elements in cluster 1 and the elements in cluster 2, and considers the largest value (i.e., maximum value) of these dissimilarities as the distance between the two clusters. It tends to produce more compact clusters.
+
+- **Minimum** or **single linkage** clustering: It computes all pairwise dissimilarities between the elements in cluster 1 and the elements in cluster 2, and considers the smallest of these dissimilarities as a linkage criterion. It tends to produce long, “loose” clusters.
+
+- **Mean** or **average linkage** clustering: It computes all pairwise dissimilarities between the elements in cluster 1 and the elements in cluster 2, and considers the average of these dissimilarities as the distance between the two clusters.
+
+- **Centroid** linkage clustering: It computes the dissimilarity between the centroid for cluster 1 (a mean vector of length p variables) and the centroid for cluster 2.
+
+- **Ward’s minimum variance** method: It minimizes the total within-cluster variance. At each step the pair of clusters with minimum between-cluster distance are merged.
+
+---
+### Agglomerative Hierarchical Clustering Algorithms - Dendrograms
+
+.center[
+![:scale 70%](img/image8-13.jpg)]
+
+---
+# Cluster Analysis Process
+
+.center[
+![:scale 40%](img/image8-14.jpg)]
+
+---
+## Data Preparation
+
+.pull-left[
+.large[
+To perform a cluster analysis in R, generally, the data should be prepared as follows:
+- Rows are observations (individuals) and columns are variables.
+- Input variables must be inline with the segmentation task.
+- Ideally, the input variables must be in continuous data type. 
+- Any missing value in the data must be removed or estimated.]]
+
+.pull-right[
+![](img/image8-15.jpg)]
+
+---
+## Univariate EDA
+
+.large[
+Checking the distribution of the cluster variables,
+- if their data ranges diferences are very large.] 
+
+.center[
+![:scale 60%](img/image8-16.jpg)]
+
+---
+### Variable standardisation techniques
+
+![:scale 50%](img/image8-17.jpg)
+
+---
+## Bivariate EDA
+
+.large[
+Checking if the input variables are highly correlated (i.e. correlation coefficient &gt;=0.85).]
+
+.center[
+![:scale 60%](img/image8-18.jpg)]
+
+---
+## Visual interpretation of hierarchical clusters: Dendrogram
+
+.center[
+![:scale 80%](img/image8-19.jpg)]
+
+---
+## Visual interpretation of hierarchical clusters: 
+### Dendrogram with heatmap
+
+.center[
+![:scale 60%](img/image8-28.jpg)]
+
+---
+## Limitation of non-spatial clustering algorithm
+
+.large[
+- Spatially fragmented regions.]
+
+.center[
+![](img/image8-20.jpg)]
+
+---
+# Spatially Constrained Clustering Methods
+
+.large[
+- Grouping contiguous objects that are similar into new aggregate areal units
+    - tension between attribute similarity.
+
+- Grouping of similar observations
+    - locational similarity: group spatially contiguous observations only.]
+    
+---
+## Introducing SKATER method
+
+.large[
+- Spatial Kluster analysis by Tree Edge Removal Assuncao et al (2006) algorithm.
+
+- Construct minimum spanning tree from adjacency graph.
+
+- Prune the tree (cut edges) to achieve maximum internal homogeneity.
+]
+
+.small[Reference: AssunÇão, R. M ; Neves, M. C ; Câmara, G ; Da Costa Freitas, C (2006) "Efficient regionalization techniques for socio-economic geographical units using minimum spanning trees", *International Journal of Geographical Information Science*, Vol.20 (7), p.797-811 (https://web-a-ebscohost-com.libproxy.smu.edu.sg/ehost/detail/detail?vid=0&amp;sid=60b437ef-2130-43e1-808f-e1933ac625a8%40sdc-v-sessmgr03&amp;bdata=JnNpdGU9ZWhvc3QtbGl2ZSZzY29wZT1zaXRl#db=asn&amp;AN=21895448)]
+
+---
+## Contiguity as a Graph
+
+.pull-left[
+.large[
+- Network connectivity based on adjacency between nodes (locations).
+
+- Edge value reflects dissimilarity between nodes.
+
+![:scale 80%](img/image8-21.jpg)
+
+- Objective is to minimize within-group dissimilarity (maximize between-group).
+]]
+
+.pull-right[
+![:scale 80%](img/image8-22.jpg)]
+
+---
+## Minimum Spanning Tree Algorithm (Assuncao et al 2006)
+
+.pull-left[
+.large[
+- Connectivity graph G = (V, L), V vertices (nodes), L edges path
+    - a sequence of nodes connected by edges v1 to vk: (v1,v2), …, (vk-1,vk).
+- Spanning tree 
+    - tree with n nodes of G unique path connecting any two nodes n-1 edges.
+- Minimum spanning tree
+    - spanning tree that minimizes a cost function minimize sum of dissimilarities over all nodes.]]
+
+.pull-right[
+![:scale 80%](img/image8-23.jpg)]
+
+---
+## SKATER - A heuristic for fast tree partitioning
+
+.pull-left[
+![](img/image8-24.jpg)]
+
+.pull-right[
+![:scale 80%](img/image8-25.jpg)]
+
+---
+## Spatially Constrained Clustering using SKATER
+
+.pull-left[
+![](img/image8-26.jpg)]
+
+.pull-right[
+![:scale 70%](img/image8-27.jpg)]
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
