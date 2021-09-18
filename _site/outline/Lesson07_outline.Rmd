@@ -1,7 +1,7 @@
 ---
-title: "Lesson 7: Local Measures of Spatial Autocorrelation"
+title: "Lesson 7: Global and Local Measures of Spatial Autocorrelation"
 description: |
-  Localised Geospatial Statistics are a collection of spatial statistical analysis methods for analysing the location related tendency (clusters or outliers) in the attributes of geographically referenced data (points or areas).
+  In this lesson, you will learn a collection of geospatial statistical methods specially designed for measuring global and local spatial association.
 date: "`r Sys.Date()`"
 output:
   distill::distill_article:
@@ -22,6 +22,9 @@ These spatial statistics are well suited for:
 
 ## Content
 
+- What is Spatial Autocorrelation
+    - Measures of Global Spatial Autocorrelation
+    - Measures of Global High/Low Clustering
 - Introducing Localised Geospatial Analysis
     - Local Indicators of Spatial Association (LISA)
 - Cluster and Outlier Analysis
@@ -34,19 +37,21 @@ These spatial statistics are well suited for:
 
 ## Lesson Slides and Hands-on Notes 
 
-- Lesson slides in [html](lesson/lesson07/lesson07-Localised_Geospatial_Statistics.html) and [pdf](lesson/lesson08/lesson08-Localised_Geospatial_Statistics.pdf) formats
+- Lesson slides in [html](../lesson/Lesson07/Lesson07-SpaAuto.html) and [pdf](../lesson/Lesson07/Lesson07-SpaAuto.pdf) formats
 
-- [Handout of Hands-on Exercise](Hands-on_Ex\Hands-on_Ex07\Hands-on_Ex07-Spatial_Weights_and_Application.html)
+- [Handout of Hands-on Exercise]()
 
 ## Self-reading Before Meet-up
 
 To read before class:
-
+- Moran, P. A. P. (1950). ["Notes on Continuous Stochastic Phenomena"](https://www-jstor-org.libproxy.smu.edu.sg/stable/2332142?seq=1#metadata_info_tab_contents). Biometrika. 37 (1): 17–23.
+- Geary, R.C. (1954) ["The Contiguity Ratio and Statistical Mapping"](https://www-jstor-org.libproxy.smu.edu.sg/stable/2986645?sid=primo&origin=crossref&seq=1#metadata_info_tab_contents). *The Incorporated Statistician*, Vol. 5, No. 3, pp. 115-127. 
+- Getis, A., & Ord, K. (1992). ["The Analysis of Spatial Association by Use of Distance Statistics"](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1538-4632.1992.tb00261.x). *Geographical Analysis*, 24, 189–206.
 - Anselin, L. (1995). "Local indicators of spatial association – LISA". Geographical Analysis, 27(4): 93-115. 
 - Getis, A. and Ord, J.K. (1992) “The analysis of spatial association by use of distance statistics”. Geographical Analysis, 24(3): 189-206.
 - Ord, J.K. and Getis, A. (2010) “Local spatial autocorrelation statistics: Distributional issues and an application”. Geographical Analysis, 27(4): 286-306.
 
-These three articles are classics of Local Spatial Statistics.  Be warned: All classic papers assume that the readers are academic researchers.
+These five papers are classics of Global and Local Spatial Autocorrelation. Be warned: All classic papers assume that the readers are academic researchers.
 
 ## References
 
