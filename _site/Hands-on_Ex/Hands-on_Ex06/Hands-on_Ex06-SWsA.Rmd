@@ -28,7 +28,7 @@ In this hands-on exercise, you will learn how to compute spatial weights using R
 - import csv file using appropriate function of **readr** package,
 - perform relational join using appropriate join function of **dplyr** package,
 - compute spatial weights using appropriate functions of **spdep** package, and
-- calculate spatially lag attributes using appropriate functions of **spdep** package.
+- calculate spatially lagged variables using appropriate functions of **spdep** package.
 
 # The Study Area and Data
 
