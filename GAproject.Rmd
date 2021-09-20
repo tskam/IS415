@@ -92,7 +92,7 @@ The research paper should include an abstract of **not more than 300 words**.  T
 
 - [DIVAD: A Dynamic and Interactive Visual Analytical Dashboard for Exploring and Analyzing Transport Data](https://ink.library.smu.edu.sg/sis_research/1761/)
 - [MEPHAS: an interactive graphical user interface for medical and pharmaceutical statistical analysis with R and Shiny](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-3494-x) 
-- [SpatialEpiApp: A Shiny Web Application for the Analysis of Spatial and Spatio-Temporal Disease Data](https://iopscience.iop.org/article/10.1088/1755-1315/20/1/012014) 
+- [SpatialEpiApp: A Shiny Web Application for the Analysis of Spatial and Spatio-Temporal Disease Data](https://cran.rstudio.com/web/packages/SpatialEpiApp/vignettes/manual.pdf) 
 - [Developing web-based data analysis tools for precision farming using R and Shiny](https://cran.r-project.org/web/packages/SpatialEpiApp/vignettes/manual.pdf)
 - [EHDViz: clinical dashboard development using open-source technologies](https://www.ncbi.nlm.nih.gov/pubmed/27013597)
 - [Health Equity Assessment Toolkit](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-016-0229-9)  
