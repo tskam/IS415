@@ -24,7 +24,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Lesson slides in [html](../lesson/Lesson05/Lesson05-NetSPPA.html) and [pdf](../lesson/lesson05/Lesson05-NetSPPA.pdf) formats
 
-- Handout of Hands-on Exercise 5 in [html](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.html) and [pdf](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.pdf) formats.
+- Handout of Hands-on Exercise 5: NetSPPA in [html](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.html) and [pdf](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-NetSPPA.pdf) formats.
+
+- Handout of Hands-on Exercise 5: MarkedSPPA in [html](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-MarkedSPPA.html) and [pdf](../Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05-MarkedSPPA.pdf) formats.
 
 ### Self-reading Before Meet-up
 
