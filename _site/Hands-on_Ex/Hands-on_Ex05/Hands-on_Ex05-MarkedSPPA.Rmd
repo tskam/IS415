@@ -245,7 +245,7 @@ The output reveals that childcare centres operate by PT has the highest density 
 
 ### Second-order Multi-tpye Point Patterns Analysis: Cross K-Function
 
-Now, we will analyse the relationship of ST (i.e. PA runs childcare centres) and NT (i.e. NTUC runs childcare centres) by using [*Kcross()*](https://rdrr.io/cran/spatstat/man/Kcross.html) of **spatstat** package. 
+Now, we will analyse the relationship of PT and ST by using [*Kcross()*](https://rdrr.io/cran/spatstat/man/Kcross.html) of **spatstat** package. 
 
 ```{r eval=TRUE}
 childcare_Kcross <- Kcross(childcare_jw_ppp, 
@@ -304,4 +304,8 @@ plot(childcare_Lcross.csr, . -r ~ r, xlab="distance(m)", xlim=c(0,500))
 >DIY: Intepret the analysis result and draw conclusion with reference to the statistical testing result.
 
 
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("Hands-on_Ex05-MarkedSPPA.html")
+```
 
