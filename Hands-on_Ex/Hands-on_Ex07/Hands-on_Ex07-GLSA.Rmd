@@ -153,7 +153,11 @@ rswm_q <- nb2listw(wm_q, style="W", zero.policy = TRUE)
 rswm_q
 ```
 
-The zero.policy=TRUE option allows for lists of non-neighbors. This should be used with caution since the user may not be aware of missing neighbors in their dataset however, a zero.policy of FALSE would return an error.
+The input of *nb2listw()* must be an object of class **nb**.  The syntax of the function has two major arguments, namely style and zero.poly.
+
+- *style* can take values "W", "B", "C", "U", "minmax" and "S".  B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity), while S is the variance-stabilizing coding scheme proposed by Tiefelsdorf et al. 1999, p. 167-168 (sums over all links to n).
+
+- If *zero policy* is set to TRUE, weights vectors of zero length are inserted for regions without neighbour in the neighbours list. These will in turn generate lag values of zero, equivalent to the sum of products of the zero row t(rep(0, length=length(neighbours))) %*% x, for arbitrary numerical vector x of length length(neighbours). The spatially lagged value of x for the zero-neighbour region will then be zero, which may (or may not) be a sensible choice.
 
 ## Global Spatial Autocorrelation: Moran's I 
 
@@ -185,6 +189,8 @@ bperm
 ### Visualising Monte Carlo Moran's I
 
 It is always a good practice for us the examine the simulated Moran's I test statistics in greater detail.  This can be achieved by plotting the distribution of the statistical values as a histogram by using the code chunk below.
+
+In the code chunk below [*histo()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) and [*abline()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/abline) of R Graphics are used.
 
 ```{r}
 mean(bperm$res[1:999])
@@ -244,11 +250,17 @@ Spatial correlograms are great to examine patterns of spatial autocorrelation in
 
 ### Compute Moran's I correlogram
 
-In the code chunk below, *sp.correlogram()* of **spdep** package is used to compute a 6-lag spatial correlogram of GDPPC.  The global spatial autocorrelation used in Moran's I.  The **plot()** of base Graph is then used to plot the output.    
+In the code chunk below, [*sp.correlogram()*](https://r-spatial.github.io/spdep/reference/sp.correlogram.html) of **spdep** package is used to compute a 6-lag spatial correlogram of GDPPC.  The global spatial autocorrelation used in Moran's I.  The **plot()** of base Graph is then used to plot the output.    
 
 ```{r}
 MI_corr <- sp.correlogram(wm_q, hunan$GDPPC, order=6, method="I", style="B")
 plot(MI_corr)
+```
+
+By plotting the output might not allow us to provide complete interpretation.  This is because not all autocorrelation values are statistically significant.  Hence, it is important for us to examine the full analysis report by printing out the analysis results as in the code chunk below.
+
+```{r}
+print(MI_corr)
 ```
 
 >Question: What statistical observation can you draw from the plot above?
@@ -262,6 +274,11 @@ GC_corr <- sp.correlogram(wm_q, hunan$GDPPC, order=6, method="C", style="W")
 plot(GC_corr)
 ```
 
+Similar to the previous step, we will print out the analysis report by using the code chunk below.
+
+```{r}
+print(GC_corr)
+```
 # Cluster and Outlier Analysis
 
 Local Indicators of Spatial Association or LISA are statistics that evaluate the existence of clusters in the spatial arrangement of a given variable. For instance if we are studying cancer rates among census tracts in a given city local clusters in the rates mean that there are areas that have higher or lower rates than is to be expected by chance alone; that is, the values occurring are above or below those of a random distribution in space.
@@ -365,7 +382,7 @@ The Moran scatterplot is an illustration of the relationship between the values 
 
 The code chunk below plots the Moran scatterplot of GDPPC 2012 by using [*moran.plot()*](https://r-spatial.github.io/spdep/reference/moran.plot.html) of **spdep**.
 
-```{r}
+```{r fig.width=6, fig.height=6}
 nci <- moran.plot(hunan$GDPPC, rswm_q,
                   labels=as.character(hunan$County), 
                   xlab="GDPPC 2012", 
@@ -376,7 +393,7 @@ Notice that the plot is split in 4 quadrants.  The top right corner belongs to a
 
 ### Plotting Moran scatterplot with standardised  variable
 
-First we will use [*scale()*](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/scale) to centers and scales the variable.  here centering is done by subtracting the mean (omitting NAs) the corresponding columns, and scaling is done by dividing the (centered) variable by their standard deviations. 
+First we will use [*scale()*](https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/scale) to centers and scales the variable.  Here centering is done by subtracting the mean (omitting NAs) the corresponding columns, and scaling is done by dividing the (centered) variable by their standard deviations. 
 
 ```{r}
 hunan$Z.GDPPC <- scale(hunan$GDPPC) %>% as.vector 
@@ -386,7 +403,7 @@ The [*as.vector()*](https://www.rdocumentation.org/packages/pbdDMAT/versions/0.5
 
 Now, we are ready to plot the Moran scatterplot again by using the code chunk below.
 
-```{r}
+```{r fig.width=6, fig.height=6}
 nci2 <- moran.plot(hunan$Z.GDPPC, rswm_q,
                    labels=as.character(hunan$County),
                    xlab="z-GDPPC 2012", 
@@ -560,23 +577,21 @@ The summary report shows that the largest first nearest neighbour distance is 61
 
 ### Computing fixed distance weight matrix
 
-Now, we will compute the distance weight matrix by using *dnearneigh()* as shown in the code chunk below.
+Now, we will compute the distance weight matrix by using [*dnearneigh()*](https://r-spatial.github.io/spdep/reference/dnearneigh.html) as shown in the code chunk below.
 
 ```{r}
 wm_d62 <- dnearneigh(coords, 0, 62, longlat = TRUE)
 wm_d62
 ```
 
-Next, *nb2listw()* is used to convert the nb object into spatial weights object.  The input of *nb2listw()* must be an object of class **nb**.  The syntax of the function has two major arguments, namely style and zero.poly.
-
-- *style* can take values "W", "B", "C", "U", "minmax" and "S".  B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity), while S is the variance-stabilizing coding scheme proposed by Tiefelsdorf et al. 1999, p. 167-168 (sums over all links to n).
-
-- If *zero policy* is set to TRUE, weights vectors of zero length are inserted for regions without neighbour in the neighbours list. These will in turn generate lag values of zero, equivalent to the sum of products of the zero row t(rep(0, length=length(neighbours))) %*% x, for arbitraty numerical vector x of length length(neighbours). The spatially lagged value of x for the zero-neighbour region will then be zero, which may (or may not) be a sensible choice.
+Next, *nb2listw()* is used to convert the nb object into spatial weights object.  
 
 ```{r}
 wm62_lw <- nb2listw(wm_d62, style = 'B')
 summary(wm62_lw)
 ```
+
+The output spatial weights object is called `wm62_lw`.
 
 ### Computing adaptive distance weight matrix
 
