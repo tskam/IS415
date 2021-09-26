@@ -108,12 +108,21 @@ hunan <- left_join(hunan,hunan2012)
 Now, we are going to prepare a basemap and a choropleth map showing the distribution of GDPPC 2012 by using *qtm()* of **tmap** package.
 
 ```{r fig.width=12, fig.height=8}
-basemap <- tm_shape(hunan) +
-  tm_polygons() +
-  tm_text("NAME_3", size=0.5)
+equal <- tm_shape(hunan) +
+  tm_fill("GDPPC",
+          n = 5,
+          style = "equal") +
+  tm_borders(alpha = 0.5) +
+  tm_layout(main.title = "Equal interval classification")
 
-gdppc <- qtm(hunan, "GDPPC")
-tmap_arrange(basemap, gdppc, asp=1, ncol=2)
+quantile <- tm_shape(hunan) +
+  tm_fill("GDPPC",
+          n = 5,
+          style = "quantile") +
+  tm_borders(alpha = 0.5) +
+  tm_layout(main.title = "Equal quantile classification")
+
+tmap_arrange(equal, quantile, asp=1, ncol=2)
 ```
 
 # Global Spatial Autocorrelation
