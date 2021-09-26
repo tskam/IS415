@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Lesson 7: Global and Local Measures of Spatial Autocorrelation
 ### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems (Practice)
 ### School of Computing and Information Systems,<br/>Singapore Management University
-### 2020-5-5 (updated: 2021-09-18)
+### 2020-5-5 (updated: 2021-09-26)
 
 ---
 
@@ -258,7 +258,7 @@ Source: Getis, A., &amp; Ord, K. (1992). ["The Analysis of Spatial Association b
 ]
 
 ---
-## Localised Geospatial Statistics
+## Local Spatial Autocorrelation Statistics
 
 .large[
 - A collection of geospatial statistical analysis methods for analysing the **location related tendency** (clusters or outliers) in the attributes of **geographically referenced data** (points or areas).
@@ -285,20 +285,6 @@ Source: Getis, A., &amp; Ord, K. (1992). ["The Analysis of Spatial Association b
     - the LISA for each observation gives an indication of the extent of significant spatial clustering of similar values around that observation;
     
     - the sum of LISAs for all observations is proportional to a global indicator of spatial association.
-]
-
----
-## What is geographically referenced attributes?
-
-.large[
-- Attributes that are recorded based on a geographical entity such as postal code, postal area, census block, district, state, province, and country 
-    - informal geographical entities includes regular grids or hexagons.   
-
-- These geographical entities can be in either point or polygon features.
-
-- The attributes can be in absolute counts (i.e. number of people age 65 and above) or rates (i.e. proportion of population age 65 and above).
-
-- It is univariate in nature. 
 ]
 
 ---
@@ -373,15 +359,8 @@ Source: Getis, A., &amp; Ord, K. (1992). ["The Analysis of Spatial Association b
 ## Detecting hot and cold spot areas
 .large[
 - Given a set of geospatial features (i.e. points or polygons) and an analysis field, the spatial statistics tell you where features with either high (i.e. hot spots) or low values (cold spots) cluster spatially. 
-
 - The spatial statistic used is called Getis-Ord Gi* statistic (pronounced G-i-star). 
-]
-
----
-## Getis-Ord Gi*
-
-.large[
-Getis and Ord (1992) define the local G and G∗ statistics for region i (i=1,···,n) as]
+- Getis and Ord (1992) define the local G and G∗ statistics for region i (i=1,···,n) as]
 
 .center[
 ![:scale 60%](img/image7-18.jpg)]
