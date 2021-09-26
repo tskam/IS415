@@ -1,0 +1,2582 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation</title>
+
+  <meta property="description" itemprop="description" content="In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-09-26"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-09-26"/>
+  <meta name="article:author" content="Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice)"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation"/>
+  <meta property="twitter:description" content="In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation"]},{"type":"character","attributes":{},"value":["In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice)"]},{"type":"character","attributes":{},"value":["https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong"]},{"type":"character","attributes":{},"value":["School of Computing and Information Systems, Singapore Management University"]},{"type":"character","attributes":{},"value":["https://scis.smu.edu.sg/"]}]}]},{"type":"character","attributes":{},"value":["2021-09-26"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["code_folding","toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["data/aspatial/Dictionary.xlsx","data/aspatial/Hunan_2012.csv","data/geospatial/Hunan.dbf","data/geospatial/Hunan.prj","data/geospatial/Hunan.qpj","data/geospatial/Hunan.shp","data/geospatial/Hunan.shx","Hands-on_Ex07-GLSA.pdf","Hands-on_Ex07-GLSA_files/anchor-4.2.2/anchor.min.js","Hands-on_Ex07-GLSA_files/bowser-1.9.3/bowser.min.js","Hands-on_Ex07-GLSA_files/distill-2.2.21/template.v2.js","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-10-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-13-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-14-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-15-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-19-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-20-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-21-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-22-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-24-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-32-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-33-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-42-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-43-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-44-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-46-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-46-2.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-47-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-48-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-5-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-51-1.png","Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-52-1.png","Hands-on_Ex07-GLSA_files/header-attrs-2.10/header-attrs.js","Hands-on_Ex07-GLSA_files/jquery-1.11.3/jquery.min.js","Hands-on_Ex07-GLSA_files/popper-2.6.0/popper.min.js","Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy-bundle.umd.min.js","Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy-light-border.css","Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy.css","Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy.umd.min.js","Hands-on_Ex07-GLSA_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="Hands-on_Ex07-GLSA_files/header-attrs-2.10/header-attrs.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/popper-2.6.0/popper.min.js"></script>
+  <link href="Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="Hands-on_Ex07-GLSA_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="Hands-on_Ex07-GLSA_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation","description":"In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package.","authors":[{"author":"Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice)","authorURL":"https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong","affiliation":"School of Computing and Information Systems, Singapore Management University","affiliationURL":"https://scis.smu.edu.sg/","orcidID":""}],"publishedDate":"2021-09-26T00:00:00.000+08:00","citationText":"(Practice), 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Hands-on Exercise 7: Global and Local Measures of Spatial Autocorrelation</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p>In this hands-on exercise, you will learn how to compute Global and Local Measures of Spatial Autocorrelation by using spdep package.</p>
+</div>
+
+<div class="d-byline">
+  Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice) <a href="https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong" class="uri">https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong</a> (School of Computing and Information Systems, Singapore Management University)<a href="https://scis.smu.edu.sg/" class="uri">https://scis.smu.edu.sg/</a>
+  
+<br/>2021-09-26
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#the-analytical-question">The analytical question</a></li>
+<li><a href="#the-study-area-and-data">The Study Area and Data</a></li>
+<li><a href="#setting-the-analytical-toolls">Setting the Analytical Toolls</a></li>
+</ul></li>
+<li><a href="#getting-the-data-into-r-environment">Getting the Data Into R Environment</a>
+<ul>
+<li><a href="#import-shapefile-into-r-environment">Import shapefile into r environment</a></li>
+<li><a href="#import-csv-file-into-r-environment">Import csv file into r environment</a></li>
+<li><a href="#performing-relational-join">Performing relational join</a></li>
+<li><a href="#visualising-regional-development-indicator">Visualising Regional Development Indicator</a></li>
+</ul></li>
+<li><a href="#global-spatial-autocorrelation">Global Spatial Autocorrelation</a>
+<ul>
+<li><a href="#computing-contiguity-spatial-weights">Computing Contiguity Spatial Weights</a>
+<ul>
+<li><a href="#row-standardised-weights-matrix">Row-standardised weights matrix</a></li>
+</ul></li>
+<li><a href="#global-spatial-autocorrelation-morans-i">Global Spatial Autocorrelation: Moran’s I</a>
+<ul>
+<li><a href="#marons-i-test">Maron’s I test</a></li>
+<li><a href="#computing-monte-carlo-morans-i">Computing Monte Carlo Moran’s I</a></li>
+<li><a href="#visualising-monte-carlo-morans-i">Visualising Monte Carlo Moran’s I</a></li>
+</ul></li>
+<li><a href="#global-spatial-autocorrelation-gearys">Global Spatial Autocorrelation: Geary’s</a>
+<ul>
+<li><a href="#gearys-c-test">Geary’s C test</a></li>
+<li><a href="#computing-monte-carlo-gearys-c">Computing Monte Carlo Geary’s C</a></li>
+<li><a href="#visualising-the-monte-carlo-gearys-c">Visualising the Monte Carlo Geary’s C</a></li>
+</ul></li>
+<li><a href="#spatial-correlogram">Spatial Correlogram</a>
+<ul>
+<li><a href="#compute-morans-i-correlogram">Compute Moran’s I correlogram</a></li>
+<li><a href="#compute-gearys-c-correlogram-and-plot">Compute Geary’s C correlogram and plot</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#cluster-and-outlier-analysis">Cluster and Outlier Analysis</a>
+<ul>
+<li><a href="#computing-local-morans-i">Computing local Moran’s I</a></li>
+<li><a href="#mapping-the-local-morans-i">Mapping the local Moran’s I</a>
+<ul>
+<li><a href="#mapping-local-morans-i-values">Mapping local Moran’s I values</a></li>
+<li><a href="#mapping-local-morans-i-p-values">Mapping local Moran’s I p-values</a></li>
+<li><a href="#mapping-both-local-morans-i-values-and-p-values">Mapping both local Moran’s I values and p-values</a></li>
+</ul></li>
+<li><a href="#creating-a-lisa-cluster-map">Creating a LISA Cluster Map</a>
+<ul>
+<li><a href="#plotting-moran-scatterplot">Plotting Moran scatterplot</a></li>
+<li><a href="#plotting-moran-scatterplot-with-standardised-variable">Plotting Moran scatterplot with standardised variable</a></li>
+<li><a href="#preparing-lisa-map-classes">Preparing LISA map classes</a></li>
+<li><a href="#plotting-lisa-map">Plotting LISA map</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#hot-spot-and-cold-spot-area-analysis">Hot Spot and Cold Spot Area Analysis</a>
+<ul>
+<li><a href="#getis-and-ords-g-statistics">Getis and Ord’s G-Statistics</a></li>
+<li><a href="#deriving-distance-based-weight-matrix">Deriving distance-based weight matrix</a>
+<ul>
+<li><a href="#deriving-the-centroid">Deriving the centroid</a></li>
+<li><a href="#determine-the-cut-off-distance">Determine the cut-off distance</a></li>
+<li><a href="#computing-fixed-distance-weight-matrix">Computing fixed distance weight matrix</a></li>
+<li><a href="#computing-adaptive-distance-weight-matrix">Computing adaptive distance weight matrix</a></li>
+</ul></li>
+<li><a href="#computing-gi-statistics">Computing Gi statistics</a>
+<ul>
+<li><a href="#gi-statistics-using-fixed-distance">Gi statistics using fixed distance</a></li>
+<li><a href="#mapping-gi-values-with-fixed-distance-weights">Mapping Gi values with fixed distance weights</a></li>
+<li><a href="#gi-statistics-using-adaptive-distance">Gi statistics using adaptive distance</a></li>
+<li><a href="#mapping-gi-values-with-adaptive-distance-weights">Mapping Gi values with adaptive distance weights</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="overview">Overview</h1>
+<p>In this hands-on exercise, you will learn how to compute Global and Local Measure of Spatial Autocorrelation (GLSA) by using <strong>spdep</strong> package. By the end to this hands-on exercise, you will be able to:</p>
+<ul>
+<li>import geospatial data using appropriate function(s) of <strong>sf</strong> package,</li>
+<li>import csv file using appropriate function of <strong>readr</strong> package,</li>
+<li>perform relational join using appropriate join function of <strong>dplyr</strong> package,</li>
+<li>compute Global Spatial Autocorrelation (GSA) statistics by using appropriate functions of <strong>spdep</strong> package,
+<ul>
+<li>plot Moran scatterplot,</li>
+<li>compute and plot spatial correlogram using appropriate function of <strong>spdep</strong> package.</li>
+</ul></li>
+<li>compute Local Indicator of Spatial Association (LISA) statistics for detecting clusters and outliers by using appropriate functions <strong>spdep</strong> package;</li>
+<li>compute Getis-Ord’s Gi-statistics for detecting hot spot or/and cold spot area by using appropriate functions of <strong>spdep</strong> package; and</li>
+<li>to visualise the analysis output by using <strong>tmap</strong> package.</li>
+</ul>
+<h1 id="getting-started">Getting Started</h1>
+<h2 id="the-analytical-question">The analytical question</h2>
+<p>In spatial policy, one of the main development objective of the local govenment and planners is to ensure equal distribution of development in the province. Our task in this study, hence, is to apply appropriate spatial statistical methods to discover if development are even distributed geographically. If the answer is <strong>No</strong>. Then, our next question will be “is there sign of spatial clustering?”. And, if the answer for this question is yes, then our next question will be “where are these clusters?”</p>
+<p>In this case study, we are interested to examine the spatial pattern of a selected development indicator (i.e. GDP per capita) of Hunan Provice, People Republic of China.(<a href="https://en.wikipedia.org/wiki/Hunan" class="uri">https://en.wikipedia.org/wiki/Hunan</a>)</p>
+<h2 id="the-study-area-and-data">The Study Area and Data</h2>
+<p>Two data sets will be used in this hands-on exercise, they are:</p>
+<ul>
+<li>Hunan province administrative boundary layer at county level. This is a geospatial data set in ESRI shapefile format.</li>
+<li>Hunan_2012.csv: This csv file contains selected Hunan’s local development indicators in 2012.</li>
+</ul>
+<h2 id="setting-the-analytical-toolls">Setting the Analytical Toolls</h2>
+<p>Before we get started, we need to ensure that <strong>spdep</strong>, <strong>sf</strong>, <strong>tmap</strong> and <strong>tidyverse</strong> packages of R are currently installed in your R.</p>
+<ul>
+<li>sf is use for importing and handling geospatial data in R,</li>
+<li>tidyverse is mainly use for wrangling attribute data in R,</li>
+<li>spdep will be used to compute spatial weights, global and local spatial autocorrelation statistics, and</li>
+<li>tmap will be used to prepare cartographic quality chropleth map.</li>
+</ul>
+<p>The code chunk below is used to perform the following tasks:</p>
+<ul>
+<li>creating a package list containing the necessary R packages,</li>
+<li>checking if the R packages in the package list have been installed in R,
+<ul>
+<li>if they have yet to be installed, RStudio will installed the missing packages,</li>
+</ul></li>
+<li>launching the packages into R environment.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>packages</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'sf'</span>, <span class='st'>'spdep'</span>, <span class='st'>'tmap'</span>, <span class='st'>'tidyverse'</span><span class='op'>)</span>
+<span class='kw'>for</span> <span class='op'>(</span><span class='va'>p</span> <span class='kw'>in</span> <span class='va'>packages</span><span class='op'>)</span><span class='op'>{</span>
+  <span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>p</span>, character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
+    <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>p</span>,character.only <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<h1 id="getting-the-data-into-r-environment">Getting the Data Into R Environment</h1>
+<p>In this section, you will learn how to bring a geospatial data and its associated attribute table into R environment. The geospatial data is in ESRI shapefile format and the attribute table is in csv fomat.</p>
+<h2 id="import-shapefile-into-r-environment">Import shapefile into r environment</h2>
+<p>The code chunk below uses <a href="https://r-spatial.github.io/sf/reference/st_read.html"><em>st_read()</em></a> of <strong>sf</strong> package to import Hunan shapefile into R. The imported shapefile will be <strong>simple features</strong> Object of <strong>sf</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan</span> <span class='op'>&lt;-</span> <span class='fu'>st_read</span><span class='op'>(</span>dsn <span class='op'>=</span> <span class='st'>"data/geospatial"</span>, 
+                 layer <span class='op'>=</span> <span class='st'>"Hunan"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Reading layer `Hunan&#39; from data source 
+  `D:\tskam\IS415\Hands-on_Ex\Hands-on_Ex07\data\geospatial&#39; 
+  using driver `ESRI Shapefile&#39;
+Simple feature collection with 88 features and 7 fields
+Geometry type: POLYGON
+Dimension:     XY
+Bounding box:  xmin: 108.7831 ymin: 24.6342 xmax: 114.2544 ymax: 30.12812
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<h2 id="import-csv-file-into-r-environment">Import csv file into r environment</h2>
+<p>Next, we will import <em>Hunan_2012.csv</em> into R by using <em>read_csv()</em> of <strong>readr</strong> package. The output is R data frame class.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan2012</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/aspatial/Hunan_2012.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="performing-relational-join">Performing relational join</h2>
+<p>The code chunk below will be used to update the attribute table of <em>hunan</em>’s SpatialPolygonsDataFrame with the attribute fields of <em>hunan2012</em> dataframe. This is performed by using <em>left_join()</em> of <strong>dplyr</strong> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan</span> <span class='op'>&lt;-</span> <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>hunan</span>,<span class='va'>hunan2012</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="visualising-regional-development-indicator">Visualising Regional Development Indicator</h2>
+<p>Now, we are going to prepare a basemap and a choropleth map showing the distribution of GDPPC 2012 by using <em>qtm()</em> of <strong>tmap</strong> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>basemap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_polygons</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_text</span><span class='op'>(</span><span class='st'>"NAME_3"</span>, size<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='va'>gdppc</span> <span class='op'>&lt;-</span> <span class='fu'>qtm</span><span class='op'>(</span><span class='va'>hunan</span>, <span class='st'>"GDPPC"</span><span class='op'>)</span>
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>basemap</span>, <span class='va'>gdppc</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-5-1.png" width="1152" /></p>
+</div>
+<h1 id="global-spatial-autocorrelation">Global Spatial Autocorrelation</h1>
+<p>In this section, you will learn how to compute global spatial autocorrelation statistics and to perform spatial complete randomness test for global spatial autocorrelation.</p>
+<h2 id="computing-contiguity-spatial-weights">Computing Contiguity Spatial Weights</h2>
+<p>Before we can compute the global spatial autocorrelation statistics, we need to construct a spatial weights of the study area. The spatial weights is used to define the neighbourhood relationships between the geographical units (i.e. county) in the study area.</p>
+<p>In the code chunk below, <a href="https://r-spatial.github.io/spdep/reference/poly2nb.html"><em>poly2nb()</em></a> of <strong>spdep</strong> package is used to compute contiguity weight matrices for the study area. This function builds a neighbours list based on regions with contiguous boundaries. If you look at the documentation you will see that you can pass a “queen” argument that takes TRUE or FALSE as options. If you do not specify this argument the default is set to TRUE, that is, if you don’t specify queen = FALSE this function will return a list of first order neighbours using the Queen criteria.</p>
+<p>More specifically, the code chunk below is used to compute Queen contiguity weight matrix.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wm_q</span> <span class='op'>&lt;-</span> <span class='fu'>poly2nb</span><span class='op'>(</span><span class='va'>hunan</span>, queen<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>wm_q</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 448 
+Percentage nonzero weights: 5.785124 
+Average number of links: 5.090909 
+Link number distribution:
+
+ 1  2  3  4  5  6  7  8  9 11 
+ 2  2 12 16 24 14 11  4  2  1 
+2 least connected regions:
+30 65 with 1 link
+1 most connected region:
+85 with 11 links</code></pre>
+</div>
+<p>The summary report above shows that there are 88 area units in Hunan. The most connected area unit has 11 neighbours. There are two area units with only one heighbours.</p>
+<h3 id="row-standardised-weights-matrix">Row-standardised weights matrix</h3>
+<p>Next, we need to assign weights to each neighboring polygon. In our case, each neighboring polygon will be assigned equal weight (style=“W”). This is accomplished by assigning the fraction 1/(#ofneighbors) to each neighboring county then summing the weighted income values. While this is the most intuitive way to summaries the neighbors’ values it has one drawback in that polygons along the edges of the study area will base their lagged values on fewer polygons thus potentially over- or under-estimating the true nature of the spatial autocorrelation in the data. For this example, we’ll stick with the style=“W” option for simplicity’s sake but note that other more robust options are available, notably style=“B”.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rswm_q</span> <span class='op'>&lt;-</span> <span class='fu'>nb2listw</span><span class='op'>(</span><span class='va'>wm_q</span>, style<span class='op'>=</span><span class='st'>"W"</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>rswm_q</span>
+</code></pre>
+</div>
+<pre><code>Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 448 
+Percentage nonzero weights: 5.785124 
+Average number of links: 5.090909 
+
+Weights style: W 
+Weights constants summary:
+   n   nn S0       S1       S2
+W 88 7744 88 37.86334 365.9147</code></pre>
+</div>
+<p>The zero.policy=TRUE option allows for lists of non-neighbors. This should be used with caution since the user may not be aware of missing neighbors in their dataset however, a zero.policy of FALSE would return an error.</p>
+<h2 id="global-spatial-autocorrelation-morans-i">Global Spatial Autocorrelation: Moran’s I</h2>
+<p>In this section, you will learn how to perform Moran’s I statistics testing by using <a href="https://r-spatial.github.io/spdep/reference/moran.test.html"><em>moran.test()</em></a> of <strong>spdep</strong>.</p>
+<h3 id="marons-i-test">Maron’s I test</h3>
+<p>The code chunk below performs Moran’s I statistical testing using <a href="https://r-spatial.github.io/spdep/reference/moran.test.html"><em>moran.test()</em></a> of <strong>spdep</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>moran.test</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Moran I test under randomisation
+
+data:  hunan$GDPPC  
+weights: rswm_q    
+
+Moran I statistic standard deviate = 4.7351, p-value =
+1.095e-06
+alternative hypothesis: greater
+sample estimates:
+Moran I statistic       Expectation          Variance 
+      0.300749970      -0.011494253       0.004348351 </code></pre>
+</div>
+<blockquote>
+<p>Question: What statistical conclusion can you draw from the output above?</p>
+</blockquote>
+<h3 id="computing-monte-carlo-morans-i">Computing Monte Carlo Moran’s I</h3>
+<p>The code chunk below performs permutation test for Moran’s I statistic by using <a href="https://r-spatial.github.io/spdep/reference/moran.mc.html"><em>moran.mc()</em></a> of <strong>spdep</strong>. A total of 1000 simulation will be performed.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1234</span><span class='op'>)</span>
+<span class='va'>bperm</span><span class='op'>=</span> <span class='fu'>moran.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, nsim<span class='op'>=</span><span class='fl'>999</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
+<span class='va'>bperm</span>
+</code></pre>
+</div>
+<pre><code>
+    Monte-Carlo simulation of Moran I
+
+data:  hunan$GDPPC 
+weights: rswm_q  
+number of simulations + 1: 1000 
+
+statistic = 0.30075, observed rank = 1000, p-value = 0.001
+alternative hypothesis: greater</code></pre>
+</div>
+<blockquote>
+<p>Question: What statistical conclustion can you draw fro mthe output above?</p>
+</blockquote>
+<h3 id="visualising-monte-carlo-morans-i">Visualising Monte Carlo Moran’s I</h3>
+<p>It is always a good practice for us the examine the simulated Moran’s I test statistics in greater detail. This can be achieved by plotting the distribution of the statistical values as a histogram by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] -0.01504572</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.004371574</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.18339 -0.06168 -0.02125 -0.01505  0.02611  0.27593 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span>, freq<span class='op'>=</span><span class='cn'>TRUE</span>, breaks<span class='op'>=</span><span class='fl'>20</span>, xlab<span class='op'>=</span><span class='st'>"Simulated Moran's I"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fl'>0</span>, col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observation can you draw fro mthe output above?</p>
+</blockquote>
+<blockquote>
+<p>Challenge: Instead of using Base Graph to plot the values, plot the values by using ggplot2 package.</p>
+</blockquote>
+<h2 id="global-spatial-autocorrelation-gearys">Global Spatial Autocorrelation: Geary’s</h2>
+<p>In this section, you will learn how to perform Geary’s c statistics testing by using appropriate functions of <strong>spdep</strong> package.</p>
+<h3 id="gearys-c-test">Geary’s C test</h3>
+<p>The code chunk below performs Geary’s C test for spatial autocorrelation by using <a href="https://r-spatial.github.io/spdep/reference/geary.test.html"><em>geary.test()</em></a> of <strong>spdep</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>geary.test</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Geary C test under randomisation
+
+data:  hunan$GDPPC 
+weights: rswm_q 
+
+Geary C statistic standard deviate = 3.6108, p-value =
+0.0001526
+alternative hypothesis: Expectation greater than statistic
+sample estimates:
+Geary C statistic       Expectation          Variance 
+        0.6907223         1.0000000         0.0073364 </code></pre>
+</div>
+<blockquote>
+<p>Question: What statistical conclusion can you draw from the output above?</p>
+</blockquote>
+<h3 id="computing-monte-carlo-gearys-c">Computing Monte Carlo Geary’s C</h3>
+<p>The code chunk below performs permutation test for Geary’s C statistic by using <a href="https://r-spatial.github.io/spdep/reference/geary.mc.html"><em>geary.mc()</em></a> of <strong>spdep</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1234</span><span class='op'>)</span>
+<span class='va'>bperm</span><span class='op'>=</span><span class='fu'>geary.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, nsim<span class='op'>=</span><span class='fl'>999</span><span class='op'>)</span>
+<span class='va'>bperm</span>
+</code></pre>
+</div>
+<pre><code>
+    Monte-Carlo simulation of Geary C
+
+data:  hunan$GDPPC 
+weights: rswm_q 
+number of simulations + 1: 1000 
+
+statistic = 0.69072, observed rank = 1, p-value = 0.001
+alternative hypothesis: greater</code></pre>
+</div>
+<blockquote>
+<p>Question: What statistical conclusion can you draw from the output above?</p>
+</blockquote>
+<h3 id="visualising-the-monte-carlo-gearys-c">Visualising the Monte Carlo Geary’s C</h3>
+<p>Next, we will plot a histogram to reveal the distribution of the simulated values by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 1.004402</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0.007436493</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.7142  0.9502  1.0052  1.0044  1.0595  1.2722 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span>, freq<span class='op'>=</span><span class='cn'>TRUE</span>, breaks<span class='op'>=</span><span class='fl'>20</span>, xlab<span class='op'>=</span><span class='st'>"Simulated Geary c"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fl'>1</span>, col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observation can you draw from the output?</p>
+</blockquote>
+<h2 id="spatial-correlogram">Spatial Correlogram</h2>
+<p>Spatial correlograms are great to examine patterns of spatial autocorrelation in your data or model residuals. They show how correlated are pairs of spatial observations when you increase the distance (lag) between them - they are plots of some index of autocorrelation (Moran’s I or Geary’s c) against distance.Although correlograms are not as fundamental as variograms (a keystone concept of geostatistics), they are very useful as an exploratory and descriptive tool. For this purpose they actually provide richer information than variograms.</p>
+<h3 id="compute-morans-i-correlogram">Compute Moran’s I correlogram</h3>
+<p>In the code chunk below, <em>sp.correlogram()</em> of <strong>spdep</strong> package is used to compute a 6-lag spatial correlogram of GDPPC. The global spatial autocorrelation used in Moran’s I. The <strong>plot()</strong> of base Graph is then used to plot the output.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>MI_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, order<span class='op'>=</span><span class='fl'>6</span>, method<span class='op'>=</span><span class='st'>"I"</span>, style<span class='op'>=</span><span class='st'>"B"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>MI_corr</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observation can you draw from the plot above?</p>
+</blockquote>
+<h3 id="compute-gearys-c-correlogram-and-plot">Compute Geary’s C correlogram and plot</h3>
+<p>In the code chunk below, <em>sp.correlogram()</em> of <strong>spdep</strong> package is used to compute a 6-lag spatial correlogram of GDPPC. The global spatial autocorrelation used in Geary’s C. The <strong>plot()</strong> of base Graph is then used to plot the output.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>GC_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, order<span class='op'>=</span><span class='fl'>6</span>, method<span class='op'>=</span><span class='st'>"C"</span>, style<span class='op'>=</span><span class='st'>"W"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>GC_corr</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<h1 id="cluster-and-outlier-analysis">Cluster and Outlier Analysis</h1>
+<p>Local Indicators of Spatial Association or LISA are statistics that evaluate the existence of clusters in the spatial arrangement of a given variable. For instance if we are studying cancer rates among census tracts in a given city local clusters in the rates mean that there are areas that have higher or lower rates than is to be expected by chance alone; that is, the values occurring are above or below those of a random distribution in space.</p>
+<p>In this section, you will learn how to apply appropriate Local Indicators for Spatial Association (LISA), especially local Moran’I to detect cluster and/or outlier from GDP per capita 2012 of Hunan Province, PRC.</p>
+<h2 id="computing-local-morans-i">Computing local Moran’s I</h2>
+<p>To compute local Moran’s I, the <a href="https://r-spatial.github.io/spdep/reference/localmoran.html"><em>localmoran()</em></a> function of <strong>spdep</strong> will be used. It computes <em>Ii</em> values, given a set of <em>zi</em> values and a listw object providing neighbour weighting information for the polygon associated with the zi values.</p>
+<p>The code chunks below are used to compute local Moran’s I of <em>GDPPC2012</em> at the county level.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fips</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>)</span>
+<span class='va'>localMI</span> <span class='op'>&lt;-</span> <span class='fu'>localmoran</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, <span class='va'>rswm_q</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>            Ii          E.Ii       Var.Ii        Z.Ii Pr(z != E(Ii))
+1 -0.001468468 -2.815006e-05 4.723841e-04 -0.06626904      0.9471636
+2  0.025878173 -6.061953e-04 1.016664e-02  0.26266425      0.7928094
+3 -0.011987646 -5.366648e-03 1.133362e-01 -0.01966705      0.9843090
+4  0.001022468 -2.404783e-07 5.105969e-06  0.45259801      0.6508382
+5  0.014814881 -6.829362e-05 1.449949e-03  0.39085814      0.6959021
+6 -0.038793829 -3.860263e-04 6.475559e-03 -0.47728835      0.6331568</code></pre>
+</div>
+<p><em>localmoran()</em> function returns a matrix of values whose columns are:</p>
+<ul>
+<li>Ii: the local Moran’s I statistics</li>
+<li>E.Ii: the expectation of local moran statistic under the randomisation hypothesis</li>
+<li>Var.Ii: the variance of local moran statistic under the randomisation hypothesis</li>
+<li>Z.Ii:the standard deviate of local moran statistic</li>
+<li>Pr(): the p-value of local moran statistic</li>
+</ul>
+<p>The code chunk below list the content of the local Moran matrix derived by using <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/printCoefmat"><em>printCoefmat()</em></a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/printCoefmat.html'>printCoefmat</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>[</span><span class='va'>fips</span>,<span class='op'>]</span>, row.names<span class='op'>=</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>[</span><span class='va'>fips</span><span class='op'>]</span><span class='op'>)</span>, check.names<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>                       Ii        E.Ii      Var.Ii        Z.Ii
+Anhua         -2.2493e-02 -5.0048e-03  5.8235e-02 -7.2467e-02
+Anren         -3.9932e-01 -7.0111e-03  7.0348e-02 -1.4791e+00
+Anxiang       -1.4685e-03 -2.8150e-05  4.7238e-04 -6.6269e-02
+Baojing        3.4737e-01 -5.0089e-03  8.3636e-02  1.2185e+00
+Chaling        2.0559e-02 -9.6812e-04  2.7711e-02  1.2932e-01
+Changning     -2.9868e-05 -9.0010e-09  1.5105e-07 -7.6828e-02
+Changsha       4.9022e+00 -2.1348e-01  2.3194e+00  3.3590e+00
+Chengbu        7.3725e-01 -1.0534e-02  2.2132e-01  1.5895e+00
+Chenxi         1.4544e-01 -2.8156e-03  4.7116e-02  6.8299e-01
+Cili           7.3176e-02 -1.6747e-03  4.7902e-02  3.4200e-01
+Dao            2.1420e-01 -2.0824e-03  4.4123e-02  1.0297e+00
+Dongan         1.5210e-01 -6.3485e-04  1.3471e-02  1.3159e+00
+Dongkou        5.2918e-01 -6.4461e-03  1.0748e-01  1.6338e+00
+Fenghuang      1.8013e-01 -6.2832e-03  1.3257e-01  5.1198e-01
+Guidong       -5.9160e-01 -1.3086e-02  3.7003e-01 -9.5104e-01
+Guiyang        1.8240e-01 -3.6908e-03  3.2610e-02  1.0305e+00
+Guzhang        2.8466e-01 -8.5054e-03  1.4152e-01  7.7931e-01
+Hanshou        2.5878e-02 -6.0620e-04  1.0167e-02  2.6266e-01
+Hengdong       9.9964e-03 -4.9063e-04  6.7742e-03  1.2742e-01
+Hengnan        2.8064e-02 -3.2160e-04  3.7597e-03  4.6294e-01
+Hengshan      -5.8201e-03 -3.0437e-05  5.1076e-04 -2.5618e-01
+Hengyang       6.2997e-02 -1.3046e-03  2.1865e-02  4.3486e-01
+Hongjiang      1.8790e-01 -2.3019e-03  3.1725e-02  1.0678e+00
+Huarong       -1.5389e-02 -1.8667e-03  8.1030e-02 -4.7503e-02
+Huayuan        8.3772e-02 -8.5569e-04  2.4495e-02  5.4072e-01
+Huitong        2.5997e-01 -5.2447e-03  1.1077e-01  7.9685e-01
+Jiahe         -1.2431e-01 -3.0550e-03  5.1111e-02 -5.3633e-01
+Jianghua       2.8651e-01 -3.8280e-03  8.0968e-02  1.0204e+00
+Jiangyong      2.4337e-01 -2.7082e-03  1.1746e-01  7.1800e-01
+Jingzhou       1.8270e-01 -8.5106e-04  2.4363e-02  1.1759e+00
+Jinshi        -1.1988e-02 -5.3666e-03  1.1334e-01 -1.9667e-02
+Jishou        -2.8680e-01 -2.6305e-03  4.4028e-02 -1.3543e+00
+Lanshan        6.3334e-02 -9.6365e-04  2.0441e-02  4.4972e-01
+Leiyang        1.1581e-02 -1.4948e-04  2.5082e-03  2.3422e-01
+Lengshuijiang -1.7903e+00 -8.2129e-02  2.1598e+00 -1.1623e+00
+Li             1.0225e-03 -2.4048e-07  5.1060e-06  4.5260e-01
+Lianyuan      -1.4672e-01 -1.8983e-03  1.9145e-02 -1.0467e+00
+Liling         1.3774e+00 -1.5097e-02  4.2601e-01  2.1335e+00
+Linli          1.4815e-02 -6.8294e-05  1.4499e-03  3.9086e-01
+Linwu         -2.4621e-03 -9.0703e-06  1.9258e-04 -1.7676e-01
+Linxiang       6.5904e-02 -2.9028e-03  2.5470e-01  1.3634e-01
+Liuyang        3.3688e+00 -7.7502e-02  1.5180e+00  2.7972e+00
+Longhui        8.0801e-01 -1.1377e-02  1.5538e-01  2.0787e+00
+Longshan       7.5663e-01 -1.1100e-02  3.1449e-01  1.3690e+00
+Luxi           1.8177e-01 -2.4855e-03  3.4249e-02  9.9561e-01
+Mayang         2.1852e-01 -5.8773e-03  9.8049e-02  7.1663e-01
+Miluo          1.8704e+00 -1.6927e-02  2.7925e-01  3.5715e+00
+Nan           -9.5789e-03 -4.9497e-04  6.8341e-03 -1.0988e-01
+Ningxiang      1.5607e+00 -7.3878e-02  8.0012e-01  1.8274e+00
+Ningyuan       2.0910e-01 -7.0884e-03  8.2306e-02  7.5356e-01
+Pingjiang     -9.8964e-01 -2.6457e-03  5.6027e-02 -4.1698e+00
+Qidong         1.1806e-01 -2.1207e-03  2.4747e-02  7.6396e-01
+Qiyang         6.1966e-02 -7.3374e-04  8.5743e-03  6.7712e-01
+Rucheng       -3.6992e-01 -8.8999e-03  2.5272e-01 -7.1814e-01
+Sangzhi        2.5053e-01 -4.9470e-03  6.8000e-02  9.7972e-01
+Shaodong      -3.2659e-02 -3.6592e-05  5.0546e-04 -1.4510e+00
+Shaoshan       2.1223e+00 -5.0227e-02  1.3668e+00  1.8583e+00
+Shaoyang       5.9499e-01 -1.1253e-02  1.3012e-01  1.6807e+00
+Shimen        -3.8794e-02 -3.8603e-04  6.4756e-03 -4.7729e-01
+Shuangfeng     9.2835e-03 -2.2867e-03  3.1516e-02  6.5174e-02
+Shuangpai      8.0591e-02 -3.1366e-04  8.9838e-03  8.5358e-01
+Suining        3.7585e-01 -3.5933e-03  4.1870e-02  1.8544e+00
+Taojiang      -2.5394e-01 -1.2395e-03  1.4477e-02 -2.1002e+00
+Taoyuan        1.4729e-02 -1.2039e-04  8.5103e-04  5.0903e-01
+Tongdao        4.6482e-01 -6.9870e-03  1.9879e-01  1.0582e+00
+Wangcheng      4.4220e+00 -1.1067e-01  1.3596e+00  3.8873e+00
+Wugang         7.1003e-01 -7.8144e-03  1.0710e-01  2.1935e+00
+Xiangtan       2.4530e-01 -3.6457e-04  3.2319e-03  4.3213e+00
+Xiangxiang     2.6271e-01 -1.2703e-03  2.1290e-02  1.8092e+00
+Xiangyin       5.4525e-01 -4.7442e-03  7.9236e-02  1.9539e+00
+Xinhua         1.1810e-01 -6.2649e-03  8.6001e-02  4.2409e-01
+Xinhuang       1.5725e-01 -4.1820e-03  3.6648e-01  2.6667e-01
+Xinning        6.8928e-01 -9.6674e-03  2.0328e-01  1.5502e+00
+Xinshao        5.7578e-02 -8.5932e-03  1.1769e-01  1.9289e-01
+Xintian       -7.4050e-03 -5.1493e-03  1.0877e-01 -6.8395e-03
+Xupu           3.2406e-01 -5.7468e-03  5.7735e-02  1.3726e+00
+Yanling       -6.9021e-02 -5.9211e-04  9.9306e-03 -6.8667e-01
+Yizhang       -2.6844e-01 -2.2463e-03  4.7588e-02 -1.2202e+00
+Yongshun       6.3064e-01 -1.1350e-02  1.8830e-01  1.4795e+00
+Yongxing       4.3411e-01 -9.0735e-03  1.5088e-01  1.1409e+00
+You            7.8750e-02 -7.2728e-03  1.2116e-01  2.4714e-01
+Yuanjiang      2.0004e-04 -1.7760e-04  2.9798e-03  6.9181e-03
+Yuanling       8.7298e-03 -2.2981e-06  2.3221e-05  1.8121e+00
+Yueyang        4.1189e-02 -1.9768e-04  2.3113e-03  8.6085e-01
+Zhijiang       1.0476e-01 -7.8123e-04  1.3100e-02  9.2214e-01
+Zhongfang     -2.2685e-01 -2.1455e-03  3.5927e-02 -1.1855e+00
+Zhuzhou        3.2864e-01 -5.2432e-04  7.2391e-03  3.8688e+00
+Zixing        -7.6849e-01 -8.8210e-02  9.4057e-01 -7.0144e-01
+              Pr.z....E.Ii..
+Anhua                 0.9422
+Anren                 0.1391
+Anxiang               0.9472
+Baojing               0.2230
+Chaling               0.8971
+Changning             0.9388
+Changsha              0.0008
+Chengbu               0.1119
+Chenxi                0.4946
+Cili                  0.7324
+Dao                   0.3032
+Dongan                0.1882
+Dongkou               0.1023
+Fenghuang             0.6087
+Guidong               0.3416
+Guiyang               0.3028
+Guzhang               0.4358
+Hanshou               0.7928
+Hengdong              0.8986
+Hengnan               0.6434
+Hengshan              0.7978
+Hengyang              0.6637
+Hongjiang             0.2856
+Huarong               0.9621
+Huayuan               0.5887
+Huitong               0.4255
+Jiahe                 0.5917
+Jianghua              0.3076
+Jiangyong             0.4728
+Jingzhou              0.2396
+Jinshi                0.9843
+Jishou                0.1756
+Lanshan               0.6529
+Leiyang               0.8148
+Lengshuijiang         0.2451
+Li                    0.6508
+Lianyuan              0.2952
+Liling                0.0329
+Linli                 0.6959
+Linwu                 0.8597
+Linxiang              0.8916
+Liuyang               0.0052
+Longhui               0.0376
+Longshan              0.1710
+Luxi                  0.3194
+Mayang                0.4736
+Miluo                 0.0004
+Nan                   0.9125
+Ningxiang             0.0676
+Ningyuan              0.4511
+Pingjiang             0.0000
+Qidong                0.4449
+Qiyang                0.4983
+Rucheng               0.4727
+Sangzhi               0.3272
+Shaodong              0.1468
+Shaoshan              0.0631
+Shaoyang              0.0928
+Shimen                0.6332
+Shuangfeng            0.9480
+Shuangpai             0.3933
+Suining               0.0637
+Taojiang              0.0357
+Taoyuan               0.6107
+Tongdao               0.2900
+Wangcheng             0.0001
+Wugang                0.0283
+Xiangtan              0.0000
+Xiangxiang            0.0704
+Xiangyin              0.0507
+Xinhua                0.6715
+Xinhuang              0.7897
+Xinning               0.1211
+Xinshao               0.8470
+Xintian               0.9945
+Xupu                  0.1699
+Yanling               0.4923
+Yizhang               0.2224
+Yongshun              0.1390
+Yongxing              0.2539
+You                   0.8048
+Yuanjiang             0.9945
+Yuanling              0.0700
+Yueyang               0.3893
+Zhijiang              0.3565
+Zhongfang             0.2358
+Zhuzhou               0.0001
+Zixing                0.4830</code></pre>
+</div>
+<h2 id="mapping-the-local-morans-i">Mapping the local Moran’s I</h2>
+<p>Before mapping the local Moran’s I map, it is wise to append the local Moran’s I dataframe (i.e. localMI) onto hunan SpatialPolygonDataFrame. The code chunks below can be used to perform the task. The out SpatialPolygonDataFrame is called <em>hunan.localMI</em>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan.localMI</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>hunan</span>,<span class='va'>localMI</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rename</span><span class='op'>(</span>Pr.Ii <span class='op'>=</span> <span class='va'>Pr.z....E.Ii..</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="mapping-local-morans-i-values">Mapping local Moran’s I values</h3>
+<p>Using choropleth mapping functions of <strong>tmap</strong> package, we can plot the local Moran’s I values by using the code chinks below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Ii"</span>, 
+          style <span class='op'>=</span> <span class='st'>"pretty"</span>,
+          palette <span class='op'>=</span> <span class='st'>"RdBu"</span>,
+          title <span class='op'>=</span> <span class='st'>"local moran statistics"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<h3 id="mapping-local-morans-i-p-values">Mapping local Moran’s I p-values</h3>
+<p>The choropleth shows there is evidence for both positive and negative Ii values. However, it is useful to consider the p-values for each of these values, as consider above.</p>
+<p>The code chunks below produce a choropleth map of Moran’s I p-values by using functions of <strong>tmap</strong> package.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Pr.Ii"</span>, 
+          breaks<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='cn'>Inf</span>, <span class='fl'>0.001</span>, <span class='fl'>0.01</span>, <span class='fl'>0.05</span>, <span class='fl'>0.1</span>, <span class='cn'>Inf</span><span class='op'>)</span>,
+          palette<span class='op'>=</span><span class='st'>"-Blues"</span>, 
+          title <span class='op'>=</span> <span class='st'>"local Moran's I p-values"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-20-1.png" width="624" /></p>
+</div>
+<h3 id="mapping-both-local-morans-i-values-and-p-values">Mapping both local Moran’s I values and p-values</h3>
+<p>For effective interpretation, it is better to plot both the local Moran’s I values map and its corresponding p-values map next to each other.</p>
+<p>The code chunk below will be used to create such visualisation.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>localMI.map</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Ii"</span>, 
+          style <span class='op'>=</span> <span class='st'>"pretty"</span>, 
+          title <span class='op'>=</span> <span class='st'>"local moran statistics"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='va'>pvalue.map</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Pr.Ii"</span>, 
+          breaks<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='cn'>Inf</span>, <span class='fl'>0.001</span>, <span class='fl'>0.01</span>, <span class='fl'>0.05</span>, <span class='fl'>0.1</span>, <span class='cn'>Inf</span><span class='op'>)</span>,
+          palette<span class='op'>=</span><span class='st'>"-Blues"</span>, 
+          title <span class='op'>=</span> <span class='st'>"local Moran's I p-values"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>localMI.map</span>, <span class='va'>pvalue.map</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-21-1.png" width="1152" /></p>
+</div>
+<h2 id="creating-a-lisa-cluster-map">Creating a LISA Cluster Map</h2>
+<p>The LISA Cluster Map shows the significant locations color coded by type of spatial autocorrelation. The first step before we can generate the LISA cluster map is to plot the Moran scatterplot.</p>
+<h3 id="plotting-moran-scatterplot">Plotting Moran scatterplot</h3>
+<p>The Moran scatterplot is an illustration of the relationship between the values of the chosen attribute at each location and the average value of the same attribute at neighboring locations.</p>
+<p>The code chunk below plots the Moran scatterplot of GDPPC 2012 by using <a href="https://r-spatial.github.io/spdep/reference/moran.plot.html"><em>moran.plot()</em></a> of <strong>spdep</strong>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>nci</span> <span class='op'>&lt;-</span> <span class='fu'>moran.plot</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, <span class='va'>rswm_q</span>,
+                  labels<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>)</span>, 
+                  xlab<span class='op'>=</span><span class='st'>"GDPPC 2012"</span>, 
+                  ylab<span class='op'>=</span><span class='st'>"Spatially Lag GDPPC 2012"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-22-1.png" width="624" /></p>
+</div>
+<p>Notice that the plot is split in 4 quadrants. The top right corner belongs to areas that have high GDPPC and are surrounded by other areas that have the average level of GDPPC. This are the high-high locations in the lesson slide.</p>
+<h3 id="plotting-moran-scatterplot-with-standardised-variable">Plotting Moran scatterplot with standardised variable</h3>
+<p>First we will use <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/scale"><em>scale()</em></a> to centers and scales the variable. here centering is done by subtracting the mean (omitting NAs) the corresponding columns, and scaling is done by dividing the (centered) variable by their standard deviations.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan</span><span class='op'>$</span><span class='va'>Z.GDPPC</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='va'>as.vector</span> 
+</code></pre>
+</div>
+</div>
+<p>The <a href="https://www.rdocumentation.org/packages/pbdDMAT/versions/0.5-1/topics/as.vector"><em>as.vector()</em></a> added to the end is to make sure that the data type we get out of this is a vector, that map neatly into out dataframe.</p>
+<p>Now, we are ready to plot the Moran scatterplot again by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>nci2</span> <span class='op'>&lt;-</span> <span class='fu'>moran.plot</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>Z.GDPPC</span>, <span class='va'>rswm_q</span>,
+                   labels<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>)</span>,
+                   xlab<span class='op'>=</span><span class='st'>"z-GDPPC 2012"</span>, 
+                   ylab<span class='op'>=</span><span class='st'>"Spatially Lag z-GDPPC 2012"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-24-1.png" width="624" /></p>
+</div>
+<h3 id="preparing-lisa-map-classes">Preparing LISA map classes</h3>
+<p>The code chunks below show the steps to prepare a LISA cluster map.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>quadrant</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>vector</a></span><span class='op'>(</span>mode<span class='op'>=</span><span class='st'>"numeric"</span>,length<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Next, we centers the variable of interest around its mean.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>DV</span> <span class='op'>&lt;-</span> <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span><span class='op'>)</span>     
+</code></pre>
+</div>
+</div>
+<p>This is follow by centering the local Moran’s around the mean.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>C_mI</span> <span class='op'>&lt;-</span> <span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>    
+</code></pre>
+</div>
+</div>
+<p>Next, we will set a statistical significance level for the local Moran.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>signif</span> <span class='op'>&lt;-</span> <span class='fl'>0.05</span>       
+</code></pre>
+</div>
+</div>
+<p>These four command lines define the high-high, low-low, low-high and high-low categories.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&gt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&gt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>      
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&lt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&lt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>      
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&lt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&gt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&gt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&lt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
+</code></pre>
+</div>
+</div>
+<p>Lastly, places non-significant Moran in the category 0.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>quadrant</span><span class='op'>[</span><span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>&gt;</span><span class='va'>signif</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+</code></pre>
+</div>
+</div>
+<p>In fact, we can combined all the steps into one single code chunk as shown below:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>quadrant</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>vector</a></span><span class='op'>(</span>mode<span class='op'>=</span><span class='st'>"numeric"</span>,length<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>DV</span> <span class='op'>&lt;-</span> <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span><span class='op'>)</span>     
+<span class='va'>C_mI</span> <span class='op'>&lt;-</span> <span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>    
+<span class='va'>signif</span> <span class='op'>&lt;-</span> <span class='fl'>0.05</span>       
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&gt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&gt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>4</span>      
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&lt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&lt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>1</span>      
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&lt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&gt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>2</span>
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>DV</span> <span class='op'>&gt;</span><span class='fl'>0</span> <span class='op'>&amp;</span> <span class='va'>C_mI</span><span class='op'>&lt;</span><span class='fl'>0</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>3</span>
+<span class='va'>quadrant</span><span class='op'>[</span><span class='va'>localMI</span><span class='op'>[</span>,<span class='fl'>5</span><span class='op'>]</span><span class='op'>&gt;</span><span class='va'>signif</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
+</code></pre>
+</div>
+</div>
+<h3 id="plotting-lisa-map">Plotting LISA map</h3>
+<p>Now, we can build the LISA map by using the code chunks below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan.localMI</span><span class='op'>$</span><span class='va'>quadrant</span> <span class='op'>&lt;-</span> <span class='va'>quadrant</span>
+<span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#ffffff"</span>, <span class='st'>"#2c7bb6"</span>, <span class='st'>"#abd9e9"</span>, <span class='st'>"#fdae61"</span>, <span class='st'>"#d7191c"</span><span class='op'>)</span>
+<span class='va'>clusters</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"insignificant"</span>, <span class='st'>"low-low"</span>, <span class='st'>"low-high"</span>, <span class='st'>"high-low"</span>, <span class='st'>"high-high"</span><span class='op'>)</span>
+
+<span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"quadrant"</span>, 
+          style <span class='op'>=</span> <span class='st'>"cat"</span>, 
+          palette <span class='op'>=</span> <span class='va'>colors</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>quadrant</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>]</span>, 
+          labels <span class='op'>=</span> <span class='va'>clusters</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>quadrant</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>]</span>,
+          popup.vars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_view</span><span class='op'>(</span>set.zoom.limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>11</span>,<span class='fl'>17</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-32-1.png" width="624" /></p>
+</div>
+<p>For effective interpretation, it is better to plot both the local Moran’s I values map and its corresponding p-values map next to each other.</p>
+<p>The code chunk below will be used to create such visualisation.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gdppc</span> <span class='op'>&lt;-</span> <span class='fu'>qtm</span><span class='op'>(</span><span class='va'>hunan</span>, <span class='st'>"GDPPC"</span><span class='op'>)</span>
+
+<span class='va'>hunan.localMI</span><span class='op'>$</span><span class='va'>quadrant</span> <span class='op'>&lt;-</span> <span class='va'>quadrant</span>
+<span class='va'>colors</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#ffffff"</span>, <span class='st'>"#2c7bb6"</span>, <span class='st'>"#abd9e9"</span>, <span class='st'>"#fdae61"</span>, <span class='st'>"#d7191c"</span><span class='op'>)</span>
+<span class='va'>clusters</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"insignificant"</span>, <span class='st'>"low-low"</span>, <span class='st'>"low-high"</span>, <span class='st'>"high-low"</span>, <span class='st'>"high-high"</span><span class='op'>)</span>
+
+<span class='va'>LISAmap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.localMI</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"quadrant"</span>, 
+          style <span class='op'>=</span> <span class='st'>"cat"</span>, 
+          palette <span class='op'>=</span> <span class='va'>colors</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>quadrant</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>]</span>, 
+          labels <span class='op'>=</span> <span class='va'>clusters</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sort.html'>sort</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>quadrant</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span><span class='fl'>1</span><span class='op'>]</span>,
+          popup.vars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_view</span><span class='op'>(</span>set.zoom.limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>11</span>,<span class='fl'>17</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha<span class='op'>=</span><span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>gdppc</span>, <span class='va'>LISAmap</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-33-1.png" width="1152" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observations can you draw from the LISA map above?</p>
+</blockquote>
+<h1 id="hot-spot-and-cold-spot-area-analysis">Hot Spot and Cold Spot Area Analysis</h1>
+<p>Beside detecting cluster and outliers, localised spatial statistics can be also used to detect hot spot and/or cold spot areas.</p>
+<p>The term ‘hot spot’ has been used generically across disciplines to describe a region or value that is higher relative to its surroundings (Lepers et al 2005, Aben et al 2012, Isobe et al 2015).</p>
+<h2 id="getis-and-ords-g-statistics">Getis and Ord’s G-Statistics</h2>
+<p>An alternative spatial statistics to detect spatial anomalies is the Getis and Ord’s G-statistics (Getis and Ord, 1972; Ord and Getis, 1995). It looks at neighbours within a defined proximity to identify where either high or low values clutser spatially. Here, statistically significant hot-spots are recognised as areas of high values where other areas within a neighbourhood range also share high values too.</p>
+<p>The analysis consists of three steps:</p>
+<ul>
+<li>Deriving spatial weight matrix</li>
+<li>Computing Gi statistics</li>
+<li>Mapping Gi statistics</li>
+</ul>
+<h2 id="deriving-distance-based-weight-matrix">Deriving distance-based weight matrix</h2>
+<p>First, we need to define a new set of neighbours. Whist the spatial autocorrelation considered units which shared borders, for Getis-Ord we are defining neighbours based on distance.</p>
+<p>There are two type of distance-based proximity matrix, they are:</p>
+<ul>
+<li>fixed diatnce weight matrix; and</li>
+<li>adaptive distance weight matrix.</li>
+</ul>
+<h3 id="deriving-the-centroid">Deriving the centroid</h3>
+<p>We will need points to associate with each polygon before we can make our connectivity graph. It will be a little more complicated than just running <em>st_centroid()</em> on the sf object: <strong>us.bound</strong>. We need the coordinates in a separate data frame for this to work. To do this we will use a mapping function. The mapping function applies a given function to each element of a vector and returns a vector of the same length. Our input vector will be the geometry column of us.bound. Our function will be <em>st_centroid()</em>. We will be using map_dbl variation of map from the purrr package. For more documentation, check out map documentation</p>
+<p>To get our longitude values we map the <em>st_centroid()</em> function over the geometry column of us.bound and access the longitude value through double bracket notation [[]] and 1. This allows us to get only the longitude, which is the first value in each centroid.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>longitude</span> <span class='op'>&lt;-</span> <span class='fu'>map_dbl</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>geometry</span>, <span class='op'>~</span><span class='fu'>st_centroid</span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>We do the same for latitude with one key difference. We access the second value per each centroid with [[2]].</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>latitude</span> <span class='op'>&lt;-</span> <span class='fu'>map_dbl</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>geometry</span>, <span class='op'>~</span><span class='fu'>st_centroid</span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Now that we have latitude and longitude, we use cbind to put longitude and latitude into the same object.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>coords</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>longitude</span>, <span class='va'>latitude</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="determine-the-cut-off-distance">Determine the cut-off distance</h3>
+<p>Firstly, we need to determine the upper limit for distance band by using the steps below:</p>
+<ul>
+<li>Return a matrix with the indices of points belonging to the set of the k nearest neighbours of each other by using <a href="https://r-spatial.github.io/spdep/reference/knearneigh.html"><em>knearneigh()</em></a> of <strong>spdep</strong>.</li>
+<li>Convert the knn object returned by <em>knearneigh()</em> into a neighbours list of class nb with a list of integer vectors containing neighbour region number ids by using <a href="https://r-spatial.github.io/spdep/reference/knn2nb.html"><em>knn2nb()</em></a>.</li>
+<li>Return the length of neighbour relationship edges by using <a href="https://r-spatial.github.io/spdep/reference/nbdists.html"><em>nbdists()</em></a> of <strong>spdep</strong>. The function returns in the units of the coordinates if the coordinates are projected, in km otherwise.</li>
+<li>Remove the list structure of the returned object by using <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/unlist"><strong>unlist()</strong></a>.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>#coords &lt;- coordinates(hunan)</span>
+<span class='va'>k1</span> <span class='op'>&lt;-</span> <span class='fu'>knn2nb</span><span class='op'>(</span><span class='fu'>knearneigh</span><span class='op'>(</span><span class='va'>coords</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>k1dists</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='fu'>nbdists</span><span class='op'>(</span><span class='va'>k1</span>, <span class='va'>coords</span>, longlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>k1dists</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  24.79   32.57   38.01   39.07   44.52   61.79 </code></pre>
+</div>
+<p>The summary report shows that the largest first nearest neighbour distance is 61.79 km, so using this as the upper threshold gives certainty that all units will have at least one neighbour.</p>
+<h3 id="computing-fixed-distance-weight-matrix">Computing fixed distance weight matrix</h3>
+<p>Now, we will compute the distance weight matrix by using <em>dnearneigh()</em> as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wm_d62</span> <span class='op'>&lt;-</span> <span class='fu'>dnearneigh</span><span class='op'>(</span><span class='va'>coords</span>, <span class='fl'>0</span>, <span class='fl'>62</span>, longlat <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>wm_d62</span>
+</code></pre>
+</div>
+<pre><code>Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 324 
+Percentage nonzero weights: 4.183884 
+Average number of links: 3.681818 </code></pre>
+</div>
+<p>Next, <em>nb2listw()</em> is used to convert the nb object into spatial weights object. The input of <em>nb2listw()</em> must be an object of class <strong>nb</strong>. The syntax of the function has two major arguments, namely style and zero.poly.</p>
+<ul>
+<li><p><em>style</em> can take values “W”, “B”, “C”, “U”, “minmax” and “S”. B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity), while S is the variance-stabilizing coding scheme proposed by Tiefelsdorf et al. 1999, p. 167-168 (sums over all links to n).</p></li>
+<li><p>If <em>zero policy</em> is set to TRUE, weights vectors of zero length are inserted for regions without neighbour in the neighbours list. These will in turn generate lag values of zero, equivalent to the sum of products of the zero row t(rep(0, length=length(neighbours))) %*% x, for arbitraty numerical vector x of length length(neighbours). The spatially lagged value of x for the zero-neighbour region will then be zero, which may (or may not) be a sensible choice.</p></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wm62_lw</span> <span class='op'>&lt;-</span> <span class='fu'>nb2listw</span><span class='op'>(</span><span class='va'>wm_d62</span>, style <span class='op'>=</span> <span class='st'>'B'</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>wm62_lw</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 324 
+Percentage nonzero weights: 4.183884 
+Average number of links: 3.681818 
+Link number distribution:
+
+ 1  2  3  4  5  6 
+ 6 15 14 26 20  7 
+6 least connected regions:
+6 15 30 32 56 65 with 1 link
+7 most connected regions:
+21 28 35 45 50 52 82 with 6 links
+
+Weights style: B 
+Weights constants summary:
+   n   nn  S0  S1   S2
+B 88 7744 324 648 5440</code></pre>
+</div>
+<h3 id="computing-adaptive-distance-weight-matrix">Computing adaptive distance weight matrix</h3>
+<p>One of the characteristics of fixed distance weight matrix is that more densely settled areas (usually the urban areas) tend to have more neighbours and the less densely settled areas (usually the rural counties) tend to have lesser neighbours. Having many neighbours smoothes the neighbour relationship across more neighbours.</p>
+<p>It is possible to control the numbers of neighbours directly using k-nearest neighbours, either accepting asymmetric neighbours or imposing symmetry as shown in the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>knn</span> <span class='op'>&lt;-</span> <span class='fu'>knn2nb</span><span class='op'>(</span><span class='fu'>knearneigh</span><span class='op'>(</span><span class='va'>coords</span>, k<span class='op'>=</span><span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>knn</span>
+</code></pre>
+</div>
+<pre><code>Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 704 
+Percentage nonzero weights: 9.090909 
+Average number of links: 8 
+Non-symmetric neighbours list</code></pre>
+</div>
+<p>Next, <em>nb2listw()</em> is used to convert the nb object into spatial weights object.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>knn_lw</span> <span class='op'>&lt;-</span> <span class='fu'>nb2listw</span><span class='op'>(</span><span class='va'>knn</span>, style <span class='op'>=</span> <span class='st'>'B'</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>knn_lw</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 88 
+Number of nonzero links: 704 
+Percentage nonzero weights: 9.090909 
+Average number of links: 8 
+Non-symmetric neighbours list
+Link number distribution:
+
+ 8 
+88 
+88 least connected regions:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 with 8 links
+88 most connected regions:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 with 8 links
+
+Weights style: B 
+Weights constants summary:
+   n   nn  S0   S1    S2
+B 88 7744 704 1300 23014</code></pre>
+</div>
+<h2 id="computing-gi-statistics">Computing Gi statistics</h2>
+<h3 id="gi-statistics-using-fixed-distance">Gi statistics using fixed distance</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fips</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>)</span>
+<span class='va'>gi.fixed</span> <span class='op'>&lt;-</span> <span class='fu'>localG</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, <span class='va'>wm62_lw</span><span class='op'>)</span>
+<span class='va'>gi.fixed</span>
+</code></pre>
+</div>
+<pre><code> [1]  0.436075843 -0.265505650 -0.073033665  0.413017033  0.273070579
+ [6] -0.377510776  2.863898821  2.794350420  5.216125401  0.228236603
+[11]  0.951035346 -0.536334231  0.176761556  1.195564020 -0.033020610
+[16]  1.378081093 -0.585756761 -0.419680565  0.258805141  0.012056111
+[21] -0.145716531 -0.027158687 -0.318615290 -0.748946051 -0.961700582
+[26] -0.796851342 -1.033949773 -0.460979158 -0.885240161 -0.266671512
+[31] -0.886168613 -0.855476971 -0.922143185 -1.162328599  0.735582222
+[36] -0.003358489 -0.967459309 -1.259299080 -1.452256513 -1.540671121
+[41] -1.395011407 -1.681505286 -1.314110709 -0.767944457 -0.192889342
+[46]  2.720804542  1.809191360 -1.218469473 -0.511984469 -0.834546363
+[51] -0.908179070 -1.541081516 -1.192199867 -1.075080164 -1.631075961
+[56] -0.743472246  0.418842387  0.832943753 -0.710289083 -0.449718820
+[61] -0.493238743 -1.083386776  0.042979051  0.008596093  0.136337469
+[66]  2.203411744  2.690329952  4.453703219 -0.340842743 -0.129318589
+[71]  0.737806634 -1.246912658  0.666667559  1.088613505 -0.985792573
+[76]  1.233609606 -0.487196415  1.626174042 -1.060416797  0.425361422
+[81] -0.837897118 -0.314565243  0.371456331  4.424392623 -0.109566928
+[86]  1.364597995 -1.029658605 -0.718000620
+attr(,&quot;gstari&quot;)
+[1] FALSE
+attr(,&quot;call&quot;)
+localG(x = hunan$GDPPC, listw = wm62_lw)
+attr(,&quot;class&quot;)
+[1] &quot;localG&quot;</code></pre>
+</div>
+<p>The output of localG() is a vector of G or Gstar values, with attributes “gstari” set to TRUE or FALSE, “call” set to the function call, and class “localG”.</p>
+<p>The Gi statistics is represented as a Z-score. Greater values represent a greater intensity of clustering and the direction (positive or negative) indicates high or low clusters.</p>
+<p>Next, we will join the Gi values to their corresponding hunan sf data frame by using the code chunk below.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hunan.gi</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>hunan</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>gi.fixed</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rename</span><span class='op'>(</span>gstat_fixed <span class='op'>=</span> <span class='va'>as.matrix.gi.fixed.</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>In fact, the code chunk above performs three tasks. First, it convert the output vector (i.e. <em>gi.fixed</em>) into r matrix object by using <em>as.matrix()</em>. Next, <em>cbind()</em> is used to join <a href="mailto:hun@data" class="email">hun@data</a> and <em>gi.fixed</em> matrix to produce a new SpatialPolygonDataFrame called <em>hunan.gi</em>. Lastly, the field name of the gi values is renamed to <em>gstat_fixed</em> by using <em>names()</em>.</p>
+<h3 id="mapping-gi-values-with-fixed-distance-weights">Mapping Gi values with fixed distance weights</h3>
+<p>The code chunk below shows the functions used to map the Gi values derived using fixed distance weight matrix.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gdppc</span> <span class='op'>&lt;-</span> <span class='fu'>qtm</span><span class='op'>(</span><span class='va'>hunan</span>, <span class='st'>"GDPPC"</span><span class='op'>)</span>
+
+<span class='va'>Gimap</span> <span class='op'>&lt;-</span><span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.gi</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"gstat_fixed"</span>, 
+          style <span class='op'>=</span> <span class='st'>"pretty"</span>,
+          palette<span class='op'>=</span><span class='st'>"-RdBu"</span>,
+          title <span class='op'>=</span> <span class='st'>"local Gi"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>gdppc</span>, <span class='va'>Gimap</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-44-1.png" width="1152" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observation can you draw from the Gi map above?</p>
+</blockquote>
+<h3 id="gi-statistics-using-adaptive-distance">Gi statistics using adaptive distance</h3>
+<p>The code chunk below are used to compute the Gi values for GDPPC2012 by using an adaptive distance weight matrix (i.e <em>knb_lw</em>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fips</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>County</span><span class='op'>)</span>
+<span class='va'>gi.adaptive</span> <span class='op'>&lt;-</span> <span class='fu'>localG</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, <span class='va'>knn_lw</span><span class='op'>)</span>
+<span class='va'>hunan.gi</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>hunan</span>, <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>gi.adaptive</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rename</span><span class='op'>(</span>gstat_adaptive <span class='op'>=</span> <span class='va'>as.matrix.gi.adaptive.</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="mapping-gi-values-with-adaptive-distance-weights">Mapping Gi values with adaptive distance weights</h3>
+<p>It is time for us to visualise the locations of hot spot and cold spot areas. The choropleth mapping functions of <strong>tmap</strong> package will be used to map the Gi values.</p>
+<p>The code chunk below shows the functions used to map the Gi values derived using fixed distance weight matrix.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gdppc</span> <span class='op'>&lt;-</span> <span class='fu'>qtm</span><span class='op'>(</span><span class='va'>hunan</span>, <span class='st'>"GDPPC"</span><span class='op'>)</span>
+
+<span class='va'>Gimap</span> <span class='op'>&lt;-</span> <span class='fu'>tm_shape</span><span class='op'>(</span><span class='va'>hunan.gi</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_fill</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"gstat_adaptive"</span>, 
+          style <span class='op'>=</span> <span class='st'>"pretty"</span>,
+          palette<span class='op'>=</span><span class='st'>"-RdBu"</span>,
+          title <span class='op'>=</span> <span class='st'>"local Gi"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>gdppc</span>, <span class='va'>Gimap</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-46-1.png" width="1152" /></p>
+</div>
+<blockquote>
+<p>Question: What statistical observation can you draw from the Gi map above?</p>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
