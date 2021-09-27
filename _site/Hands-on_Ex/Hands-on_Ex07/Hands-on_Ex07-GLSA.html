@@ -1665,7 +1665,10 @@ Geodetic CRS:  WGS 84</code></pre>
   <span class='fu'>tm_borders</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>tm_layout</span><span class='op'>(</span>main.title <span class='op'>=</span> <span class='st'>"Equal quantile classification"</span><span class='op'>)</span>
 
-<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>equal</span>, <span class='va'>quantile</span>, asp<span class='op'>=</span><span class='fl'>1</span>, ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'>tmap_arrange</span><span class='op'>(</span><span class='va'>equal</span>, 
+             <span class='va'>quantile</span>, 
+             asp<span class='op'>=</span><span class='fl'>1</span>, 
+             ncol<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-5-1.png" width="1152" /></p>
@@ -1678,7 +1681,8 @@ Geodetic CRS:  WGS 84</code></pre>
 <p>More specifically, the code chunk below is used to compute Queen contiguity weight matrix.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wm_q</span> <span class='op'>&lt;-</span> <span class='fu'>poly2nb</span><span class='op'>(</span><span class='va'>hunan</span>, queen<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>wm_q</span> <span class='op'>&lt;-</span> <span class='fu'>poly2nb</span><span class='op'>(</span><span class='va'>hunan</span>, 
+                queen<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>wm_q</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1701,7 +1705,9 @@ Link number distribution:
 <p>Next, we need to assign weights to each neighboring polygon. In our case, each neighboring polygon will be assigned equal weight (style=“W”). This is accomplished by assigning the fraction 1/(#ofneighbors) to each neighboring county then summing the weighted income values. While this is the most intuitive way to summaries the neighbors’ values it has one drawback in that polygons along the edges of the study area will base their lagged values on fewer polygons thus potentially over- or under-estimating the true nature of the spatial autocorrelation in the data. For this example, we’ll stick with the style=“W” option for simplicity’s sake but note that other more robust options are available, notably style=“B”.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rswm_q</span> <span class='op'>&lt;-</span> <span class='fu'>nb2listw</span><span class='op'>(</span><span class='va'>wm_q</span>, style<span class='op'>=</span><span class='st'>"W"</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>rswm_q</span> <span class='op'>&lt;-</span> <span class='fu'>nb2listw</span><span class='op'>(</span><span class='va'>wm_q</span>, 
+                   style<span class='op'>=</span><span class='st'>"W"</span>, 
+                   zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='va'>rswm_q</span>
 </code></pre>
 </div>
@@ -1728,7 +1734,10 @@ W 88 7744 88 37.86334 365.9147</code></pre>
 <p>The code chunk below performs Moran’s I statistical testing using <a href="https://r-spatial.github.io/spdep/reference/moran.test.html"><em>moran.test()</em></a> of <strong>spdep</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>moran.test</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>moran.test</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, 
+           listw<span class='op'>=</span><span class='va'>rswm_q</span>, 
+           zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+           na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -1752,7 +1761,11 @@ Moran I statistic       Expectation          Variance
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1234</span><span class='op'>)</span>
-<span class='va'>bperm</span><span class='op'>=</span> <span class='fu'>moran.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, nsim<span class='op'>=</span><span class='fl'>999</span>, zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
+<span class='va'>bperm</span><span class='op'>=</span> <span class='fu'>moran.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, 
+                listw<span class='op'>=</span><span class='va'>rswm_q</span>, 
+                nsim<span class='op'>=</span><span class='fl'>999</span>, 
+                zero.policy <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+                na.action<span class='op'>=</span><span class='va'>na.omit</span><span class='op'>)</span>
 <span class='va'>bperm</span>
 </code></pre>
 </div>
@@ -1790,8 +1803,12 @@ alternative hypothesis: greater</code></pre>
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 -0.18339 -0.06168 -0.02125 -0.01505  0.02611  0.27593 </code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span>, freq<span class='op'>=</span><span class='cn'>TRUE</span>, breaks<span class='op'>=</span><span class='fl'>20</span>, xlab<span class='op'>=</span><span class='st'>"Simulated Moran's I"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fl'>0</span>, col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/hist.html'>hist</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span>, 
+     freq<span class='op'>=</span><span class='cn'>TRUE</span>, 
+     breaks<span class='op'>=</span><span class='fl'>20</span>, 
+     xlab<span class='op'>=</span><span class='st'>"Simulated Moran's I"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/abline.html'>abline</a></span><span class='op'>(</span>v<span class='op'>=</span><span class='fl'>0</span>, 
+       col<span class='op'>=</span><span class='st'>"red"</span><span class='op'>)</span> 
 </code></pre>
 </div>
 <p><img src="Hands-on_Ex07-GLSA_files/figure-html5/unnamed-chunk-10-1.png" width="624" /></p>
@@ -1832,7 +1849,9 @@ Geary C statistic       Expectation          Variance
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1234</span><span class='op'>)</span>
-<span class='va'>bperm</span><span class='op'>=</span><span class='fu'>geary.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, listw<span class='op'>=</span><span class='va'>rswm_q</span>, nsim<span class='op'>=</span><span class='fl'>999</span><span class='op'>)</span>
+<span class='va'>bperm</span><span class='op'>=</span><span class='fu'>geary.mc</span><span class='op'>(</span><span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, 
+               listw<span class='op'>=</span><span class='va'>rswm_q</span>, 
+               nsim<span class='op'>=</span><span class='fl'>999</span><span class='op'>)</span>
 <span class='va'>bperm</span>
 </code></pre>
 </div>
@@ -1884,7 +1903,11 @@ alternative hypothesis: greater</code></pre>
 <p>In the code chunk below, <a href="https://r-spatial.github.io/spdep/reference/sp.correlogram.html"><em>sp.correlogram()</em></a> of <strong>spdep</strong> package is used to compute a 6-lag spatial correlogram of GDPPC. The global spatial autocorrelation used in Moran’s I. The <strong>plot()</strong> of base Graph is then used to plot the output.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>MI_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, order<span class='op'>=</span><span class='fl'>6</span>, method<span class='op'>=</span><span class='st'>"I"</span>, style<span class='op'>=</span><span class='st'>"B"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>MI_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, 
+                          <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, 
+                          order<span class='op'>=</span><span class='fl'>6</span>, 
+                          method<span class='op'>=</span><span class='st'>"I"</span>, 
+                          style<span class='op'>=</span><span class='st'>"W"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>MI_corr</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -1899,19 +1922,19 @@ alternative hypothesis: greater</code></pre>
 <pre><code>Spatial correlogram for hunan$GDPPC 
 method: Moran&#39;s I
          estimate expectation   variance standard deviate
-1 (88)  0.3085690  -0.0114943  0.0039102           5.1184
-2 (88)  0.1886392  -0.0114943  0.0018387           4.6672
-3 (88)  0.0514413  -0.0114943  0.0012741           1.7631
-4 (88)  0.0067503  -0.0114943  0.0010653           0.5590
-5 (88) -0.1606674  -0.0114943  0.0011865          -4.3306
-6 (88) -0.1363950  -0.0114943  0.0014952          -3.2301
+1 (88)  0.3007500  -0.0114943  0.0043484           4.7351
+2 (88)  0.2060084  -0.0114943  0.0020962           4.7505
+3 (88)  0.0668273  -0.0114943  0.0014602           2.0496
+4 (88)  0.0299470  -0.0114943  0.0011717           1.2107
+5 (88) -0.1530471  -0.0114943  0.0012440          -4.0134
+6 (88) -0.1187070  -0.0114943  0.0016791          -2.6164
        Pr(I) two sided    
-1 (88)       3.081e-07 ***
-2 (88)       3.053e-06 ***
-3 (88)        0.077877 .  
-4 (88)        0.576170    
-5 (88)       1.487e-05 ***
-6 (88)        0.001237 ** 
+1 (88)       2.189e-06 ***
+2 (88)       2.029e-06 ***
+3 (88)        0.040400 *  
+4 (88)        0.226015    
+5 (88)       5.984e-05 ***
+6 (88)        0.008886 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -1922,7 +1945,11 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>In the code chunk below, <em>sp.correlogram()</em> of <strong>spdep</strong> package is used to compute a 6-lag spatial correlogram of GDPPC. The global spatial autocorrelation used in Geary’s C. The <strong>plot()</strong> of base Graph is then used to plot the output.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>GC_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, order<span class='op'>=</span><span class='fl'>6</span>, method<span class='op'>=</span><span class='st'>"C"</span>, style<span class='op'>=</span><span class='st'>"W"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>GC_corr</span> <span class='op'>&lt;-</span> <span class='fu'>sp.correlogram</span><span class='op'>(</span><span class='va'>wm_q</span>, 
+                          <span class='va'>hunan</span><span class='op'>$</span><span class='va'>GDPPC</span>, 
+                          order<span class='op'>=</span><span class='fl'>6</span>, 
+                          method<span class='op'>=</span><span class='st'>"C"</span>, 
+                          style<span class='op'>=</span><span class='st'>"W"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>GC_corr</span><span class='op'>)</span>
 </code></pre>
 </div>

@@ -122,7 +122,10 @@ quantile <- tm_shape(hunan) +
   tm_borders(alpha = 0.5) +
   tm_layout(main.title = "Equal quantile classification")
 
-tmap_arrange(equal, quantile, asp=1, ncol=2)
+tmap_arrange(equal, 
+             quantile, 
+             asp=1, 
+             ncol=2)
 ```
 
 # Global Spatial Autocorrelation
@@ -138,7 +141,8 @@ In the code chunk below, [*poly2nb()*](https://r-spatial.github.io/spdep/referen
 More specifically, the code chunk below is used to compute Queen contiguity weight matrix.
 
 ```{r}
-wm_q <- poly2nb(hunan, queen=TRUE)
+wm_q <- poly2nb(hunan, 
+                queen=TRUE)
 summary(wm_q)
 ```
 
@@ -149,7 +153,9 @@ The summary report above shows that there are 88 area units in Hunan. The most c
 Next, we need to assign weights to each neighboring polygon. In our case, each neighboring polygon will be assigned equal weight (style="W"). This is accomplished by assigning the fraction 1/(#ofneighbors) to each neighboring county then summing the weighted income values. While this is the most intuitive way to summaries the neighbors' values it has one drawback in that polygons along the edges of the study area will base their lagged values on fewer polygons thus potentially over- or under-estimating the true nature of the spatial autocorrelation in the data. For this example, we'll stick with the style="W" option for simplicity's sake but note that other more robust options are available, notably style="B".
 
 ```{r}
-rswm_q <- nb2listw(wm_q, style="W", zero.policy = TRUE)
+rswm_q <- nb2listw(wm_q, 
+                   style="W", 
+                   zero.policy = TRUE)
 rswm_q
 ```
 
@@ -169,7 +175,10 @@ In this section, you will learn how to perform Moran's I statistics testing by u
 The code chunk below performs Moran's I statistical testing using [*moran.test()*](https://r-spatial.github.io/spdep/reference/moran.test.html) of **spdep**.
 
 ```{r}
-moran.test(hunan$GDPPC, listw=rswm_q, zero.policy = TRUE, na.action=na.omit)
+moran.test(hunan$GDPPC, 
+           listw=rswm_q, 
+           zero.policy = TRUE, 
+           na.action=na.omit)
 ```
 
 >Question: What statistical conclusion can you draw from the output above?
@@ -180,7 +189,11 @@ The code chunk below performs permutation test for Moran's I statistic by using 
 
 ```{r}
 set.seed(1234)
-bperm= moran.mc(hunan$GDPPC, listw=rswm_q, nsim=999, zero.policy = TRUE, na.action=na.omit)
+bperm= moran.mc(hunan$GDPPC, 
+                listw=rswm_q, 
+                nsim=999, 
+                zero.policy = TRUE, 
+                na.action=na.omit)
 bperm
 ```
 
@@ -196,8 +209,12 @@ In the code chunk below [*histo()*](https://www.rdocumentation.org/packages/grap
 mean(bperm$res[1:999])
 var(bperm$res[1:999])
 summary(bperm$res[1:999])
-hist(bperm$res, freq=TRUE, breaks=20, xlab="Simulated Moran's I")
-abline(v=0, col="red") 
+hist(bperm$res, 
+     freq=TRUE, 
+     breaks=20, 
+     xlab="Simulated Moran's I")
+abline(v=0, 
+       col="red") 
 ```
 
 >Question: What statistical observation can you draw fro mthe output above?
@@ -224,7 +241,9 @@ The code chunk below performs permutation test for Geary's C statistic by using 
 
 ```{r}
 set.seed(1234)
-bperm=geary.mc(hunan$GDPPC, listw=rswm_q, nsim=999)
+bperm=geary.mc(hunan$GDPPC, 
+               listw=rswm_q, 
+               nsim=999)
 bperm
 ```
 
@@ -253,7 +272,11 @@ Spatial correlograms are great to examine patterns of spatial autocorrelation in
 In the code chunk below, [*sp.correlogram()*](https://r-spatial.github.io/spdep/reference/sp.correlogram.html) of **spdep** package is used to compute a 6-lag spatial correlogram of GDPPC.  The global spatial autocorrelation used in Moran's I.  The **plot()** of base Graph is then used to plot the output.    
 
 ```{r}
-MI_corr <- sp.correlogram(wm_q, hunan$GDPPC, order=6, method="I", style="B")
+MI_corr <- sp.correlogram(wm_q, 
+                          hunan$GDPPC, 
+                          order=6, 
+                          method="I", 
+                          style="W")
 plot(MI_corr)
 ```
 
@@ -270,7 +293,11 @@ print(MI_corr)
 In the code chunk below, *sp.correlogram()* of **spdep** package is used to compute a 6-lag spatial correlogram of GDPPC.  The global spatial autocorrelation used in Geary's C.  The **plot()** of base Graph is then used to plot the output.
 
 ```{r}
-GC_corr <- sp.correlogram(wm_q, hunan$GDPPC, order=6, method="C", style="W")
+GC_corr <- sp.correlogram(wm_q, 
+                          hunan$GDPPC, 
+                          order=6, 
+                          method="C", 
+                          style="W")
 plot(GC_corr)
 ```
 
