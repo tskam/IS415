@@ -1784,7 +1784,7 @@ alternative hypothesis: greater</code></pre>
 </blockquote>
 <h3 id="visualising-monte-carlo-morans-i">Visualising Monte Carlo Moran’s I</h3>
 <p>It is always a good practice for us the examine the simulated Moran’s I test statistics in greater detail. This can be achieved by plotting the distribution of the statistical values as a histogram by using the code chunk below.</p>
-<p>In the code chunk below <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist"><em>histo()</em></a> and <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/abline"><em>abline()</em></a> of R Graphics are used.</p>
+<p>In the code chunk below <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist"><em>hist()</em></a> and <a href="https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/abline"><em>abline()</em></a> of R Graphics are used.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>bperm</span><span class='op'>$</span><span class='va'>res</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>999</span><span class='op'>]</span><span class='op'>)</span>

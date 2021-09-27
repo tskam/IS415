@@ -203,7 +203,7 @@ bperm
 
 It is always a good practice for us the examine the simulated Moran's I test statistics in greater detail.  This can be achieved by plotting the distribution of the statistical values as a histogram by using the code chunk below.
 
-In the code chunk below [*histo()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) and [*abline()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/abline) of R Graphics are used.
+In the code chunk below [*hist()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/hist) and [*abline()*](https://www.rdocumentation.org/packages/graphics/versions/3.6.2/topics/abline) of R Graphics are used.
 
 ```{r}
 mean(bperm$res[1:999])
