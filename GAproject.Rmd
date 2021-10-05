@@ -132,8 +132,8 @@ The poster will be graded based on the following criteria:
 ## Learning from past project
 
 + AY2018-19 Term 2
-  + [Signal](https://wiki.smu.edu.sg/1819t2is415/Signal_Proposal)
+  + [Signal](https://wiki.smu.edu.sg/1819t2is415/Signal_Proposal) and the [Shiny application](https://is415-ay1819-signal.shinyapps.io/Signal/).
 + AY2020-2021 Term 1
-  + [J-Town](https://is415-t14-project-proposal.netlify.app/) and [Shiny Application](https://erika-aldisa-gunawan.shinyapps.io/IS415_T14_EastKalimantan_New_JTown/)
+  + [J-Town](https://is415-t14-project-proposal.netlify.app/) and the [Shiny Application](https://erika-aldisa-gunawan.shinyapps.io/IS415_T14_EastKalimantan_New_JTown/)
 
 
