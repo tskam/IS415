@@ -35,6 +35,7 @@ knitr::opts_chunk$set(echo = FALSE)
 + Advanced R Shiny I slides in [html](../workshop/Shiny2/Shiny2.html) and [pdf](../workshop/Shiny2/Shiny2.pdf) formats
 
 + Managing R Shiny Project slides in [html](../workshop/Shiny3/Shiny3.html) and [pdf](../workshop/Shiny3/Shiny3.pdf) formats
+
 ## Must Do!
 
 View the three parts series of Shiny Tutorial at this [link](https://shiny.rstudio.com/tutorial/). 
