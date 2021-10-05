@@ -687,6 +687,6 @@ shinyApp(ui = ui, server = server) #<<
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
-pagedown::chrome_print("Lesson11-Intro_Shiny.html")
+pagedown::chrome_print("Shiny1.html")
 ```
 
