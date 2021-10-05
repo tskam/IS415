@@ -58,6 +58,7 @@ As a first step, you should create a project summary at the course wiki that inc
 - The project proposal.  This should in a webblog page (remember to provide a link at eLearn).
 
 ### Poster
+
 The project poster should provide an overview of your project.  It should include, but not limited to the following information: 
 
 - Issues and problems - A clear statement of the issues or/and problems your project addresses. 
@@ -87,13 +88,12 @@ The research paper should be in the form of Geospatial Analytics Application pra
 
 The research paper should include an abstract of **not more than 300 words**.  The actual research paper itself should **not more than 6 pages** excluding figures, tables, formula and references.  The practice research paper must be edited by using **R Markdown** and the **ACM: Association for Computing Machinery** template of [**rticles**](https://github.com/rstudio/rticles) should be used.
 
-
 #### Sample practice research papers
 
 - [DIVAD: A Dynamic and Interactive Visual Analytical Dashboard for Exploring and Analyzing Transport Data](https://ink.library.smu.edu.sg/sis_research/1761/)
 - [MEPHAS: an interactive graphical user interface for medical and pharmaceutical statistical analysis with R and Shiny](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-3494-x) 
 - [SpatialEpiApp: A Shiny Web Application for the Analysis of Spatial and Spatio-Temporal Disease Data](https://cran.rstudio.com/web/packages/SpatialEpiApp/vignettes/manual.pdf) 
-- [Developing web-based data analysis tools for precision farming using R and Shiny](https://cran.r-project.org/web/packages/SpatialEpiApp/vignettes/manual.pdf)
+- [Developing web-based data analysis tools for precision farming using R and Shiny](https://iopscience.iop.org/article/10.1088/1755-1315/20/1/012014)
 - [EHDViz: clinical dashboard development using open-source technologies](https://www.ncbi.nlm.nih.gov/pubmed/27013597)
 - [Health Equity Assessment Toolkit](https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-016-0229-9)  
 - [Interactive Pharmacometric Applications Using R and the Shiny Package](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4394611/)
@@ -129,5 +129,11 @@ The poster will be graded based on the following criteria:
 - Clear communication of arguments for proposed solution
 - Craft quality of the solution
 
+## Learning from past project
+
++ AY2018-19 Term 2
+  + [Signal](https://wiki.smu.edu.sg/1819t2is415/Signal_Proposal)
++ AY2020-2021 Term 1
+  + [J-Town](https://is415-t14-project-proposal.netlify.app/) and [Shiny Application](https://erika-aldisa-gunawan.shinyapps.io/IS415_T14_EastKalimantan_New_JTown/)
 
 
