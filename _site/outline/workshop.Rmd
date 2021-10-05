@@ -56,6 +56,9 @@ View the three parts series of Shiny Tutorial at this [link](https://shiny.rstud
 
 ## Gallery
 
+* [Winners of the 1st Shiny Contest](https://blog.rstudio.com/2019/04/05/first-shiny-contest-winners/)
+* [Winners of the 2nd Annual Shiny Contest](https://blog.rstudio.com/2020/07/13/winners-of-the-2nd-shiny-contest/)
+* [Winners of the 3rd annual Shiny Contest](https://blog.rstudio.com/2021/06/24/winners-of-the-3rd-annual-shiny-contest/)
 * [Shiny Gallery](https://shiny.rstudio.com/gallery/)
 * [Fifteen New Zealand government Shiny web apps](http://freerangestats.info/blog/2018/05/13/nz-govt-shinyapps)
 * [ShinyApps Gallery](https://shinyapps-recent.appspot.com/recent.html)
