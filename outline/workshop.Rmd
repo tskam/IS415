@@ -43,7 +43,8 @@ View the three parts series of Shiny Tutorial at this [link](https://shiny.rstud
 ### Core Readings
 
 * [Shiny reference guide](https://cran.r-project.org/web/packages/shiny/shiny.pdf) at CRAN.
-* Hadley Wickham (2021) **Mastering Shiny**,  O’Reilly Media.  This is a highly recommended book.  You can find the online version with this [link](https://mastering-shiny.org/index.html). 
+* Hadley Wickham (2021) **Mastering Shiny**,  O’Reilly Media.  This is a highly recommended book.  You can find the online version with this [link](https://mastering-shiny.org/index.html).
+* Paula Moraga (2020) **Geospatial Health Data: Modeling and Visualization with R-INLA and Shiny**, Chapman & Hall/CRC.   Chapter [13](https://www.paulamoraga.com/book-geospatial/sec-shiny.html), [14](https://www.paulamoraga.com/book-geospatial/sec-dashboardswithshiny.html) and [15](https://www.paulamoraga.com/book-geospatial/sec-shinyexample.html).  
 
 
 ### Additional references
