@@ -5,7 +5,7 @@ description: |
 output:
   distill::distill_article:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
@@ -135,5 +135,28 @@ The poster will be graded based on the following criteria:
   + [Signal](https://wiki.smu.edu.sg/1819t2is415/Signal_Proposal) and the [Shiny application](https://is415-ay1819-signal.shinyapps.io/Signal/).
 + AY2020-2021 Term 1
   + [J-Town](https://is415-t14-project-proposal.netlify.app/) and the [Shiny Application](https://erika-aldisa-gunawan.shinyapps.io/IS415_T14_EastKalimantan_New_JTown/)
+
+## Project Links
+
+### Group 1
+#### [Spatial Interaction Model](https://flosg-is415.netlify.app/)
+
+
+### Group 2
+
+
+### Group 3
+#### [Regionalisation in Reach](https://is412-g3-proposal.netlify.app/posts/welcome/)
+
+
+### Group 4
+
+
+### Group 5
+#### [Geographically Weighted Regression](https://g5-is415-proj.netlify.app/)
+
+### Group 8
+#### [Spatial Pointers](https://spatial-pointers.netlify.app/project-proposal)
+
 
 
