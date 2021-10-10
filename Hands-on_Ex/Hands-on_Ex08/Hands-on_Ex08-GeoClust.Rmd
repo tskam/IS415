@@ -10,7 +10,7 @@ author:
 date: "`r Sys.Date()`"
 output:
   distill::distill_article:
-    code_folding: false
+    code_folding: true
     toc: true
     toc_depth: 4
     self_contained: false
@@ -71,11 +71,12 @@ The R packages needed for this exercise are as follows:
     - **coorplot**, **ggpubr**, and **heatmaply**
 - Cluster analysis
     - **cluster**
+    - **ClustGeo**
 
 The code chunks below installs and launches these R packages into R environment.
 
-```{r, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
-packages = c('rgdal', 'spdep', 'tmap', 'sf', 'ggpubr', 'cluster', 'factoextra', 'NbClust', 'heatmaply', 'corrplot', 'psych', 'tidyverse')
+```{r}
+packages = c('rgdal', 'spdep', 'tmap', 'sf', 'ggpubr', 'cluster', 'ClustGeo', 'factoextra', 'NbClust', 'heatmaply', 'corrplot', 'psych', 'tidyverse')
 for (p in packages){
   if(!require(p, character.only = T)){
     install.packages(p)
@@ -97,14 +98,15 @@ The Myanmar Township Boundary GIS data is in ESRI shapefile format.  It will be 
 
 The code chunks used are shown below:
 
-```{r, echo=TRUE, eval=TRUE}
-shan_sf <- st_read(dsn = "data/geospatial", layer = "myanmar_township_boundaries") %>%
+```{r}
+shan_sf <- st_read(dsn = "data/geospatial", 
+                   layer = "myanmar_township_boundaries") %>%
   filter(ST %in% c("Shan (East)", "Shan (North)", "Shan (South)"))
 ```
 
 The imported township boundary object is called *shan_sf*. It is saved in **simple feature data.frame** format.  We can view the content of the newly created *shan_sf* simple features data.frame by using the code chunk below.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r}
 shan_sf
 ```
 
@@ -123,7 +125,7 @@ The csv file will be import using *read_csv* function of **readr** package.
 
 The code chunks used are shown below:
 
-```{r, echo=TRUE, eval=TRUE}
+```{r}
 ict <- read_csv ("data/aspatial/Shan-ICT.csv")
 ```
 
@@ -175,28 +177,38 @@ We can plot the distribution of the variables (i.e. Number of households with ra
 
 Histogram is useful to identify the overall distribution of the data values (i.e. left skew, right skew or normal distribution)
 
-```{r, echo=TRUE, eval=TRUE, fig.width= 4, fig.height=3}
-ggplot(data=ict_derived, aes(x=`RADIO`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
+```{r, fig.width= 4, fig.height=3}
+ggplot(data=ict_derived, 
+       aes(x=`RADIO`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
 ```
 
 Boxplot is useful to detect if there are outliers.
 
-```{r, echo=TRUE, eval=TRUE, fig.width= 4, fig.height=3}
-ggplot(data=ict_derived, aes(x=`RADIO`)) +
-  geom_boxplot(color="black", fill="light blue")
+```{r, fig.width= 4, fig.height=3}
+ggplot(data=ict_derived, 
+       aes(x=`RADIO`)) +
+  geom_boxplot(color="black", 
+               fill="light blue")
 ```
 
 Next, we will also plotting the distribution of the newly derived variables (i.e. Radio penetration rate) by using the code chunk below.
 
-```{r, echo=TRUE, eval=TRUE, fig.width= 4, fig.height=3}
-ggplot(data=ict_derived, aes(x=`RADIO_PR`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
+```{r, fig.width= 4, fig.height=3}
+ggplot(data=ict_derived, 
+       aes(x=`RADIO_PR`)) +
+  geom_histogram(bins=20, 
+                 color="black", 
+                 fill="light blue")
 ```
 
-```{r, echo=TRUE, eval=TRUE, fig.width= 4, fig.height=3}
-ggplot(data=ict_derived, aes(x=`RADIO_PR`)) +
-  geom_boxplot(color="black", fill="light blue")
+```{r, fig.width= 4, fig.height=3}
+ggplot(data=ict_derived, 
+       aes(x=`RADIO_PR`)) +
+  geom_boxplot(color="black", 
+               fill="light blue")
 ```
 
 What can you observed from the distributions reveal in the histogram and boxplot.
@@ -300,8 +312,10 @@ Before we can prepare the choropleth map, we need to combine both the geospatial
 
 The code chunks below is used to perform the task.  The unique identifier used to join both data objects is *TS_PCODE*.
 
-```{r, echo=TRUE, eval=TRUE}
-shan_sf <- left_join(shan_sf, ict_derived, by=c("TS_PCODE"="TS_PCODE"))
+```{r}
+shan_sf <- left_join(shan_sf, 
+                     ict_derived, 
+                     by=c("TS_PCODE"="TS_PCODE"))
 ```
 
 The message above shows that *TS_CODE* field is the common field used to perform the left-join.
@@ -315,7 +329,7 @@ To have a quick look at the distribution of Radio penetration rate of Shan State
 
 The code chunks below are used to prepare the choroplethby using the *qtm()* function of **tmap** package.
 
-```{r, echo=TRUE, eval=TRUE, fig.retina=3}
+```{r}
 qtm(shan_sf, "RADIO_PR")
 ```
 
@@ -363,7 +377,7 @@ Before we perform cluster analysis, it is important for us to ensure that the cl
 
 In this section, you will learn how to use [*corrplot.mixed()*](https://cran.r-project.org/web/packages/corrplot/corrplot.pdf) function of [**corrplot**](https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html) package to visualise and analyse the correlation of the input variables.
 
-```{r fig.retina=3}
+```{r}
 cluster_vars.cor = cor(ict_derived[,12:17])
 corrplot.mixed(cluster_vars.cor,
          lower = "ellipse", 
@@ -448,7 +462,7 @@ Beside reviewing the summary statistics of the standardised clustering variables
 
 The code chunk below plot the scaled *Radio_PR* field.
 
-```{r, echo=TRUE, eval=TRUE, fig.width=12, fig.height=4}
+```{r, fig.width=12, fig.height=4}
 
 r <- ggplot(data=ict_derived, 
              aes(x= `RADIO_PR`)) +
@@ -557,7 +571,11 @@ To compute the gap statistic, [*clusGap()*](https://www.rdocumentation.org/packa
 
 ```{r}
 set.seed(12345)
-gap_stat <- clusGap(shan_ict, FUN = hcut, nstart = 25, K.max = 10, B = 50)
+gap_stat <- clusGap(shan_ict, 
+                    FUN = hcut, 
+                    nstart = 25, 
+                    K.max = 10, 
+                    B = 50)
 # Print the result
 print(gap_stat, method = "firstmax")
 ```
@@ -584,7 +602,9 @@ It’s also possible to draw the dendrogram with a border around the selected cl
 
 ```{r fig.width=10, fig.height=6}
 plot(hclust_ward, cex = 0.6)
-rect.hclust(hclust_ward, k = 6, border = 2:5)
+rect.hclust(hclust_ward, 
+            k = 6, 
+            border = 2:5)
 ```
 
 ## Visually-driven hierarchical clustering analysis
@@ -603,10 +623,9 @@ The code chunk below will be used to transform *shan_ict* data frame into a data
 shan_ict_mat <- data.matrix(shan_ict)
 ```
 
-
 ### Plotting interactive cluster heatmap using *heatmaply()*
 
-In the code chunk below, the *heatmaply()* is used to build an interactive cluster heatmap.  
+In the code chunk below, the [*heatmaply()*](https://talgalili.github.io/heatmaply/reference/heatmaply.html) of [heatmaply](https://talgalili.github.io/heatmaply/index.html) package is used to build an interactive cluster heatmap.  
 
 ```{r fig.width=8, fig.height=6}
 heatmaply(normalize(shan_ict_mat),
@@ -627,9 +646,9 @@ heatmaply(normalize(shan_ict_mat),
 
 ## Mapping the clusters formed
 
-With closed examination of the dendragram above, we have decided to retain five clusters.
+With closed examination of the dendragram above, we have decided to retain six clusters.
 
-[*cutree()*](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/cutree.html) of R Base will be used in the code chunk below to derive a 5-cluster model. 
+[*cutree()*](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/cutree.html) of R Base will be used in the code chunk below to derive a 6-cluster model. 
 
 ```{r}
 groups <- as.factor(cutree(hclust_ward, k=6))
@@ -642,7 +661,7 @@ In order to visualise the clusters, the *groups* object need to be appended onto
 The code chunk below form the join in three steps:
 
 - the *groups* list object will be converted into a matrix; 
-- *cbind()* is used to append *groups* matrix onto shan_sf to produce an output simple feature object called shan_sf_cluster; and
+- *cbind()* is used to append *groups* matrix onto shan_sf to produce an output simple feature object called `shan_sf_cluster`; and
 - *rename* of **dplyr** package is used to rename *as.matrix.groups* field as *CLUSTER*.
 
 ```{r}
@@ -661,12 +680,12 @@ The choropleth map above reveals the clusters are very fragmented.  The is one o
 
 #  Spatially Constrained Clustering - SKATER approach
 
-In this section, you will learn how to derive spatially constrained cluster by using **SKATER** method.
+In this section, you will learn how to derive spatially constrained cluster by using [*skater()*](https://r-spatial.github.io/spdep/reference/skater.html) method of [**spdep**](https://r-spatial.github.io/spdep/index.html) package.
 
 
 ## Converting into SpatialPolygonsDataFrame
 
-First, we need to convert *shan_sf* into SpatialPolygonDataFrame.  This is because SKATER function only support **sp** objects such as SpatialPolygonDataFrame.
+First, we need to convert `shan_sf` into SpatialPolygonsDataFrame.  This is because SKATER function only support **sp** objects such as SpatialPolygonDataFrame.
 
 The code chunk below uses [*as_Spatial()*](https://r-spatial.github.io/sf/reference/coerce-methods.html) of **sf** package to convert *shan_sf* into a SpatialPolygonDataFrame called *shan_sp*.
 
@@ -686,8 +705,12 @@ summary(shan.nb)
 We can plot the neighbours list on shan_sp by using the code chunk below.  Since we now can plot the community area boundaries as well, we plot this graph on top of the map. The first plot command gives the boundaries. This is followed by the plot of the neighbor list object, with coordinates applied to the original SpatialPolygonDataFrame (Shan state township boundaries) to extract the centroids of the polygons. These are used as the nodes for the graph representation. We also set the color to blue and  specify add=TRUE to plot the network on top of the boundaries.
 
 ```{r}
-plot(shan_sp, border=grey(.5))
-plot(shan.nb, coordinates(shan_sp), col="blue", add=TRUE)
+plot(shan_sp, 
+     border=grey(.5))
+plot(shan.nb, 
+     coordinates(shan_sp), 
+     col="blue", 
+     add=TRUE)
 ```
 
 Note that if you plot the network first and then the boundaries, some of the areas will be clipped. This is because the plotting area is determined by the characteristics of the first plot. In this example, because the boundary map extends further than the graph, we plot it first.
@@ -714,7 +737,9 @@ In order to achieve this, [*nb2listw()*](https://r-spatial.github.io/spdep/refer
 Note that we specify the *style* as **B** to make sure the cost values are not row-standardised.
 
 ```{r}
-shan.w <- nb2listw(shan.nb, lcosts, style="B")
+shan.w <- nb2listw(shan.nb, 
+                   lcosts, 
+                   style="B")
 summary(shan.w)
 ```
 
@@ -745,8 +770,12 @@ The plot method for the MST include a way to show the observation numbers of the
 
 ```{r}
 plot(shan_sp, border=gray(.5))
-plot.mst(shan.mst, coordinates(shan_sp), 
-     col="blue", cex.lab=0.7, cex.circles=0.005, add=TRUE)
+plot.mst(shan.mst, 
+         coordinates(shan_sp), 
+         col="blue", 
+         cex.lab=0.7, 
+         cex.circles=0.005, 
+         add=TRUE)
 ```
 
 
@@ -755,7 +784,10 @@ plot.mst(shan.mst, coordinates(shan_sp),
 The code chunk below compute the spatially constrained cluster using [*skater()*](https://r-spatial.github.io/spdep/reference/skater.html) of **spdep** package.
 
 ```{r}
-clust6 <- skater(shan.mst[,1:2], shan_ict, method = "euclidean", 5)
+clust6 <- skater(edges = shan.mst[,1:2], 
+                 data = shan_ict, 
+                 method = "euclidean", 
+                 ncuts = 5)
 ```
 
 The *skater()* takes three mandatory arguments:
@@ -786,10 +818,14 @@ table(ccs6)
 
 Lastly, we can also plot the pruned tree that shows the five clusters on top of the townshop area. 
 
-```{r}
+```{r fig.width=4, fig.height=6}
 plot(shan_sp, border=gray(.5))
-plot(clust6, coordinates(shan_sp), cex.lab=.7,
-     groups.colors=c("red","green","blue", "brown", "pink"), cex.circles=0.005, add=TRUE)
+plot(clust6, 
+     coordinates(shan_sp), 
+     cex.lab=.7,
+     groups.colors=c("red","green","blue", "brown", "pink"),
+     cex.circles=0.005, 
+     add=TRUE)
 ```
 
 
@@ -818,6 +854,8 @@ shclust.map <- qtm(shan_sf_spatialcluster,
 tmap_arrange(hclust.map, shclust.map,
              asp=NA, ncol=2)
 ```
+
+
 
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
