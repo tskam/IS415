@@ -1,5 +1,5 @@
 ---
-title: "Hands-on Exercise 8: Geographical Segmentation with</br>Spatially Constrained Clustering Techniques"
+title: "Hands-on Exercise 8: Geographical Segmentation with Spatially Constrained Clustering Techniques"
 description: |
   In this hands-on exercise, you will learn how to perform geographical segmentation by using appropriate R packages. You will also expose to R packages for performing cluster analysis and visualising clustering results. 
 author:
