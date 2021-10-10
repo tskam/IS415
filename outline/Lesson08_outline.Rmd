@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Lesson slides in [html](../lesson/Lesson08/Lesson08-GeoKDD.html) and [pdf](../lesson/Lesson08/Lesson08-GeoKDD.pdf) formats
 
-- [Handout of Hands-on Exercise]()
+- Handout of Hands-on Exercise 8 in [html](../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08-GeoClust.html) and [pdf](../Hands-on_Ex/Hands-on_Ex08/Hands-on_Ex08-GeoClust.pdf) formats.
 
 
 ### Self-reading Before Meet-up
@@ -43,7 +43,7 @@ To read before class:
 - [skater](https://www.rdocumentation.org/packages/spdep/versions/0.8-1/topics/skater):  A function from spdep package that implements a SKATER procedure for spatial clustering analysis. 
 - [ClustGeo: Hierarchical Clustering with Spatial Constraints](https://cran.r-project.org/web/packages/ClustGeo/index.html)
     - [Introduction to Clustgeo](https://cran.r-project.org/web/packages/ClustGeo/vignettes/intro_ClustGeo.html)
-    - Chavent, M., Kuentz-Simonet, V., Labenne,A. and Saracco, J. 2018. “ClustGeo: an R package for hierarchical clustering with spatial constraints” Computational Statistics. 33: 1799-1822.
+    - Chavent, M., Kuentz-Simonet, V., Labenne,A. and Saracco, J. 2018. “ClustGeo: an R package for hierarchical clustering with spatial constraints” *Computational Statistics*, 33: 1799-1822.
 
 
 
