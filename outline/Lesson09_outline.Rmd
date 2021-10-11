@@ -26,9 +26,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Lesson Slides and Hands-on Notes 
 
-- Lesson slides in [html](lesson/lesson09/lesson09-gwr.html) and [pdf](lesson/lesson09/lesson09-gwr.pdf) formats
+- Lesson slides in [html](../lesson/lesson09/lesson09-gwr.html) and [pdf](../lesson/lesson09/lesson09-gwr.pdf) formats
 
-- [Handout of Hands-on Exercise](Hands-on_Ex\Hands-on_Ex09\Hands-on_Ex09-gwr.html)
+- [Handout of Hands-on Exercise](../Hands-on_Ex\Hands-on_Ex09\Hands-on_Ex09-gwr.html)
 
 
 ## Self-reading Before Meet-up
