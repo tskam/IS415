@@ -139,24 +139,20 @@ The poster will be graded based on the following criteria:
 ## Project Links
 
 ### Group 1
-#### [Spatial Interaction Model](https://flosg-is415.netlify.app/)
-
-
-### Group 2
-
+[Spatial Interaction Model](https://flosg-is415.netlify.app/)
 
 ### Group 3
-#### [Regionalisation in Reach](https://is412-g3-proposal.netlify.app/posts/welcome/)
-
-
-### Group 4
-
+[Regionalisation in Reach](https://is412-g3-proposal.netlify.app/posts/welcome/)
 
 ### Group 5
-#### [Geographically Weighted Regression](https://g5-is415-proj.netlify.app/)
+[Geographically Weighted Regression](https://g5-is415-proj.netlify.app/)
+
+### Group7
+[GeoeXplorer](https://geoxplorer.netlify.app/), a web-enabled geospatial analytics toolkit for detecting and visualising global spatial autocorrelation and local clusters and outliers from univariate geographically referenced data.
 
 ### Group 8
-#### [Spatial Pointers](https://spatial-pointers.netlify.app/project-proposal)
+[Spatial Pointers](https://spatial-pointers.netlify.app/project-proposal), a web-enabled Spatial Point Patterns Analysis toolkit for visualising and analysing both spatial and network constrained point patterns.
+
 
 
 
