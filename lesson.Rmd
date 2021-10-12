@@ -35,9 +35,9 @@ Week Date   Topic                                                               
 
 10.  18/10  [Geographically Weighted Regression](outline/Lesson09_outline.html)        
 
-11.  25/10  [Modelling Geographic of Accessibility](outline/Lesson10_outline.html)                 Take-home Ex3 due
+11.  25/10  [Spatial Interaction Models](outline/Lesson10_outline.html)                 Take-home Ex3 due
 
-12.  01/11  [Spatial Interaction Models](outline/Lesson11_outline.html)
+12.  01/11  [Modelling Geographic of Accessibility](outline/Lesson11_outline.html)
 
 13.  08/11  Epilogue
 
