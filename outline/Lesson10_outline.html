@@ -86,31 +86,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Lesson 10: Modelling Geographic of Accessibility</title>
+  <title>Lesson 10: Spatial Interaction Models</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format." />
+  <meta property="description" itemprop="description" content="In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models." />
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-07-18" />
-  <meta property="article:created" itemprop="dateCreated" content="2021-07-18" />
+  <meta property="article:published" itemprop="datePublished" content="2021-10-12" />
+  <meta property="article:created" itemprop="dateCreated" content="2021-10-12" />
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Lesson 10: Modelling Geographic of Accessibility" />
+  <meta property="og:title" content="Lesson 10: Spatial Interaction Models" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="A new article created using the Distill format." />
+  <meta property="og:description" content="In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models." />
   <meta property="og:locale" content="en_US" />
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary" />
-  <meta property="twitter:title" content="Lesson 10: Modelling Geographic of Accessibility" />
-  <meta property="twitter:description" content="A new article created using the Distill format." />
+  <meta property="twitter:title" content="Lesson 10: Spatial Interaction Models" />
+  <meta property="twitter:description" content="In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models." />
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 10: Modelling Geographic of Accessibility"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"character","attributes":{},"value":["07-18-2021"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","date"]}},"value":[{"type":"character","attributes":{},"value":["Lesson 10: Spatial Interaction Models"]},{"type":"character","attributes":{},"value":["In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"character","attributes":{},"value":["10-12-2021"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lesson 10: Modelling Geographic of Accessibility","description":"A new article created using the Distill format.","authors":[],"publishedDate":"2021-07-18T00:00:00.000+08:00"}
+{"title":"Lesson 10: Spatial Interaction Models","description":"In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models.","authors":[],"publishedDate":"2021-10-12T00:00:00.000+08:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1464,10 +1464,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Lesson 10: Modelling Geographic of Accessibility</h1>
+<h1>Lesson 10: Spatial Interaction Models</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>In this lesson, you will learn the basic concepts and methods of Spatial Interaction Models.</p></p>
 </div>
 
 
@@ -1477,7 +1477,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#content">Content</a></li>
-<li><a href="#meet-up-slides-and-hands-on-notes">Meet-up Slides and Hands-on Notes</a></li>
+<li><a href="#lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</a></li>
 <li><a href="#self-reading-before-meet-up">Self-reading Before Meet-up</a></li>
 <li><a href="#reference">Reference</a></li>
 <li><a href="#all-about-r">All About R:</a></li>
@@ -1486,41 +1486,36 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h2 id="content">Content</h2>
 <ul>
-<li>Basic Concepts of Geographic Accessibility</li>
-<li>Gravitational Law and Distance Decay Function</li>
-<li>Introducing Potential Models
+<li>Basic Concepts of Spatial Interaction Models</li>
+<li>A Family of Gravity Models
 <ul>
-<li>The classic model</li>
+<li>Unconstrained</li>
+<li>Origin constrained</li>
+<li>Destination constrained</li>
+<li>Doubly constrained</li>
 </ul></li>
-<li>Hansen Potential Accessibility Model</li>
-<li>Two-step Floating Catchment Area (2SFCA) Method</li>
-<li>Kernel Density Two-Step Floating Catchment Area (KD2SFCA) Method</li>
+<li>Statistical Approach</li>
 <li>Interpreting and Visualising Modelling Results</li>
 </ul>
-<h2 id="meet-up-slides-and-hands-on-notes">Meet-up Slides and Hands-on Notes</h2>
-<p>Slides and hands-on notes in <a href="Topics/Topic03/Topic04.html">html</a> and <a href="Topics/Topic03/Topic04.pdf">pdf</a> formats</p>
+<h2 id="lesson-slides-and-hands-on-notes">Lesson Slides and Hands-on Notes</h2>
+<ul>
+<li><p>Lesson slides in <a href="../lesson/Lesson10/Lesson10-SIMs.html">html</a> and <a href="../lesson/Lesson10/Lesson10-SIMs.pdf">pdf</a> formats</p></li>
+<li><p>Handout of Hands-on Exercise 10 in <a href="../Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10-SIMs.html">html</a> and <a href="../Hands-on_Ex/Hands-on_Ex10/Hands-on_Ex10-SIMs.pdf">pdf</a> formats.</p></li>
+</ul>
 <h2 id="self-reading-before-meet-up">Self-reading Before Meet-up</h2>
 <p>Read before lesson:</p>
 <ul>
-<li>Long, J. (2017). Modelling Accessibility. The Geographic Information Science &amp; Technology Body of Knowledge (3rd Quarter 2017 Edition), John P. Wilson (ed.). DOI: 10.22224/gistbok/2017.3.7</li>
-<li>Hansen, W. G. (1959): “How Accessibility Shapes Land Use”. Journal of the American Institute of Planners, 25, 2, p. 73-76.</li>
-<li>Luo, W.; Wang, F. (2003) “Measures of spatial accessibility to health care in a GIS environment: synthesis and a case study in the Chicago region”. Environment and Planning B: Planning and Design. 30 (6): 865–884. <a href="doi:10.1068/b29120" class="uri">doi:10.1068/b29120</a>.</li>
-<li>Luo, W.; Qi, Y. (2009). “An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians”. Health &amp; Place. 15 (4): 1100–1107.</li>
+<li><p>Kingsley E. Haynes and A. Stewart Fotheringham (2020) <a href="https://researchrepository.wvu.edu/rri-web-book/16/"><strong>Gravity and Spatial Interaction Models</strong></a>, Web Book of Regional Science. Chapter 1 and Sub-section 2.2.</p></li>
+<li><p>Farmer, C. and Oshan, T. (2017). <a href="https://gistbok.ucgis.org/bok-topics/spatial-interaction">“Spatial interaction”</a>. <strong>The Geographic Information Science &amp; Technology Body of Knowledge</strong> (4th Quarter 2017 Edition), John P. Wilson (ed.). DOI: 10.22224/gistbok/2017.4.5 (link is external)</p></li>
+<li><p>Flowerdew R, Aitkin M (1982) <a href="https://www.academia.edu/38321611/A_Method_of_Fitting_the_Gravity_Model_Based_on_the_Poisson_Distribution_">“A method of fitting the gravity model based on the Poisson distribution”</a>. <em>Journal of Regional Science</em>, 22: 191–202.</p></li>
 </ul>
 <h2 id="reference">Reference</h2>
 <ul>
-<li>Section on “Transportation and Accessibility” in The Geography of Transport Systems.</li>
-<li>Rich, D.C. (1980) Potential Models in Human Geography.</li>
-<li>Orpana, T./Lampinen, J. (2003) “Building spatial choice models from aggregate data”. Journal of Regional Science,43, 2, p. 319-347.</li>
-<li>Two-step floating catchment area method.</li>
-<li>Cheng, Gang et. al. (2016) “Spatial difference analysis for accessibility to high level hospitals based on travel time in Shenzhen, China” Habitat International, Vol.53, p.485-494.</li>
-<li>Polzin, Pierre ; Borges, José ; Coelho, António (2014) “An Extended Kernel Density Two-Step Floating Catchment Area Method to Analyze Access to Health Care” Environment and planning. B, Planning &amp; design, Vol.41 (4), p.717-735.</li>
+<li>Pavel KLAPKA, et. al. (2013) <a href="https://sciendo.com/de/article/10.2478/mgr-2013-0013">“The Footfall of Shopping Centre in Olomouc (CZECH REPUBLIC): An Application of The Gravity Model”</a>, <em>Moravian Geographical Reports</em>, Vol 21, pp. 12-26.<br />
+</li>
+<li>Yang Yue et. al. (2012) “Exploratory calibration of a spatial interaction model using taxi GPS trajectories”, <em>Computers, Environment and Urban Systems</em>, 36 (2012) 140–153.</li>
 </ul>
 <h2 id="all-about-r">All About R:</h2>
-<ul>
-<li>hansen() function in REAT package.</li>
-<li>ac() function in SpatialAcc package.</li>
-</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
