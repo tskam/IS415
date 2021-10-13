@@ -122,6 +122,187 @@ Representing mobility as a spatial interaction involves several considerations:
 ---
 ## Gravity Models
 
+.pull-left[
+The general formula (also known as unconstrained):
+
+![](img/image10-6a.jpg)
+
++ Tij is the transition/trip or flow, 𝑇, between origin 𝑖 (always the rows in a matrix) and destination 𝑗 (always the columns in a matrix). If you are not overly familiar with matrix notation, the 𝑖 and 𝑗 are just generic indexes to allow us to refer to any cell in the matrix.
++ 𝑉 is a vector (a 1 dimensional matrix – or, if you like, a single line of numbers) of origin attributes which relate to the emissivity of all origins in the dataset, 𝑖 – this could be any of the origin-related variables.
+
+]
+
+.pull-right[
+
++ 𝑊 is a vector of destination attributes relating to the attractiveness of all destinations in the dataset, 𝑗 – similarly, this could be any of the destination related variables.
++ 𝑑 is a matrix of costs (frequently distances – hence, d) relating to the flows between 𝑖 and 𝑗.
++ 𝑘, 𝜇, 𝛼 and 𝛽 are all model parameters to be estimated. 𝛽 is assumed to be negative, as with an increase in cost/distance we would expect interaction to decrease.
+]
+
+---
+### Unconstrained (Totally constrained) case
+
+.pull-left[
+
+The O-D Matrix
+
+![](img/image10-6c.jpg)
+
+and distance matrix:
+
+![:scale 50%](img/image10-6d.jpg)
+
+![:scale 75%](img/image10-6e.jpg)
+]
+
+.pull-right[
+
+The estimated O-D matrix:
+
+.center[
+![:scale 85%](img/image10-6f.jpg)
+
+and the calculation T11
+
+![:scale 50%](img/image10-6g.jpg)
+]]
+
+---
+### The Origin (Production) Constrained Model
+
+.pull-left[
+
+![:scale 55%](img/image10-6b.jpg)
+]
+
+.pull-right[
+.large[
+In the Origin Constrained Model, 
++ 𝑂𝑖 does not have a parameter as it is a known **constraint**. 
++ 𝐴𝑖 is known as a **balancing factor** and is a vector of values which relate to each origin 𝑖 which do the equivalent job as 𝑘 in the unconstrained/total constrained model but ensure that flow estimates from each origin sum to the know totals 𝑂𝑖 rather than just the overall total.
+]]
+
+---
+### Oringin (Production) constrained case
+
+.pull-left[
+
+The O-D Matrix
+
+![](img/image10-6c.jpg)
+
+and distance matrix:
+
+![:scale 50%](img/image10-6d.jpg)
+
+![:scale 75%](img/image10-6e.jpg)
+]
+
+.pull-right[
+
+The estimated O-D matrix:
+
+.center[
+![:scale 80%](img/image10-7a.jpg)
+
+A1 is calculated as shown below:
+
+![:scale 75%](img/image10-7b.jpg)
+
+
+Hence, T11 is calculated as shown below:
+
+![:scale 45%](img/image10-7c.jpg)
+]]
+
+---
+### The Destination (Attraction) Constrained Model
+
+.pull-left[
+
+![:scale 55%](img/image10-8a.jpg)
+]
+
+---
+### Destination (Attraction) constrained case
+
+.pull-left[
+
+The O-D Matrix
+
+![](img/image10-6c.jpg)
+
+and distance matrix:
+
+![:scale 50%](img/image10-6d.jpg)
+
+![:scale 75%](img/image10-6e.jpg)
+]
+
+.pull-right[
+
+The estimated O-D matrix:
+
+.center[
+![:scale 80%](img/image10-8b.jpg)
+
+B1 is calculated as shown below:
+
+![:scale 75%](img/image10-8c.jpg)
+
+
+Hence, T11 is calculated as shown below:
+
+![:scale 45%](img/image10-8d.jpg)
+]]
+
+
+---
+### The Doubly Constrained Model
+
+.pull-left[
+
+![:scale 55%](img/image10-9a.jpg)
+]
+
+.pull-right[
+.large[
+Note that the calculation of 𝐴𝑖 relies on knowing 𝐵𝑗 and the calculation of 𝐵𝑗 relies on knowing 𝐴𝑖 – something of a conundrum to which the solution is elegantly described by Senior (1979), who sketches out a very useful algorithm for iteratively arriving at values for 𝐴𝑖 and 𝐵𝑗 by setting each to equal 1 initially and then continuing to calculate each in turn until the difference between successive iterations of the 𝐴𝑖 and 𝐵𝑗 values is small enough not to matter.
+]]
+
+---
+### Destination (Attraction) constrained case
+
+.pull-left[
+
+The O-D Matrix
+
+![](img/image10-6c.jpg)
+
+and distance matrix:
+
+![:scale 50%](img/image10-6d.jpg)
+
+![:scale 75%](img/image10-6e.jpg)
+]
+
+.pull-right[
+
+The estimated O-D matrix:
+
+.center[
+![:scale 80%](img/image10-9b.jpg)
+
+
+Hence, T11 is calculated as shown below:
+
+![:scale 55%](img/image10-9c.jpg)
+
+]
+Notice that A1 and B1 are computed by using computer.
+]
+
+
 
 
 ```{r echo=FALSE, eval=FALSE}
