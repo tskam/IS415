@@ -1,0 +1,556 @@
+---
+title: "Hands-on Exercise 10: Calibrating Spatial Interaction Models using Generalised Linear Models (GLM)"
+description: |
+  In this hands-on exercise, you will learn how to calibrate spatial interaction models by using GLM() of Base R. 
+author:
+  - name: Dr. Kam Tin Seong, Associate Professor of Information Systems (Practice) 
+    url: https://www.smu.edu.sg/faculty/profile/9618/KAM-Tin-Seong
+    affiliation: School of Computing and Information Systems, Singapore Management University
+    affiliation_url: https://scis.smu.edu.sg/
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    code_folding: false
+    toc: true
+    toc_depth: 4
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.retina = 3, warning = FALSE, message = FALSE)
+```
+
+# Introduction
+
+In this hands-on exercise, you will gain hands-on experience on how to calibrate Spatial Interaction Models (SIM) by using [*GLM()*](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) of Base R.  The use case is adapted from [Modelling population flows using spatial interaction models](https://digitised-collections.unimelb.edu.au/bitstream/handle/11343/233564/Modelling%20population%20flows%20using%20spatial%20interaction%20models.pdf?sequence=1&isAllowed=y) by Adam Dennett. 
+
+
+## Learning Outcome
+
+By the end of this hands-on exercise, you will be able:
+
+- to import GIS polygon data into R and save them as simple feature data.frame and SpatialPolygonsDataFrame by using appropriate functions of sf package of R;
+- to compute distance matrix in R;
+- to import aspatial data into R and save it as a data.frame.  
+- to integrate the imported data.frame with the distance matrix;
+- to calibrate Spatial Interaction Models by using glm() of R; and
+- to assess the perfromance of the SIMs by computing Goodness-of-Fit statistics.
+
+
+## The data
+
+Two data sets will be used in this hands-on exercise, they are:
+
+- [Greater Capital City Statistical Areas](https://www.abs.gov.au/websitedbs/censushome.nsf/home/factsheetsgeography/$file/Greater%20Capital%20City%20Statistical%20Area%20-%20Fact%20Sheet.pdf), Australia.  It is in geojson format.
+- [Migration data from 2011 Australia Census](https://www.abs.gov.au/ausstats/abs@.nsf/ViewContent?readform&view=productsbytopic&Action=Expand&Num=5.5.5).  It is in csv file format.
+
+In the later sections, you will learn how to fetch these data directly from their hosting repositories online.
+
+
+#  Getting Started
+## Installing and launching R packages
+
+Before we getting started, it is important for us to install the necessary R packages and launch them into RStudio environment.
+
+The R packages need for this exercise are as follows:
+
+- Spatial data handling
+    - sf, sp, 'geojsonio', 'stplanr'
+- Attribute data handling
+    - tidyverse, especially readr and dplyr, reshape2,  
+- thematic mapping
+    - tmap
+- Statistical graphic
+    - ggplot2
+- Statistical analysis
+    - caret
+    
+The code chunk below installs and launches these R packages into RStudio environment.
+
+```{r echo=TRUE, eval=TRUE}
+packages = c('tmap', 'tidyverse',
+             'sp', 'caret',
+             'geojsonio', 'stplanr',
+             'reshape2', 'broom')
+
+for(p in packages){
+  if(!require(p, character.only = T)){
+    install.packages(p)
+  }
+  library(p, character.only = T)
+}
+```
+
+Due to s2 object class issue, we will use the order version (i.e. 0.9-8) of sf package instead of the latest version (i.e. 1.0-3).  The code chunk below will be used the install the appropriate version.  
+
+```{r eval=FALSE}
+library(devtools)
+install_version("sf", version = "0.9-8", repos = "http://cran.us.r-project.org")
+```
+
+Note that you only need to install once.
+
+After installation, we need to launch the library by using the code chunk below.
+
+```{r}
+library(sf)
+```
+
+# Geospatial Data
+
+In this section, you will download a copy of Greater Capital City Statistical Areas boundary layer from a dropbox depository by using *geojson_read()* of **geojsonio** package.
+
+The code chunk used is shown below.
+
+```{r}
+Aus <- geojson_read("https://www.dropbox.com/s/0fg80nzcxcsybii/GCCSA_2016_AUST_New.geojson?raw=1", what = "sp")
+```  
+
+Next, let use extract the data by using the code chunk below.
+
+```{r}
+Ausdata <- Aus@data
+```
+
+The original data is in geojson format.  We will convert it into a 'simple features' object and set the coordinate reference system at the same time in case the file doesn't have one.
+
+```{r}
+AusSF <- st_as_sf(Aus) %>% 
+  st_set_crs(4283) 
+```
+
+Next, we will check if all the simple features are valid by using the code chunk below.
+
+```{r}
+st_is_valid(AusSF)
+```
+
+The output shows that there are several invalid features.
+
+Let's fix them using the code chunk below.
+
+```{r}
+st_make_valid(AusSF)
+```
+
+```{r}
+st_is_valid(AusSF)
+```
+
+
+
+### Displaying the boundary layer
+
+Before we continue, it will be wise to plot the data and check if the boundary layer is correct.  The code chunk below is used to plot AusSF simple feature data.frame by using *qtm()* of **tmap** package.  
+
+
+```{r}
+tmap_mode("plot")
+qtm(AusSF)
+```
+
+### Displaying data table
+
+You can view the simple feature data.frame by using the code chunk below.
+
+```{r}
+head(AusSF, 10)
+```
+
+With close examination, you may have noticed that the code order is a bit weird, so let's fix that and reorder by using the code chunk below
+
+```{r}
+AusSF1 <- AusSF[order(AusSF$GCCSA_CODE),]
+```
+
+You can take a look at the data.frame again.
+
+```{r}
+head(AusSF1, 10)
+```
+
+### Converting into sp object
+
+In this section, you will convert the new ordered SF1 data.frame into an 'sp' object. from our. 
+
+```{r}
+Aus <- as(AusSF1, "Spatial")
+```
+
+## Calculating a distance matrix
+
+In our spatial interaction model, space is one of the key predictor variables. In this example we will use a very simple Euclidean distance measure between the centroids of the Greater Capital City Statistical Areas as our measure of space.
+
+**Caution note: With some areas so huge, there are obvious potential issues with this (for example we could use the average distance to larger settlements in the noncity areas), however as this is just an example, we will proceed with a simple solution for now.**
+
+### Re-projecting to projected coordinate system
+
+The original data is in geographical coordinate system and the unit of measurement is in decimal degree, which is not appropriate for distance measurement.  Before we compute the distance matrix, we will re-project the Aus into projected  coordinate system by using *spTransform()* of **sp** package.
+
+```{r}
+AusProj <- spTransform(Aus,"+init=epsg:3112")
+summary(AusProj)
+```
+
+### Computing distance matrix
+
+Technically, we can used *st_distance()* of **sf** package to compute the distance matrix.  However, I notice that the process took much longer time to complete.  In view of the *spDist()* of **sp** package is used.  
+
+```{r}
+dist <- spDists(AusProj)
+dist 
+```
+
+### Converting distance matrix into distance pair list
+
+In order to integrate the distance matrix with the migration flow data.frame which you will see later, we need to transform the newly derived distance matrix into a three columns distance values list.
+
+The code chunk below uses *melt()* of **reshape2** package of R to complete the task, however, you are encourage to archive the same task by using *pivot_longer()* of **dplyr** package. 
+
+```{r}
+distPair <- melt(dist)
+head(distPair, 10)
+```
+
+### Converting unit of measurement from metres into km
+
+The unit of measurement of Australia projected coordinate system is in metre.  As a result, the values in the distance matrix are in metres too.  The code chunk below is used to convert the distance values into kilometres.  
+
+```{r}
+distPair$value <- distPair$value / 1000
+head(distPair, 10)
+```
+
+# Importing Interaction Data
+
+Next, we will import the migration data into RStudio by using the code chunk below.
+
+```{r}
+mdata <- read_csv("https://www.dropbox.com/s/wi3zxlq5pff1yda/AusMig2011.csv?raw=1",col_names = TRUE)
+glimpse(mdata)
+```
+
+## Combining the imported migration data
+
+Now to finish, we need to add in our distance data that we generated earlier and create a new column of total flows which excludes flows that occur within areas (we could keep the within-area (intra-area) flows in, but they can cause problems so for now we will just exclude them).
+
+First create a new total column which excludes intra-zone flow totals. We will sets them to a very very small number to avoid making the intra-zonal distance become 0.
+
+```{r}
+mdata$FlowNoIntra <- ifelse(mdata$Orig_code == mdata$Dest_code,0,mdata$Flow)
+mdata$offset <- ifelse(mdata$Orig_code == mdata$Dest_code,0.0000000001,1)
+```
+
+Next, we ordered our spatial data earlier so that our zones are in their code order. We can now easily join these data together with our flow data as they are in the correct order.
+
+```{r}
+mdata$dist <- distPair$value 
+```
+
+and while we are here, rather than setting the intra-zonal distances to 0, we should set them to something small (most intrazonal moves won't occur over 0 distance)
+
+```{r}
+mdata$dist <- ifelse(mdata$dist == 0,5,mdata$dist)
+```
+
+Let’s have a quick look at what your spangly new data looks like:
+
+```{r}
+glimpse(mdata)
+```
+
+# Visualising with desire line
+
+In this section, you will learn how to prepare a desire line by using **stplanr** package.
+
+## Removing intra-zonal flows
+
+We will not plot the intra-zonal flows.  The code chunk below will be used to remove intra-zonal flows.
+
+```{r}
+mdatasub <- mdata[mdata$Orig_code!=mdata$Dest_code,]
+```
+
+First, use the *od2line()* function **stplanr** package to remove all but the origin, destination and flow columns.
+
+```{r}
+mdatasub_skinny <- mdatasub[,c(2,4,5)]
+travel_network <- od2line(flow = mdatasub_skinny, zones = Aus)
+```
+
+Next, convert the flows to WGS84 projection.
+
+```{r}
+travel_networkwgs <- spTransform(travel_network,"+init=epsg:4326" )
+```
+
+Repeat the step for the Aus layer.
+
+```{r}
+AusWGS <- spTransform(Aus,"+init=epsg:4326" )
+```
+
+Lastly, we will set the line widths to some sensible value according to the flow.
+
+```{r}
+w <- mdatasub_skinny$Flow / max(mdatasub_skinny$Flow) * 10
+```
+
+Now, we are ready to plot the desire line map by using the code chunk below.
+
+```{r}
+plot(travel_networkwgs, lwd = w)
+plot(AusWGS, add=T)
+```
+
+
+# Building Spatial Interaction Models
+
+It is time for us to learn how to using R Stat function to calibrate the Spatial Interaction Models.  Instead of using *lm()* the [*glm()*](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm) function will be used. This is because *glm()* allow us to calibrate the model using generalised linear regression methods.
+
+Note: Section 2.2.2 of Modelling population flows using spatial interaction models provides a detail discussion of generalised linear regression modelling framework.
+
+
+## Unconstrained Spatial Interaction Model
+
+In this section, we will calibrate an unconstrained spatial interaction model by using *glm()*.  The explanatory variables are origin population (i.e. vi1_origpop), destination median income (i.e. wj3_destmedinc) and distance between origin and destination in km (i.e. dist).
+
+The code chunk used to calibrate to model is shown below:
+
+```{r}
+uncosim <- glm(Flow ~ log(vi1_origpop)+log(wj3_destmedinc)+log(dist), na.action = na.exclude, family = poisson(link = "log"), data = mdatasub)
+summary(uncosim)
+```
+
+The model output report shows that the parameter estimates of the explanatory variables are significant at alpha value 0.001.
+
+###  Fitting the model
+
+To assess the performance of the model, we will use the *fitted()* of R to compute the fitted values.
+
+```{r}
+mdatasub$fitted <- fitted(uncosim)
+```
+
+### The more difficult ways (optional)
+
+Another way to calculate the estimates is to plug all of the parameters back into Equation 6 like this:
+
+First, assign the parameter values from the model to the appropriate variables
+
+```{r}
+k <- uncosim$coefficients[1]
+mu <- uncosim$coefficients[2]
+alpha <- uncosim$coefficients[3]
+beta <- -uncosim$coefficients[4]
+```
+
+Next, plug everything back into the Equation 6 model... (be careful with the positive and negative signing of the parameters as the beta parameter may not have been saved as negative so will need to force negative)
+
+```{r}
+mdatasub$unconstrainedEst2 <- exp(k+(mu*log(mdatasub$vi1_origpop))+(alpha*log(mdatasub$wj3_destmedinc))-(beta*log(mdatasub$dist)))
+```
+
+which is exactly the same as this 
+
+```{r}
+mdatasub$unconstrainedEst2 <- (exp(k)*exp(mu*log(mdatasub$vi1_origpop))*exp(alpha*log(mdatasub$wj3_destmedinc))*exp(-beta*log(mdatasub$dist)))
+```
+
+### Saving the fitted values
+
+Now, we will run the model and save all of the new flow estimates in a new column in the dataframe.
+
+```{r}
+mdatasub$unconstrainedEst2 <- round(mdatasub$unconstrainedEst2,0)
+sum(mdatasub$unconstrainedEst2)
+```
+
+Next, we will turn the output into a little matrix by using [*dcast()*](https://www.rdocumentation.org/packages/maditr/versions/0.7.4/topics/dcast) of  **maditr** package.
+
+```{r}
+mdatasubmat2 <- dcast(mdatasub, Orig_code ~ Dest_code, sum, value.var = "unconstrainedEst2", margins=c("Orig_code", "Dest_code"))
+mdatasubmat2
+```
+
+and compare with the original matrix by using the code chunk below.
+
+```{r}
+mdatasubmat <- dcast(mdatasub, Orig_code ~ Dest_code, sum, value.var = "Flow", margins=c("Orig_code", "Dest_code"))
+mdatasubmat
+```
+
+We can also visualise the actual flow and estimated flow by scatter plot technique.
+
+```{r}
+ggplot(data=mdatasub, 
+       aes(y = `Flow`, 
+           x = `unconstrainedEst2`))+
+  geom_point(color="black", fill="light blue")
+```
+
+
+### Assessing the model performance
+
+To provide a more formal assessment of the model, Goodness-o-Fit statistics will be used.  The code chunk below uses *postReSample()* of **caret** package to compute three Goodness-of-Fit statistics.
+
+```{r}
+postResample(mdatasub$Flow,mdatasub$unconstrainedEst2)
+```
+
+Notice that the R-squared value of 0.32 is relatively low.  It seems that the uncontrained model failed to fit the empirical data well.
+
+
+## Origin Constrained Spatial Interaction Model
+
+In this section, we will calibrate an origin constrained SIM (the "-1" indicates no intercept in the regression model) by using glm().
+
+```{r}
+origSim <- glm(Flow ~ Orig_code+log(wj3_destmedinc)+log(dist)-1, na.action = na.exclude, family = poisson(link = "log"), data = mdatasub)
+#let's have a look at it's summary...
+summary(origSim)
+```
+
+We can examine how the constraints hold for destinations this time.
+
+Firstly, we will fitted the model and roundup the estimated values by using the code chunk below.
+
+```{r}
+mdatasub$origSimFitted <- round(fitted(origSim),0)
+```
+
+Next, we will used the step you had learned in previous section to create pivot table to turn paired list into matrix.
+
+```{r}
+mdatasubmat3 <- dcast(mdatasub, Orig_code ~ Dest_code, sum, value.var = "origSimFitted", margins=c("Orig_code", "Dest_code"))
+mdatasubmat3
+```
+
+You can then compare with the original observed data as shown below.
+
+```{r}
+mdatasubmat
+```
+
+Next, let us display the actual flow and estimated flow by using the scatter plot technique.
+
+```{r}
+ggplot(data=mdatasub, 
+       aes(y = `Flow`, 
+           x = `origSimFitted`))+
+  geom_point(color="black", fill="light blue")
+```
+
+Lastly, we compare the fitted values and the actual values by computing Goodness-of-fit statistics.
+
+```{r}
+postResample(mdatasub$Flow,mdatasub$origSimFitted)
+```
+
+Notice that the R-squared improved considerably from 0.32 in the unconstrained model to 0.43 in this origin constrained model.
+
+
+## Destination Constrained Spatial Interaction Model
+
+In this section, we will calibrate a destination constrained SIM (the "-1" indicates no intercept in the regression model) by using glm().
+
+```{r}
+destSim <- glm(Flow ~ Dest_code+log(vi1_origpop)+log(dist)-1, na.action = na.exclude, family = poisson(link = "log"), data = mdatasub)
+summary(destSim)
+```
+
+We can examine how the constraints hold for destinations this time.  Firstly, we will fitted the model and roundup the estimated values by using the code chunk below.
+
+```{r}
+mdatasub$destSimFitted <- round(fitted(destSim),0)
+```
+
+Next, we will used the step you had learned in previous section to create pivot table to turn paired list into matrix.
+
+```{r}
+mdatasubmat6 <- dcast(mdatasub, Orig_code ~ Dest_code, sum, value.var = "destSimFitted", margins=c("Orig_code", "Dest_code"))
+mdatasubmat6
+```
+
+Similar to the previous section, you can then compare with the original observed data as shown below.
+
+```{r}
+mdatasubmat
+```
+
+Next, let us display the actual flow and estimated flow by using the scatter plot technique.
+
+```{r}
+ggplot(data=mdatasub, 
+       aes(y = `Flow`, 
+           x = `destSimFitted`))+
+  geom_point(color="black", fill="light blue")
+```
+
+Finally, we can test the Goodness-of-Fit in exactly the same way as before:
+
+```{r}
+postResample(mdatasub$Flow,mdatasub$destSimFitted)
+```
+
+Notice that the R-squared improved further from 0.32 in the unconstrained model to 0.65 in this origin constrained model.
+
+
+## Doubly Constrained Spatial Interaction Model
+
+In this section, we will calibrate a Doubly Constrained Spatial Interaction Model by using glm().
+
+
+```{r}
+doubSim <- glm(Flow ~ Orig_code+Dest_code+log(dist), na.action = na.exclude, family = poisson(link = "log"), data = mdatasub)
+summary(doubSim)
+```
+
+We can examine how the constraints hold for destinations this time.  Firstly, we will fitted the model and roundup the estimated values by using the code chunk below.
+
+```{r}
+mdatasub$doubsimFitted <- round(fitted(doubSim),0)
+```
+
+Next, we will used the step you had learned in previous section to create pivot table to turn paired list into matrix.
+
+```{r}
+mdatasubmat7 <- dcast(mdatasub, Orig_code ~ Dest_code, sum, value.var = "doubsimFitted", margins=c("Orig_code", "Dest_code"))
+mdatasubmat7
+```
+
+Similar to the previous section, you can then compare with the original observed data as shown below.
+
+```{r}
+mdatasubmat
+```
+
+Next, let us display the actual flow and estimated flow by using the scatter plot technique.
+
+```{r}
+ggplot(data=mdatasub, 
+       aes(y = `Flow`, 
+           x = `doubsimFitted`))+
+  geom_point(color="black", fill="light blue")
+```
+
+The scatter plot above reveals that the fitted values are highly correlated with the actual flow values.  This show the Doubly Constrained Spatial Interaction Model is the best fit model among the four spatial interaction models.
+
+To provide a quantitative assessment of the model, we can compute the Goodness-of-fit statistics exactly the same way as before.
+
+```{r}
+postResample(mdatasub$Flow,mdatasub$doubsimFitted)
+```
+
+The Goodness-of-fit statistics reveal that the Doubly Constrained Spatial Interaction Model is the best model because it produces the best R-squared statistic and smallest RMSE.  
+
+
+
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("Hands-on_Ex10-SIMs.html")
+```
+
+
+
+
