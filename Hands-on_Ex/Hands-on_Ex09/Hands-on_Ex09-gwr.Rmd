@@ -180,40 +180,49 @@ Notice that the distribution is relatively less skewed after the transformation.
 
 ## Multiple Histogram Plots distribution of variables
 
-In this section, you will learn how to draw a small mutliple histograms (also known as treltis plot) by using *ggarrange()* of [**ggpubr**](https://cran.r-project.org/web/packages/ggpubr/index.html) package.
+In this section, you will learn how to draw a small multiple histograms (also known as trellis plot) by using *ggarrange()* of [**ggpubr**](https://cran.r-project.org/web/packages/ggpubr/index.html) package.
 
-The code chunk below is used to create 12 histograms.  Then, ggarrnage() is used to organised these histogram into a 3 columns by 4 rows small multiple plot.
+The code chunk below is used to create 12 histograms.  Then, *ggarrange()* is used to organised these histogram into a 3 columns by 4 rows small multiple plot.
 
 ```{r, message=FALSE, fig.width=12, fig.height=8}
 AREA_SQM <- ggplot(data=condo_resale.sf, aes(x= `AREA_SQM`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 AGE <- ggplot(data=condo_resale.sf, aes(x= `AGE`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")  
+  geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_CBD <- ggplot(data=condo_resale.sf, aes(x= `PROX_CBD`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_CHILDCARE <- ggplot(data=condo_resale.sf, aes(x= `PROX_CHILDCARE`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_ELDERLYCARE <- ggplot(data=condo_resale.sf, aes(x= `PROX_ELDERLYCARE`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_URA_GROWTH_AREA <- ggplot(data=condo_resale.sf, aes(x= `PROX_URA_GROWTH_AREA`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_HAWKER_MARKET <- ggplot(data=condo_resale.sf, aes(x= `PROX_HAWKER_MARKET`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_KINDERGARTEN <- ggplot(data=condo_resale.sf, aes(x= `PROX_KINDERGARTEN`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_MRT <- ggplot(data=condo_resale.sf, aes(x= `PROX_MRT`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_PARK <- ggplot(data=condo_resale.sf, aes(x= `PROX_PARK`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_PRIMARY_SCH <- ggplot(data=condo_resale.sf, aes(x= `PROX_PRIMARY_SCH`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
+
 PROX_TOP_PRIMARY_SCH <- ggplot(data=condo_resale.sf, aes(x= `PROX_TOP_PRIMARY_SCH`)) +
   geom_histogram(bins=20, color="black", fill="light blue")
 
-
 ggarrange(AREA_SQM, AGE, PROX_CBD, PROX_CHILDCARE, PROX_ELDERLYCARE, PROX_URA_GROWTH_AREA, PROX_HAWKER_MARKET, PROX_KINDERGARTEN, PROX_MRT, PROX_PARK, PROX_PRIMARY_SCH, PROX_TOP_PRIMARY_SCH,  ncol = 3, nrow = 4)
 ```
-
 
 ##  Drawing Statistical Point Map
 
@@ -222,7 +231,7 @@ Lastly, we want to reveal the geospatial distribution condominium resale prices 
 First, we will turn on the interactive mode of tmap by using the code chunk below.
 
 ```{r echo=TRUE, eval=TRUE}
-tmap_mode("plot")
+tmap_mode("view")
 ```
 
 Next, the code chunks below is used to create an interactive point symbol map.
@@ -241,13 +250,11 @@ Notice that [*tm_dots()*](https://www.rdocumentation.org/packages/tmap/versions/
 
 *set.zoom.limits* argument of *tm_view()* sets the minimum and maximum zoom level to 11 and 14 respectively.
 
-
 Before moving on to the next section, the code below will be used to turn R display into **plot** mode.
 
 ```{r echo=TRUE, eval=TRUE}
 tmap_mode("plot")
 ```
-
 
 # Hedonic Pricing Modelling in R
 
@@ -307,7 +314,7 @@ corrplot(cor(condo_resale[, 5:23]), diag = FALSE, order = "AOE",
          tl.pos = "td", tl.cex = 0.5, method = "number", type = "upper")
 ```
 
-Matrix reorder is very important for mining the hiden structure and patter in the matrix.  There are four methods in corrplot (parameter order), named "AOE", "FPC", "hclust", "alphabet".  In the code chunk above, alphabet order is used.  It orders the variables alphabetically.
+Matrix reorder is very important for mining the hiden structure and patter in the matrix.  There are four methods in corrplot (parameter order), named "AOE", "FPC", "hclust", "alphabet".  In the code chunk above, AOE order is used.  It orders the variables by using the **angular order of the eigenvectors** method suggested by [Michael Friendly](https://www.datavis.ca/papers/corrgram.pdf).
 
 From the scatterplot matrix, it is clear that ***Freehold*** is highly correlated to ***LEASE_99YEAR***.  In view of this, it is wiser to only include either one of them in the subsequent model building.  As a result, ***LEASE_99YEAR*** is excluded in the subsequent model building.
 
@@ -419,7 +426,7 @@ Next, we will use tmap package to display the distribution of the residuals on a
 The code churn below will turn on the interactive mode of tmap.
 
 ```{r echo=TRUE, eval=TRUE}
-tmap_mode("plot")
+tmap_mode("view")
 ```
 
 The code chunks below is used to create an interactive point symbol map.
@@ -590,7 +597,7 @@ summary(gwr.adaptive$SDF$yhat)
 The code chunks below is used to create an interactive point symbol map.
 
 ```{r echo=TRUE, eval=TRUE}
-tmap_mode("plot")
+tmap_mode("view")
 tm_shape(mpsz_svy21)+
   tm_polygons(alpha = 0.1) +
 tm_shape(condo_resale.sf.adaptive) +  
