@@ -305,7 +305,7 @@ Figure above reveals that there are a few statistical outliers with relatively h
 
 Before building a multiple regression model, it is important to ensure that the indepdent variables used are not highly correlated to each other.  If these highly correlated independent variables are used in building a regression model by mistake, the quality of the model will be compromised.  This phenominan is known as ***multicollinearity*** in statistics. 
 
-Correlation matrix is commonly used to visualise the relationships between the independent variables.  Beside the *pairs()* of R, there are many packages support the display of a correlation matrix.  In this section, the *corrplot* package will be used.
+Correlation matrix is commonly used to visualise the relationships between the independent variables.  Beside the *pairs()* of R, there are many packages support the display of a correlation matrix.  In this section, the [**corrplot**](https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html) package will be used.
 
 The code chunk below is used to plot a scatterplot matrix of the relationship between the independent variables in ***condo_resale*** data.frame.
 
