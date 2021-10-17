@@ -39,8 +39,12 @@ Before we get started, it is important for us to install the necessary R package
 
 The R packages needed for this exercise are as follows:
 
-- Geospatial statistical modelling package
-    - **GWmodel**
+- R package for building OLS and performing diagnostics tests
+    - [**olsrr**](https://olsrr.rsquaredacademy.com/index.html)
+- R package for calibrating geographical weighted family of models
+    - [**GWmodel**](https://cran.r-project.org/web/packages/GWmodel/index.html)
+- R package for multivariate data visualisation and analysis
+    - [**corrplot**](https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html)
 - Spatial data handling
     - **sf**
 - Attribute data handling
