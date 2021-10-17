@@ -509,7 +509,7 @@ The output is saved in a list of class “gwrm”.  The code below can be used t
 gwr.fixed
 ```
 
-The report shows that the adjusted r-square of the gwr is 0.8430418 which is significantly better than the globel multiple linear regression model of 0.6472. 
+The report shows that the adjusted r-square of the gwr is 0.8430 which is significantly better than the globel multiple linear regression model of 0.6472. 
 
 
 ## Building Adaptive Bandwidth GWR Model
@@ -543,7 +543,7 @@ The code below can be used to display the model output.
 gwr.adaptive
 ```
 
-The report shows that the adjusted r-square of the gwr is 0.8561185 which is significantly better than the globel multiple linear regression model of 0.6472. 
+The report shows that the adjusted r-square of the gwr is 0.8561 which is significantly better than the globel multiple linear regression model of 0.6472. 
 
 
 # Visualising GWR Output
