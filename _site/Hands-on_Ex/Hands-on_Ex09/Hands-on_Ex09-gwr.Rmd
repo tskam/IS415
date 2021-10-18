@@ -332,7 +332,7 @@ condo.mlr <- lm(formula = SELLING_PRICE ~ AREA_SQM + AGE	+ PROX_CBD + PROX_CHILD
 summary(condo.mlr)
 ```
 
-With reference to the report above, it is clear that not all the indepent variables are statistically significant.  We will revised the model by removing those variables which are not statistically significant.
+With reference to the report above, it is clear that not all the independent variables are statistically significant.  We will revised the model by removing those variables which are not statistically significant.
 
 Now, we are ready to calibrate the revised model by using the code chunk below.
 
@@ -490,7 +490,7 @@ In this section, you are going to learn how to modelling hedonic pricing using b
 
 In the code chunk below *bw.gwr()* of GWModel package is used to determine the optimal fixed bandwidth to use in the model.  Notice that the argument ***adaptive*** is set to **FALSE** indicates that we are interested to compute the fixed bandwidth. 
 
-There are two possible approaches can be uused to determine the stopping rule, they are: CV cross-validation approach and AIC corrected (AICc) approach.  We define the stopping rule using ***approach*** argement.
+There are two possible approaches can be uused to determine the stopping rule, they are: CV cross-validation approach and AIC corrected (AICc) approach.  We define the stopping rule using ***approach*** argeement.
 
 ```{r}
 bw.fixed <- bw.gwr(formula = SELLING_PRICE ~ AREA_SQM + AGE	+ PROX_CBD + PROX_CHILDCARE + PROX_ELDERLYCARE	+ PROX_URA_GROWTH_AREA + PROX_MRT	+ PROX_PARK	+ PROX_PRIMARY_SCH + PROX_SHOPPING_MALL	+ PROX_BUS_STOP	+ NO_Of_UNITS + FAMILY_FRIENDLY + FREEHOLD, data=condo_resale.sp, approach="CV", kernel="gaussian", adaptive=FALSE, longlat=FALSE)
