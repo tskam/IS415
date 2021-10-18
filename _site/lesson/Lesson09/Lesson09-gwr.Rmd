@@ -118,6 +118,11 @@ The formula]
 ![:scale 80%](img/image9-8.jpg)
 
 ---
+### Individual parameter testing
+
+![:scale 80%](img/image9-11.jpg)
+
+---
 ### Assessing individual parameters
 
 ![:scale 80%](img/image9-9.jpg)
@@ -127,10 +132,6 @@ The formula]
 
 ![:scale 80%](img/image9-10.jpg)
 
----
-### Individual parameter testing
-
-![:scale 80%](img/image9-11.jpg)
 
 ---
 ## Assumptions of linear regression models
