@@ -75,6 +75,13 @@ This exercise will be graded by using the following criteria:
 
 7th November 2021 (Sunday), 11.59pm (midnight).
 
+## Useful R packages
+
++ [httpr](https://httr.r-lib.org/): Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components (authenticate(), add_headers() and so on).
+
++ [onemapsgapi](https://cran.r-project.org/web/packages/onemapsgapi/index.html): An R wrapper for the 'OneMap.Sg' API <https://docs.onemap.sg/>. Functions help users query data from the API and return raw JSON data in "tidy" formats. Support is also available for users to retrieve data from multiple API calls and integrate results into single dataframes, without needing to clean and merge the data themselves. This package is best suited for users who would like to perform analyses with Singapore's spatial data without having to perform excessive data cleaning.  For more detail, refer to this [link](https://cran.r-project.org/web/packages/onemapsgapi/vignettes/onemapsgapi_vignette.html).
+
+
 ## Q & A
 
 ```{r echo=FALSE, eval=FALSE}

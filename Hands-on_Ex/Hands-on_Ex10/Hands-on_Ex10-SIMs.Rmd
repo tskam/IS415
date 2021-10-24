@@ -70,8 +70,8 @@ The code chunk below installs and launches these R packages into RStudio environ
 ```{r echo=TRUE, eval=TRUE}
 packages = c('tmap', 'tidyverse',
              'sp', 'caret',
-             'geojsonio', 'stplanr',
-             'reshape2', 'broom')
+             'geojsonio', 'reshape2', 
+             'broom')
 
 for(p in packages){
   if(!require(p, character.only = T)){
