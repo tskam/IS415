@@ -90,10 +90,12 @@ install_version("sf", version = "0.9-8", repos = "http://cran.us.r-project.org")
 
 Note that you only need to install once.
 
+**Note:** **stplanr** was removed from cran recently.  The latest version is 0.8.4.  Use the code chunk above to install **stplanr** if this is the first time installation.  
 After installation, we need to launch the library by using the code chunk below.
 
 ```{r}
 library(sf)
+library(stplanr)
 ```
 
 # Geospatial Data
@@ -194,7 +196,7 @@ summary(AusProj)
 
 ### Computing distance matrix
 
-Technically, we can used *st_distance()* of **sf** package to compute the distance matrix.  However, I notice that the process took much longer time to complete.  In view of the *spDist()* of **sp** package is used.  
+Technically, we can used *st_distance()* of **sf** package to compute the distance matrix.  However, I notice that the process took much longer time to complete.  In view of this, *spDist()* of **sp** package is used.  
 
 ```{r}
 dist <- spDists(AusProj)
