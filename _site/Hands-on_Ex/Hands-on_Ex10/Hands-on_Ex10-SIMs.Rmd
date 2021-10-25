@@ -55,7 +55,7 @@ Before we getting started, it is important for us to install the necessary R pac
 The R packages need for this exercise are as follows:
 
 - Spatial data handling
-    - sf, sp, 'geojsonio', 'stplanr'
+    - sf, sp, [geojsonio](https://cran.r-project.org/web/packages/geojsonio/index.html), [stplanr](https://docs.ropensci.org/stplanr/index.html).
 - Attribute data handling
     - tidyverse, especially readr and dplyr, reshape2,  
 - thematic mapping
@@ -63,7 +63,7 @@ The R packages need for this exercise are as follows:
 - Statistical graphic
     - ggplot2
 - Statistical analysis
-    - caret
+    - [caret](https://cran.r-project.org/web/packages/caret/)
     
 The code chunk below installs and launches these R packages into RStudio environment.
 
@@ -277,7 +277,8 @@ First, use the *od2line()* function **stplanr** package to remove all but the or
 
 ```{r}
 mdatasub_skinny <- mdatasub[,c(2,4,5)]
-travel_network <- od2line(flow = mdatasub_skinny, zones = Aus)
+travel_network <- od2line(flow = mdatasub_skinny, 
+                          zones = Aus)
 ```
 
 Next, convert the flows to WGS84 projection.
