@@ -1647,45 +1647,17 @@ After installation, we need to launch the library by using the code chunk below.
 <p>Let’s fix them using the code chunk below.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://r-spatial.github.io/sf/reference/valid.html'>st_make_valid</a></span><span class='op'>(</span><span class='va'>AusSF</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>AusSF</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/valid.html'>st_make_valid</a></span><span class='op'>(</span><span class='va'>AusSF</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>Simple feature collection with 15 features and 6 fields
-Geometry type: MULTIPOLYGON
-Dimension:     XY
-Bounding box:  xmin: 112.9211 ymin: -43.74051 xmax: 159.1092 ymax: -9.142176
-Geodetic CRS:  GDA94
-First 10 features:
-   GCCSA_CODE GCC_CODE16        GCCSA_NAME STATE_CODE
-1       1RNSW      1RNSW       Rest of NSW          1
-2       1GSYD      1GSYD    Greater Sydney          1
-3       2GMEL      2GMEL Greater Melbourne          2
-4       2RVIC      2RVIC      Rest of Vic.          2
-5       3RQLD      3RQLD       Rest of Qld          3
-6       3GBRI      3GBRI  Greater Brisbane          3
-7       4RSAU      4RSAU        Rest of SA          4
-8       4GADE      4GADE  Greater Adelaide          4
-9       5GPER      5GPER     Greater Perth          5
-10      5RWAU      5RWAU        Rest of WA          5
-          STATE_NAME   AREA_SQKM                       geometry
-1    New South Wales  788442.589 MULTIPOLYGON (((159.061 -31...
-2    New South Wales   12368.193 MULTIPOLYGON (((151.2652 -3...
-3           Victoria    9992.512 MULTIPOLYGON (((144.9063 -3...
-4           Victoria  217503.119 MULTIPOLYGON (((146.6857 -3...
-5         Queensland 1714330.123 MULTIPOLYGON (((150.7374 -2...
-6         Queensland   15841.960 MULTIPOLYGON (((153.374 -27...
-7    South Australia  981015.072 MULTIPOLYGON (((136.1839 -3...
-8    South Australia    3259.836 MULTIPOLYGON (((138.5262 -3...
-9  Western Australia    6416.222 MULTIPOLYGON (((115.7128 -3...
-10 Western Australia 2520230.017 MULTIPOLYGON (((117.8946 -3...</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://r-spatial.github.io/sf/reference/valid.html'>st_is_valid</a></span><span class='op'>(</span><span class='va'>AusSF</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code> [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-[12] FALSE  TRUE  TRUE  TRUE</code></pre>
+<pre><code> [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+[14] TRUE TRUE</code></pre>
 </div>
 <h3 id="displaying-the-boundary-layer">Displaying the boundary layer</h3>
 <p>Before we continue, it will be wise to plot the data and check if the boundary layer is correct. The code chunk below is used to plot AusSF simple feature data.frame by using <em>qtm()</em> of <strong>tmap</strong> package.</p>
@@ -1722,7 +1694,7 @@ Geodetic CRS:  GDA94
 10      5RWAU      5RWAU        Rest of WA          5
           STATE_NAME   AREA_SQKM                       geometry
 1    New South Wales  788442.589 MULTIPOLYGON (((159.061 -31...
-2    New South Wales   12368.193 MULTIPOLYGON (((151.2658 -3...
+2    New South Wales   12368.193 MULTIPOLYGON (((151.2652 -3...
 3           Victoria    9992.512 MULTIPOLYGON (((144.9063 -3...
 4           Victoria  217503.119 MULTIPOLYGON (((146.6857 -3...
 5         Queensland 1714330.123 MULTIPOLYGON (((150.7374 -2...
@@ -1762,7 +1734,7 @@ Geodetic CRS:  GDA94
 9       5GPER      5GPER     Greater Perth          5
 10      5RWAU      5RWAU        Rest of WA          5
           STATE_NAME   AREA_SQKM                       geometry
-2    New South Wales   12368.193 MULTIPOLYGON (((151.2658 -3...
+2    New South Wales   12368.193 MULTIPOLYGON (((151.2652 -3...
 1    New South Wales  788442.589 MULTIPOLYGON (((159.061 -31...
 3           Victoria    9992.512 MULTIPOLYGON (((144.9063 -3...
 4           Victoria  217503.119 MULTIPOLYGON (((146.6857 -3...
@@ -2720,7 +2692,7 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

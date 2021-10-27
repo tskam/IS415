@@ -132,14 +132,12 @@ The output shows that there are several invalid features.
 Let's fix them using the code chunk below.
 
 ```{r}
-st_make_valid(AusSF)
+AusSF <- st_make_valid(AusSF)
 ```
 
 ```{r}
 st_is_valid(AusSF)
 ```
-
-
 
 ### Displaying the boundary layer
 

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Lesson 11: Modelling Geographical Accessibility</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Kam Tin Seong Assoc. Professor of Information Systems" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/text.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Lesson 11: Modelling Geographical Accessibility
+### Dr. Kam Tin Seong<br/>Assoc. Professor of Information Systems
+### School of Computing and Information Systems,<br/>Singapore Management University
+### 2020-5-16 (updated: 2021-10-27)
+
+---
+
+
+
+
+
+
+# Content
+
+.vlarge[
++ Basic Concepts of Geography of Accessibility
++ Accessibility Models
+  + Stewart Potential model
+  + Reilly model
+  + Huff model
+
+]
+
+---
+## What is Geography of Accessibility?
+
+.vlarge[
++ Accessibility is the measure of **the capacity of a location to be reached from, or to be reached by, different locations**. Therefore, the capacity and the arrangement of transport infrastructure are key elements in the determination of accessibility.
+]
+
+---
+## Why Model Geography of Accessibility?
+
+.vlarge[
++ Questions that can be answered by accessibility models:
+  + Which part of the geographical areas are deprived from getting access to a social service, facility or job opportunity?
+  + Which part of the geographical areas will be affected by a public policy or business decision such as merging JCs, secondary and primary schools.
+]
+
+---
+## Measuring Distances
+
+.vlarge[
++ Different spatial and distance conceptualizations that are commonly employed when measuring and modelling accessibility.
+]
+
+.center[
+![:scale 65%](img/image1.jpg)
+]
+
+---
+### Distance Consideration
+
+.large[Cartesian distance versus Network distance]
+
+.center[
+![:scale 55%](img/image14.jpg)
+]
+
+.small[
+Reference: Philippe Apparicio et. al. (2017) ["The approaches to measuring the potential spatial access to urban health services revisited: distance types and aggregation‑error issues.](https://ij-healthgeographics.biomedcentral.com/articles/10.1186/s12942-017-0105-9) *International Journal of Health Geographics*, pp. 16:32]
+
+---
+### The distance friction
+ 
+.pull-left[
+.large[
++ Modeling spatial interactions implies quantifying the **distance friction** or **impedance**. 
++ The role of the distance can be interpreted as a disincentive to access desired destinations or opportunities (e.g. jobs, shops).]
+]
+
+.pull-right[
+![](img/image3.jpg)
+]
+
+
+???
+The perception of how far a destination is may not be a linear function of distance. People are more likely to shop at a place close to home than one far away. Distance is viewed as a nonlinear deterrent to movement. This phenomenon can be modeled by using a distance-decay function. The use of a power distance-decay function is borrowed from Newton's law of gravitation, from which the term gravity model is derived.  A distance-decay parameter, symbolized by the Greek letter beta, can be used to exaggerate the distance to destinations.  Some activities, such as grocery shopping, have a large exponent, indicating that people will travel only a short distance for such things.  Other activities, such as furniture shopping, have a small exponent, because people are willing to travel farther to shop for furniture.
+ 
+---
+### Distance Decay function.
+
+.pull-left[
+.large[Inverse distance decay, 𝜶∕𝒅_𝜷 
+
+![:scale 75%](img/image4a.jpg)
+]]
+
+.pull-right[
+.large[Exponential distance decay, 𝜶𝒆^(−𝜷𝒅) 
+
+![:scale 75%](img/image4b.jpg)
+]]
+
+---
+## The Geographical Unit
+
+.vlarge[
++ This issue of irregularly shaped polygons created arbitrarily (such as county boundaries or block groups that have been created from a political process).
+]
+
+.center[
+![:scale 55%](img/image7.jpg)
+]
+
+---
+## The Geographical Unit
+
+.vlarge[
++ Using regular shaped geometry such as square, hexagon or triangle to define geographical unit.]
+
+.center[
+![](img/image1.png)
+]
+
+???
+In GIS analysis, regularly shaped grids is used for many reasons such as normalizing geography for mapping or to mitigate the issues of using irregularly shaped polygons created arbitrarily (such as county boundaries or block groups that have been created from a political process). Regularly shaped grids can only be comprised of equilateral triangles, squares, or hexagons, as these three polygon shapes are the only three that can tessellate (repeating the same shape over and over again, edge to edge, to cover an area without gaps or overlaps) to create an evenly spaced grid.
+
+---
+## The Geographical Unit
+
+.large[
++ Hexagons reduce sampling bias due to edge effects of the grid shape, this is related to the low perimeter-to-area ratio of the shape of the hexagon. 
++ A circle has the lowest ratio but cannot tessellate to form a continuous grid. Hexagons are the most circular-shaped polygon that can tessellate to form an evenly spaced grid.]
+
+.center[
+
+![](img/image2.png)
+]
+
+???
+Though the square (fishnet) grid is the predominantly used shape type in GIS analysis and thematic mapping, there are ways in which hexagons may be better suited for your analysis based on the nature of your question.
+
+Hexagons reduce sampling bias due to edge effects of the grid shape, this is related to the low perimeter-to-area ratio of the shape of the hexagon. A circle has the lowest ratio but cannot tessellate to form a continuous grid. Hexagons are the most circular-shaped polygon that can tessellate to form an evenly spaced grid.
+
+---
+## The Geographical Unit
+
+.large[
++ An example of 250m radius hexagons covering Singapore main island. 
+]
+
+.center[
+![:scale 70%](img/image8.jpg)
+]
+
+
+
+
+---
+## The Potential Model
+### The classic model
+
+.center[
+![:scale 65%](img/image2.jpg)
+]
+
+---
+### The Modified Potential Formula
+
+.center[
+![:scale 45%](img/image5.jpg)
+]
+
+
+---
+### Real world application of potential model
+
+.large[
++ Accessibility to urban functions study
+]
+
+.center[
+![:scale 70%](img/image6a.jpg)
+]
+
+---
+### Real world application of potential model
+
+.pull-left[
+.large[Accessibility to shopping centres
+]
+
+![](img/image6b.jpg)
+]
+
+--
+.pull-right[
+.large[Accessibility to health services]
+
+
+![](img/image6c.jpg)
+]
+
+---
+### Real world application of potential model
+
+.large[
++ Overall accessibility
+]
+
+.center[
+![:scale 75%](img/image6d.jpg)
+]
+
+---
+## Two-step floating catchment area method (2SFCA)
+
+.pull-left[
+.large[
++ A special case of a potential model for measuring spatial accessibility to primary social services and public facilities.
++ It was inspired by the spatial decomposition idea first proposed by Radke and Mu (2000).
+]
+
+.small[
+Reference: Luo, W.; Wang, F. (2003b). ["Measures of spatial accessibility to health care in a GIS environment: synthesis and a case study in the Chicago region"](https://www.niu.edu/landform/papers/Luo_Wang2003.pdf). *Environment and Planning B: Planning and Design*. 30 (6): 865–884. 
+]]
+
+.pull-right[
+.large[
+An earlier version of 2SFCA
+]
+![:scale 65%](img/image9.jpg)
+]
+
+---
+## Two-step floating catchment area method (2SFCA)
+
+.pull-left[
+.large[
+**Step 1**: For each physician location *j*, search all population locations (*k*) that are within a threshold travel time (*d0*) from location *j* (that is, catchment area *j* ), and compute the physician-to-population ratio, *Rj*, within the catchment area:
+]
+
+![:scale 45%](img/image10a.jpg)
+
+]  
+  
+.pull-right[
+.large[
+An earlier version of 2SFCA
+]
+![:scale 65%](img/image9.jpg)
+]  
+ 
+---
+## Two-step floating catchment area method (2SFCA)
+  
+.pull-left[
+.large[
+**Step 2:** For each population location *i*, search all physician locations (*j*) that are within the threshold travel time (*d0*) from location *i* (that is, catchment area *i*), and sum up the physician-to-population ratios, *Rj*, at these locations:
+]
+
+![](img/image10b.jpg)
+]
+
+.pull-right[
+.large[
+An earlier version of 2SFCA
+]
+![:scale 65%](img/image9.jpg)
+]  
+
+---
+## Enhanced Two-step Floating Catchment Area (E2SFCA) 
+
+.pull-left[
+**Step1:** The catchment of physician location *j* is defined as the area within 30-min driving zone(Lee, 1991). Within each catchment, compute three travel time zones with minute breaks of 0–10,10–20 and 20–30min(zones1–3,respectively). Search all population locations(*k*) that are within a threshold travel time zone (*Dr*) from location *j* (this is catchment area *j*), and compute the weighted physician-to-population ratio, *Rj*, within the catchment area as follows:
+
+![](img/image11a.jpg)
+]
+
+.pull-right[
+**Step2:** For each population location *i*, search all physician locations (*j*) that are within the 30min travel time zone from location *i* (that is,catchment area *i*), and sum up the physician-to-population ratios (calculated in step1), *Rj*, at these locations as follows:
+
+![](img/image11b.jpg)
+]
+
+---
+### Comparing 2SFCA and E2SFCA
+
+.center[
+![:scale 75%](img/image12.jpg)
+]
+
+.small[
+Reference: Luo, Wei.,  Qi, Yi. (2009) ["An enhanced two-step floating catchment area (E2SFCA) method for measuring spatial accessibility to primary care physicians"](https://www.researchgate.net/publication/26646789_An_Enhanced_Two-Step_Floating_Catchment_Area_E2SFCA_Method_for_Measuring_Spatial_Accessibility_to_Primary_Care_Physicians), *Health &amp; Place*, 2009, Vol.15 (4), p.1100-1107.
+]
+
+???
+2SFCA method tends to over estimate accessibility because distance decay is not considered, and thus identifies smaller total shortage areas. The sharper distance decay weight (weight2) used in E2SFCA identifies greater total shortage area (in terms of both physical area and population) than as lower distance decay weight(weight1).The policy implication is that using the E2SFCA method would more explicitly identify and delineate HPSAs. This would help allocate the limited resources to the most needy places.
+
+
+---
+## Spatial Accessibility Measure (SAM)
+
+.vlarge[
+The formula:
+]
+
+.center[
+![:scale 35%](img/image13.jpg)
+]
+
+.large[
+where 
+
++ *Aai* is the accessibility in ED *i*, 
++ *nj* is the capacity of the target facility *j*. 
++ *pi* is the demand of this ED, and 
++ *dij* is the network distance between the *EDi* and each facility *j*.
+]
+
+.small[
+Reference: Stamatis Kalogirou &amp; Ronan Foley (2006) ["Health, place and Hanly: Modelling accessibility to hospitals in Ireland"](https://www.tandfonline.com/doi/abs/10.1080/00750770609555866), *Irish Geography*, Volume 39(1), 2006, 52-68.
+]
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
