@@ -27,6 +27,10 @@ knitr::opts_chunk$set(echo = FALSE)
     + Debug errors in the codes 
     + Build complex Shiny application using module
     + Improve the productivity of Shiny applications development
++ Deploying Shiny Application
+    + Deploy to the cloud: [shinyapps.io](https://www.shinyapps.io/?_ga=2.232377500.246763293.1636253702-1670780590.1620114500)
+    + Deploy on-premises (open source): [Shiny Server](https://www.rstudio.com/products/shiny/shiny-server/?_ga=2.164831420.246763293.1636253702-1670780590.1620114500)
+    + Deploy on-premises (commercial): [RStudio Connect](https://www.rstudio.com/products/connect/?_ga=2.232328220.246763293.1636253702-1670780590.1620114500)
 
 ## Workshop Slides and Hands-on Notes 
 
@@ -38,7 +42,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Must Do!
 
-View the three parts series of Shiny Tutorial at this [link](https://shiny.rstudio.com/tutorial/). 
++ View the three parts series of Shiny Tutorial at this [link](https://shiny.rstudio.com/tutorial/). 
+
 
 ## Readings
 ### Core Readings
@@ -53,6 +58,12 @@ View the three parts series of Shiny Tutorial at this [link](https://shiny.rstud
 * Colin Fay, Sébastien Rochette, Vincent Guyader, Cervan Girard (2020), **Engineering Production-Grade Shiny Apps**, Chapman & Hall.  You can find the online version with this [link](https://engineering-shiny.org/).
 * [Outstanding User Interfaces with Shiny](https://unleash-shiny.rinterface.com/index.html).
 * [How to Build a Shiny Application from Scratch](https://bookdown.org/hadrien/how_to_build_a_shiny_app_from_scratch/).
+
+### Deploying Shiny Application on shinyapps.io
+
++ [Getting started with shinyapps.io](https://shiny.rstudio.com/articles/shinyapps.html)
++ [shinyapps.io user guide](https://docs.rstudio.com/shinyapps.io/index.html)
+
 
 ## Gallery
 

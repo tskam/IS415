@@ -104,11 +104,6 @@ hexagons <- st_read(dsn = "data/geospatial", layer = "hexagons")
 eldercare <- st_read(dsn = "data/geospatial", layer = "ELDERCARE") 
 ```
 
-
-
-
-
-
 The report above shows that the R object used to contain the imported MP14_SUBZONE_WEB_PL shapefile is called *mpsz* and it is a simple feature object.  The geometry type is *multipolygon*.  it is also important to note that mpsz simple feature object does not have EPSG information.
 
 ## Updating CRS information
@@ -181,10 +176,10 @@ distmat <- ODMatrix %>%
 
 Note: Since tidyr version 1.0 a new function called  [*pivot_wider()*](https://tidyr.tidyverse.org/reference/pivot_wider.html) is introduce.  You should use *pivot_wider()* instead of *spread()*  
 
-Currently, the distance is measured in metre because SVY21 projected coordinate system is used.  The code chunk belw will be used to convert the unit f measurement from metre to kilometre.
+Currently, the distance is measured in metre because SVY21 projected coordinate system is used.  The code chunk below will be used to convert the unit f measurement from metre to kilometre.
 
 ```{r}
-distmat_km<-as.matrix(distmat/1000)
+distmat_km <- as.matrix(distmat/1000)
 ```
 
 # Modelling and Visualising Accessibility using Hansen Method
@@ -195,10 +190,10 @@ Now, we ready to compute Hansen's accessibility by using *ac()* of [**SpatialAcc
 The code chunk below calculates Hansen's accessibility using *ac()* of **SpatialAcc** and *data.frame()* is used to save the output in a data frame called `acc_Handsen`.
 
 ```{r}
-acc_Hansen <- data.frame(ac(hexcen$demand,
+acc_Hansen <- data.frame(ac(hexagons$demand,
                             eldercare$capacity,
                             distmat_km, 
-                            d0 = 50,
+                            #d0 = 50,
                             power = 2, 
                             family = "Hansen"))
 ```
@@ -238,8 +233,8 @@ Actually, the steps above can be perform by using a single code chunk as shown b
 acc_Hansen <- data.frame(ac(hexagons$demand,
                             eldercare$capacity,
                             distmat_km, 
-                            d0 = 50,
-                            power = 2, 
+                            #d0 = 50,
+                            power = 0.5, 
                             family = "Hansen"))
 
 colnames(acc_Hansen) <- "accHansen"
@@ -251,10 +246,10 @@ hexagon_Hansen <- bind_cols(hexagons, acc_Hansen)
 
 ### Extracting map extend
 
-Firstly, we will extract the extend of `hexagons` simple feature data frameby by using *st_bbox()* of **sf** package. 
+Firstly, we will extract the extend of `hexagons` simple feature data frame by by using *st_bbox()* of **sf** package. 
 
 ```{r echo=TRUE, eval=TRUE}
-mapex <- st_bbox(hexagons) #view extent
+mapex <- st_bbox(hexagons)
 ```
 
 The code chunk below uses a collection of mapping fucntions of tmap package to create a high cartographic quality accessibility to eldercare centre in Singapore.
