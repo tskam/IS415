@@ -110,5 +110,34 @@ library(pagedown)
 pagedown::chrome_print("_site/th_ex2.html")
 ```
 
+## Peer Learning
+
+[AVULA NIHARIKA](https://niharika-is415.netlify.app/posts/take%20home%20exercise-2/)
+
+[CHIN SHAN PEI SARAH](https://sarahs-is415-blog.netlify.app/posts/2021-09-14-take-home-exercise-2/)
+
+[DARRYL KWOK BING HENG](https://darryl-is415-blog.netlify.app/posts/2021-09-15-take-home-exercise-2/)
+
+[GOH JIA XIN GENICE](https://geniceee-is415-blog.netlify.app/posts/2021-09-25-take-home-exercise-2/)
+
+[JEROME GOH TING CHUAN](https://personal-blog-for-is415.netlify.app/posts/2021-09-17-take-home-assignment-2/)
+
+[KWEK YI CHEN](https://kwekyichen-is415.netlify.app/posts/2021-09-16-takehome-ex02/)
+
+[MEGAN SIM TZE YEN](https://is415-msty.netlify.app/posts/2021-09-19-take-home-exercise-2/)
+
+[NGAH XIN YAN](https://yan-is415-blog3.netlify.app/posts/2021-10-26-take-home-exercise-2/)
+
+[NOR AISYAH BINTE AJIT](https://aisyahajit2018-is415.netlify.app/posts/2021-10-01-take-home-exercise-2/)
+
+[TEO JUN PENG](https://teojp3-is415.netlify.app/posts/2021-09-20-take-home-exercise-2/)
+
+[TOH JUN LONG](https://junlong-is415.netlify.app/posts/2021-09-20-take-home-exercise-2/)
+
+[WONG WEI LING](https://wlwong2018-is415-blog.netlify.app/posts/2021-09-30-take-home-exercise-2/)
+
+[XU PENGTAI](https://jolly-goodall-704484.netlify.app/posts/2021-09-24-take-home-exercise-2/)
+
+[YU YILING](https://yiling-is415-blog.netlify.app/posts/2021-09-25-take-home-exercise-2/)
 
 
