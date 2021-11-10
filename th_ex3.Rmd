@@ -84,6 +84,39 @@ This exercise will be graded by using the following criteria:
 
 ## Q & A
 
+## Peer Learning
+
+[AVULA NIHARIKA](https://niharika-is415.netlify.app/posts/take%20home%20exercise-%203/)
+
+[CHIN SHAN PEI SARAH](https://sarahs-is415-blog.netlify.app/)
+
+[DARRYL KWOK BING HENG](https://darryl-is415-blog.netlify.app/posts/2021-10-22-take-home-exercise-3/)
+
+[GOH JIA XIN GENICE](https://geniceee-is415-blog.netlify.app/posts/2021-11-05-take-home-exercise-3/)
+
+[JEROME GOH TING CHUAN](https://personal-blog-for-is415.netlify.app/posts/2021-10-31-take-home-assignment-3/)
+
+[KWEK YI CHEN](https://kwekyichen-is415.netlify.app/posts/2021-10-27-takehome-ex03/)
+
+[MEGAN SIM TZE YEN](https://is415-msty.netlify.app/posts/2021-10-25-take-home-exercise-3/)
+
+[NGAH XIN YAN](https://yan-is415-blog3.netlify.app/posts/2021-11-05-take-home-exercise-3/)
+
+[NOR AISYAH BINTE AJIT](https://aisyahajit2018-is415.netlify.app/posts/2021-11-07-take-home-exercise-3/)
+
+[TEO JUN PENG](https://teojp3-is415.netlify.app/posts/2021-10-25-take-home-exercise-3/)
+
+[TOH JUN LONG](https://junlong-is415.netlify.app/posts/2021-11-01-take-home-exercise-3/)
+
+[WONG WEI LING](https://wlwong2018-is415-blog.netlify.app/posts/2021-11-06-take-home-exercise-3/)
+
+[XU PENGTAI](https://jolly-goodall-704484.netlify.app/posts/2021-11-06-take-home-exercise-3/)
+
+[YU YILING](https://yiling-is415-blog.netlify.app/posts/2021-11-05-take-home-exercise-3)
+
+
+
+
 ```{r echo=FALSE, eval=FALSE}
 library(pagedown)
 pagedown::chrome_print("_site/th_ex3.html")
