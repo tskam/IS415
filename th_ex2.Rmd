@@ -105,11 +105,6 @@ You are advised to review these sample submissions prepared by your seniors.
 
 ## Q & A
 
-```{r echo=FALSE, eval=FALSE}
-library(pagedown)
-pagedown::chrome_print("_site/th_ex2.html")
-```
-
 ## Peer Learning
 
 [AVULA NIHARIKA](https://niharika-is415.netlify.app/posts/take%20home%20exercise-2/)
@@ -140,4 +135,7 @@ pagedown::chrome_print("_site/th_ex2.html")
 
 [YU YILING](https://yiling-is415-blog.netlify.app/posts/2021-09-25-take-home-exercise-2/)
 
-
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("_site/th_ex2.html")
+```

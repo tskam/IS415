@@ -154,5 +154,8 @@ The poster will be graded based on the following criteria:
 [Spatial Pointers](https://spatial-pointers.netlify.app/project-proposal), a web-enabled Spatial Point Patterns Analysis toolkit for visualising and analysing both spatial and network constrained point patterns.
 
 
-
+```{r echo=FALSE, eval=FALSE}
+library(pagedown)
+pagedown::chrome_print("_site/GAproject.html")
+```
 
